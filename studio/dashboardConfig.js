@@ -30,7 +30,7 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'https://github.com/Quanda/reps-for-responders',
+            value: 'https://github.com/Quanda/rfr',
             category: 'Code'
           },
           {

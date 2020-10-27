@@ -11,7 +11,7 @@ export default {
     {
       name: 'description',
       type: 'text',
-      title: 'Description',
+      title: 'Site Description',
       description: 'Describe your website for search engines and social media.'
     },
     {
@@ -23,6 +23,6 @@ export default {
       options: {
         layout: 'tags'
       }
-    },
+    }
   ]
 };

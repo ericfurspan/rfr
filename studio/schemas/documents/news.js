@@ -20,8 +20,9 @@ export default {
     },
     {
       name: 'publishedAt',
-      title: 'Date Published',
-      type: 'date'
+      title: 'Published at',
+      type: 'datetime',
+      description: 'You can use this field to set the ordering on the website'
     }
   ]
 };

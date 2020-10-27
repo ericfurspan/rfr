@@ -6,7 +6,7 @@ export default {
     {
       name: 'text',
       title: 'Text',
-      type: 'simplePortableText'
+      type: 'blockText'
     },
     {
       name: 'reviewer',

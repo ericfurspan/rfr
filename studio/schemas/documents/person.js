@@ -11,12 +11,21 @@ export default {
     {
       name: 'image',
       title: 'Image',
-      type: 'figure'
+      type: 'image',
+      options: { hotspot: true }
     },
     {
       name: 'bio',
       title: 'Bio',
-      type: 'bioPortableText'
+      type: 'array',
+      of: [
+        {
+          title: 'Block',
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: []
+        }
+      ]
     },
     {
       name: 'slug',
@@ -27,7 +36,7 @@ export default {
         source: 'name',
         maxLength: 96
       }
-    },
+    }
   ],
   preview: {
     select: {

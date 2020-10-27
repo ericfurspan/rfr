@@ -1,49 +1,51 @@
 // First, we must import the schema creator
-import createSchema from 'part:@sanity/base/schema-creator'
+import createSchema from 'part:@sanity/base/schema-creator';
 
 // Then import schema types from any plugins that might expose them
-import schemaTypes from 'all:part:@sanity/base/schema-type'
+import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
 import seo from './documents/seo';
-import settings from './documents/settings';
+import companyInfo from './documents/companyInfo';
 import review from './documents/review';
-import contact from './documents/contact';
 import icon from './documents/icon';
-import donation from './documents/donation';
-import podcast from './documents/podcast';
 import person from './documents/person';
-import gallery from './documents/gallery';
 import news from './documents/news';
-import team from './documents/team';
 
 // Object types
-import simplePortableText from './objects/simplePortableText';
-import bioPortableText from './objects/bioPortableText';
+import blockContent from './objects/blockContent';
+import blockText from './objects/blockText';
+import slideshow from './objects/slideshow';
+import teamMember from './objects/teamMember';
+import payment from './objects/payment';
+import podcast from './objects/podcast';
+import contactInfo from './objects/contactInfo';
 import socialMedia from './objects/socialMedia';
 import figure from './objects/figure';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
-  name: 'business',
+  name: 'company',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    simplePortableText,
-    bioPortableText,
+    // Objects
+    blockContent,
+    blockText,
+    slideshow,
+    teamMember,
+    contactInfo,
+    payment,
+    socialMedia,
+    figure,
+    podcast,
+    // Documents
     seo,
-    settings,
+    companyInfo,
     news,
     review,
-    contact,
     icon,
-    socialMedia,
-    donation,
-    podcast,
-    person,
-    figure,
-    gallery,
-    team
+    person
   ])
-})
+});
