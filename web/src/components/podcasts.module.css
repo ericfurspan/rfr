@@ -1,0 +1,15 @@
+.title {
+  & svg {
+    margin-right: 0.5em;
+  }
+}
+
+.card {
+  width: 21rem;
+}
+
+.icon {
+  margin-right: 0.5em;
+  font-size: 1.2em;
+  width: 10% !important;
+}
