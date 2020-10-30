@@ -2,39 +2,37 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from './logo';
+import { cn } from '../lib/helpers';
 
-import { micro } from './typography.module.css';
 import styles from './header.module.css';
 
-const Header = ({ siteTitle, siteSubtitle, siteLogo, siteBanner, contact }) => (
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner }) => (
   <div className={styles.root}>
     {siteBanner && <div className={styles.banner}>{siteBanner}</div>}
     <div className={styles.wrapper}>
       {(siteLogo && siteLogo.asset) && <Logo image={siteLogo} />}
-      <div className={styles.branding}>
-        <Link to='/'><h1 className={styles.title}>{siteTitle}</h1></Link>
+      <h1 className={styles.branding}>
+        <Link to='/'>{siteTitle}</Link>
+      </h1>
 
-        {siteSubtitle && <p>{siteSubtitle}</p>}
-      </div>
+      <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
+        <FontAwesomeIcon icon='bars' />
+      </button>
 
-      <nav className={styles.nav}>
+      <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            {contact && contact.email && (
-              <a href={`mailto:${contact.email}`} aria-label='send email'>
-                <FontAwesomeIcon icon='envelope' />
-                <span className={micro}>Email</span>
-              </a>
-            )}
+            <Link to='/resources'>Resources</Link>
           </li>
-          {contact && contact.socialMedia.map((platform) => (
-            <li key={platform.url}>
-              <a href={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.platformName}`}>
-                <FontAwesomeIcon icon={[platform.icon.faPackage, platform.icon.faIconName]} />
-                <span className={micro}>{platform.platformName}</span>
-              </a>
-            </li>
-          ))}
+          <li>
+            <Link to='/team'>Our Team</Link>
+          </li>
+          <li>
+            <Link to='/blog'>Blog</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact</Link>
+          </li>
         </ul>
       </nav>
     </div>

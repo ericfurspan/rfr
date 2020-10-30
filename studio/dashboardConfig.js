@@ -12,16 +12,16 @@ export default {
                 'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
               sites: [
                 {
-                  buildHookId: '',
+                  buildHookId: '5f9c6ccce9ae6236dd0d1982',
                   title: 'Sanity Studio',
-                  name: '',
-                  apiId: ''
+                  name: 'sanity-rfr-studio',
+                  apiId: '395ece14-8451-4cf3-a6bc-9df53ee63317'
                 },
                 {
-                  buildHookId: '',
-                  title: 'Website',
-                  name: '',
-                  apiId: ''
+                  buildHookId: '5f9c6d9b29cd8c3610139ff1',
+                  title: 'Frontend',
+                  name: 'sanity-rfr-frontend',
+                  apiId: '92e566f7-4f64-42a9-83ec-0cfe5113b7f9'
                 }
               ]
             }
@@ -35,7 +35,7 @@ export default {
           },
           {
             title: 'Frontend',
-            value: '',
+            value: 'https://sanity-rfr-frontend.netlify.app',
             category: 'apps'
           }
         ]

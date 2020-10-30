@@ -36,21 +36,12 @@ export default {
       options: { hotspot: true }
     },
     {
-      name: 'teamMembers',
-      title: 'Team Members',
-      type: 'array',
-      of: [{ type: 'teamMember' }],
-      options: {
-        layout: 'grid'
-      }
-    },
-    {
       name: 'gallery',
       title: 'Photo Gallery',
       type: 'slideshow'
     },
     {
-      name: 'payment',
+      name: 'payments',
       title: 'Accepted Payments',
       type: 'array',
       of: [{ type: 'payment' }]

@@ -17,6 +17,10 @@ export function filterOutDocsPublishedInTheFuture ({ publishedAt }) {
   return !isFuture(publishedAt);
 }
 
+export function getTeamMemberUrl (slug) {
+  return `/team/${slug.current || slug}`;
+}
+
 export function getBlogUrl (publishedAt, slug) {
   return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }

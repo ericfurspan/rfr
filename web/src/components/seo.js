@@ -84,8 +84,8 @@ export default SEO;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
-    site: sanitySettings(_id: {eq: "settings"}) {
-      businessName
+    site: sanityCompanyInfo(_id: {eq: "companyInfo"}) {
+      companyName
     }
   }
 `;

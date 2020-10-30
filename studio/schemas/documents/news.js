@@ -1,7 +1,7 @@
 export default {
   name: 'news',
-  type: 'document',
   title: 'News',
+  type: 'document',
   fields: [
     {
       name: 'title',
@@ -10,19 +10,19 @@ export default {
     },
     {
       name: 'source',
-      title: 'Source',
+      title: 'News Source',
       type: 'string'
     },
     {
       name: 'url',
-      title: 'Link',
+      title: 'Link to story',
       type: 'url'
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      description: 'You can use this field to set the ordering on the website'
+      description: 'You can use this field to set the order priority on the website'
     }
   ]
 };

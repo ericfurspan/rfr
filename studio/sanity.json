@@ -1,11 +1,11 @@
 {
   "root": true,
   "project": {
-    "name": "reps-for-responders"
+    "name": "Reps for Responders"
   },
   "api": {
     "projectId": "3z70jizc",
-    "dataset": "production"
+    "dataset": "development"
   },
   "plugins": [
     "@sanity/base",

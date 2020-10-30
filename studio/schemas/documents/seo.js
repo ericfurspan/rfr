@@ -6,13 +6,15 @@ export default {
     {
       name: 'title',
       title: 'Site Title',
-      type: 'string'
+      type: 'string',
+      required: true
     },
     {
       name: 'description',
       type: 'text',
       title: 'Site Description',
-      description: 'Describe your website for search engines and social media.'
+      description: 'Describe your website for search engines and social media.',
+      required: true
     },
     {
       name: 'keywords',

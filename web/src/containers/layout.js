@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import React from 'react';
 import Layout from '../components/layout';
 
 const query = graphql`
@@ -9,12 +9,11 @@ const query = graphql`
       description
       keywords
     }
-    settings: sanitySettings(_id: {regex: "/(drafts.|)settings/"}) {
-      businessName
+    company: sanityCompanyInfo(_id: {regex: "/(drafts.|)companyInfo/"}) {
+      companyName
       caption
       banner
       logo {
-        alt
         crop {
           _key
           _type
@@ -35,16 +34,16 @@ const query = graphql`
           _id
         }
       }
-    }
-    contact: sanityContact(_id: {regex: "/(drafts.|)contact/"}) {
-      email
-      socialMedia {
-        platformName
-        url
-        icon {
-          name
-          faPackage
-          faIconName
+      contact {
+        email
+        socialMedia {
+          platformName
+          url
+          icon {
+            name
+            faPackage
+            faIconName
+          }
         }
       }
     }
@@ -52,23 +51,29 @@ const query = graphql`
 `;
 
 function LayoutContainer (props) {
+  const [showNav, setShowNav] = useState(false);
+  const handleShowNav = () => setShowNav(true);
+  const handleHideNav = () => setShowNav(false);
+
   return (
     <StaticQuery
       query={query}
       render={data => {
-        if (!data.settings) {
+        if (!data.company) {
           throw new Error(
-            'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
+            'Missing "Company info". Open the studio at http://localhost:3333 and add "Company info" data'
           );
         }
         return (
           <Layout
             {...props}
-            siteTitle={data.settings.businessName}
-            siteSubtitle={data.settings.caption}
-            siteLogo={data.settings.logo}
-            siteBanner={data.settings.banner}
-            contact={data.contact}
+            siteTitle={data.company.companyName}
+            siteLogo={data.company.logo}
+            siteBanner={data.company.banner}
+            contactInfo={data.company.contact}
+            showNav={showNav}
+            onHideNav={handleHideNav}
+            onShowNav={handleShowNav}
           />
         );
       }}

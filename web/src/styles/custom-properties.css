@@ -10,11 +10,8 @@
   --color-dark-white: #fafafa;
   --color-blue: #013478;
   --color-dark-blue: #102040;
-  --color-yellow: #F2C336;
+  --color-yellow: #f2c336cf;
   --color-link: cornflowerblue;
-
-  --primary-fg: var(--color-black);
-  --primary-bg: var(--color-dark-white);
 
   /* Typography */
   --unit: 16;
@@ -33,9 +30,4 @@
   --font-title2-line-height: calc(33 / 24); /* 33px */
   --font-title1-size: calc(49 / var(--unit) * 1rem); /* 49px */
   --font-title1-line-height: calc(57 / 49); /* 57px */
-}
-
-.dark {
-  --primary-fg: var(--color-dark-white);
-  --primary-bg: var(--color-dark-blue);
 }

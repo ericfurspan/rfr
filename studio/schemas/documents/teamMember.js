@@ -1,13 +1,13 @@
 export default {
-  type: 'object',
+  type: 'document',
   name: 'teamMember',
   title: 'Team Member',
   fields: [
     {
       title: 'Person',
       name: 'person',
-      type: 'reference',
-      to: { type: 'person' }
+      type: 'person',
+      required: true
     },
     {
       title: 'Certifications',
@@ -19,9 +19,14 @@ export default {
       }
     },
     {
-      title: 'Contact Info',
-      name: 'contactInfo',
-      type: 'contactInfo'
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      description: 'Some frontend will require a slug to be set to be able to show the person',
+      options: {
+        source: 'name',
+        maxLength: 96
+      }
     }
   ],
   preview: {
