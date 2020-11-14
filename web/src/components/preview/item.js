@@ -2,8 +2,8 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { cn } from '../../lib/helpers';
 
-import styles from './preview-item.module.css';
-import { responsiveTitle4 } from '../typography.module.css';
+import styles from './item.module.css';
+import { responsiveTitle4, small } from '../typography.module.css';
 
 function PreviewItem (props) {
   return (
@@ -12,7 +12,7 @@ function PreviewItem (props) {
         <h3 className={cn(responsiveTitle4, styles.title)}>{props.title}</h3>
       </Link>
       {props.caption && (
-        <span className={styles.caption}>
+        <span className={cn(small, styles.caption)}>
           {props.caption}
         </span>
       )}

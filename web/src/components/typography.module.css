@@ -165,7 +165,8 @@
   color: var(--color-gray);
   background-color: var(--color-very-light-gray);
   font-weight: 500;
-  padding: 0.5em 0.65em;
+  border-radius: 0.2em;
+  padding: 0.65em;
 }
 
 .headline {

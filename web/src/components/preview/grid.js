@@ -2,16 +2,17 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { cn } from '../../lib/helpers';
 
-import { responsiveTitle2, responsiveTitle4, subtitle } from '../typography.module.css';
-import styles from './preview-grid.module.css';
-import PreviewItem from './preview-item';
+import { responsiveTitle2, small, subtitle } from '../typography.module.css';
+import styles from './grid.module.css';
+import PreviewItem from './item';
 
 function PreviewGrid (props) {
-  const titleStyles = props.withSubtitleStyle ? cn(responsiveTitle4, subtitle) : responsiveTitle2;
+  const titleStyles = props.withStyledTitle ? cn(small, subtitle) : responsiveTitle2;
+  const titleText = props.withStyledTitle ? `${props.title} (${props.nodes.length})` : props.title;
 
   return (
     <div className={styles.root}>
-      {props.title && <h2 className={titleStyles}>{props.title}</h2>}
+      {props.title && <h2 className={titleStyles}>{titleText}</h2>}
 
       <ul className={styles.grid}>
         {props.nodes &&

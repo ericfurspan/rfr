@@ -20,10 +20,10 @@ const ContactInfo = ({ title, email, socialMedia }) => {
         <div className={styles.contact} key={platform.url}>
           <div>
             <FontAwesomeIcon icon={[platform.icon.faPackage, platform.icon.faIconName]} />
-            <span>{`${platform.platformName}:`}</span>
+            <span>{`${platform.linkText}:`}</span>
           </div>
-          <a href={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.platformName}`}>
-            {`View ${platform.platformName}`}
+          <a href={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.linkText}`}>
+            {platform.linkText}
           </a>
         </div>
       ))}

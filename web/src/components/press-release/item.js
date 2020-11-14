@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Container from '../container';
 import BlockText from '../block-text';
 
-import styles from './press-release.module.css';
+import styles from './item.module.css';
 
 function PressRelease (props) {
   const { title, source, url, _rawExcerpt, publishedAt } = props;

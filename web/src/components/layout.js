@@ -20,14 +20,14 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, 
       <div className={styles.footerWrapper}>
         <div className={styles.siteInfo}>
           <div>
-          © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;
+            © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;
             {` `}
             <a href='https://www.gatsbyjs.org'>Gatsby</a>
           </div>
           {contactInfo && (
             <div className={styles.socialMediaLinks}>
               {contactInfo.socialMedia.map((platform) => (
-                <a href={platform.url} key={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.platformName}`}>
+                <a href={platform.url} key={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.linkText}`}>
                   <FontAwesomeIcon icon={[platform.icon.faPackage, platform.icon.faIconName]} />
                 </a>
               ))}

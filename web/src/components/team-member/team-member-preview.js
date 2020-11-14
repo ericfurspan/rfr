@@ -4,7 +4,7 @@ import { buildImageObj, cn, getTeamMemberUrl } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
 
 import styles from './team-member-preview.module.css';
-import { responsiveTitle3 } from '../typography.module.css';
+import { responsiveTitle4, small } from '../typography.module.css';
 
 function TeamMemberPreview (props) {
   const { slug, person } = props;
@@ -23,10 +23,10 @@ function TeamMemberPreview (props) {
             />
           )}
         </div>
-        <h3 className={cn(responsiveTitle3, styles.name)}>{person.name}</h3>
+        <h3 className={cn(responsiveTitle4, styles.name)}>{person.name}</h3>
       </Link>
       {props.certifications && (
-        <span className={styles.certifications}>
+        <span className={cn(small, styles.certifications)}>
           {props.certifications.join(', ')}
         </span>
       )}

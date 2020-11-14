@@ -51,7 +51,7 @@ const TeamMemberTemplate = props => {
   return (
     <Layout>
       {errors && <SEO title='GraphQL Error' />}
-      {teamMember && <SEO title={teamMember.name || 'Untitled'} />}
+      {teamMember && <SEO title={teamMember.person.name || 'Untitled'} />}
 
       {errors && (
         <Container>

@@ -6,11 +6,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
-import Podcasts from '../components/podcasts';
+import Podcast from '../components/podcast';
 import TeamMemberPreviewGrid from '../components/team-member/team-member-preview-grid';
 import Layout from '../containers/layout';
 import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
-import PreviewGrid from '../components/previewer/preview-grid';
+import PreviewGrid from '../components/preview/grid';
 import { format } from 'date-fns';
 
 library.add(fab);
@@ -30,7 +30,7 @@ export const query = graphql`
       contact {
         email
         socialMedia {
-          platformName
+          linkText
           url
           icon {
             name
@@ -39,21 +39,22 @@ export const query = graphql`
           }
         }
       }
-      podcasts {
-        platform
-        title
-        subtitle
-        description
-        url
-        coverArt {
-          asset {
-            _id
+    }
+    podcasts: allSanityPodcast {
+      edges {
+        node {
+          id
+          title
+          description
+          availablePlatforms {
+            linkText
+            url
+            icon {
+              name
+              faPackage
+              faIconName
+            }
           }
-        }
-        icon {
-          name
-          faPackage
-          faIconName
         }
       }
     }
@@ -71,7 +72,7 @@ export const query = graphql`
             contact {
               email
               socialMedia {
-                platformName
+                linkText
                 url
                 icon {
                   name
@@ -170,7 +171,7 @@ export const query = graphql`
               contact {
                 email
                 socialMedia {
-                  platformName
+                  linkText
                   url
                   icon {
                     name
@@ -192,7 +193,6 @@ export const query = graphql`
 
 const IndexPage = props => {
   const { data, errors } = props;
-
   console.log('index page', data);
 
   if (errors) {
@@ -210,9 +210,9 @@ const IndexPage = props => {
     );
   }
 
-  const teamMemberNodes = (data || {}).teamMembers ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs) : [];
-
   const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
+
+  const teamMemberNodes = (data || {}).teamMembers ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs) : [];
 
   const blogPostNodes = (data || {}).posts ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs).map((item) => ({
     linkTo: getBlogUrl(item.publishedAt, item.slug.current),
@@ -232,14 +232,21 @@ const IndexPage = props => {
     ...item
   })) : [];
 
-  const allNewsNodes = [ ...blogPostNodes, ...pressReleaseNodes, ...eventNodes ]
-    .slice(0, 6);
+  const allNewsNodes = [ ...blogPostNodes, ...pressReleaseNodes, ...eventNodes ].slice(0, 6);
 
   return (
     <Layout>
       <SEO title={data.seo.title} description={data.seo.description} keywords={data.seo.keywords} />
       <Container>
         <h1 hidden>{data.seo.title}</h1>
+
+        {/* todo: 'HERO' SECTION GOES HERE */}
+
+        {/* todo: 'SERVICES' PREVIEW GOES HERE */}
+
+        {/* todo: 'ABOUT' PREVIEW GOES HERE */}
+
+        {/* todo: 'REVIEWS' PREVIEW GOES HERE */}
 
         {teamMemberNodes && (
           <TeamMemberPreviewGrid
@@ -255,17 +262,20 @@ const IndexPage = props => {
             title='News'
             nodes={allNewsNodes}
             browseMoreHref='/news'
-            browseMoreText='All news'
+            browseMoreText='All news &amp; events'
           />
         )}
 
-        {podcastNodes && (
-          <Podcasts
-            title='Podcast: Inside the Labyrinth'
-            items={podcastNodes}
-            subtitle='Available on the following platforms'
+        {podcastNodes && podcastNodes.map((podcast) => (
+          <Podcast
+            title={podcast.title}
+            description={podcast.description}
+            platforms={podcast.availablePlatforms}
+            key={podcast.id}
           />
-        )}
+        ))}
+
+        {/* todo: 'IMAGE GALLERY' GOES HERE */}
 
       </Container>
     </Layout>

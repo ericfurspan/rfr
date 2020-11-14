@@ -18,13 +18,14 @@ export const query = graphql`
           slug {
             current
           }
+          certifications
           _rawPerson(resolveReferences: {maxDepth: 1})
           person {
             name
             contact {
               email
               socialMedia {
-                platformName
+                linkText
                 url
                 icon {
                   name
@@ -78,7 +79,7 @@ const TeamPage = props => {
     <Layout>
       <SEO title='Team' />
       <Container>
-        <h1 className={responsiveTitle1}>Meet the Team</h1>
+        <h1 className={responsiveTitle1}>Our Team</h1>
         {teamMemberNodes && teamMemberNodes.length > 0 && (
           <TeamMemberPreviewGrid nodes={teamMemberNodes} />
         )}

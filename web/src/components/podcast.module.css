@@ -1,0 +1,32 @@
+.root {
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin: 0;
+
+  & svg {
+    margin-right: 0.5em;
+  }
+}
+
+.description {
+  max-width: 40rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  width: 21rem;
+}
+
+.item {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 0.5em;
+  font-size: 1.25em;
+  width: 10% !important;
+}

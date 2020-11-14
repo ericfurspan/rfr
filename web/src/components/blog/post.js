@@ -1,15 +1,15 @@
-import React from 'react';
 import { format, distanceInWords, differenceInDays } from 'date-fns';
+import React from 'react';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import Container from '../container';
 import BlockContent from '../block-content';
+import Container from '../container';
 import RoleList from '../role-list';
 
-import styles from './event-post.module.css';
+import styles from './post.module.css';
 
-function EventPost (props) {
-  const { _rawBody, title, organizers, coverPhoto, eventAt } = props;
+function BlogPost (props) {
+  const { _rawBody, authors, title, coverPhoto, publishedAt } = props;
 
   return (
     <article className={styles.root}>
@@ -32,14 +32,14 @@ function EventPost (props) {
             {_rawBody && <BlockContent blocks={_rawBody} />}
           </div>
           <aside className={styles.metaContent}>
-            {eventAt && (
-              <div className={styles.eventAt}>
-                {differenceInDays(new Date(eventAt), new Date()) > 3
-                  ? distanceInWords(new Date(eventAt), new Date())
-                  : format(new Date(eventAt), 'MMMM Do YYYY')}
+            {publishedAt && (
+              <div className={styles.publishedAt}>
+                {differenceInDays(new Date(publishedAt), new Date()) > 3
+                  ? distanceInWords(new Date(publishedAt), new Date())
+                  : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {organizers && <RoleList items={organizers} title='Organizers' />}
+            {authors && <RoleList items={authors} title='Written by' />}
           </aside>
         </div>
       </Container>
@@ -47,4 +47,4 @@ function EventPost (props) {
   );
 }
 
-export default EventPost;
+export default BlogPost;

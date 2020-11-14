@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { format } from 'date-fns';
 import { getBlogUrl, getPressReleaseUrl, getEventUrl, mapEdgesToNodes } from '../lib/helpers';
-import PreviewGrid from '../components/previewer/preview-grid';
+import PreviewGrid from '../components/preview/grid';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
@@ -60,7 +60,7 @@ export const query = graphql`
               contact {
                 email
                 socialMedia {
-                  platformName
+                  linkText
                   url
                   icon {
                     name
@@ -104,7 +104,7 @@ const PublishedContentPage = props => {
     mapEdgesToNodes(data.pressReleases)
       .map((item) => ({
         linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
-        caption: `Press Release — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+        caption: `Press — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
         ...item
       }))
   );
@@ -120,20 +120,19 @@ const PublishedContentPage = props => {
 
   return (
     <Layout>
-      <SEO title='News' />
+      <SEO title='News &amp; Events' />
       <Container>
-        <h1 className={responsiveTitle1}>News</h1>
-
-        {blogPostNodes && blogPostNodes.length > 0 && (
-          <PreviewGrid title='Blog' nodes={blogPostNodes} withSubtitleStyle />
+        <h1 className={responsiveTitle1}>News &amp; Events</h1>
+        {pressReleaseNodes && pressReleaseNodes.length > 0 && (
+          <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withStyledTitle />
         )}
 
-        {pressReleaseNodes && pressReleaseNodes.length > 0 && (
-          <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withSubtitleStyle />
+        {blogPostNodes && blogPostNodes.length > 0 && (
+          <PreviewGrid title='Blog Posts' nodes={blogPostNodes} withStyledTitle />
         )}
 
         {eventNodes && eventNodes.length > 0 && (
-          <PreviewGrid title='Events' nodes={eventNodes} withSubtitleStyle />
+          <PreviewGrid title='Events' nodes={eventNodes} withStyledTitle />
         )}
       </Container>
     </Layout>

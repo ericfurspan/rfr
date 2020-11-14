@@ -26,7 +26,6 @@
 
 .sourceName {
   font-size: 1rem;
-  margin-bottom: 0.25em;
   font-style: italic;
   color: var(--color-gray);
 }

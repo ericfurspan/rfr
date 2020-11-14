@@ -21,6 +21,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   padding-top: 0.75em;
+  margin-bottom: 0.25em;
 
   &:hover {
     text-decoration: underline;

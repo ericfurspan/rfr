@@ -37,7 +37,7 @@ const query = graphql`
       contact {
         email
         socialMedia {
-          platformName
+          linkText
           url
           icon {
             name
