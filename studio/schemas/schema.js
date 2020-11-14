@@ -15,17 +15,18 @@ import page from './documents/page';
 import post from './documents/post';
 import event from './documents/event';
 import service from './documents/service';
+import podcast from './documents/podcast';
 
 // Object types
 import blockContent from './objects/blockContent';
 import blockText from './objects/blockText';
 import slideshow from './objects/slideshow';
 import payment from './objects/payment';
-import podcast from './objects/podcast';
 import contactInfo from './objects/contactInfo';
 import socialMedia from './objects/socialMedia';
 import person from './objects/person';
 import figure from './objects/figure';
+import weblink from './objects/weblink';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -43,7 +44,7 @@ export default createSchema({
     socialMedia,
     figure,
     person,
-    podcast,
+    weblink,
     // Documents
     seo,
     companyInfo,
@@ -54,6 +55,7 @@ export default createSchema({
     page,
     post,
     event,
+    podcast,
     icon
   ])
 });

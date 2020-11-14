@@ -46,12 +46,6 @@ export default {
       title: 'Accepted Payments',
       type: 'array',
       of: [{ type: 'payment' }]
-    },
-    {
-      name: 'podcasts',
-      title: 'Podcasts',
-      type: 'array',
-      of: [{ type: 'podcast' }]
     }
   ],
   preview: {

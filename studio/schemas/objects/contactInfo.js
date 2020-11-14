@@ -14,7 +14,7 @@ export default {
       of: [
         {
           title: 'Platform',
-          type: 'socialMedia'
+          type: 'weblink'
         }
       ]
     }

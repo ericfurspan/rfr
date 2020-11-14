@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaStream, FaRegFileAlt, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaRegFolderOpen } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaStream, FaRegFileAlt, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaRegFolderOpen, FaPodcast } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast']
     .includes(listItem.getId());
 
 export default () =>
@@ -34,7 +34,12 @@ export default () =>
         .child(S.documentTypeList('review').title('Reviews'))
         .icon(FaRegThumbsUp),
       S.listItem()
-        .title('Published content')
+        .title('Podcasts')
+        .schemaType('podcast')
+        .child(S.documentTypeList('podcast').title('Podcasts'))
+        .icon(FaPodcast),
+      S.listItem()
+        .title('News')
         .child(
           S.list()
             .title('Content types')
