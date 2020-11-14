@@ -2,15 +2,15 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
-import BlogPost from '../components/blog/blog-post';
+import EventPost from '../components/event/event-post';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 
 export const query = graphql`
-  query BlogPostTemplateQuery($id: String!) {
-    post: sanityPost(id: { eq: $id }) {
+  query EventPostTemplateQuery($id: String!) {
+    event: sanityEvent(id: { eq: $id }) {
       id
-      publishedAt
+      eventAt
       coverPhoto {
         crop {
           _key
@@ -38,7 +38,7 @@ export const query = graphql`
         current
       }
       _rawBody
-      authors {
+      organizers {
         _key
         person {
           image {
@@ -69,14 +69,14 @@ export const query = graphql`
   }
 `;
 
-const BlogPostTemplate = props => {
+const EventPostTemplate = props => {
   const { data, errors } = props;
-  const post = data && data.post;
+  const event = data && data.event;
 
   return (
     <Layout>
       {errors && <SEO title='GraphQL Error' />}
-      {post && <SEO title={post.title || 'Untitled'} />}
+      {event && <SEO title={event.title || 'Untitled'} />}
 
       {errors && (
         <Container>
@@ -84,9 +84,9 @@ const BlogPostTemplate = props => {
         </Container>
       )}
 
-      {post && <BlogPost {...post} />}
+      {event && <EventPost {...event} />}
     </Layout>
   );
 };
 
-export default BlogPostTemplate;
+export default EventPostTemplate;

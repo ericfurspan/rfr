@@ -1,9 +1,9 @@
-@import '../styles/media-queries.css';
+@import '../../styles/media-queries.css';
 
 .root {}
 
 .title {
-  composes: responsiveTitle1 from './typography.module.css';
+  composes: responsiveTitle1 from '../typography.module.css';
 }
 
 .coverPhoto {
@@ -47,7 +47,7 @@
 .metaContent {
 }
 
-.publishedAt {
-  composes: small from './typography.module.css';
+.eventAt {
+  composes: small from '../typography.module.css';
   margin: 1.5rem 0 3rem;
 }

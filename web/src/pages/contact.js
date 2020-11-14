@@ -31,7 +31,7 @@ const ContactPage = props => {
 
   if (!page) {
     throw new Error(
-      'Missing "Contact" page data. Open the studio at http://localhost:3333 and add "Contact" page data and restart the development server.'
+      'Missing "Contact" page data. Open the studio at http://localhost:3333 and add "Contact" page data then restart the development server.'
     );
   }
 

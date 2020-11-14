@@ -1,0 +1,32 @@
+.root {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e6e6e6;
+    content: "";
+  }
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-top: 0.75em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.caption {
+  color: var(--color-gray);
+}

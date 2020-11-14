@@ -6,17 +6,32 @@ import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import { responsiveTitle1 } from '../components/typography.module.css';
+import { mapEdgesToNodes } from '../lib/helpers';
 
 export const query = graphql`
-  query ResourcesPageQuery {
-    page: sanityPage(_id: { regex: "/(drafts.|)resources/" }) {
+  query ServicesPageQuery {
+    page: sanityPage(_id: { regex: "/(drafts.|)services/" }) {
       title
       _rawBody
+    }
+    services: allSanityService {
+      edges {
+        node {
+          id
+          title
+          _rawBody
+          icon {
+            name
+            faPackage
+            faIconName
+          }
+        }
+      }
     }
   }
 `;
 
-const ResourcesPage = props => {
+const ServicesPage = props => {
   const { data, errors } = props;
 
   if (errors) {
@@ -28,12 +43,18 @@ const ResourcesPage = props => {
   }
 
   const page = data && data.page;
+  const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
+
+  console.log('page', page);
+  console.log('servicesNodes', servicesNodes);
 
   if (!page) {
     throw new Error(
-      'Missing "Resources" page data. Open the studio at http://localhost:3333 and add "Resources" page data and restart the development server.'
+      'Missing "Services" page data. Open the studio at http://localhost:3333 and add "Services" page data then restart the development server.'
     );
   }
+
+  // todo: render servicesNodes into card-like components
 
   return (
     <Layout>
@@ -46,4 +67,4 @@ const ResourcesPage = props => {
   );
 };
 
-export default ResourcesPage;
+export default ServicesPage;

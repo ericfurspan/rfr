@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { mapEdgesToNodes } from '../lib/helpers';
-import TeamMemberPreviewGrid from '../components/team-member-preview-grid';
+import TeamMemberPreviewGrid from '../components/team-member/team-member-preview-grid';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
@@ -11,7 +11,7 @@ import { responsiveTitle1 } from '../components/typography.module.css';
 
 export const query = graphql`
   query TeamPageQuery {
-    teamMembers: allSanityTeamMember {
+    teamMembers: allSanityTeamMember(sort: { fields: [priority], order: ASC }) {
       edges {
         node {
           id
@@ -78,7 +78,7 @@ const TeamPage = props => {
     <Layout>
       <SEO title='Team' />
       <Container>
-        <h1 className={responsiveTitle1}>Our Team</h1>
+        <h1 className={responsiveTitle1}>Meet the Team</h1>
         {teamMemberNodes && teamMemberNodes.length > 0 && (
           <TeamMemberPreviewGrid nodes={teamMemberNodes} />
         )}

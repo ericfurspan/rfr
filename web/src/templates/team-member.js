@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
-import TeamMember from '../components/team-member';
+import TeamMember from '../components/team-member/team-member';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 

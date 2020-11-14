@@ -7,7 +7,6 @@
 .leadMediaThumb {
   position: relative;
   padding-bottom: 66.666%;
-  background: #eee;
 
   @nest & img {
     position: absolute;
@@ -19,7 +18,7 @@
   }
 }
 
-.title {
+.name {
   @media (hover: hover) {
     @nest .root:hover & {
       text-decoration: underline;
@@ -27,12 +26,6 @@
   }
 }
 
-.excerpt {
-  @nest & p {
-    margin: 0.5em 0;
-  }
-
-  @nest & strong {
-    font-weight: 600;
-  }
+.certifications {
+  color: var(--color-gray);
 }

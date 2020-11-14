@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'gatsby';
 import TeamMemberPreview from './team-member-preview';
 
+import { responsiveTitle2 } from '../typography.module.css';
 import styles from './team-member-preview-grid.module.css';
 
 function TeamMemberPreviewGrid (props) {
   return (
     <div className={styles.root}>
       {props.title && (
-        <h2 className={styles.headline}>{props.title}</h2>
+        <h2 className={responsiveTitle2}>{props.title}</h2>
       )}
       <ul className={styles.grid}>
         {props.nodes &&
@@ -20,7 +21,7 @@ function TeamMemberPreviewGrid (props) {
       </ul>
       {props.browseMoreHref && (
         <div className={styles.browseMoreNav}>
-          <Link to={props.browseMoreHref}>See the full team</Link>
+          <Link to={props.browseMoreHref}>{props.browseMoreText}</Link>
         </div>
       )}
     </div>

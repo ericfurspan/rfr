@@ -6,12 +6,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
-import News from '../components/news';
 import Podcasts from '../components/podcasts';
-import TeamMemberPreviewGrid from '../components/team-member-preview-grid';
-import BlogPostPreviewGrid from '../components/blog-post-preview-grid';
+import TeamMemberPreviewGrid from '../components/team-member/team-member-preview-grid';
 import Layout from '../containers/layout';
-import { filterOutDocsWithoutSlugs, mapEdgesToNodes } from '../lib/helpers';
+import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
+import PreviewGrid from '../components/previewer/preview-grid';
+import { format } from 'date-fns';
 
 library.add(fab);
 library.add(fas);
@@ -57,13 +57,14 @@ export const query = graphql`
         }
       }
     }
-    teamMembers: allSanityTeamMember(limit: 3) {
+    teamMembers: allSanityTeamMember(limit: 3, sort: { fields: [priority], order: ASC }) {
       edges {
         node {
           id
           slug {
             current
           }
+          certifications
           _rawPerson(resolveReferences: {maxDepth: 1})
           person {
             name
@@ -104,7 +105,7 @@ export const query = graphql`
         }
       }
     }
-    posts: allSanityPost(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
+    posts: allSanityPost(sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
           id
@@ -132,29 +133,67 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
           slug {
             current
           }
         }
       }
     }
-    news: allSanityNews {
+    pressReleases: allSanityPressRelease(sort: { fields: [publishedAt], order: DESC }) {
      edges {
        node {
+        id
         source
         title
         url
+        publishedAt
+        slug {
+          current
+        }
        }
      }
     }
+    events: allSanityEvent(sort: { fields: [eventAt], order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          eventAt
+          coverPhoto {
+            asset {
+              _id
+            }
+          }
+          organizers {
+            person {
+              name
+              contact {
+                email
+                socialMedia {
+                  platformName
+                  url
+                  icon {
+                    name
+                    faPackage
+                    faIconName
+                  }
+                }
+              }
+            }
+          }
+          slug {
+            current
+          }
+        }
+      }
+     }    
   }
 `;
 
 const IndexPage = props => {
   const { data, errors } = props;
 
-  console.log('index', data);
+  console.log('index page', data);
 
   if (errors) {
     return (
@@ -167,14 +206,34 @@ const IndexPage = props => {
   const company = (data || {}).company;
   if (!company) {
     throw new Error(
-      'Missing "Company info". Open the studio at http://localhost:3333 and add some content to "Company info" and restart the development server.'
+      'Missing "Company Info data". Open the studio at http://localhost:3333 and add some content to "Company Info" then restart the development server.'
     );
   }
 
   const teamMemberNodes = (data || {}).teamMembers ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs) : [];
-  const postNodes = (data || {}).posts ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs) : [];
-  const newsNodes = (data || {}).news ? mapEdgesToNodes(data.news) : [];
+
   const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
+
+  const blogPostNodes = (data || {}).posts ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs).map((item) => ({
+    linkTo: getBlogUrl(item.publishedAt, item.slug.current),
+    caption: `Blog — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+    ...item
+  })) : [];
+
+  const pressReleaseNodes = (data || {}).pressReleases ? mapEdgesToNodes(data.pressReleases).map((item) => ({
+    linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
+    caption: `Press Release — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+    ...item
+  })) : [];
+
+  const eventNodes = (data || {}).events ? mapEdgesToNodes(data.events).filter(filterOutDocsWithoutSlugs).map((item) => ({
+    linkTo: getEventUrl(item.eventAt, item.slug.current),
+    caption: `Event — ${format(item.eventAt, 'DD MMMM YYYY')}`,
+    ...item
+  })) : [];
+
+  const allNewsNodes = [ ...blogPostNodes, ...pressReleaseNodes, ...eventNodes ]
+    .slice(0, 6);
 
   return (
     <Layout>
@@ -184,27 +243,30 @@ const IndexPage = props => {
 
         {teamMemberNodes && (
           <TeamMemberPreviewGrid
-            title='Meet the Team'
+            title='Our Team'
             nodes={teamMemberNodes}
             browseMoreHref='/team'
+            browseMoreText='All team members'
           />
         )}
 
-        {postNodes && (
-          <BlogPostPreviewGrid
-            title='Latest blog posts'
-            nodes={postNodes}
-            browseMoreHref='/blog/'
+        {allNewsNodes && (
+          <PreviewGrid
+            title='News'
+            nodes={allNewsNodes}
+            browseMoreHref='/news'
+            browseMoreText='All news'
           />
-        )}
-
-        {newsNodes && (
-          <News items={newsNodes} title='News' />
         )}
 
         {podcastNodes && (
-          <Podcasts items={podcastNodes} title='Podcast: Inside the Labyrinth' subtitle='Available on the following platforms' />
+          <Podcasts
+            title='Podcast: Inside the Labyrinth'
+            items={podcastNodes}
+            subtitle='Available on the following platforms'
+          />
         )}
+
       </Container>
     </Layout>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { buildImageObj } from '../lib/helpers';
-import { imageUrlFor } from '../lib/image-url';
-import BlockContent from './block-content';
-import Container from './container';
+import { buildImageObj } from '../../lib/helpers';
+import { imageUrlFor } from '../../lib/image-url';
+import BlockContent from '../block-content';
+import Container from '../container';
 
 import styles from './team-member.module.css';
 

@@ -27,7 +27,7 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, 
           {contactInfo && (
             <div className={styles.socialMediaLinks}>
               {contactInfo.socialMedia.map((platform) => (
-                <a href={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.platformName}`}>
+                <a href={platform.url} key={platform.url} target='_blank' rel='noreferrer noopener' aria-label={`link to ${platform.platformName}`}>
                   <FontAwesomeIcon icon={[platform.icon.faPackage, platform.icon.faIconName]} />
                 </a>
               ))}

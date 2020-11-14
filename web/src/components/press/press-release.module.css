@@ -1,0 +1,46 @@
+@import '../../styles/media-queries.css';
+
+.root {}
+
+.title {
+  composes: responsiveTitle1 from '../typography.module.css';
+  max-width: 40rem;
+}
+
+.header {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.mainContent {
+  margin-top: 1.5em;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (--media-min-medium) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+}
+
+.sourceName {
+  font-size: 1rem;
+  margin-bottom: 0.25em;
+  font-style: italic;
+  color: var(--color-gray);
+}
+
+.storyLink {
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  & svg {
+    margin-left: 0.5rem;
+  }
+}
+
+.publishedAt {
+  composes: small from '../typography.module.css';
+  margin: 1.5rem 0 3rem;
+}

@@ -1,4 +1,4 @@
-@import '../styles/media-queries.css';
+@import '../../styles/media-queries.css';
 
 .root {}
 
@@ -14,7 +14,7 @@
 }
 
 .title {
-  composes: responsiveTitle1 from './typography.module.css';
+  composes: responsiveTitle1 from '../typography.module.css';
 }
 
 .image {
@@ -73,6 +73,6 @@
 }
 
 .certificationsHeadline {
-  composes: base from './typography.module.css';
+  composes: base from '../typography.module.css';
   margin: 0.5rem 0 0;
 }

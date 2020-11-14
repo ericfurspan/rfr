@@ -1,15 +1,16 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns';
 import React from 'react';
-import { buildImageObj } from '../lib/helpers';
-import { imageUrlFor } from '../lib/image-url';
-import BlockContent from './block-content';
-import Container from './container';
-import RoleList from './role-list';
+import { buildImageObj } from '../../lib/helpers';
+import { imageUrlFor } from '../../lib/image-url';
+import BlockContent from '../block-content';
+import Container from '../container';
+import RoleList from '../role-list';
 
 import styles from './blog-post.module.css';
 
 function BlogPost (props) {
   const { _rawBody, authors, title, coverPhoto, publishedAt } = props;
+
   return (
     <article className={styles.root}>
       {coverPhoto && coverPhoto.asset && (
@@ -38,7 +39,7 @@ function BlogPost (props) {
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {authors && <RoleList items={authors} title='Authors' />}
+            {authors && <RoleList items={authors} title='Written by' />}
           </aside>
         </div>
       </Container>
