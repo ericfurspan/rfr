@@ -27,6 +27,13 @@ export default {
         source: 'name',
         maxLength: 96
       }
+    },
+    {
+      name: 'priority',
+      title: 'Priority',
+      type: 'number',
+      description: 'Used to set the display order',
+      validation: Rule => Rule.min(1).integer().positive()
     }
   ],
   preview: {

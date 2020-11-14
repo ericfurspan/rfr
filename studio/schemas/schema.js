@@ -8,11 +8,13 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import seo from './documents/seo';
 import companyInfo from './documents/companyInfo';
 import review from './documents/review';
-import news from './documents/news';
+import pressRelease from './documents/pressRelease';
 import teamMember from './documents/teamMember';
 import icon from './documents/icon';
 import page from './documents/page';
 import post from './documents/post';
+import event from './documents/event';
+import service from './documents/service';
 
 // Object types
 import blockContent from './objects/blockContent';
@@ -46,10 +48,12 @@ export default createSchema({
     seo,
     companyInfo,
     teamMember,
-    news,
+    pressRelease,
     review,
+    service,
     page,
     post,
+    event,
     icon
   ])
 });

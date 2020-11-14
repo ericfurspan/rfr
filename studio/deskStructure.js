@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegFileAlt, FaRegNewspaper, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaStream, FaRegFileAlt, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaRegFolderOpen } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'news', 'review']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service']
     .includes(listItem.getId());
 
 export default () =>
@@ -19,38 +19,56 @@ export default () =>
         )
         .icon(FaLandmark),
       S.listItem()
+        .title('Services')
+        .schemaType('service')
+        .child(S.documentTypeList('service').title('Services'))
+        .icon(FaStream),
+      S.listItem()
         .title('Team')
         .schemaType('teamMember')
         .child(S.documentTypeList('teamMember').title('Team Members'))
         .icon(FaUsers),
-      S.listItem()
-        .title('News')
-        .schemaType('news')
-        .child(S.documentTypeList('news').title('News'))
-        .icon(FaRegNewspaper),
       S.listItem()
         .title('Reviews')
         .schemaType('review')
         .child(S.documentTypeList('review').title('Reviews'))
         .icon(FaRegThumbsUp),
       S.listItem()
-        .title('Blog')
-        .schemaType('post')
-        .child(S.documentTypeList('post').title('Blog posts'))
-        .icon(FaBlog),
+        .title('Published content')
+        .child(
+          S.list()
+            .title('Content types')
+            .items([
+              S.listItem()
+                .title('Blog')
+                .child(
+                  S.documentTypeList('post').title('Posts')
+                ).icon(FaBlog),
+              S.listItem()
+                .title('Press Releases')
+                .child(
+                  S.documentTypeList('pressRelease').title('Press Release')
+                ).icon(FaNewspaper),
+              S.listItem()
+                .title('Events')
+                .child(
+                  S.documentTypeList('event').title('Event')
+                ).icon(FaCalendarDay)
+            ])
+        ).icon(FaRegFolderOpen),
       S.listItem()
-        .title('Pages')
+        .title('Custom pages')
         .child(
           S.list()
             .title('Pages')
             .items([
               S.listItem()
-                .title('Resources')
+                .title('Services')
                 .child(
                   S.editor()
-                    .id('resourcesPage')
+                    .id('servicesPage')
                     .schemaType('page')
-                    .documentId('resources')
+                    .documentId('services')
                 )
                 .icon(FaRegFileAlt),
               S.listItem()

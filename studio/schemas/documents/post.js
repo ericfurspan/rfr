@@ -6,7 +6,8 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+      required: true
     },
     {
       name: 'slug',
@@ -21,19 +22,16 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      description: 'You can use this field to schedule post where you show them',
-      type: 'datetime'
-    },
-    {
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'blockText'
+      description: 'You can use this field to set the order priority on the website',
+      type: 'datetime',
+      validation: Rule => Rule.required()
     },
     {
       name: 'authors',
       title: 'Authors',
       type: 'array',
-      of: [{ type: 'teamMember' }]
+      of: [{ type: 'reference', to: [{ type: 'teamMember' }] }],
+      description: 'Which team members authored this post?'
     },
     {
       name: 'coverPhoto',
@@ -43,7 +41,8 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent'
+      type: 'blockContent',
+      description: 'Main body of the blog post'
     }
   ],
   orderings: [

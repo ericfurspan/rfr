@@ -6,7 +6,8 @@ export default {
     {
       name: 'companyName',
       title: 'Company Name',
-      type: 'string'
+      type: 'string',
+      required: true
     },
     {
       name: 'caption',
