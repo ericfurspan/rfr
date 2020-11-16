@@ -13,7 +13,7 @@ export const query = graphql`
     page: sanityPage(_id: { regex: "/(drafts.|)services/" }) {
       _rawBody
     }
-    services: allSanityService {
+    services: allSanityService(sort: { fields: [priority], order: ASC }) {
       edges {
         node {
           id

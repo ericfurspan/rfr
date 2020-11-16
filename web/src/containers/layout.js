@@ -10,7 +10,7 @@ const query = graphql`
       description
       keywords
     }
-    allPages: allSanityPage(filter: {_id: {regex: "/^[A-Za-z]+$/"}}) {
+    allPages: allSanityPage(filter: {_id: {regex: "/^[A-Za-z]+$/"}}, sort: { fields: [priority], order: ASC }) {
       edges {
         node {
           _id

@@ -10,6 +10,10 @@ export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
     post: sanityPost(id: { eq: $id }) {
       id
+      title
+      slug {
+        current
+      }
       publishedAt
       coverPhoto {
         crop {
@@ -32,10 +36,6 @@ export const query = graphql`
           _id
         }
         alt
-      }
-      title
-      slug {
-        current
       }
       _rawBody
       authors {
