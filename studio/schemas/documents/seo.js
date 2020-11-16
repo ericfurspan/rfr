@@ -13,14 +13,14 @@ export default {
       name: 'description',
       type: 'text',
       title: 'Site Description',
-      description: 'Describe your website for search engines and social media.',
+      description: 'Describe your website for search engines and social media',
       required: true
     },
     {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',
-      description: 'Add keywords that describes your website.',
+      description: 'Add keywords that describes your website',
       of: [{ type: 'string' }],
       options: {
         layout: 'tags'

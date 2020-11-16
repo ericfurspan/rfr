@@ -11,9 +11,10 @@ export default {
     },
     {
       name: 'slug',
-      title: 'Slug',
+      title: 'URL Slug',
       type: 'slug',
-      description: 'Some frontend will require a slug to be set to be able to show the post',
+      required: true,
+      description: 'The trailing part of the URL. For example, in www.google.com/links - \'links\' is the URL slug. In most cases you should use the Generate button to auto-fill this field.',
       options: {
         source: 'title',
         maxLength: 96

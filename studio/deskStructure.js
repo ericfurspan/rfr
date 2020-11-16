@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaStream, FaRegFileAlt, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaRegFolderOpen, FaPodcast, FaRegCreditCard } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
   !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery']
@@ -10,7 +10,7 @@ export default () =>
     .title('Content')
     .items([
       S.listItem()
-        .title('Company Info')
+        .title('Company')
         .child(
           S.editor()
             .id('companyInfo')
@@ -22,7 +22,7 @@ export default () =>
         .title('Services')
         .schemaType('service')
         .child(S.documentTypeList('service').title('Services'))
-        .icon(FaStream),
+        .icon(FaProjectDiagram),
       S.listItem()
         .title('Team')
         .schemaType('teamMember')
@@ -55,9 +55,9 @@ export default () =>
                   S.documentTypeList('post').title('Posts')
                 ).icon(FaBlog),
               S.listItem()
-                .title('Press Releases')
+                .title('Press')
                 .child(
-                  S.documentTypeList('pressRelease').title('Press Release')
+                  S.documentTypeList('pressRelease').title('Press')
                 ).icon(FaNewspaper),
               S.listItem()
                 .title('Events')
@@ -65,7 +65,7 @@ export default () =>
                   S.documentTypeList('event').title('Event')
                 ).icon(FaCalendarDay)
             ])
-        ).icon(FaRegFolderOpen),
+        ).icon(FaRegNewspaper),
       S.listItem()
         .title('Pages')
         .child(
@@ -80,7 +80,7 @@ export default () =>
                     .schemaType('page')
                     .documentId('services')
                 )
-                .icon(FaRegFileAlt),
+                .icon(FaFileAlt),
               S.listItem()
                 .title('Contact')
                 .child(
@@ -89,7 +89,7 @@ export default () =>
                     .schemaType('page')
                     .documentId('contact')
                 )
-                .icon(FaRegFileAlt),
+                .icon(FaFileAlt),
               S.listItem()
                 .title('News')
                 .child(
@@ -98,7 +98,7 @@ export default () =>
                     .schemaType('page')
                     .documentId('news')
                 )
-                .icon(FaRegFileAlt),
+                .icon(FaFileAlt),
               S.listItem()
                 .title('Team')
                 .child(
@@ -107,7 +107,7 @@ export default () =>
                     .schemaType('page')
                     .documentId('team')
                 )
-                .icon(FaRegFileAlt)
+                .icon(FaFileAlt)
             ])
         ).icon(FaRegCopy),
       S.listItem()

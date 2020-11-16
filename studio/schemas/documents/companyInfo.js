@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: 'companyName',
-      title: 'Company Name',
+      title: 'Name',
       type: 'string',
       required: true
     },
@@ -20,15 +20,15 @@ export default {
       type: 'blockText'
     },
     {
-      name: 'contact',
-      title: 'Contact Info',
-      type: 'contactInfo'
-    },
-    {
       name: 'banner',
       title: 'Banner',
       type: 'string',
-      description: 'Use this to show an attention banner atop the website'
+      description: 'Use this to display an attention banner atop the website'
+    },
+    {
+      name: 'contact',
+      title: 'Contact Info',
+      type: 'contactInfo'
     },
     {
       name: 'logo',

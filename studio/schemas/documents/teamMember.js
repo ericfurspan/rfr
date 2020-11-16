@@ -21,8 +21,9 @@ export default {
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug',
-      description: 'Some frontend will require a slug to be set to be able to show the person',
+      title: 'URL Slug',
+      required: true,
+      description: 'This sets the last (trailing) part of the URL. For example, with www.google.com/links - \'links\' is the URL slug',
       options: {
         source: 'name',
         maxLength: 96

@@ -24,6 +24,13 @@ export default {
       title: 'Icon',
       description: 'An icon from FontAwesome',
       to: [{ type: 'icon' }]
+    },
+    {
+      name: 'priority',
+      title: 'Priority',
+      type: 'number',
+      description: 'Sets the order by which the content will appear (ascending)',
+      validation: Rule => Rule.min(1).integer().positive()
     }
   ]
 };
