@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import Layout from '../components/layout';
+import { mapEdgesToNodes } from '../lib/helpers';
 
 const query = graphql`
   query SiteLayoutQuery {
@@ -8,6 +9,13 @@ const query = graphql`
       title
       description
       keywords
+    }
+    allPages: allSanityPage(filter: {_id: {regex: "/^[A-Za-z]+$/"}}) {
+      edges {
+        node {
+          _id
+        }
+      }
     }
     company: sanityCompanyInfo(_id: {regex: "/(drafts.|)companyInfo/"}) {
       companyName
@@ -50,7 +58,7 @@ const query = graphql`
   }
 `;
 
-function LayoutContainer (props) {
+const LayoutContainer = (props) => {
   const [showNav, setShowNav] = useState(false);
   const handleShowNav = () => setShowNav(true);
   const handleHideNav = () => setShowNav(false);
@@ -59,6 +67,7 @@ function LayoutContainer (props) {
     <StaticQuery
       query={query}
       render={data => {
+        const allPageIds = (data || {}).allPages ? mapEdgesToNodes(data.allPages).map((page) => page._id) : [];
         if (!data.company) {
           throw new Error(
             'Missing "Company info". Open the studio at http://localhost:3333 and add "Company info" data'
@@ -74,11 +83,12 @@ function LayoutContainer (props) {
             showNav={showNav}
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
+            allPageIds={allPageIds}
           />
         );
       }}
     />
   );
-}
+};
 
 export default LayoutContainer;

@@ -6,33 +6,29 @@ import BlockText from '../block-text';
 
 import styles from './item.module.css';
 
-function PressRelease (props) {
-  const { title, source, url, _rawExcerpt, publishedAt } = props;
-
-  return (
-    <article className={styles.root}>
-      <Container>
-        <div className={styles.header}>
-          <h1 className={styles.title}>{title}</h1>
-          <div className={styles.publishedAt}>
-            {differenceInDays(new Date(publishedAt), new Date()) > 3
-              ? distanceInWords(new Date(publishedAt), new Date())
-              : format(new Date(publishedAt), 'MMMM Do YYYY')}
-          </div>
+const PressRelease = ({ title, source, url, _rawExcerpt, publishedAt }) => (
+  <article className={styles.root}>
+    <Container>
+      <div className={styles.header}>
+        <h1 className={styles.title}>{title}</h1>
+        <div className={styles.publishedAt}>
+          {differenceInDays(new Date(publishedAt), new Date()) > 3
+            ? distanceInWords(new Date(publishedAt), new Date())
+            : format(new Date(publishedAt), 'MMMM Do YYYY')}
         </div>
-        <div className={styles.mainContent}>
-          <BlockText blocks={_rawExcerpt} />
-          <div>
-            <p className={styles.sourceName}>{source}</p>
-            <a href={url} target='_blank' rel='noreferrer noopener' className={styles.storyLink}>
-              <span>Read the full story</span>
-              <FontAwesomeIcon icon='arrow-alt-circle-right' />
-            </a>
-          </div>
+      </div>
+      <div className={styles.mainContent}>
+        <BlockText blocks={_rawExcerpt} />
+        <div>
+          <a href={url} target='_blank' rel='noreferrer noopener' className={styles.storyLink}>
+            <span>Read the full story</span>
+            <FontAwesomeIcon icon='arrow-alt-circle-right' />
+          </a>
+          <p className={styles.sourceName}>{`From ${source}`}</p>
         </div>
-      </Container>
-    </article>
-  );
-}
+      </div>
+    </Container>
+  </article>
+);
 
 export default PressRelease;

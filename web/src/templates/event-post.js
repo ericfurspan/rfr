@@ -39,7 +39,10 @@ export const query = graphql`
       }
       _rawBody
       organizers {
-        _key
+        _id
+        slug {
+          current
+        }
         person {
           image {
             crop {

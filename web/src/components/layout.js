@@ -5,7 +5,7 @@ import Header from './header';
 import '../styles/layout.css';
 import styles from './layout.module.css';
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, contactInfo }) => (
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, contactInfo, allPageIds }) => (
   <>
     <Header
       siteTitle={siteTitle}
@@ -14,6 +14,7 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, 
       onHideNav={onHideNav}
       onShowNav={onShowNav}
       showNav={showNav}
+      allPageIds={allPageIds}
     />
     <div className={styles.content}>{children}</div>
     <footer className={styles.footer}>

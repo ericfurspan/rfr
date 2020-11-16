@@ -6,11 +6,13 @@ import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
-
-import { responsiveTitle1 } from '../components/typography.module.css';
+import BlockContent from '../components/block-content';
 
 export const query = graphql`
   query TeamPageQuery {
+    page: sanityPage(_id: { regex: "/(drafts.|)team/" }) {
+      _rawBody
+    }
     teamMembers: allSanityTeamMember(sort: { fields: [priority], order: ASC }) {
       edges {
         node {
@@ -73,16 +75,22 @@ const TeamPage = props => {
     );
   }
 
+  const page = data && data.page;
+
+  if (!page) {
+    throw new Error(
+      'Missing "Team" page data. Open the studio at http://localhost:3333 and add "Team" page data then restart the development server.'
+    );
+  }
+
   const teamMemberNodes = data && data.teamMembers && mapEdgesToNodes(data.teamMembers);
 
   return (
     <Layout>
       <SEO title='Team' />
       <Container>
-        <h1 className={responsiveTitle1}>Our Team</h1>
-        {teamMemberNodes && teamMemberNodes.length > 0 && (
-          <TeamMemberPreviewGrid nodes={teamMemberNodes} />
-        )}
+        <BlockContent blocks={page._rawBody || []} />
+        <TeamMemberPreviewGrid nodes={teamMemberNodes} />
       </Container>
     </Layout>
   );

@@ -3,10 +3,11 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from './logo';
 import { cn } from '../lib/helpers';
+import { capitalize } from '../lib/string-utils';
 
 import styles from './header.module.css';
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner }) => (
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPageIds }) => (
   <div className={styles.root}>
     {siteBanner && <div className={styles.banner}>{siteBanner}</div>}
     <div className={styles.wrapper}>
@@ -21,18 +22,11 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner
 
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
-          <li>
-            <Link to='/services'>Services</Link>
-          </li>
-          <li>
-            <Link to='/team'>Team</Link>
-          </li>
-          <li>
-            <Link to='/news'>News</Link>
-          </li>
-          <li>
-            <Link to='/contact'>Contact</Link>
-          </li>
+          {allPageIds.map((page, index) => (
+            <li key={`${page}-${index}`}>
+              <Link to={`/${page}`}>{capitalize(page)}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>

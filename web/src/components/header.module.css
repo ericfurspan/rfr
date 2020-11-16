@@ -34,7 +34,7 @@
 
 .branding {
   font-size: 1.25rem;
-  margin: 0.75rem;
+  margin: auto 0.75rem;
   flex: 1;
 
   @nest & a {

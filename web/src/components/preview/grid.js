@@ -1,40 +1,46 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
 import { cn } from '../../lib/helpers';
 
 import { responsiveTitle2, small, subtitle } from '../typography.module.css';
 import styles from './grid.module.css';
 import PreviewItem from './item';
 
-function PreviewGrid (props) {
-  const titleStyles = props.withStyledTitle ? cn(small, subtitle) : responsiveTitle2;
-  const titleText = props.withStyledTitle ? `${props.title} (${props.nodes.length})` : props.title;
+const PreviewGrid = ({ title, nodes, browseMoreHref, browseMoreText, withStyledTitle }) => {
+  const titleStyles = withStyledTitle ? cn(small, subtitle) : responsiveTitle2;
+  const titleText = withStyledTitle ? `${title} (${nodes.length})` : title;
 
   return (
     <div className={styles.root}>
-      {props.title && <h2 className={titleStyles}>{titleText}</h2>}
+      {title && <h2 className={titleStyles}>{titleText}</h2>}
+      {nodes.length > 0 ? (
+        <>
+          <ul className={styles.grid}>
+            {nodes.map(node => (
+              <li key={node.id}>
+                <PreviewItem {...node} />
+              </li>
+            ))}
+          </ul>
 
-      <ul className={styles.grid}>
-        {props.nodes &&
-          props.nodes.map(node => (
-            <li key={node.id}>
-              <PreviewItem {...node} />
-            </li>
-          ))}
-      </ul>
-      {props.browseMoreHref && (
-        <div className={styles.browseMoreNav}>
-          <Link to={props.browseMoreHref}>{props.browseMoreText}</Link>
-        </div>
+          {browseMoreHref && (
+            <div className={styles.browseMoreNav}>
+              <Link to={browseMoreHref}>{browseMoreText}</Link>
+            </div>
+          )}
+        </>
+      ) : (
+        <span className={cn(small, styles.emptyNodesText)}>No content</span>
       )}
     </div>
   );
-}
+};
 
 PreviewGrid.defaultProps = {
   title: '',
   nodes: [],
-  browseMoreHref: ''
+  browseMoreHref: '',
+  browseMoreText: ''
 };
 
 export default PreviewGrid;

@@ -17,6 +17,18 @@ export const query = graphql`
       _rawPerson(resolveReferences: {maxDepth: 1})
       person {
         name
+        contact {
+          email
+          socialMedia {
+            linkText
+            url
+            icon {
+              name
+              faPackage
+              faIconName
+            }
+          }
+        }
         image {
           crop {
             _key
@@ -43,9 +55,7 @@ export const query = graphql`
   }
 `;
 
-const TeamMemberTemplate = props => {
-  const { data, errors } = props;
-
+const TeamMemberTemplate = ({ data, errors }) => {
   const teamMember = data && data.teamMember;
 
   return (

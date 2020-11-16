@@ -5,13 +5,12 @@ import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
-import { responsiveTitle1 } from '../components/typography.module.css';
 import { mapEdgesToNodes } from '../lib/helpers';
+import ServicesGrid from '../components/service/grid';
 
 export const query = graphql`
   query ServicesPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)services/" }) {
-      title
       _rawBody
     }
     services: allSanityService {
@@ -19,12 +18,8 @@ export const query = graphql`
         node {
           id
           title
+          _rawSubtitle
           _rawBody
-          icon {
-            name
-            faPackage
-            faIconName
-          }
         }
       }
     }
@@ -43,10 +38,6 @@ const ServicesPage = props => {
   }
 
   const page = data && data.page;
-  const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
-
-  console.log('page', page);
-  console.log('servicesNodes', servicesNodes);
 
   if (!page) {
     throw new Error(
@@ -54,14 +45,14 @@ const ServicesPage = props => {
     );
   }
 
-  // todo: render servicesNodes into card-like components
+  const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
 
   return (
     <Layout>
-      <SEO title={page.title} />
+      <SEO title='Services' />
       <Container>
-        <h1 className={responsiveTitle1}>{page.title}</h1>
         <BlockContent blocks={page._rawBody || []} />
+        <ServicesGrid nodes={servicesNodes} />
       </Container>
     </Layout>
   );

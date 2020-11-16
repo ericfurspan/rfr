@@ -3,15 +3,16 @@ import { graphql } from 'gatsby';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { format } from 'date-fns';
+import Layout from '../containers/layout';
 import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Podcast from '../components/podcast';
 import TeamMemberPreviewGrid from '../components/team-member/team-member-preview-grid';
-import Layout from '../containers/layout';
-import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
 import PreviewGrid from '../components/preview/grid';
-import { format } from 'date-fns';
+import ServiceGrid from '../components/service/grid';
+import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
 
 library.add(fab);
 library.add(fas);
@@ -40,12 +41,21 @@ export const query = graphql`
         }
       }
     }
+    services: allSanityService {
+      edges {
+        node {
+          id
+          title
+          _rawSubtitle
+        }
+      }
+    }
     podcasts: allSanityPodcast {
       edges {
         node {
           id
           title
-          description
+          _rawDescription
           availablePlatforms {
             linkText
             url
@@ -193,7 +203,6 @@ export const query = graphql`
 
 const IndexPage = props => {
   const { data, errors } = props;
-  console.log('index page', data);
 
   if (errors) {
     return (
@@ -206,9 +215,11 @@ const IndexPage = props => {
   const company = (data || {}).company;
   if (!company) {
     throw new Error(
-      'Missing "Company Info data". Open the studio at http://localhost:3333 and add some content to "Company Info" then restart the development server.'
+      'Missing "Company Info". Open the studio at http://localhost:3333 and add some content to "Company Info" then restart the development server.'
     );
   }
+
+  const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
 
   const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
 
@@ -240,20 +251,24 @@ const IndexPage = props => {
       <Container>
         <h1 hidden>{data.seo.title}</h1>
 
-        {/* todo: 'HERO' SECTION GOES HERE */}
+        {/* todo: 'HERO' SECTION */}
 
-        {/* todo: 'SERVICES' PREVIEW GOES HERE */}
+        {servicesNodes && (
+          <ServiceGrid
+            nodes={servicesNodes}
+            browseMoreHref='/services'
+            browseMoreText='Learn more about what we do'
+          />
+        )}
 
-        {/* todo: 'ABOUT' PREVIEW GOES HERE */}
-
-        {/* todo: 'REVIEWS' PREVIEW GOES HERE */}
+        {/* todo: 'REVIEWS' PREVIEW */}
 
         {teamMemberNodes && (
           <TeamMemberPreviewGrid
             title='Our Team'
             nodes={teamMemberNodes}
             browseMoreHref='/team'
-            browseMoreText='All team members'
+            browseMoreText='See all team members'
           />
         )}
 
@@ -262,21 +277,13 @@ const IndexPage = props => {
             title='News'
             nodes={allNewsNodes}
             browseMoreHref='/news'
-            browseMoreText='All news &amp; events'
+            browseMoreText='See all news &amp; events'
           />
         )}
 
-        {podcastNodes && podcastNodes.map((podcast) => (
-          <Podcast
-            title={podcast.title}
-            description={podcast.description}
-            platforms={podcast.availablePlatforms}
-            key={podcast.id}
-          />
+        {podcastNodes.map((podcast) => (
+          <Podcast key={podcast.id} {...podcast} />
         ))}
-
-        {/* todo: 'IMAGE GALLERY' GOES HERE */}
-
       </Container>
     </Layout>
   );

@@ -7,11 +7,13 @@ import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
-
-import { responsiveTitle1 } from '../components/typography.module.css';
+import BlockContent from '../components/block-content';
 
 export const query = graphql`
-  query PublishedContentQuery {
+  query NewsQuery {
+    page: sanityPage(_id: { regex: "/(drafts.|)news/" }) {
+      _rawBody
+    }
     blogPosts: allSanityPost(sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
@@ -80,7 +82,7 @@ export const query = graphql`
   }
 `;
 
-const PublishedContentPage = props => {
+const NewsPage = props => {
   const { data, errors } = props;
 
   if (errors) {
@@ -88,6 +90,14 @@ const PublishedContentPage = props => {
       <Layout>
         <GraphQLErrorList errors={errors} />
       </Layout>
+    );
+  }
+
+  const page = data && data.page;
+
+  if (!page) {
+    throw new Error(
+      'Missing "News" page data. Open the studio at http://localhost:3333 and add "News" page data then restart the development server.'
     );
   }
 
@@ -120,23 +130,15 @@ const PublishedContentPage = props => {
 
   return (
     <Layout>
-      <SEO title='News &amp; Events' />
+      <SEO title='News' />
       <Container>
-        <h1 className={responsiveTitle1}>News &amp; Events</h1>
-        {pressReleaseNodes && pressReleaseNodes.length > 0 && (
-          <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withStyledTitle />
-        )}
-
-        {blogPostNodes && blogPostNodes.length > 0 && (
-          <PreviewGrid title='Blog Posts' nodes={blogPostNodes} withStyledTitle />
-        )}
-
-        {eventNodes && eventNodes.length > 0 && (
-          <PreviewGrid title='Events' nodes={eventNodes} withStyledTitle />
-        )}
+        <BlockContent blocks={page._rawBody || []} />
+        <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withStyledTitle />
+        <PreviewGrid title='Blog Posts' nodes={blogPostNodes} withStyledTitle />
+        <PreviewGrid title='Events' nodes={eventNodes} withStyledTitle />
       </Container>
     </Layout>
   );
 };
 
-export default PublishedContentPage;
+export default NewsPage;

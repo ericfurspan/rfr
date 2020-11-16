@@ -10,13 +10,9 @@
   }
 }
 
-.description {
-  max-width: 40rem;
-  margin-bottom: 1rem;
-}
-
 .card {
-  width: 21rem;
+  width: 20rem;
+  margin-top: 1.5em;
 }
 
 .item {
