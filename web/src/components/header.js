@@ -7,7 +7,7 @@ import { capitalize } from '../lib/string-utils';
 
 import styles from './header.module.css';
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPageIds }) => (
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPageIds = [] }) => (
   <div className={styles.root}>
     {siteBanner && <div className={styles.banner}>{siteBanner}</div>}
     <div className={styles.wrapper}>
