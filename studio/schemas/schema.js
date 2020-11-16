@@ -16,12 +16,12 @@ import post from './documents/post';
 import event from './documents/event';
 import service from './documents/service';
 import podcast from './documents/podcast';
+import payment from './documents/payment';
 
 // Object types
 import blockContent from './objects/blockContent';
 import blockText from './objects/blockText';
 import slideshow from './objects/slideshow';
-import payment from './objects/payment';
 import contactInfo from './objects/contactInfo';
 import socialMedia from './objects/socialMedia';
 import person from './objects/person';

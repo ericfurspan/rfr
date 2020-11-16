@@ -5,14 +5,14 @@ export default {
   liveEdit: false,
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string'
-    },
-    {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'body'
+    }
+  }
 };

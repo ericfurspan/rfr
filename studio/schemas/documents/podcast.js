@@ -11,7 +11,7 @@ export default {
     },
     {
       name: 'description',
-      type: 'text',
+      type: 'blockText',
       required: true,
       description: 'A description of the podcast'
     },
@@ -24,8 +24,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'description'
+      title: 'title'
     }
   }
 };

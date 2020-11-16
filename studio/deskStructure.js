@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaStream, FaRegFileAlt, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaRegFolderOpen, FaPodcast } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaStream, FaRegFileAlt, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaRegFolderOpen, FaPodcast, FaRegCreditCard } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery']
     .includes(listItem.getId());
 
 export default () =>
@@ -39,6 +39,11 @@ export default () =>
         .child(S.documentTypeList('podcast').title('Podcasts'))
         .icon(FaPodcast),
       S.listItem()
+        .title('Payments')
+        .schemaType('payment')
+        .child(S.documentTypeList('payment').title('Payments'))
+        .icon(FaRegCreditCard),
+      S.listItem()
         .title('News')
         .child(
           S.list()
@@ -62,7 +67,7 @@ export default () =>
             ])
         ).icon(FaRegFolderOpen),
       S.listItem()
-        .title('Custom pages')
+        .title('Pages')
         .child(
           S.list()
             .title('Pages')
@@ -83,6 +88,24 @@ export default () =>
                     .id('contactPage')
                     .schemaType('page')
                     .documentId('contact')
+                )
+                .icon(FaRegFileAlt),
+              S.listItem()
+                .title('News')
+                .child(
+                  S.editor()
+                    .id('newsPage')
+                    .schemaType('page')
+                    .documentId('news')
+                )
+                .icon(FaRegFileAlt),
+              S.listItem()
+                .title('Team')
+                .child(
+                  S.editor()
+                    .id('teamPage')
+                    .schemaType('page')
+                    .documentId('team')
                 )
                 .icon(FaRegFileAlt)
             ])

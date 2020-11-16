@@ -9,6 +9,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'blockText'
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
@@ -17,7 +22,7 @@ export default {
       name: 'icon',
       type: 'reference',
       title: 'Icon',
-      description: 'A representative Icon',
+      description: 'An icon from FontAwesome',
       to: [{ type: 'icon' }]
     }
   ]

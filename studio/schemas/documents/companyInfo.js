@@ -35,17 +35,6 @@ export default {
       title: 'Logo',
       type: 'image',
       options: { hotspot: true }
-    },
-    {
-      name: 'gallery',
-      title: 'Photo Gallery',
-      type: 'slideshow'
-    },
-    {
-      name: 'payments',
-      title: 'Accepted Payments',
-      type: 'array',
-      of: [{ type: 'payment' }]
     }
   ],
   preview: {
