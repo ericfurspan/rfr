@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import PressRelease from '../components/press-release/item';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
+
+import SEO from '../containers/seo';
+import { PressPost } from '../components';
 
 export const query = graphql`
   query PressReleaseTemplateQuery($id: String!) {
@@ -23,22 +21,14 @@ export const query = graphql`
 `;
 
 const PressReleaseTemplate = props => {
-  const { data, errors } = props;
+  const { data } = props;
   const pressRelease = data && data.pressRelease;
 
   return (
-    <Layout>
-      {errors && <SEO title='GraphQL Error' />}
+    <>
       {pressRelease && <SEO title={pressRelease.title || 'Untitled'} />}
-
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-
-      {pressRelease && <PressRelease {...pressRelease} />}
-    </Layout>
+      {pressRelease && <PressPost {...pressRelease} />}
+    </>
   );
 };
 

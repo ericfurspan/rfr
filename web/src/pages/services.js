@@ -1,12 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import BlockContent from '../components/block-content';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
+
 import { mapEdgesToNodes } from '../lib/helpers';
-import ServicesGrid from '../components/service/grid';
+import SEO from '../containers/seo';
+import { Container, ServicesGrid, BlockContent } from '../components';
 
 export const query = graphql`
   query ServicesPageQuery {
@@ -27,15 +24,7 @@ export const query = graphql`
 `;
 
 const ServicesPage = props => {
-  const { data, errors } = props;
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
+  const { data } = props;
 
   const page = data && data.page;
 
@@ -48,13 +37,13 @@ const ServicesPage = props => {
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
 
   return (
-    <Layout>
+    <>
       <SEO title='Services' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
         <ServicesGrid nodes={servicesNodes} />
       </Container>
-    </Layout>
+    </>
   );
 };
 

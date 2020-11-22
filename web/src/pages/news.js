@@ -1,13 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { format } from 'date-fns';
+
 import { getBlogUrl, getPressReleaseUrl, getEventUrl, mapEdgesToNodes } from '../lib/helpers';
-import PreviewGrid from '../components/preview/grid';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
-import BlockContent from '../components/block-content';
+import SEO from '../containers/seo';
+import { Container, PreviewGrid, BlockContent } from '../components';
 
 export const query = graphql`
   query NewsQuery {
@@ -83,15 +80,7 @@ export const query = graphql`
 `;
 
 const NewsPage = props => {
-  const { data, errors } = props;
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
+  const { data } = props;
 
   const page = data && data.page;
 
@@ -129,7 +118,7 @@ const NewsPage = props => {
   );
 
   return (
-    <Layout>
+    <>
       <SEO title='News' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
@@ -137,7 +126,7 @@ const NewsPage = props => {
         <PreviewGrid title='Blog Posts' nodes={blogPostNodes} withStyledTitle />
         <PreviewGrid title='Events' nodes={eventNodes} withStyledTitle />
       </Container>
-    </Layout>
+    </>
   );
 };
 

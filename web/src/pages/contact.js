@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import BlockContent from '../components/block-content';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
+
+import SEO from '../containers/seo';
+import { Container, BlockContent } from '../components';
 
 export const query = graphql`
   query ContactPageQuery {
@@ -15,15 +13,7 @@ export const query = graphql`
 `;
 
 const ContactPage = props => {
-  const { data, errors } = props;
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
+  const { data } = props;
 
   const page = data && data.page;
 
@@ -34,12 +24,12 @@ const ContactPage = props => {
   }
 
   return (
-    <Layout>
+    <>
       <SEO title='Contact' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
       </Container>
-    </Layout>
+    </>
   );
 };
 

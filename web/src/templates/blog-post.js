@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import BlogPost from '../components/blog/post';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
+
+import SEO from '../containers/seo';
+import { BlogPost } from '../components';
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -39,8 +37,12 @@ export const query = graphql`
       }
       _rawBody
       authors {
-        _key
+        _id
+        slug {
+          current
+        }
         person {
+          name
           image {
             crop {
               _key
@@ -62,7 +64,6 @@ export const query = graphql`
               _id
             }
           }
-          name
         }
       }
     }
@@ -70,22 +71,14 @@ export const query = graphql`
 `;
 
 const BlogPostTemplate = props => {
-  const { data, errors } = props;
+  const { data } = props;
   const post = data && data.post;
 
   return (
-    <Layout>
-      {errors && <SEO title='GraphQL Error' />}
+    <>
       {post && <SEO title={post.title || 'Untitled'} />}
-
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-
       {post && <BlogPost {...post} />}
-    </Layout>
+    </>
   );
 };
 

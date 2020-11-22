@@ -1,21 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { format } from 'date-fns';
-import Layout from '../containers/layout';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Podcast from '../components/podcast';
-import TeamMemberPreviewGrid from '../components/team-member/team-member-preview-grid';
-import PreviewGrid from '../components/preview/grid';
-import ServiceGrid from '../components/service/grid';
-import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
 
-library.add(fab);
-library.add(fas);
+import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
+import SEO from '../containers/seo';
+import { Container, Jumbotron, PreviewGrid, ServicesGrid, Podcast } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -27,7 +16,6 @@ export const query = graphql`
     company: sanityCompanyInfo(_id: {regex: "/(drafts.|)companyInfo/"}) {
       companyName
       caption
-      banner
       contact {
         email
         socialMedia {
@@ -202,15 +190,7 @@ export const query = graphql`
 `;
 
 const IndexPage = props => {
-  const { data, errors } = props;
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
+  const { data } = props;
 
   const company = (data || {}).company;
   if (!company) {
@@ -220,53 +200,50 @@ const IndexPage = props => {
   }
 
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
-
   const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
-
   const teamMemberNodes = (data || {}).teamMembers ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs) : [];
-
   const blogPostNodes = (data || {}).posts ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs).map((item) => ({
     linkTo: getBlogUrl(item.publishedAt, item.slug.current),
     caption: `Blog — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
     ...item
   })) : [];
-
   const pressReleaseNodes = (data || {}).pressReleases ? mapEdgesToNodes(data.pressReleases).map((item) => ({
     linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
     caption: `Press Release — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
     ...item
   })) : [];
-
   const eventNodes = (data || {}).events ? mapEdgesToNodes(data.events).filter(filterOutDocsWithoutSlugs).map((item) => ({
     linkTo: getEventUrl(item.eventAt, item.slug.current),
     caption: `Event — ${format(item.eventAt, 'DD MMMM YYYY')}`,
     ...item
   })) : [];
-
   const allNewsNodes = [ ...blogPostNodes, ...pressReleaseNodes, ...eventNodes ].slice(0, 6);
 
   return (
-    <Layout>
+    <>
       <SEO title={data.seo.title} description={data.seo.description} keywords={data.seo.keywords} />
       <Container>
         <h1 hidden>{data.seo.title}</h1>
 
-        {/* todo: 'HERO' SECTION */}
+        {/* todo: HERO BANNER */}
+        <Jumbotron title='Banner' subtitle='Some content here' />
 
         {servicesNodes && (
-          <ServiceGrid
+          <ServicesGrid
             nodes={servicesNodes}
             browseMoreHref='/services'
             browseMoreText='Learn more about what we do'
+            previewOnly
           />
         )}
 
-        {/* todo: 'REVIEWS' PREVIEW */}
+        {/* todo: REVIEWS PREVIEW */}
 
         {teamMemberNodes && (
-          <TeamMemberPreviewGrid
+          <PreviewGrid
             title='Our Team'
             nodes={teamMemberNodes}
+            nodeType='teamMember'
             browseMoreHref='/team'
             browseMoreText='See all team members'
           />
@@ -276,6 +253,7 @@ const IndexPage = props => {
           <PreviewGrid
             title='News'
             nodes={allNewsNodes}
+            nodeType='default'
             browseMoreHref='/news'
             browseMoreText='See all news &amp; events'
           />
@@ -285,7 +263,7 @@ const IndexPage = props => {
           <Podcast key={podcast.id} {...podcast} />
         ))}
       </Container>
-    </Layout>
+    </>
   );
 };
 

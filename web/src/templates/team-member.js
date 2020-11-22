@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import TeamMember from '../components/team-member/team-member';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
+
+import SEO from '../containers/seo';
+import { TeamMember } from '../components';
 
 export const query = graphql`
   query TeamMemberTemplateQuery($id: String!) {
@@ -59,18 +57,10 @@ const TeamMemberTemplate = ({ data, errors }) => {
   const teamMember = data && data.teamMember;
 
   return (
-    <Layout>
-      {errors && <SEO title='GraphQL Error' />}
+    <>
       {teamMember && <SEO title={teamMember.person.name || 'Untitled'} />}
-
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-
       {teamMember && <TeamMember {...teamMember} />}
-    </Layout>
+    </>
   );
 };
 

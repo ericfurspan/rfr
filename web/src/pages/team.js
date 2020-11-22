@@ -1,12 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+
 import { mapEdgesToNodes } from '../lib/helpers';
-import TeamMemberPreviewGrid from '../components/team-member/team-member-preview-grid';
-import Container from '../components/container';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
-import BlockContent from '../components/block-content';
+import SEO from '../containers/seo';
+import { Container, BlockContent, PreviewGrid } from '../components';
 
 export const query = graphql`
   query TeamPageQuery {
@@ -65,15 +62,7 @@ export const query = graphql`
 `;
 
 const TeamPage = props => {
-  const { data, errors } = props;
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
+  const { data } = props;
 
   const page = data && data.page;
 
@@ -86,13 +75,16 @@ const TeamPage = props => {
   const teamMemberNodes = data && data.teamMembers && mapEdgesToNodes(data.teamMembers);
 
   return (
-    <Layout>
+    <>
       <SEO title='Team' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
-        <TeamMemberPreviewGrid nodes={teamMemberNodes} />
+        <PreviewGrid
+          nodes={teamMemberNodes}
+          nodeType='teamMember'
+        />
       </Container>
-    </Layout>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import Layout from '../components/layout';
+import { Layout } from '../components';
 import { mapEdgesToNodes } from '../lib/helpers';
 
 const query = graphql`
@@ -17,10 +17,12 @@ const query = graphql`
         }
       }
     }
+    marketing: sanityMarketing {
+      _rawHomepageBanner
+    }
     company: sanityCompanyInfo(_id: {regex: "/(drafts.|)companyInfo/"}) {
       companyName
       caption
-      banner
       logo {
         crop {
           _key
@@ -67,7 +69,7 @@ const LayoutContainer = (props) => {
     <StaticQuery
       query={query}
       render={data => {
-        const allPageIds = (data || {}).allPages ? mapEdgesToNodes(data.allPages).map((page) => page._id) : [];
+        const allPages = (data || {}).allPages ? mapEdgesToNodes(data.allPages).map((page) => page._id) : [];
         if (!data.company) {
           throw new Error(
             'Missing "Company info". Open the studio at http://localhost:3333 and add "Company info" data'
@@ -78,12 +80,12 @@ const LayoutContainer = (props) => {
             {...props}
             siteTitle={data.company.companyName}
             siteLogo={data.company.logo}
-            siteBanner={data.company.banner}
+            siteBannerBlocks={data.marketing._rawHomepageBanner}
             contactInfo={data.company.contact}
             showNav={showNav}
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
-            allPageIds={allPageIds}
+            allPages={allPages}
           />
         );
       }}
