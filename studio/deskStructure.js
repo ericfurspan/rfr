@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery', 'marketing']
     .includes(listItem.getId());
 
 export default () =>
@@ -44,6 +44,16 @@ export default () =>
         .child(S.documentTypeList('payment').title('Payments'))
         .icon(FaRegCreditCard),
       S.listItem()
+        .title('Marketing')
+        .child(
+          S.editor()
+            .id('marketing')
+            .schemaType('marketing')
+            .documentId('marketing')
+            .title('Marketing Content')
+        )
+        .icon(FaBullhorn),
+      S.listItem()
         .title('News')
         .child(
           S.list()
@@ -72,6 +82,15 @@ export default () =>
           S.list()
             .title('Pages')
             .items([
+              S.listItem()
+                .title('About')
+                .child(
+                  S.editor()
+                    .id('aboutPage')
+                    .schemaType('page')
+                    .documentId('about')
+                )
+                .icon(FaFileAlt),
               S.listItem()
                 .title('Services')
                 .child(
@@ -117,12 +136,13 @@ export default () =>
             .id('seo')
             .schemaType('seo')
             .documentId('seo')
+            .title('Search Engine Optimization Metadata')
         )
         .icon(FaSearchengin),
       S.listItem()
         .title('Web Icons')
         .schemaType('icon')
-        .child(S.documentTypeList('icon').title('Web Icons'))
+        .child(S.documentTypeList('icon').title('FontAwesome Icons'))
         .icon(FaIcons),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ]);

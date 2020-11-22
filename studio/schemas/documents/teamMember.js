@@ -23,7 +23,7 @@ export default {
       type: 'slug',
       title: 'URL Slug',
       required: true,
-      description: 'This sets the last (trailing) part of the URL. For example, with www.google.com/links - \'links\' is the URL slug',
+      description: 'The trailing part of the URL. For example, in www.google.com/links - \'links\' is the URL slug. In most cases you should use the Generate button to auto-fill this field.',
       options: {
         source: 'name',
         maxLength: 96

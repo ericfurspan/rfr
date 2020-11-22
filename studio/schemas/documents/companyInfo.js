@@ -20,14 +20,8 @@ export default {
       type: 'blockText'
     },
     {
-      name: 'banner',
-      title: 'Banner',
-      type: 'string',
-      description: 'Use this to display an attention banner atop the website'
-    },
-    {
       name: 'contact',
-      title: 'Contact Info',
+      title: 'Contact',
       type: 'contactInfo'
     },
     {

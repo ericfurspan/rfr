@@ -17,6 +17,7 @@ import event from './documents/event';
 import service from './documents/service';
 import podcast from './documents/podcast';
 import payment from './documents/payment';
+import marketing from './documents/marketing';
 
 // Object types
 import blockContent from './objects/blockContent';
@@ -56,6 +57,7 @@ export default createSchema({
     post,
     event,
     podcast,
+    marketing,
     icon
   ])
 });

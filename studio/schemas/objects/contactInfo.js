@@ -1,11 +1,16 @@
 export default {
   name: 'contactInfo',
   type: 'object',
-  title: 'Contact Info',
+  title: 'Contact',
   fields: [
     {
       name: 'email',
       title: 'Email Address',
+      type: 'string'
+    },
+    {
+      name: 'phoneNumber',
+      title: 'Phone Number',
       type: 'string'
     },
     {

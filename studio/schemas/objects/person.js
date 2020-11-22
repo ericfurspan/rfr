@@ -20,7 +20,7 @@ export default {
       type: 'blockContent'
     },
     {
-      title: 'Contact Info',
+      title: 'Contact',
       name: 'contact',
       type: 'contactInfo'
     }
