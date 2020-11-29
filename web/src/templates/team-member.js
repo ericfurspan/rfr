@@ -12,7 +12,7 @@ export const query = graphql`
       slug {
         current
       }
-      _rawPerson(resolveReferences: {maxDepth: 1})
+      _rawPerson(resolveReferences: { maxDepth: 1 })
       person {
         name
         contact {

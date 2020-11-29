@@ -7,7 +7,7 @@ export function cn (...args) {
 
 export function mapEdgesToNodes (data) {
   if (!data.edges) return [];
-  return data.edges.map(edge => edge.node);
+  return data.edges.map((edge) => edge.node);
 }
 
 export function filterOutDocsWithoutSlugs ({ slug }) {
@@ -34,9 +34,30 @@ export function getEventUrl (eventAt, slug) {
   return `/events/${format(eventAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
+export function getReviewUrl (publishedAt, slug) {
+  return `/reviews/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
+}
+
+export function getUrlFromReference (reference) {
+  let href;
+  if (reference._type === 'post') {
+    href = getBlogUrl(reference.publishedAt, reference.slug.current);
+  } else if (reference._type === 'pressRelease') {
+    href = getPressReleaseUrl(reference.publishedAt, reference.slug.current);
+  } else if (reference._type === 'event') {
+    href = getEventUrl(reference.eventAt, reference.slug.current);
+  } else if (reference._type === 'review') {
+    href = getReviewUrl(reference.publishedAt, reference.slug.current);
+  } else if (reference._type === 'page') {
+    href = `/${reference._id}`;
+  }
+
+  return href;
+}
+
 export function buildImageObj (source) {
   const imageObj = {
-    asset: { _ref: source.asset._ref || source.asset._id }
+    asset: { _ref: source.asset._ref || source.asset._id },
   };
 
   if (source.crop) imageObj.crop = source.crop;
@@ -48,7 +69,7 @@ export function buildImageObj (source) {
 const BREAKPOINTS = {
   DESKTOP: 992,
   TABLET: 768,
-  PHONE: 499
+  PHONE: 499,
 };
 // This creates the media templates, which allows for simple
 // breakpoint usage inside styled-components, e.g.:

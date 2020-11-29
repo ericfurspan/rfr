@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { cn } from '../../lib/helpers';
-import { TeamMemberPreview, PreviewItem, Typography } from '..';
-import { StyledWrapper, StyledGrid, StyledBrowseMore, StyledEmptyNodesText } from './style';
+import { Box, TeamMemberPreview, PreviewItem, Typography, boxProps } from '..';
+import { StyledGrid, StyledBrowseMore, StyledEmptyNodesText } from './style';
 
-const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, browseMoreText, withStyledTitle }) => {
+const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, browseMoreText, withStyledTitle, ...rest }) => {
   const titleStyles = withStyledTitle ? cn(Typography.small, Typography.subtitle) : Typography.responsiveTitle2;
   const titleText = withStyledTitle ? `${title} (${nodes.length})` : title;
 
   return (
-    <StyledWrapper>
+    <Box mb='2em' {...boxProps(rest)}>
       {title && <h2 css={titleStyles}>{titleText}</h2>}
       {nodes.length > 0 ? (
         <>
@@ -33,7 +33,7 @@ const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, brows
           No content
         </StyledEmptyNodesText>
       )}
-    </StyledWrapper>
+    </Box>
   );
 };
 
@@ -41,7 +41,7 @@ PreviewGrid.defaultProps = {
   title: '',
   nodes: [],
   browseMoreHref: '',
-  browseMoreText: ''
+  browseMoreText: '',
 };
 
 export default PreviewGrid;

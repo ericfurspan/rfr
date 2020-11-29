@@ -70,7 +70,7 @@ export const query = graphql`
   }
 `;
 
-const EventPostTemplate = props => {
+const EventPostTemplate = (props) => {
   const { data } = props;
   const event = data && data.event;
 

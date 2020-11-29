@@ -38,8 +38,7 @@ export const StyledGrid = styled.div`
   `};
 `;
 
-export const StyledMainContent = styled.div`
-`;
+export const StyledMainContent = styled.div``;
 
 export const StyledListGroup = styled.div`
   border-top: 1px solid var(--color-very-light-gray);

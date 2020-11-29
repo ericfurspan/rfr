@@ -9,7 +9,7 @@ import { Container, PreviewGrid, BlockContent } from '../components';
 export const query = graphql`
   query NewsQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)news/" }) {
-      _rawBody
+      _rawBody(resolveReferences: { maxDepth: 4 })
     }
     blogPosts: allSanityPost(sort: { fields: [publishedAt], order: DESC }) {
       edges {
@@ -75,53 +75,52 @@ export const query = graphql`
           }
         }
       }
-    }    
+    }
   }
 `;
 
-const NewsPage = props => {
-  const { data } = props;
-
+const NewsPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
     throw new Error(
-      'Missing "News" page data. Open the studio at http://localhost:3333 and add "News" page data then restart the development server.'
+      'Missing "News" page data. Open the studio and add "News" page data then restart the development server.'
     );
   }
 
-  const blogPostNodes = data && data.blogPosts && (
-    mapEdgesToNodes(data.blogPosts)
-      .map((item) => ({
-        linkTo: getBlogUrl(item.publishedAt, item.slug.current),
-        caption: `Blog — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
-        ...item
-      }))
-  );
+  const blogPostNodes =
+    data &&
+    data.blogPosts &&
+    mapEdgesToNodes(data.blogPosts).map((item) => ({
+      linkTo: getBlogUrl(item.publishedAt, item.slug.current),
+      caption: `Blog — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+      ...item,
+    }));
 
-  const pressReleaseNodes = data && data.pressReleases && (
-    mapEdgesToNodes(data.pressReleases)
-      .map((item) => ({
-        linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
-        caption: `Press — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
-        ...item
-      }))
-  );
+  const pressReleaseNodes =
+    data &&
+    data.pressReleases &&
+    mapEdgesToNodes(data.pressReleases).map((item) => ({
+      linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
+      caption: `Press — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+      ...item,
+    }));
 
-  const eventNodes = data && data.events && (
-    mapEdgesToNodes(data.events)
-      .map((item) => ({
-        linkTo: getEventUrl(item.eventAt, item.slug.current),
-        caption: `Event — ${format(item.eventAt, 'DD MMMM YYYY')}`,
-        ...item
-      }))
-  );
+  const eventNodes =
+    data &&
+    data.events &&
+    mapEdgesToNodes(data.events).map((item) => ({
+      linkTo: getEventUrl(item.eventAt, item.slug.current),
+      caption: `Event — ${format(item.eventAt, 'DD MMMM YYYY')}`,
+      ...item,
+    }));
 
   return (
     <>
       <SEO title='News' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
+        <br /> <br />
         <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withStyledTitle />
         <PreviewGrid title='Blog Posts' nodes={blogPostNodes} withStyledTitle />
         <PreviewGrid title='Events' nodes={eventNodes} withStyledTitle />

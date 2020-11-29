@@ -70,7 +70,7 @@ export const query = graphql`
   }
 `;
 
-const BlogPostTemplate = props => {
+const BlogPostTemplate = (props) => {
   const { data } = props;
   const post = data && data.post;
 

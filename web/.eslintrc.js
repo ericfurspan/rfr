@@ -4,6 +4,7 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'semi': [2, 'always'],
+    'comma-dangle': [2, 'always-multiline']
   },
   settings: {
     'import/resolver': {

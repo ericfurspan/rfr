@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 export const StyledLink = styled(Link)`
   display: block;
   color: inherit;
-  text-decoration: none;  
+  text-decoration: none;
 `;
 
 export const StyledThumbnail = styled.div`

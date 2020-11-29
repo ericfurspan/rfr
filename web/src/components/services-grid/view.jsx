@@ -2,12 +2,12 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { Service } from '../service';
 
-import { StyledWrapper, StyledGrid, StyledBrowseMore } from './style';
-import { Typography } from '..';
+import { StyledGrid, StyledBrowseMore } from './style';
+import { Box, Typography, boxProps } from '..';
 
-const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewOnly }) => {
+const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewOnly, ...rest }) => {
   return (
-    <StyledWrapper>
+    <Box mb='2em' {...boxProps(rest)}>
       {title && <h2 css={Typography.responsiveTitle2}>{title}</h2>}
 
       <StyledGrid>
@@ -17,12 +17,13 @@ const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewOnl
           </li>
         ))}
       </StyledGrid>
+
       {browseMoreHref && (
         <StyledBrowseMore css={Typography.small}>
           <Link to={browseMoreHref}>{browseMoreText}</Link>
         </StyledBrowseMore>
       )}
-    </StyledWrapper>
+    </Box>
   );
 };
 
@@ -30,7 +31,8 @@ ServicesGrid.defaultProps = {
   title: '',
   nodes: [],
   browseMoreHref: '',
-  browseMoreText: ''
+  browseMoreText: '',
+  previewOnly: false,
 };
 
 export default ServicesGrid;

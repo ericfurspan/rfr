@@ -3,7 +3,7 @@ import { MEDIA } from '../../lib/helpers';
 
 export const StyledCoverPhoto = styled.div`
   position: relative;
-  background: #eee;
+  background: var(--color-very-light-gray);
   padding-bottom: calc(9 / 16 * 100%);
 
   & img {
@@ -22,14 +22,13 @@ export const StyledGrid = styled.div`
   grid-template-columns: 1fr;
   grid-column-gap: 2em;
 
- ${MEDIA.MIN_TABLET`
+  ${MEDIA.MIN_TABLET`
     grid-template-columns: 3fr 1fr;
  `};
 `;
 
-export const StyledMainContent = styled.div`
-`;
+export const StyledMainContent = styled.div``;
 
 export const StyledEventDate = styled.div`
-    margin: 1.5rem 0 3rem;
+  margin: 1.5rem 0 3rem;
 `;

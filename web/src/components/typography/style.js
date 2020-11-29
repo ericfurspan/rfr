@@ -59,7 +59,7 @@ export const paragraph = css`
   `};
 `;
 export const blockQuote = css`
-  background: #eee;
+  background: var(--color-very-light-gray);
 `;
 export const responsiveTitle1 = css`
   font-weight: 700;
@@ -121,6 +121,20 @@ export const responsiveTitle4 = css`
   ${MEDIA.MIN_TABLET`
     font-size: var(--font-large-size);
     line-height: var(--font-large-line-height);
+  `};
+`;
+export const responsiveTitle5 = css`
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
+
+  ${MEDIA.MIN_PHONE`
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-line-height);
+  `};
+
+  ${MEDIA.MIN_TABLET`
+    font-size: var(--font-base-size);
+    line-height: var(--font-base-line-height);
   `};
 `;
 

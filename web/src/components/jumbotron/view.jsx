@@ -1,16 +1,36 @@
 import React from 'react';
 
-import { StyledJumbotron } from './style';
-import { Typography } from '..';
+import { BlockContent } from '..';
+import { imageUrlFor } from '../../lib/image-url';
+import { buildImageObj, getUrlFromReference } from '../../lib/helpers';
+import { StyledJumbotron, StyledContent, StyledLink, StyledCTAButton } from './style';
 
-const Jumbotron = ({ title, subtitle }) => {
+const Jumbotron = ({ backgroundImage, _rawTitle, _rawSubtitle, ctaButton, ...rest }) => {
   return (
-    <StyledJumbotron>
-      {title && <h2 css={Typography.responsiveTitle2}>{title}</h2>}
-      <div>
-        <p>{subtitle}</p>
-        <button>Call to Action</button>
-      </div>
+    <StyledJumbotron {...rest}>
+      {backgroundImage && backgroundImage.asset && (
+        <img
+          src={imageUrlFor(buildImageObj(backgroundImage)).fit('fillmax').url()}
+          alt={backgroundImage.alt || 'Jumbotron image'}
+        />
+      )}
+      <StyledContent>
+        {_rawTitle && (
+          <BlockContent blocks={_rawTitle} />
+        )}
+
+        {_rawSubtitle && (
+          <BlockContent blocks={_rawSubtitle} />
+        )}
+
+        {ctaButton && (
+          <StyledLink to={ctaButton._rawButtonLinkTo ? getUrlFromReference(ctaButton._rawButtonLinkTo) : '#'}>
+            <StyledCTAButton {...ctaButton}>
+              {ctaButton.buttonText}
+            </StyledCTAButton>
+          </StyledLink>
+        )}
+      </StyledContent>
     </StyledJumbotron>
   );
 };

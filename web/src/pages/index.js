@@ -2,9 +2,16 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { format } from 'date-fns';
 
-import { filterOutDocsWithoutSlugs, getBlogUrl, getEventUrl, getPressReleaseUrl, mapEdgesToNodes } from '../lib/helpers';
+import {
+  filterOutDocsWithoutSlugs,
+  getBlogUrl,
+  getEventUrl,
+  getPressReleaseUrl,
+  getReviewUrl,
+  mapEdgesToNodes,
+} from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, Jumbotron, PreviewGrid, ServicesGrid, Podcast } from '../components';
+import { Jumbotron, PreviewGrid, ServicesGrid, Podcast, Box } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -13,7 +20,7 @@ export const query = graphql`
       description
       keywords
     }
-    company: sanityCompanyInfo(_id: {regex: "/(drafts.|)companyInfo/"}) {
+    company: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
       companyName
       caption
       contact {
@@ -27,6 +34,47 @@ export const query = graphql`
             faIconName
           }
         }
+      }
+    }
+    jumbotron: sanityJumbotron {
+      _rawTitle
+      _rawSubtitle
+      ctaButton {
+        buttonText
+        buttonSize
+        buttonTextColor {
+          hex
+        }
+        buttonBgColor {
+          hex
+        }
+        _rawButtonLinkTo(resolveReferences: { maxDepth: 5 })
+      }
+      backgroundOpacity
+      backgroundColor {
+        hex
+      }
+      backgroundImage {
+        crop {
+          _key
+          _type
+          top
+          bottom
+          left
+          right
+        }
+        hotspot {
+          _key
+          _type
+          x
+          y
+          height
+          width
+        }
+        asset {
+          _id
+        }
+        alt
       }
     }
     services: allSanityService {
@@ -56,6 +104,19 @@ export const query = graphql`
         }
       }
     }
+    reviews: allSanityReview(limit: 6, sort: { fields: [reviewedAt], order: DESC }) {
+      edges {
+        node {
+          id
+          text
+          reviewedAt
+          reviewer
+          slug {
+            current
+          }
+        }
+      }
+    }
     teamMembers: allSanityTeamMember(limit: 3, sort: { fields: [priority], order: ASC }) {
       edges {
         node {
@@ -64,7 +125,7 @@ export const query = graphql`
             current
           }
           certifications
-          _rawPerson(resolveReferences: {maxDepth: 1})
+          _rawPerson(resolveReferences: { maxDepth: 1 })
           person {
             name
             contact {
@@ -139,18 +200,18 @@ export const query = graphql`
       }
     }
     pressReleases: allSanityPressRelease(sort: { fields: [publishedAt], order: DESC }) {
-     edges {
-       node {
-        id
-        source
-        title
-        url
-        publishedAt
-        slug {
-          current
+      edges {
+        node {
+          id
+          source
+          title
+          url
+          publishedAt
+          slug {
+            current
+          }
         }
-       }
-     }
+      }
     }
     events: allSanityEvent(sort: { fields: [eventAt], order: DESC }) {
       edges {
@@ -185,84 +246,129 @@ export const query = graphql`
           }
         }
       }
-     }    
+    }
   }
 `;
 
-const IndexPage = props => {
-  const { data } = props;
-
+const IndexPage = ({ data }) => {
   const company = (data || {}).company;
+
   if (!company) {
     throw new Error(
-      'Missing "Company Info". Open the studio at http://localhost:3333 and add some content to "Company Info" then restart the development server.'
+      'Missing "Company Info". Open the studio and add some content to "Company Info" then restart the development server.'
     );
   }
 
+  const { jumbotron } = data || {};
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
   const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
-  const teamMemberNodes = (data || {}).teamMembers ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs) : [];
-  const blogPostNodes = (data || {}).posts ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs).map((item) => ({
-    linkTo: getBlogUrl(item.publishedAt, item.slug.current),
-    caption: `Blog — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
-    ...item
-  })) : [];
-  const pressReleaseNodes = (data || {}).pressReleases ? mapEdgesToNodes(data.pressReleases).map((item) => ({
-    linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
-    caption: `Press Release — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
-    ...item
-  })) : [];
-  const eventNodes = (data || {}).events ? mapEdgesToNodes(data.events).filter(filterOutDocsWithoutSlugs).map((item) => ({
-    linkTo: getEventUrl(item.eventAt, item.slug.current),
-    caption: `Event — ${format(item.eventAt, 'DD MMMM YYYY')}`,
-    ...item
-  })) : [];
-  const allNewsNodes = [ ...blogPostNodes, ...pressReleaseNodes, ...eventNodes ].slice(0, 6);
+  const reviewsNodes = (data || {}).reviews
+    ? mapEdgesToNodes(data.reviews)
+      .filter(filterOutDocsWithoutSlugs)
+      .map((item) => ({
+        ...item,
+        linkTo: getReviewUrl(item.reviewedAt, item.slug.current),
+        title: `by ${item.reviewer}`,
+        caption: format(item.reviewedAt, 'DD MMMM YYYY'),
+        text: item.text.slice(0, 128) + '...(continued)',
+      }))
+    : [];
+  const teamMemberNodes = (data || {}).teamMembers
+    ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs)
+    : [];
+  const blogPostNodes = (data || {}).posts
+    ? mapEdgesToNodes(data.posts)
+      .filter(filterOutDocsWithoutSlugs)
+      .map((item) => ({
+        ...item,
+        linkTo: getBlogUrl(item.publishedAt, item.slug.current),
+        text: `Blog — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+      }))
+    : [];
+  const pressReleaseNodes = (data || {}).pressReleases
+    ? mapEdgesToNodes(data.pressReleases)
+      .filter(filterOutDocsWithoutSlugs)
+      .map((item) => ({
+        ...item,
+        linkTo: getPressReleaseUrl(item.publishedAt, item.slug.current),
+        text: `Press — ${format(item.publishedAt, 'DD MMMM YYYY')}`,
+      }))
+    : [];
+  const eventNodes = (data || {}).events
+    ? mapEdgesToNodes(data.events)
+      .filter(filterOutDocsWithoutSlugs)
+      .map((item) => ({
+        ...item,
+        linkTo: getEventUrl(item.eventAt, item.slug.current),
+        text: `Event — ${format(item.eventAt, 'DD MMMM YYYY')}`,
+      }))
+    : [];
+  const allNewsNodes = [...blogPostNodes, ...pressReleaseNodes, ...eventNodes].slice(0, 6);
 
   return (
     <>
       <SEO title={data.seo.title} description={data.seo.description} keywords={data.seo.keywords} />
-      <Container>
+
+      {jumbotron._rawTitle && (
+        <Box gc='1 / -1'>
+          <Jumbotron {...jumbotron} />
+        </Box>
+      )}
+
+      <Box d='grid' gridResponsive gtc='repeat(12, minmax(0, 1fr))' grg='4em' gcg='2em' p='2em'>
         <h1 hidden>{data.seo.title}</h1>
 
-        {/* todo: HERO BANNER */}
-        <Jumbotron title='Banner' subtitle='Some content here' />
-
-        {servicesNodes && (
+        {servicesNodes.length > 0 && (
           <ServicesGrid
             nodes={servicesNodes}
             browseMoreHref='/services'
             browseMoreText='Learn more about what we do'
             previewOnly
+            gc='2 / -2'
           />
         )}
 
-        {/* todo: REVIEWS PREVIEW */}
-
-        {teamMemberNodes && (
+        {teamMemberNodes.length > 0 && (
           <PreviewGrid
             title='Our Team'
             nodes={teamMemberNodes}
             nodeType='teamMember'
             browseMoreHref='/team'
             browseMoreText='See all team members'
+            gc='1 / -1'
           />
         )}
 
-        {allNewsNodes && (
+        {allNewsNodes.length > 0 && (
           <PreviewGrid
             title='News'
             nodes={allNewsNodes}
             nodeType='default'
             browseMoreHref='/news'
             browseMoreText='See all news &amp; events'
+            gc='1 / 7'
           />
         )}
 
-        {podcastNodes.map((podcast) => (
-          <Podcast key={podcast.id} {...podcast} />
-        ))}
-      </Container>
+        {podcastNodes.length > 0 && (
+          <Box gc='8 / -1'>
+            {podcastNodes.map((podcast) => (
+              <Podcast key={podcast.id} {...podcast} />
+            ))}
+          </Box>
+        )}
+
+        {reviewsNodes.length > 0 && (
+          <PreviewGrid
+            title='Reviews'
+            nodes={reviewsNodes}
+            nodeType='default'
+            browseMoreHref='/reviews'
+            browseMoreText='See all reviews'
+            gc='1 / 7'
+          />
+        )}
+      </Box>
     </>
   );
 };

@@ -24,9 +24,7 @@ const Figure = (props) => (
   <StyledFigure>
     {props.asset && (
       <img
-        src={imageUrlFor(buildImageObj(props))
-          .width(1200)
-          .url()}
+        src={imageUrlFor(buildImageObj(props)).width(1200).url()}
         alt={props.alt || props.caption}
       />
     )}

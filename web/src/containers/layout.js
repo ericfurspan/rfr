@@ -10,17 +10,23 @@ const query = graphql`
       description
       keywords
     }
-    allPages: allSanityPage(filter: {_id: {regex: "/^[A-Za-z]+$/"}}, sort: { fields: [priority], order: ASC }) {
+    allPages: allSanityPage(
+      filter: { _id: { regex: "/^[A-Za-z]+$/" } }
+      sort: { fields: [priority], order: ASC }
+    ) {
       edges {
         node {
           _id
         }
       }
     }
-    marketing: sanityMarketing {
-      _rawHomepageBanner
+    banner: sanityBanner {
+      _rawBannerText
+      backgroundColor {
+        hex
+      }
     }
-    company: sanityCompanyInfo(_id: {regex: "/(drafts.|)companyInfo/"}) {
+    company: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
       companyName
       caption
       logo {
@@ -68,19 +74,19 @@ const LayoutContainer = (props) => {
   return (
     <StaticQuery
       query={query}
-      render={data => {
-        const allPages = (data || {}).allPages ? mapEdgesToNodes(data.allPages).map((page) => page._id) : [];
+      render={(data) => {
+        const allPages = (data || {}).allPages
+          ? mapEdgesToNodes(data.allPages).map((page) => page._id)
+          : [];
         if (!data.company) {
-          throw new Error(
-            'Missing "Company info". Open the studio at http://localhost:3333 and add "Company info" data'
-          );
+          throw new Error('Missing "Company info". Open the studio and add "Company info" data');
         }
         return (
           <Layout
             {...props}
             siteTitle={data.company.companyName}
             siteLogo={data.company.logo}
-            siteBannerBlocks={data.marketing._rawHomepageBanner}
+            siteBanner={data.banner}
             contactInfo={data.company.contact}
             showNav={showNav}
             onHideNav={handleHideNav}

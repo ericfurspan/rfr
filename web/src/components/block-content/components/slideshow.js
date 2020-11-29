@@ -84,7 +84,7 @@ const Slideshow = ({ slides }) => {
         data-index={index}
         style={{ transform: `translate3d(${index * -100}%, 0, 0)` }}
       >
-        {slides.map(slide => (
+        {slides.map((slide) => (
           <StyledSlide key={slide._key}>
             {slide.asset && (
               <img

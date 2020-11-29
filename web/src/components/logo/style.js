@@ -3,9 +3,9 @@ import { MEDIA } from '../../lib/helpers';
 
 export const StyledLogo = styled.img`
   border-radius: 100%;
-  margin: auto 0.875rem;
+  margin: ${(props) => (props.noMargin ? 0 : 'auto 0.875rem')};
 
   ${MEDIA.PHONE`
-    margin: 0.875rem auto;
+    margin: ${(props) => (props.noMargin ? 0 : '0.875rem auto')};
   `};
 `;

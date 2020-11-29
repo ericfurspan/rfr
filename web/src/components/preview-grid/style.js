@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 import { MEDIA } from '../../lib/helpers';
 
-export const StyledWrapper = styled.div`
-  margin: 2em 0 4em;
-`;
-
 export const StyledGrid = styled.ul`
-  margin: 0 0.25em;
-  padding: 0;
-  list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  grid-column-gap: 2em;
-  grid-row-gap: 2em;
+  grid-column-gap: 1.5em;
+  grid-row-gap: 1.5em;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
   ${MEDIA.MIN_PHONE`
     grid-template-columns: 1fr 1fr;

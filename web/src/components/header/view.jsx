@@ -10,14 +10,14 @@ import {
   StyledContainer,
   StyledTitle,
   StyledMenuBtn,
-  StyledNav
+  StyledNav,
 } from './style';
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBannerBlocks, allPages = [] }) => (
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPages = [] }) => (
   <StyledHeader>
-    {siteBannerBlocks && (
-      <StyledAttentionBanner>
-        <BlockContent blocks={siteBannerBlocks} />
+    {siteBanner && siteBanner._rawBannerText && (
+      <StyledAttentionBanner {...siteBanner}>
+        <BlockContent blocks={siteBanner._rawBannerText} />
       </StyledAttentionBanner>
     )}
 
@@ -28,13 +28,13 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner
       </StyledTitle>
 
       <StyledMenuBtn onClick={showNav ? onHideNav : onShowNav} aria-label='Navigation menu'>
-        <FontAwesomeIcon icon='bars' />
+        <FontAwesomeIcon icon={showNav ? 'times' : 'bars'} fixedWidth />
       </StyledMenuBtn>
 
       <StyledNav showNav={showNav}>
         <ul>
           {allPages.map((page, index) => (
-            <li key={`${page}-${index}`}>
+            <li key={`${page}-${index}`} onClick={onHideNav}>
               <Link to={`/${page}`}>{capitalize(page)}</Link>
             </li>
           ))}

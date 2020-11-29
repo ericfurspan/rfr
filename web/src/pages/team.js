@@ -8,7 +8,7 @@ import { Container, BlockContent, PreviewGrid } from '../components';
 export const query = graphql`
   query TeamPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)team/" }) {
-      _rawBody
+      _rawBody(resolveReferences: { maxDepth: 4 })
     }
     teamMembers: allSanityTeamMember(sort: { fields: [priority], order: ASC }) {
       edges {
@@ -18,7 +18,7 @@ export const query = graphql`
             current
           }
           certifications
-          _rawPerson(resolveReferences: {maxDepth: 1})
+          _rawPerson(resolveReferences: { maxDepth: 1 })
           person {
             name
             contact {
@@ -61,14 +61,12 @@ export const query = graphql`
   }
 `;
 
-const TeamPage = props => {
-  const { data } = props;
-
+const TeamPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
     throw new Error(
-      'Missing "Team" page data. Open the studio at http://localhost:3333 and add "Team" page data then restart the development server.'
+      'Missing "Team" page data. Open the studio and add "Team" page data then restart the development server.'
     );
   }
 
@@ -79,10 +77,8 @@ const TeamPage = props => {
       <SEO title='Team' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
-        <PreviewGrid
-          nodes={teamMemberNodes}
-          nodeType='teamMember'
-        />
+        <br /> <br />
+        <PreviewGrid nodes={teamMemberNodes} nodeType='teamMember' />
       </Container>
     </>
   );

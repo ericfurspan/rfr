@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MEDIA } from '../../lib/helpers';
 
 export const StyledHeader = styled.header`
@@ -17,23 +17,27 @@ export const StyledAttentionBanner = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-dark-white);
+  background-color: var(--color-very-light-gray);
+  color: var(--color-black);
+
+  ${(props) =>
+    props.backgroundColor &&
+    css`
+      background-color: ${props.backgroundColor.hex};
+    `};
 `;
 
 export const StyledContainer = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 1em;
+  max-width: 1400px;
+  padding: 2em 1em;
   display: flex;
-
-  ${MEDIA.MIN_PHONE`
-    padding: 1.5em 1.5em;
-  `};
 `;
 
 export const StyledTitle = styled.h1`
   font-size: 1.25rem;
+  font-weight: 600;
   margin: auto 0.75rem;
   flex: 1;
 
@@ -49,23 +53,17 @@ export const StyledTitle = styled.h1`
 `;
 
 export const StyledMenuBtn = styled.button`
-  ${props => props.showNav && `
-    display: block;
-  `}
-
   appearance: none;
-  font-size: 25px;
+  font-size: 24px;
+  height: max-content;
   border: none;
   background: none;
   margin: 0;
-  padding: calc(14 / 17 / 2 * 1rem);
+  padding: 0;
   outline: none;
+  z-index: 1;
 
-  & svg {
-    display: block;
-  }
-
-  ${MEDIA.MIN_PHONE`
+  ${MEDIA.MIN_TABLET`
     display: none;
   `};
 `;
@@ -88,24 +86,24 @@ export const StyledNav = styled.nav`
     text-decoration: underline;
   }
 
-  ${MEDIA.PHONE`
+  ${MEDIA.TABLET`
     position: absolute;
-    background: #fff;
+    background: var(--color-white);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     left: 0;
     right: 0;
     top: 4rem;
 
     & ul {
-      padding: 1rem 0;
+      padding: 2rem 0 1rem;
     }
 
     & ul li a {
-      padding: 0.5rem 1.5rem;
+      padding: 0.75rem 1.5rem;
     }
   `};
 
-  ${MEDIA.MIN_PHONE`
+  ${MEDIA.MIN_TABLET`
     display: block;
 
     & ul {
@@ -118,4 +116,10 @@ export const StyledNav = styled.nav`
       padding: 0.5rem;
     }
   `}
+
+  ${(props) =>
+    props.showNav &&
+    css`
+      display: block;
+    `}
 `;

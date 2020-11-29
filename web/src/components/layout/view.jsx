@@ -3,12 +3,12 @@ import React from 'react';
 import { Header, Footer } from '..';
 import { StyledContent } from './style';
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBannerBlocks, contactInfo, allPages }) => (
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, contactInfo, allPages }) => (
   <>
     <Header
       siteTitle={siteTitle}
       siteLogo={siteLogo}
-      siteBannerBlocks={siteBannerBlocks}
+      siteBanner={siteBanner}
       onHideNav={onHideNav}
       onShowNav={onShowNav}
       showNav={showNav}

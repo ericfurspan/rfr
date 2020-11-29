@@ -8,7 +8,7 @@ import { Container, ServicesGrid, BlockContent } from '../components';
 export const query = graphql`
   query ServicesPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)services/" }) {
-      _rawBody
+      _rawBody(resolveReferences: { maxDepth: 4 })
     }
     services: allSanityService(sort: { fields: [priority], order: ASC }) {
       edges {
@@ -16,21 +16,19 @@ export const query = graphql`
           id
           title
           _rawSubtitle
-          _rawBody
+          _rawBody(resolveReferences: { maxDepth: 4 })
         }
       }
     }
   }
 `;
 
-const ServicesPage = props => {
-  const { data } = props;
-
+const ServicesPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
     throw new Error(
-      'Missing "Services" page data. Open the studio at http://localhost:3333 and add "Services" page data then restart the development server.'
+      'Missing "Services" page data. Open the studio and add "Services" page data then restart the development server.'
     );
   }
 
@@ -41,6 +39,7 @@ const ServicesPage = props => {
       <SEO title='Services' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
+        <br /> <br />
         <ServicesGrid nodes={servicesNodes} />
       </Container>
     </>

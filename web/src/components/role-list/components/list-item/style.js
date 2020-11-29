@@ -17,7 +17,7 @@ export const StyledAvatar = styled.div`
   position: relative;
   width: 3em;
   height: 3em;
-  background: #eee;
+  background: var(--color-very-light-gray);
   border-radius: 50%;
   overflow: hidden;
 

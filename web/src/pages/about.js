@@ -7,19 +7,17 @@ import { Container, BlockContent } from '../components';
 export const query = graphql`
   query AboutPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
-      _rawBody
+      _rawBody(resolveReferences: { maxDepth: 4 })
     }
   }
 `;
 
-const AboutPage = props => {
-  const { data } = props;
-
+const AboutPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
     throw new Error(
-      'Missing "About" page data. Open the studio at http://localhost:3333 and add "About" page data then restart the development server.'
+      'Missing "About" page data. Open the studio and add "About" page data then restart the development server.'
     );
   }
 

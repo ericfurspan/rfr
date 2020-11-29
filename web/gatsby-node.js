@@ -36,7 +36,7 @@ async function createTeamMemberPages (graphql, actions, reporter) {
     createPage({
       path,
       component: require.resolve('./src/templates/team-member.js'),
-      context: { id }
+      context: { id },
     });
   });
 }
@@ -73,7 +73,7 @@ async function createBlogPostPages (graphql, actions, reporter) {
     createPage({
       path,
       component: require.resolve('./src/templates/blog-post.js'),
-      context: { id }
+      context: { id },
     });
   });
 }
@@ -110,7 +110,7 @@ async function createEventPages (graphql, actions, reporter) {
     createPage({
       path,
       component: require.resolve('./src/templates/event-post.js'),
-      context: { id }
+      context: { id },
     });
   });
 }
@@ -147,7 +147,44 @@ async function createPressReleasePages (graphql, actions, reporter) {
     createPage({
       path,
       component: require.resolve('./src/templates/press-release.js'),
-      context: { id }
+      context: { id },
+    });
+  });
+}
+
+async function createReviewPages (graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityReview(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            reviewedAt
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const reviewEdges = (result.data.allSanityReview || {}).edges || [];
+
+  reviewEdges.forEach((edge, index) => {
+    const { id, slug = {}, reviewedAt } = edge.node;
+    const dateSegment = format(reviewedAt, 'YYYY/MM');
+    const path = `/reviews/${dateSegment}/${slug.current}`;
+
+    reporter.info(`Creating review page: ${path}`);
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/review.js'),
+      context: { id },
     });
   });
 }
@@ -157,4 +194,5 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter);
   await createEventPages(graphql, actions, reporter);
   await createPressReleasePages(graphql, actions, reporter);
+  await createReviewPages(graphql, actions, reporter);
 };

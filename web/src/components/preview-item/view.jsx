@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { StyledLink, StyledTitle, StyledCaption } from './style';
+import { StyledLink, StyledTitle, StyledContent, StyledCaption } from './style';
 import { Typography } from '..';
 
-const PreviewItem = ({ title, linkTo, caption }) => (
+const PreviewItem = ({ title, text, caption, linkTo }) => (
   <>
     <StyledLink to={linkTo}>
       <StyledTitle css={Typography.responsiveTitle4}>
@@ -15,6 +15,12 @@ const PreviewItem = ({ title, linkTo, caption }) => (
       <StyledCaption css={Typography.small}>
         {caption}
       </StyledCaption>
+    )}
+
+    {text && (
+      <StyledContent css={Typography.small}>
+        {text}
+      </StyledContent>
     )}
   </>
 );

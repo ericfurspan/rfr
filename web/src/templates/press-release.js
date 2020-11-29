@@ -20,7 +20,7 @@ export const query = graphql`
   }
 `;
 
-const PressReleaseTemplate = props => {
+const PressReleaseTemplate = (props) => {
   const { data } = props;
   const pressRelease = data && data.pressRelease;
 
