@@ -1,3 +1,4 @@
+import { colorInputList } from '../../constants';
 
 export default {
   name: 'button',
@@ -11,13 +12,19 @@ export default {
     },
     {
       name: 'buttonTextColor',
-      type: 'color',
-      title: 'Button Text Color'
+      type: 'colors',
+      title: 'Button Text Color',
+      options: {
+        list: colorInputList
+      }
     },
     {
       name: 'buttonBgColor',
-      type: 'color',
-      title: 'Button Background Color'
+      type: 'colors',
+      title: 'Button Background Color',
+      options: {
+        list: colorInputList
+      }
     },
     {
       name: 'buttonLinkTo',

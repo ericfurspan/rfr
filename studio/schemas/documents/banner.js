@@ -1,3 +1,5 @@
+import { colorInputList } from '../../constants';
+
 export default {
   name: 'banner',
   title: 'Banner',
@@ -12,9 +14,9 @@ export default {
     {
       name: 'backgroundColor',
       title: 'Background color',
-      type: 'color',
+      type: 'colors',
       options: {
-        disableAlpha: true
+        list: colorInputList
       }
     }
   ]

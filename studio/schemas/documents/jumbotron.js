@@ -1,8 +1,19 @@
+import { colorInputList } from '../../constants';
+
 export default {
   name: 'jumbotron',
   title: 'Jumbotron',
   type: 'document',
   fields: [
+    {
+      name: 'backgroundColor',
+      title: 'Background color',
+      type: 'colors',
+      description: 'Background color for the Jumbotron. This will have no effect if you have selected a background image.',
+      options: {
+        list: colorInputList
+      }
+    },
     {
       name: 'title',
       title: 'Title',
@@ -17,15 +28,6 @@ export default {
       name: 'ctaButton',
       title: 'Call to Action Button',
       type: 'button'
-    },
-    {
-      name: 'backgroundColor',
-      title: 'Background color',
-      type: 'color',
-      description: 'Background color for the Jumbotron. This will not have an effect if using a background image.',
-      options: {
-        disableAlpha: true
-      }
     },
     {
       name: 'backgroundImage',
