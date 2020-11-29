@@ -37,6 +37,13 @@ export default {
       validation: Rule => Rule.min(1).integer().positive()
     }
   ],
+  orderings: [
+    {
+      title: 'Priority high->low',
+      name: 'priorityAsc',
+      by: [{ field: 'priority', direction: 'asc' }]
+    }
+  ],
   preview: {
     select: {
       personName: 'person.name',

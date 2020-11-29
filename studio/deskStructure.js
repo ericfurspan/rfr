@@ -1,8 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery', 'marketing']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron']
     .includes(listItem.getId());
 
 export default () =>
@@ -18,6 +18,16 @@ export default () =>
             .documentId('companyInfo')
         )
         .icon(FaLandmark),
+      S.listItem()
+        .title('Jumbotron')
+        .child(
+          S.editor()
+            .id('jumbotron')
+            .schemaType('jumbotron')
+            .documentId('jumbotron')
+            .title('Jumbotron')
+        )
+        .icon(FaObjectGroup),
       S.listItem()
         .title('Services')
         .schemaType('service')
@@ -44,13 +54,13 @@ export default () =>
         .child(S.documentTypeList('payment').title('Payments'))
         .icon(FaRegCreditCard),
       S.listItem()
-        .title('Marketing')
+        .title('Banner')
         .child(
           S.editor()
-            .id('marketing')
-            .schemaType('marketing')
-            .documentId('marketing')
-            .title('Marketing Content')
+            .id('banner')
+            .schemaType('banner')
+            .documentId('banner')
+            .title('Banner')
         )
         .icon(FaBullhorn),
       S.listItem()
@@ -98,6 +108,15 @@ export default () =>
                     .id('servicesPage')
                     .schemaType('page')
                     .documentId('services')
+                )
+                .icon(FaFileAlt),
+              S.listItem()
+                .title('Reviews')
+                .child(
+                  S.editor()
+                    .id('reviewsPage')
+                    .schemaType('page')
+                    .documentId('reviews')
                 )
                 .icon(FaFileAlt),
               S.listItem()

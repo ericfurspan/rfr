@@ -17,7 +17,8 @@
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "content-model-graph"
+    "content-model-graph",
+    "@sanity/color-input"
   ],
   "parts": [
     {

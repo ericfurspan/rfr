@@ -17,11 +17,13 @@ import event from './documents/event';
 import service from './documents/service';
 import podcast from './documents/podcast';
 import payment from './documents/payment';
-import marketing from './documents/marketing';
+import banner from './documents/banner';
+import jumbotron from './documents/jumbotron';
 
 // Object types
 import blockContent from './objects/blockContent';
 import blockText from './objects/blockText';
+import button from './objects/button';
 import slideshow from './objects/slideshow';
 import contactInfo from './objects/contactInfo';
 import socialMedia from './objects/socialMedia';
@@ -39,6 +41,7 @@ export default createSchema({
     // Objects
     blockContent,
     blockText,
+    button,
     slideshow,
     contactInfo,
     payment,
@@ -57,7 +60,8 @@ export default createSchema({
     post,
     event,
     podcast,
-    marketing,
+    banner,
+    jumbotron,
     icon
   ])
 });

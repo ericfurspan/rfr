@@ -23,7 +23,6 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      description: 'You can use this field to set the order priority on the website',
       type: 'datetime',
       validation: Rule => Rule.required()
     },
