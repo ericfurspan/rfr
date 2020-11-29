@@ -27,5 +27,11 @@ module.exports = {
         overlayDrafts: !isProd && token,
       },
     },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ['SITE_RECAPTCHA_KEY'],
+      },
+    },
   ],
 };
