@@ -23,7 +23,7 @@ export const StyledAttentionBanner = styled.div`
   ${(props) =>
     props.backgroundColor &&
     css`
-      background-color: ${props.backgroundColor.hex};
+      background-color: ${props.backgroundColor};
     `};
 `;
 

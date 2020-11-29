@@ -33,6 +33,9 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner
 
       <StyledNav showNav={showNav}>
         <ul>
+          <li onClick={onHideNav}>
+            <Link to='/'>Home</Link>
+          </li>
           {allPages.map((page, index) => (
             <li key={`${page}-${index}`} onClick={onHideNav}>
               <Link to={`/${page}`}>{capitalize(page)}</Link>

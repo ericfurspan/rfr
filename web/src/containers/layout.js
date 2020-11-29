@@ -22,9 +22,7 @@ const query = graphql`
     }
     banner: sanityBanner {
       _rawBannerText
-      backgroundColor {
-        hex
-      }
+      backgroundColor
     }
     company: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
       companyName

@@ -7,7 +7,7 @@ import { Box, Typography, boxProps } from '..';
 
 const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewOnly, ...rest }) => {
   return (
-    <Box mb='2em' {...boxProps(rest)}>
+    <Box mb='2em' mt='4em' {...boxProps(rest)}>
       {title && <h2 css={Typography.responsiveTitle2}>{title}</h2>}
 
       <StyledGrid>

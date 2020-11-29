@@ -58,7 +58,7 @@ const serializers = {
     },
     color: (props) => {
       if (props.mark.fontColor) {
-        return <span style={{ color: props.mark.fontColor.hex }}>{props.children}</span>;
+        return <span style={{ color: props.mark.fontColor }}>{props.children}</span>;
       }
       return props.children;
     },

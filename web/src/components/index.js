@@ -18,4 +18,6 @@ export { TeamMemberPreview } from './team-member-preview';
 export { TeamMember } from './team-member';
 export { RoleList } from './role-list';
 export { Podcast } from './podcast';
+export { ContactForm } from './contact-form';
 export { Typography } from './typography';
+export * from './field';

@@ -9,8 +9,10 @@ import {
   StyledGrid,
   StyledSectionHeading,
   StyledSection,
-  StyledCredits
+  StyledCredits,
 } from './style';
+import { StyledInput, StyledButton } from '../field';
+import { Box } from '../box';
 
 const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
   return (
@@ -19,6 +21,9 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
         <StyledSection>
           <StyledSectionHeading>Sitemap</StyledSectionHeading>
           <ul>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
             {allPages.map((page, index) => (
               <li key={`${page}-${index}`}>
                 <Link to={`/${page}`}>{capitalize(page)}</Link>
@@ -42,12 +47,18 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
         <StyledSection>
           <StyledSectionHeading>Subscribe to our newsletter</StyledSectionHeading>
           <form onSubmit={({ target }) => console.log('submitted newsletter form', target)}>
-            <input
-              type='text'
-              placeholder='Your email'
-              aria-label='Email'
-            />
-            <input type='submit' required value='Subscribe' />
+            <Box flex ai='center'>
+              <StyledInput
+                type='text'
+                placeholder='Your email'
+                aria-label='Email'
+                required
+                minw='178px'
+              />
+              <StyledButton type='submit' design='secondary' ml='0.75em'>
+                Subscribe
+              </StyledButton>
+            </Box>
           </form>
         </StyledSection>
       </StyledGrid>

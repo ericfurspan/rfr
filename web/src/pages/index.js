@@ -42,18 +42,12 @@ export const query = graphql`
       ctaButton {
         buttonText
         buttonSize
-        buttonTextColor {
-          hex
-        }
-        buttonBgColor {
-          hex
-        }
+        buttonTextColor
+        buttonBgColor
         _rawButtonLinkTo(resolveReferences: { maxDepth: 5 })
       }
       backgroundOpacity
-      backgroundColor {
-        hex
-      }
+      backgroundColor
       backgroundImage {
         crop {
           _key

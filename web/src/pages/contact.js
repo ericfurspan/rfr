@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { Container, BlockContent } from '../components';
+import { Container, BlockContent, ContactForm } from '../components';
 
 export const query = graphql`
   query ContactPageQuery {
@@ -26,6 +26,8 @@ const ContactPage = ({ data }) => {
       <SEO title='Contact' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
+        <br /><br />
+        <ContactForm />
       </Container>
     </>
   );

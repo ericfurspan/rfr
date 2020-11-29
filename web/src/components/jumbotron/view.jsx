@@ -7,7 +7,7 @@ import { StyledJumbotron, StyledContent, StyledLink, StyledCTAButton } from './s
 
 const Jumbotron = ({ backgroundImage, _rawTitle, _rawSubtitle, ctaButton, ...rest }) => {
   return (
-    <StyledJumbotron {...rest}>
+    <StyledJumbotron {...rest} hasImage={Boolean(backgroundImage)}>
       {backgroundImage && backgroundImage.asset && (
         <img
           src={imageUrlFor(buildImageObj(backgroundImage)).fit('fillmax').url()}
