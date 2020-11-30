@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Box, StyledInput, StyledButton } from '..';
+import { encode } from '../../lib/helpers';
 
 const formDefaults = {
   email: '',
@@ -16,6 +17,30 @@ const NewsletterForm = () => {
     setFormFields({ ...formFields, [target.name]: target.value });
   };
 
+  const onReset = () => {
+    setFormFields(formDefaults);
+    setRecaptchaDone(false);
+    recaptchaRef.current.reset();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const recaptchaValue = recaptchaRef.current.getValue();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        'g-recaptcha-response': recaptchaValue,
+        ...formFields,
+      }),
+    })
+      .then(() => onReset())
+      .catch((error) => console.error(error));
+  };
+
   return (
     <form
       name='newsletter'
@@ -24,8 +49,9 @@ const NewsletterForm = () => {
       netlify-honeypot='botField'
       data-netlify='true'
       data-netlify-recaptcha='true'
+      onSubmit={handleSubmit}
     >
-      <input type='hidden' name='botField' />
+      <input type='hidden' name='botField' onChange={onFieldChange} />
       <Box flex ai='center'>
         <StyledInput
           name='email'

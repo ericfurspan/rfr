@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Box, StyledLabel, StyledInput, StyledButton } from '..';
 import { Typography } from '../typography';
+import { encode } from '../../lib/helpers';
 
 const formDefaults = {
   name: '',
@@ -27,6 +28,24 @@ const ContactForm = () => {
     recaptchaRef.current.reset();
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const recaptchaValue = recaptchaRef.current.getValue();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        'g-recaptcha-response': recaptchaValue,
+        ...formFields,
+      }),
+    })
+      .then(() => onReset())
+      .catch((error) => console.error(error));
+  };
+
   return (
     <Box flex col maxw='550px'>
       <h2 css={Typography.responsiveTitle2}>Send us a message</h2>
@@ -37,8 +56,9 @@ const ContactForm = () => {
         netlify-honeypot='botField'
         data-netlify='true'
         data-netlify-recaptcha='true'
+        onSubmit={handleSubmit}
       >
-        <input type='hidden' name='botField' />
+        <input type='hidden' name='botField' onChange={onFieldChange} />
         <Box>
           <StyledLabel>
             Name
