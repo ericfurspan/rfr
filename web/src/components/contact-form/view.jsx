@@ -8,6 +8,7 @@ const formDefaults = {
   email: '',
   phone: '',
   message: '',
+  botField: '',
 };
 
 const ContactForm = () => {
@@ -31,12 +32,13 @@ const ContactForm = () => {
       <h2 css={Typography.responsiveTitle2}>Send us a message</h2>
       <form
         name='contact'
-        method='POST'
-        netlify-honeypot='bot-field'
-        data-netlify-recaptcha='true'
+        method='post'
+        action='/'
+        netlify-honeypot='botField'
         data-netlify='true'
+        data-netlify-recaptcha='true'
       >
-        <input type='hidden' name='bot-field' />
+        <input type='hidden' name='botField' />
         <Box>
           <StyledLabel>
             Name

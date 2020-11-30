@@ -4,6 +4,7 @@ import { Box, StyledInput, StyledButton } from '..';
 
 const formDefaults = {
   email: '',
+  botField: '',
 };
 
 const NewsletterForm = () => {
@@ -18,12 +19,13 @@ const NewsletterForm = () => {
   return (
     <form
       name='newsletter'
-      method='POST'
-      netlify-honeypot='bot-field'
-      data-netlify-recaptcha='true'
+      method='post'
+      action='/'
+      netlify-honeypot='botField'
       data-netlify='true'
+      data-netlify-recaptcha='true'
     >
-      <input type='hidden' name='bot-field' />
+      <input type='hidden' name='botField' />
       <Box flex ai='center'>
         <StyledInput
           name='email'
