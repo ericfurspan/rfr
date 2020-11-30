@@ -49,7 +49,6 @@ const NewsletterForm = () => {
     <form
       name='newsletter'
       method='post'
-      action='/'
       netlify-honeypot='botField'
       data-netlify='true'
       data-netlify-recaptcha='true'
