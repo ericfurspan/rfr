@@ -24,7 +24,6 @@ const NewsletterForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
@@ -37,8 +36,13 @@ const NewsletterForm = () => {
         ...formFields,
       }),
     })
-      .then(() => onReset())
+      .then(() => {
+        onReset();
+        alert('Thanks! Stay tuned for Newsletter content in your inbox');
+      })
       .catch((error) => console.error(error));
+
+    e.preventDefault();
   };
 
   return (

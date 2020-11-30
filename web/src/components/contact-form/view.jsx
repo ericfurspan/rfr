@@ -29,7 +29,6 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
@@ -42,8 +41,13 @@ const ContactForm = () => {
         ...formFields,
       }),
     })
-      .then(() => onReset())
+      .then(() => {
+        onReset();
+        alert('Thanks for reaching out! We will get back to you soon.');
+      })
       .catch((error) => console.error(error));
+
+    e.preventDefault();
   };
 
   return (
