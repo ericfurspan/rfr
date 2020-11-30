@@ -19,5 +19,6 @@ export { TeamMember } from './team-member';
 export { RoleList } from './role-list';
 export { Podcast } from './podcast';
 export { ContactForm } from './contact-form';
+export { NewsletterForm } from './newsletter-form';
 export { Typography } from './typography';
 export * from './field';

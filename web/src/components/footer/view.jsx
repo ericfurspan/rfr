@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { capitalize } from '../../lib/string-utils';
 
-import { Logo } from '..';
+import { Logo, NewsletterForm } from '..';
 import {
   StyledFooter,
   StyledGrid,
@@ -11,8 +11,6 @@ import {
   StyledSection,
   StyledCredits,
 } from './style';
-import { StyledInput, StyledButton } from '../field';
-import { Box } from '../box';
 
 const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
   return (
@@ -21,9 +19,6 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
         <StyledSection>
           <StyledSectionHeading>Sitemap</StyledSectionHeading>
           <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
             {allPages.map((page, index) => (
               <li key={`${page}-${index}`}>
                 <Link to={`/${page}`}>{capitalize(page)}</Link>
@@ -46,27 +41,7 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
         </StyledSection>
         <StyledSection>
           <StyledSectionHeading>Subscribe to our newsletter</StyledSectionHeading>
-          <form
-            name='newsletter'
-            method='POST'
-            netlify-honeypot='bot-field'
-            data-netlify-recaptcha='true'
-            data-netlify='true'
-          >
-            <input type='hidden' name='bot-field' />
-            <Box flex ai='center'>
-              <StyledInput
-                type='text'
-                placeholder='Your email'
-                aria-label='Email'
-                minw='178px'
-                required
-              />
-              <StyledButton type='submit' design='secondary' ml='0.75em'>
-                Subscribe
-              </StyledButton>
-            </Box>
-          </form>
+          <NewsletterForm />
         </StyledSection>
       </StyledGrid>
       <hr />

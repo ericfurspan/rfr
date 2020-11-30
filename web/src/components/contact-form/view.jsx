@@ -26,8 +26,6 @@ const ContactForm = () => {
     recaptchaRef.current.reset();
   };
 
-  console.log(process.env.SITE_RECAPTCHA_KEY);
-
   return (
     <Box flex col maxw='550px'>
       <h2 css={Typography.responsiveTitle2}>Send us a message</h2>
