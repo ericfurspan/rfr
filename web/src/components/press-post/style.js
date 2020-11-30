@@ -12,10 +12,7 @@ export const StyledMainContent = styled.div`
   `};
 `;
 
-export const StyledHeader = styled.div`
-  border-top: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
-`;
+export const StyledHeader = styled.div``;
 
 export const StyledTitle = styled.h1`
   max-width: 40rem;
@@ -37,5 +34,5 @@ export const StyledStoryLink = styled.a`
 `;
 
 export const StyledPublishDate = styled.div`
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 3rem;
 `;

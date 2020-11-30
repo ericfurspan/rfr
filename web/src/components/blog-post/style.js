@@ -29,7 +29,9 @@ export const StyledGrid = styled.div`
  `};
 `;
 
-export const StyledMainContent = styled.div``;
+export const StyledMainContent = styled.div`
+  margin-bottom: 2em;
+`;
 
 export const StyledPublishDate = styled.div`
   margin: 1.5rem 0 3rem;
