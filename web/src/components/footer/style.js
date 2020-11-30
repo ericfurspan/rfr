@@ -65,7 +65,7 @@ export const StyledSectionHeading = styled.p`
   font-weight: 600;
   font-size: 1.125rem;
   white-space: pre;
-  color: var(--color-very-light-gray);
+  color: var(--color-white);
 `;
 
 export const StyledCredits = styled.div`

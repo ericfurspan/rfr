@@ -29,7 +29,6 @@ const inputStyleTemplate = css`
   }
 
   :focus {
-    color: inherit;
     box-shadow: none;
     border-width: 2px;
     border-color: var(--color-link);

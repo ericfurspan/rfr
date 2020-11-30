@@ -9,6 +9,11 @@ export const StyledJumbotron = styled.div`
   border-radius: 0.2em;
   position: relative;
 
+
+  ${MEDIA.PHONE`
+    min-height: 24em;
+  `}
+
   ${(props) =>
     props.backgroundColor &&
     css`
@@ -55,6 +60,7 @@ export const StyledContent = styled.div`
   ${MEDIA.PHONE`
     left: 1rem;
     right: 1rem;
+    padding: 1em;
   `}
 `;
 
