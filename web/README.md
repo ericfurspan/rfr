@@ -1,1 +1,3 @@
-# sanity-gatsby-portfolio-web
+# Sanity Frontend
+
+A frontend company website built with Gatsby
