@@ -62,6 +62,7 @@ const ContactForm = () => {
         data-netlify-recaptcha='true'
         onSubmit={handleSubmit}
       >
+        <input type='hidden' name='form-name' value='contact' />
         <input type='hidden' name='botField' onChange={onFieldChange} />
         <Box>
           <StyledLabel>

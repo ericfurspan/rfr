@@ -55,6 +55,7 @@ const NewsletterForm = () => {
       data-netlify-recaptcha='true'
       onSubmit={handleSubmit}
     >
+      <input type='hidden' name='form-name' value='newsletter' />
       <input type='hidden' name='botField' onChange={onFieldChange} />
       <Box flex ai='center'>
         <StyledInput
