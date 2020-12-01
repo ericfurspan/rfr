@@ -29,10 +29,9 @@ const NewsletterForm = () => {
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch(window.location.origin, {
+    fetch('/index', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      mode: 'same-origin',
       body: encode({
         'form-name': form.getAttribute('name'),
         'g-recaptcha-response': recaptchaValue,
