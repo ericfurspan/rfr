@@ -24,6 +24,8 @@ const NewsletterForm = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
@@ -41,8 +43,6 @@ const NewsletterForm = () => {
         alert('Thanks! Stay tuned for Newsletter content in your inbox');
       })
       .catch((error) => console.error(error));
-
-    e.preventDefault();
   };
 
   return (
@@ -58,8 +58,9 @@ const NewsletterForm = () => {
       <input type='hidden' name='botField' onChange={onFieldChange} />
       <Box flex ai='center'>
         <StyledInput
-          name='email'
           type='email'
+          name='email'
+          id='email'
           placeholder='Your email'
           minw='178px'
           onChange={onFieldChange}

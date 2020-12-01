@@ -29,6 +29,8 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
@@ -46,8 +48,6 @@ const ContactForm = () => {
         alert('Thanks for reaching out! We will get back to you soon.');
       })
       .catch((error) => console.error(error));
-
-    e.preventDefault();
   };
 
   return (
@@ -69,6 +69,7 @@ const ContactForm = () => {
             <StyledInput
               type='text'
               name='name'
+              id='name'
               placeholder='Your Name'
               onChange={onFieldChange}
               value={formFields.name}
@@ -81,8 +82,9 @@ const ContactForm = () => {
           <StyledLabel>
             Email
             <StyledInput
-              name='email'
               type='email'
+              name='email'
+              id='email'
               placeholder='Email'
               onChange={onFieldChange}
               value={formFields.email}
@@ -97,6 +99,7 @@ const ContactForm = () => {
             <StyledInput
               type='tel'
               name='phone'
+              id='phone'
               placeholder='Phone'
               onChange={onFieldChange}
               value={formFields.phone}
@@ -110,6 +113,7 @@ const ContactForm = () => {
             <StyledInput
               type='textarea'
               name='message'
+              id='message'
               placeholder='Start a conversation and we will get back to you'
               onChange={onFieldChange}
               value={formFields.message}
