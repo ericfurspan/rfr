@@ -31,5 +31,18 @@ module.exports = {
         allowList: ['SITE_RECAPTCHA_KEY'],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Reps for Responders`,
+        short_name: `RFR`,
+        start_url: `/`,
+        background_color: `#fafafa`,
+        theme_color: `#202123`,
+        display: `standalone`,
+        icon: `src/static/logo.png`,
+      },
+    },
+    'gatsby-plugin-offline',
   ],
 };
