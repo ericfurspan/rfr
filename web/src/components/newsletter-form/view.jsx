@@ -32,6 +32,7 @@ const NewsletterForm = () => {
     fetch(window.location.origin, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      mode: 'same-origin',
       body: encode({
         'form-name': form.getAttribute('name'),
         'g-recaptcha-response': recaptchaValue,
