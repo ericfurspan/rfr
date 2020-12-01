@@ -56,10 +56,11 @@ const ContactForm = () => {
       <form
         name='contact'
         method='post'
+        action='/success'
         netlify-honeypot='botField'
         data-netlify='true'
         data-netlify-recaptcha='true'
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
         <input type='hidden' name='form-name' value='contact' />
         <input type='hidden' name='botField' onChange={onFieldChange} />
