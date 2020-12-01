@@ -34,7 +34,7 @@ const ContactForm = () => {
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch('/', {
+    fetch(window.location.origin, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
@@ -44,8 +44,8 @@ const ContactForm = () => {
       }),
     })
       .then(() => {
-        onReset();
         alert('Thanks for reaching out! We will get back to you soon.');
+        onReset();
       })
       .catch((error) => console.error(error));
   };

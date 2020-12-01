@@ -29,7 +29,7 @@ const NewsletterForm = () => {
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch('/', {
+    fetch(window.location.origin, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
@@ -39,8 +39,8 @@ const NewsletterForm = () => {
       }),
     })
       .then(() => {
-        onReset();
         alert('Thanks! Stay tuned for Newsletter content in your inbox');
+        onReset();
       })
       .catch((error) => console.error(error));
   };
