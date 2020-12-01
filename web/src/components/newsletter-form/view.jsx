@@ -4,7 +4,7 @@ import { Box, StyledInput, StyledButton } from '..';
 import { encode } from '../../lib/helpers';
 
 const formDefaults = {
-  email: '',
+  emailAddress: '',
   botField: '',
 };
 
@@ -29,7 +29,7 @@ const NewsletterForm = () => {
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch('/index', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
@@ -59,12 +59,12 @@ const NewsletterForm = () => {
       <Box flex ai='center'>
         <StyledInput
           type='email'
-          name='email'
-          id='email'
+          name='emailAddress'
+          id='emailAddress'
           placeholder='Your email'
           minw='178px'
           onChange={onFieldChange}
-          value={formFields.email}
+          value={formFields.emailAddress}
           required
         />
         <StyledButton type='submit' design='secondary' ml='0.75em' disabled={!recaptchaDone}>
