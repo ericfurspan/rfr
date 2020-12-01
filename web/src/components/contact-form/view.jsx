@@ -34,7 +34,7 @@ const ContactForm = () => {
     const form = e.target;
     const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch(window.location.origin, {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
@@ -47,7 +47,7 @@ const ContactForm = () => {
         alert('Thanks for reaching out! We will get back to you soon.');
         onReset();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => alert(error));
   };
 
   return (
@@ -56,11 +56,10 @@ const ContactForm = () => {
       <form
         name='contact'
         method='post'
-        action='/success'
         netlify-honeypot='botField'
         data-netlify='true'
         data-netlify-recaptcha='true'
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <input type='hidden' name='form-name' value='contact' />
         <input type='hidden' name='botField' onChange={onFieldChange} />

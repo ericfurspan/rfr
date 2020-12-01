@@ -42,18 +42,17 @@ const NewsletterForm = () => {
         alert('Thanks! Stay tuned for Newsletter content in your inbox');
         onReset();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => alert(error));
   };
 
   return (
     <form
       name='newsletter'
       method='post'
-      action='/success'
       netlify-honeypot='botField'
       data-netlify='true'
       data-netlify-recaptcha='true'
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <input type='hidden' name='form-name' value='newsletter' />
       <input type='hidden' name='botField' onChange={onFieldChange} />
