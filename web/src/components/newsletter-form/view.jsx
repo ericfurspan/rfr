@@ -23,32 +23,38 @@ const NewsletterForm = () => {
     recaptchaRef.current.reset();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    const form = e.target;
-    const recaptchaValue = recaptchaRef.current.getValue();
+      const form = e.target;
+      const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        'g-recaptcha-response': recaptchaValue,
-        ...formFields,
-      }),
-    })
-      .then(() => {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': form.getAttribute('name'),
+          'g-recaptcha-response': recaptchaValue,
+          ...formFields,
+        }),
+      });
+
+      if (res.ok && res.status === 200) {
         alert('Thanks! Stay tuned for Newsletter content in your inbox');
         onReset();
-      })
-      .catch((error) => alert(error));
+      } else {
+        alert(`${res.status} - ${res.statusText}`);
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
     <form
       name='newsletter'
-      method='post'
+      method='POST'
       netlify-honeypot='botField'
       data-netlify='true'
       data-netlify-recaptcha='true'
@@ -56,6 +62,7 @@ const NewsletterForm = () => {
     >
       <input type='hidden' name='form-name' value='newsletter' />
       <input type='hidden' name='botField' onChange={onFieldChange} />
+
       <Box flex ai='center'>
         <StyledInput
           type='email'
@@ -71,6 +78,7 @@ const NewsletterForm = () => {
           Subscribe
         </StyledButton>
       </Box>
+
       {process.env.SITE_RECAPTCHA_KEY && (
         <Box mt='1em'>
           <ReCAPTCHA

@@ -6,7 +6,7 @@ import { encode } from '../../lib/helpers';
 
 const formDefaults = {
   name: '',
-  email: '',
+  emailAddress: '',
   phone: '',
   message: '',
   botField: '',
@@ -28,26 +28,32 @@ const ContactForm = () => {
     recaptchaRef.current.reset();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    const form = e.target;
-    const recaptchaValue = recaptchaRef.current.getValue();
+      const form = e.target;
+      const recaptchaValue = recaptchaRef.current.getValue();
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        'g-recaptcha-response': recaptchaValue,
-        ...formFields,
-      }),
-    })
-      .then(() => {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': form.getAttribute('name'),
+          'g-recaptcha-response': recaptchaValue,
+          ...formFields,
+        }),
+      });
+
+      if (res.ok && res.status === 200) {
         alert('Thanks for reaching out! We will get back to you soon.');
         onReset();
-      })
-      .catch((error) => alert(error));
+      } else {
+        alert(`${res.status} - ${res.statusText}`);
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -55,7 +61,7 @@ const ContactForm = () => {
       <h2 css={Typography.responsiveTitle2}>Send us a message</h2>
       <form
         name='contact'
-        method='post'
+        method='POST'
         netlify-honeypot='botField'
         data-netlify='true'
         data-netlify-recaptcha='true'
@@ -63,6 +69,7 @@ const ContactForm = () => {
       >
         <input type='hidden' name='form-name' value='contact' />
         <input type='hidden' name='botField' onChange={onFieldChange} />
+
         <Box>
           <StyledLabel>
             Name
@@ -83,11 +90,11 @@ const ContactForm = () => {
             Email
             <StyledInput
               type='email'
-              name='email'
-              id='email'
+              name='emailAddress'
+              id='emailAddress'
               placeholder='Email'
               onChange={onFieldChange}
-              value={formFields.email}
+              value={formFields.emailAddress}
               required
             />
           </StyledLabel>
