@@ -42,12 +42,13 @@ const NewsletterForm = () => {
 
       if (res.ok && res.status === 200) {
         alert('Thanks! Stay tuned for Newsletter content in your inbox');
-        onReset();
       } else {
         alert(`${res.status} - ${res.statusText}`);
       }
     } catch (error) {
       alert(error);
+    } finally {
+      onReset();
     }
   };
 

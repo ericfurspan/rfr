@@ -47,12 +47,13 @@ const ContactForm = () => {
 
       if (res.ok && res.status === 200) {
         alert('Thanks for reaching out! We will get back to you soon.');
-        onReset();
       } else {
         alert(`${res.status} - ${res.statusText}`);
       }
     } catch (error) {
       alert(error);
+    } finally {
+      onReset();
     }
   };
 
