@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Box, StyledInput, StyledButton } from '..';
+import { Box, StyledInput, StyledLabel, StyledButton } from '..';
 import { encode } from '../../lib/helpers';
 
 const formDefaults = {
@@ -65,23 +65,25 @@ const NewsletterForm = () => {
       <input type='hidden' name='botField' onChange={onFieldChange} />
 
       <Box flex ai='center'>
-        <StyledInput
-          type='email'
-          name='emailAddress'
-          id='emailAddress'
-          placeholder='Your email'
-          minw='178px'
-          onChange={onFieldChange}
-          value={formFields.emailAddress}
-          required
-        />
-        <StyledButton type='submit' design='secondary' ml='0.75em' disabled={!recaptchaDone}>
+        <StyledLabel>
+          Email
+          <StyledInput
+            type='email'
+            name='emailAddress'
+            id='emailAddress'
+            placeholder='Enter your email address'
+            onChange={onFieldChange}
+            value={formFields.emailAddress}
+            required
+          />
+        </StyledLabel>
+        <StyledButton type='submit' design='secondary' ml='0.5em' disabled={!recaptchaDone}>
           Subscribe
         </StyledButton>
       </Box>
 
       {process.env.SITE_RECAPTCHA_KEY && (
-        <Box mt='1em'>
+        <Box ml='0.25em'>
           <ReCAPTCHA
             ref={recaptchaRef}
             size='normal'

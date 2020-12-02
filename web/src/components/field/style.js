@@ -17,6 +17,7 @@ const inputStyleTemplate = css`
   box-sizing: border-box;
   padding: 2px 4px 2px 8px;
   width: inherit;
+  max-width: 500px;
   height: 36px;
   outline: 0;
 
@@ -66,6 +67,7 @@ export const StyledLabel = styled.label`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  max-width: 500px;
 
   & > input, select {
     margin-top: 2px;
