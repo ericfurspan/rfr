@@ -41,7 +41,7 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
         </StyledSection>
         <StyledSection>
           <StyledSectionHeading>Subscribe to our newsletter</StyledSectionHeading>
-          <NewsletterForm />
+          <NewsletterForm recaptchaTheme='dark' />
         </StyledSection>
       </StyledGrid>
       <hr />

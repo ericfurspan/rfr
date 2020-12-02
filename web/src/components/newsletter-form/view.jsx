@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Box, StyledInput, StyledLabel, StyledButton } from '..';
+import { Box, StyledInput, StyledButton } from '..';
 import { encode } from '../../lib/helpers';
 
 const formDefaults = {
@@ -8,7 +8,7 @@ const formDefaults = {
   botField: '',
 };
 
-const NewsletterForm = () => {
+const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
   const [recaptchaDone, setRecaptchaDone] = useState(false);
   const [formFields, setFormFields] = useState(formDefaults);
   const recaptchaRef = useRef();
@@ -65,29 +65,27 @@ const NewsletterForm = () => {
       <input type='hidden' name='botField' onChange={onFieldChange} />
 
       <Box flex ai='center'>
-        <StyledLabel>
-          Email
-          <StyledInput
-            type='email'
-            name='emailAddress'
-            id='emailAddress'
-            placeholder='Enter your email address'
-            onChange={onFieldChange}
-            value={formFields.emailAddress}
-            required
-          />
-        </StyledLabel>
+        <StyledInput
+          type='email'
+          name='emailAddress'
+          id='emailAddress'
+          placeholder='Enter your email address'
+          onChange={onFieldChange}
+          value={formFields.emailAddress}
+          minw='200px'
+          required
+        />
         <StyledButton type='submit' design='secondary' ml='0.5em' disabled={!recaptchaDone}>
           Subscribe
         </StyledButton>
       </Box>
 
       {process.env.SITE_RECAPTCHA_KEY && (
-        <Box ml='0.25em'>
+        <Box mt='1em'>
           <ReCAPTCHA
             ref={recaptchaRef}
             size='normal'
-            theme='dark'
+            theme={recaptchaTheme}
             sitekey={process.env.SITE_RECAPTCHA_KEY}
             onChange={() => setRecaptchaDone(true)}
           />
