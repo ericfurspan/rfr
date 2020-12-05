@@ -19,11 +19,7 @@ export const title3 = css`
 export const large = css`
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
-`;
-export const largeLight = css`
-  font-size: var(--font-large-size);
-  line-height: var(--font-large-line-height);
-  font-weight: 400;
+  margin-bottom: 0.5em;
 `;
 export const base = css`
   font-size: inherit;
@@ -60,6 +56,7 @@ export const paragraph = css`
 `;
 export const blockQuote = css`
   background: var(--color-very-light-gray);
+  padding: 1rem;
 `;
 export const responsiveTitle1 = css`
   font-weight: 700;
@@ -142,11 +139,11 @@ export const responsiveTitle5 = css`
  * Alternate elements
  */
 export const subtitle = css`
-  color: var(--color-dark-gray);
+  color: var(--color-black);
   background-color: var(--color-very-light-gray);
-  font-weight: 500;
+  font-weight: 300;
   border-radius: 0.2em;
-  padding: 0.65em;
+  padding: 0.75em;
 `;
 export const headline = css`
   font-size: var(--font-small-size);

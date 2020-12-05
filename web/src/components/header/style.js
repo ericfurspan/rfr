@@ -28,16 +28,17 @@ export const StyledAttentionBanner = styled.div`
 `;
 
 export const StyledContainer = styled.div`
+  display: flex;
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1400px;
-  padding: 2em 1em;
-  display: flex;
+  padding: 2em 1em 0;
 `;
 
 export const StyledTitle = styled.h1`
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-family-brand);
   margin: auto 0.75rem;
   flex: 1;
 
@@ -80,6 +81,7 @@ export const StyledNav = styled.nav`
     display: block;
     color: inherit;
     text-decoration: none;
+    font-size: 0.875rem;
   }
 
   & ul li a:hover {

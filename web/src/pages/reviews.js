@@ -53,7 +53,7 @@ const ReviewsPage = ({ data }) => {
       <Container>
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
-        <PreviewGrid nodes={reviewsNodes} />
+        <PreviewGrid nodes={reviewsNodes} nodeType='review' />
       </Container>
     </>
   );

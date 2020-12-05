@@ -5,7 +5,7 @@ import { Service } from '../service';
 import { StyledGrid, StyledBrowseMore } from './style';
 import { Box, Typography, boxProps } from '..';
 
-const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewOnly, ...rest }) => {
+const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewMode, ...rest }) => {
   return (
     <Box mb='2em' mt='4em' {...boxProps(rest)}>
       {title && <h2 css={Typography.responsiveTitle2}>{title}</h2>}
@@ -13,7 +13,7 @@ const ServicesGrid = ({ title, nodes, browseMoreHref, browseMoreText, previewOnl
       <StyledGrid>
         {nodes && nodes.map((node) => (
           <li key={node.id}>
-            <Service {...node} preview={previewOnly} />
+            <Service {...node} preview={previewMode} />
           </li>
         ))}
       </StyledGrid>
@@ -32,7 +32,7 @@ ServicesGrid.defaultProps = {
   nodes: [],
   browseMoreHref: '',
   browseMoreText: '',
-  previewOnly: false,
+  previewMode: false,
 };
 
 export default ServicesGrid;

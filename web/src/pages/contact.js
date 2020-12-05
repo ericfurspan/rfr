@@ -26,7 +26,8 @@ const ContactPage = ({ data }) => {
       <SEO title='Contact' />
       <Container>
         <BlockContent blocks={page._rawBody || []} />
-        <br /><br />
+        <br />
+        <br />
         <ContactForm />
       </Container>
     </>

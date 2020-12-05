@@ -69,13 +69,13 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
           type='email'
           name='emailAddress'
           id='emailAddress'
-          placeholder='Enter your email address'
+          placeholder='Email address'
           onChange={onFieldChange}
           value={formFields.emailAddress}
           minw='200px'
           required
         />
-        <StyledButton type='submit' design='secondary' ml='0.5em' disabled={!recaptchaDone}>
+        <StyledButton type='submit' design='primary' ml='0.5em' disabled={!recaptchaDone}>
           Subscribe
         </StyledButton>
       </Box>

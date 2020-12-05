@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { cn } from '../../lib/helpers';
 import { Box, TeamMemberPreview, PreviewItem, Typography, boxProps } from '..';
 import { StyledGrid, StyledBrowseMore, StyledEmptyNodesText } from './style';
+import { Review } from '../review';
 
 const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, browseMoreText, withStyledTitle, ...rest }) => {
   const titleStyles = withStyledTitle ? cn(Typography.small, Typography.subtitle) : Typography.responsiveTitle2;
@@ -17,6 +18,7 @@ const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, brows
             {nodes.map(node => (
               <li key={node.id}>
                 {nodeType === 'default' && <PreviewItem {...node} />}
+                {nodeType === 'review' && <Review {...node} previewMode />}
                 {nodeType === 'teamMember' && <TeamMemberPreview {...node} />}
               </li>
             ))}

@@ -4,7 +4,14 @@ import { format } from 'date-fns';
 
 import { getBlogUrl, getPressReleaseUrl, getEventUrl, mapEdgesToNodes } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, PreviewGrid, BlockContent, NewsletterForm, Typography, Box } from '../components';
+import {
+  Container,
+  PreviewGrid,
+  BlockContent,
+  NewsletterForm,
+  Typography,
+  Box,
+} from '../components';
 
 export const query = graphql`
   query NewsQuery {
@@ -122,7 +129,7 @@ const NewsPage = ({ data }) => {
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
         <Box flex col mb='3em'>
-          <span css={Typography.responsiveTitle3}>Subscribe to our newsletter</span>
+          <span css={Typography.large}>Subscribe to our newsletter</span>
           <NewsletterForm />
         </Box>
         <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withStyledTitle />

@@ -317,7 +317,7 @@ const IndexPage = ({ data }) => {
             nodes={servicesNodes}
             browseMoreHref='/services'
             browseMoreText='Learn more about what we do'
-            previewOnly
+            previewMode
             gc='2 / -2'
           />
         )}

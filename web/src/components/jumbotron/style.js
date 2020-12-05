@@ -9,7 +9,6 @@ export const StyledJumbotron = styled.div`
   border-radius: 0.2em;
   position: relative;
 
-
   ${MEDIA.PHONE`
     min-height: 24em;
   `}
@@ -23,30 +22,32 @@ export const StyledJumbotron = styled.div`
   ${(props) =>
     props.hasImage &&
     css`
-    ${StyledContent} {
-      border-radius: 0.2em;
-      background-color: var(--color-white);
+      ${StyledContent} {
+        border-radius: 0.2em;
+        background-color: var(--color-white);
 
-      ${props.backgroundColor && `
+        ${props.backgroundColor &&
+        `
         background-color: ${props.backgroundColor};
       `}
-    }
+      }
 
-    & img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      vertical-align: top;
-      object-fit: cover;
+      & img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+        object-fit: cover;
 
-      ${(props) => props.backgroundOpacity &&
-        css`
-          opacity: ${props.backgroundOpacity};
-        `}
-    }
-  `}
+        ${(props) =>
+    props.backgroundOpacity &&
+          css`
+            opacity: ${props.backgroundOpacity};
+          `}
+      }
+    `}
 `;
 
 export const StyledContent = styled.div`
@@ -83,7 +84,7 @@ export const StyledCTAButton = styled.button`
   justify-content: center;
   border-radius: 4px;
   border: 0;
-  margin-top: 1em;
+  margin-top: 1.5em;
   white-space: nowrap;
   transition: opacity 200ms linear, color 200ms linear;
 
@@ -104,6 +105,14 @@ export const StyledCTAButton = styled.button`
       min-height: 56px;
       min-width: 224px;
       font-size: 1.25rem;
+    `};
+
+  ${(props) =>
+    props.buttonSize === 'xlarge' &&
+    css`
+      min-height: 72px;
+      min-width: 248px;
+      font-size: 1.35rem;
     `};
 
   ${(props) =>

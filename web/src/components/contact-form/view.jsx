@@ -78,7 +78,7 @@ const ContactForm = () => {
               type='text'
               name='name'
               id='name'
-              placeholder='Enter your name'
+              placeholder='Full Name'
               onChange={onFieldChange}
               value={formFields.name}
               required
@@ -93,7 +93,7 @@ const ContactForm = () => {
               type='email'
               name='emailAddress'
               id='emailAddress'
-              placeholder='Enter your email address'
+              placeholder='Email address'
               onChange={onFieldChange}
               value={formFields.emailAddress}
               required
@@ -108,7 +108,7 @@ const ContactForm = () => {
               type='tel'
               name='phone'
               id='phone'
-              placeholder='(optional) Enter your phone number'
+              placeholder='Phone number (optional)'
               onChange={onFieldChange}
               value={formFields.phone}
             />
@@ -122,7 +122,7 @@ const ContactForm = () => {
               type='textarea'
               name='message'
               id='message'
-              placeholder='Start a conversation and we will get back to you'
+              placeholder='Your message to us'
               onChange={onFieldChange}
               value={formFields.message}
               required

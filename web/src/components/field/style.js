@@ -43,7 +43,8 @@ export const StyledSelect = styled.select`
 export const StyledInput = styled.input`
   ${inputStyleTemplate};
 
-  &[type="checkbox"], &[type="radio"] {
+  &[type='checkbox'],
+  &[type='radio'] {
     height: initial;
     margin-top: 0;
     margin-bottom: 0;
@@ -69,22 +70,28 @@ export const StyledLabel = styled.label`
   width: 100%;
   max-width: 500px;
 
-  & > input, select {
+  & > input,
+  select {
     margin-top: 2px;
   }
-  
-  ${props => props.row && css`
-    flex-direction: row;
 
-    & > input, select {
-      margin-left: 2px;
-    }
-  `}
+  ${(props) =>
+    props.row &&
+    css`
+      flex-direction: row;
 
-  ${props => props.nestedLabel && css`
-    font-weight: 500;
-    margin-bottom: 0;
-  `}
+      & > input,
+      select {
+        margin-left: 2px;
+      }
+    `}
+
+  ${(props) =>
+    props.nestedLabel &&
+    css`
+      font-weight: 500;
+      margin-bottom: 0;
+    `}
 `;
 
 export const StyledLegend = styled.legend`
@@ -123,30 +130,64 @@ export const StyledButton = styled.button`
   min-height: 36px;
   padding: 0 16px;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 0;
   vertical-align: middle;
   white-space: nowrap;
 
-  ${props => props.design === 'primary' && css`
-    background-color: var(--color-link);
-    color: var(--color-white);
-    border: 1px solid var(--color-link);
+  ${(props) =>
+    props.design === 'primary' &&
+    css`
+      background-color: var(--color-link);
+      color: var(--color-white);
+      border: 1px solid var(--color-link);
 
-    &:hover {
-      opacity: 0.85;
-    }
-  `}
+      &:hover {
+        opacity: 0.85;
+      }
+    `}
 
-  ${props => props.design === 'secondary' && css`
-    background-color: var(--color-dark-white);
-    color: var(--color-black);
-  `}
+  ${(props) =>
+    props.design === 'secondary' &&
+    css`
+      background-color: var(--color-dark-white);
+      color: var(--color-black);
+    `}
 
-  ${props => props.disabled && css`
-    background-color: var(--color-very-light-gray);
-    color: var(--color-dark-gray);
-    cursor: not-allowed !important;
-    border: 0;
-  `};
+  ${(props) =>
+    props.size === 'small' &&
+    css`
+      min-height: 42px;
+      min-width: 126px;
+    `};
+
+  ${(props) =>
+    props.size === 'large' &&
+    css`
+      min-height: 56px;
+      min-width: 224px;
+      font-size: 1.25rem;
+    `};
+
+  ${(props) =>
+    props.size === 'xlarge' &&
+    css`
+      min-height: 72px;
+      min-width: 248px;
+      font-size: 1.35rem;
+    `};
+
+  & svg {
+    margin: 0 0.75rem;
+    vertical-align: middle;
+  }
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      background-color: var(--color-very-light-gray);
+      color: var(--color-dark-gray);
+      cursor: not-allowed !important;
+      border: 0;
+    `};
 `;
