@@ -10,6 +10,12 @@ export default {
       type: 'blockContent'
     },
     {
+      name: 'isCentered',
+      title: 'Centered?',
+      type: 'boolean',
+      description: 'Whether the contents of the page should be centered'
+    },
+    {
       name: 'priority',
       title: 'Priority',
       type: 'number',

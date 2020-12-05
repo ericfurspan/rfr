@@ -3,6 +3,7 @@ export const colorInputList = [
   { title: 'Red', value: '#D22429' },
   { title: 'Gold', value: '#b0852a' },
   { title: 'Yellow', value: '#F2C335' },
+  { title: 'Link Blue', value: '#04f' },
   { title: 'Blue', value: '#013478' },
   { title: 'Light Blue', value: '#6380A6' },
   { title: 'Black', value: '#202123' },

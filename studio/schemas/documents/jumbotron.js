@@ -6,15 +6,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'backgroundColor',
-      title: 'Background color',
-      type: 'colors',
-      description: 'Background color for the Jumbotron. This will have no effect if you have selected a background image.',
-      options: {
-        list: colorInputList
-      }
-    },
-    {
       name: 'title',
       title: 'Title',
       type: 'blockText'
@@ -26,8 +17,18 @@ export default {
     },
     {
       name: 'ctaButton',
-      title: 'Call to Action Button',
-      type: 'button'
+      title: 'Primary Button',
+      type: 'button',
+      description: 'The Call to Action (CTA) button'
+    },
+    {
+      name: 'backgroundColor',
+      title: 'Background color',
+      type: 'colors',
+      description: 'Background color for the Jumbotron. This will have no effect if you have selected a background image.',
+      options: {
+        list: colorInputList
+      }
     },
     {
       name: 'backgroundImage',

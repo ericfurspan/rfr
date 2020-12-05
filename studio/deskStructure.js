@@ -50,8 +50,13 @@ export default () =>
         .icon(FaPodcast),
       S.listItem()
         .title('Payments')
-        .schemaType('payment')
-        .child(S.documentTypeList('payment').title('Payments'))
+        .child(
+          S.editor()
+            .id('payment')
+            .schemaType('payment')
+            .documentId('payment')
+            .title('Payments')
+        )
         .icon(FaRegCreditCard),
       S.listItem()
         .title('Banner')
@@ -108,6 +113,15 @@ export default () =>
                     .id('servicesPage')
                     .schemaType('page')
                     .documentId('services')
+                )
+                .icon(FaFileAlt),
+              S.listItem()
+                .title('Donate')
+                .child(
+                  S.editor()
+                    .id('donatePage')
+                    .schemaType('page')
+                    .documentId('donate')
                 )
                 .icon(FaFileAlt),
               S.listItem()

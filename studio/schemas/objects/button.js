@@ -30,6 +30,7 @@ export default {
       name: 'buttonLinkTo',
       type: 'reference',
       title: 'Button Link',
+      description: 'Link to an internal page',
       to: [
         { type: 'post' },
         { type: 'event' },

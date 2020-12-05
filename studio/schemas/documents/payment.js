@@ -4,8 +4,8 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'body',
-      title: 'External',
+      name: 'payExternal',
+      title: 'External Payment Methods',
       type: 'array',
       of: [{ type: 'weblink' }]
     }
