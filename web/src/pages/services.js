@@ -11,7 +11,7 @@ export const query = graphql`
       _rawBody(resolveReferences: { maxDepth: 4 })
       isCentered
     }
-    services: allSanityService(sort: { fields: [priority], order: ASC }) {
+    services: allSanityService(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id

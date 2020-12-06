@@ -12,7 +12,7 @@ const query = graphql`
     }
     allPages: allSanityPage(
       filter: { _id: { regex: "/^[A-Za-z]+$/" } }
-      sort: { fields: [priority], order: ASC }
+      sort: { fields: [order], order: ASC }
     ) {
       edges {
         node {

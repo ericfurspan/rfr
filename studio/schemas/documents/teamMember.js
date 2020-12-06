@@ -30,18 +30,22 @@ export default {
       }
     },
     {
-      name: 'priority',
-      title: 'Priority',
+      name: 'order',
+      title: 'Order',
       type: 'number',
-      description: 'Used to set the display order',
-      validation: Rule => Rule.min(1).integer().positive()
+      hidden: true
     }
   ],
   orderings: [
     {
-      title: 'Priority high->low',
-      name: 'priorityAsc',
-      by: [{ field: 'priority', direction: 'asc' }]
+      title: 'Order high->low',
+      name: 'orderAsc',
+      by: [{ field: 'order', direction: 'asc' }]
+    },
+    {
+      title: 'Order low->high',
+      name: 'orderDesc',
+      by: [{ field: 'order', direction: 'desc' }]
     }
   ],
   preview: {

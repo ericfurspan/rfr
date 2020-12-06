@@ -11,7 +11,7 @@ export const query = graphql`
       _rawBody(resolveReferences: { maxDepth: 4 })
       isCentered
     }
-    teamMembers: allSanityTeamMember(sort: { fields: [priority], order: ASC }) {
+    teamMembers: allSanityTeamMember(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id

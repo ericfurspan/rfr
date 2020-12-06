@@ -15,11 +15,10 @@ export default {
       description: 'Whether the contents of the page should be centered'
     },
     {
-      name: 'priority',
-      title: 'Priority',
+      name: 'order',
+      title: 'Order',
       type: 'number',
-      description: 'Sets the order by which the page link will appear in the navigation bar (ascending)',
-      validation: Rule => Rule.min(1).integer().positive()
+      hidden: true
     }
   ],
   preview: {

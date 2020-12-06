@@ -26,11 +26,22 @@ export default {
       to: [{ type: 'icon' }]
     },
     {
-      name: 'priority',
-      title: 'Priority',
+      name: 'order',
+      title: 'Order',
       type: 'number',
-      description: 'Sets the order by which the content will appear (ascending)',
-      validation: Rule => Rule.min(1).integer().positive()
+      hidden: true
+    }
+  ],
+  orderings: [
+    {
+      title: 'Order high->low',
+      name: 'orderAsc',
+      by: [{ field: 'order', direction: 'asc' }]
+    },
+    {
+      title: 'Order low->high',
+      name: 'orderDesc',
+      by: [{ field: 'order', direction: 'desc' }]
     }
   ]
 };

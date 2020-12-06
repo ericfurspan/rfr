@@ -72,7 +72,7 @@ export const query = graphql`
         alt
       }
     }
-    services: allSanityService {
+    services: allSanityService(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id
@@ -112,7 +112,7 @@ export const query = graphql`
         }
       }
     }
-    teamMembers: allSanityTeamMember(limit: 3, sort: { fields: [priority], order: ASC }) {
+    teamMembers: allSanityTeamMember(limit: 3, sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id

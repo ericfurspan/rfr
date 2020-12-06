@@ -17,10 +17,10 @@
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "content-model-graph",
     "@sanity/color-input",
     "color-list",
-    "dashboard-widget-gatsby"
+    "dashboard-widget-gatsby",
+    "order-documents"
   ],
   "parts": [
     {
