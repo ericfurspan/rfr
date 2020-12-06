@@ -19,7 +19,8 @@
     "dashboard-widget-netlify",
     "content-model-graph",
     "@sanity/color-input",
-    "color-list"
+    "color-list",
+    "dashboard-widget-gatsby"
   ],
   "parts": [
     {

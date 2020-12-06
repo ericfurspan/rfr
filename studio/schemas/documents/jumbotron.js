@@ -16,12 +16,6 @@ export default {
       type: 'blockText'
     },
     {
-      name: 'ctaButton',
-      title: 'Primary Button',
-      type: 'button',
-      description: 'The Call to Action (CTA) button'
-    },
-    {
       name: 'backgroundColor',
       title: 'Background color',
       type: 'colors',
@@ -29,6 +23,27 @@ export default {
       options: {
         list: colorInputList
       }
+    },
+    {
+      name: 'isFullHeightBgColor',
+      title: 'Extended background color',
+      description: 'Should the background color extend into the header?',
+      type: 'boolean'
+    },
+    {
+      name: 'headerTextColor',
+      title: 'Header text color',
+      type: 'colors',
+      description: 'Text color for the Header. You should only need to set this if using an extended background color.',
+      options: {
+        list: colorInputList
+      }
+    },
+    {
+      name: 'ctaButton',
+      title: 'Primary Button',
+      type: 'button',
+      description: 'The primary Call to Action (CTA) button'
     },
     {
       name: 'backgroundImage',

@@ -35,12 +35,12 @@ export default {
     {
       title: 'Review date new–>old',
       name: 'reviewDateAsc',
-      by: [{ field: 'reviewedAt', direction: 'asc' }, { field: 'title', direction: 'asc' }]
+      by: [{ field: 'reviewedAt', direction: 'asc' }, { field: 'text', direction: 'asc' }]
     },
     {
       title: 'Review date old->new',
       name: 'reviewDateDesc',
-      by: [{ field: 'reviewedAt', direction: 'desc' }, { field: 'title', direction: 'asc' }]
+      by: [{ field: 'reviewedAt', direction: 'desc' }, { field: 'text', direction: 'asc' }]
     }
   ],
   preview: {

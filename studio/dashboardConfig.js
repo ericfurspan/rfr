@@ -41,6 +41,16 @@ export default {
         ]
       }
     },
+    {
+      name: 'gatsby',
+      options: {
+        sites: [
+          {
+            siteUrl: 'https://preview-rfrfrontend.gtsb.io'
+          }
+        ]
+      }
+    },
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',

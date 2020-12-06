@@ -30,6 +30,7 @@ import socialMedia from './objects/socialMedia';
 import person from './objects/person';
 import figure from './objects/figure';
 import weblink from './objects/weblink';
+import faq from './objects/faq';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -49,6 +50,7 @@ export default createSchema({
     figure,
     person,
     weblink,
+    faq,
     // Documents
     seo,
     companyInfo,

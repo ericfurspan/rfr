@@ -45,8 +45,9 @@ export default {
       options: {
         list: [
           { title: 'Small', value: 'small' },
+          { title: 'Normal', value: 'normal' },
           { title: 'Large', value: 'large' },
-          { title: 'Normal', value: 'normal' }
+          { title: 'X-Large', value: 'xlarge' }
         ]
       }
     }

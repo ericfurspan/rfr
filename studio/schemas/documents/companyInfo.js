@@ -17,12 +17,18 @@ export default {
     {
       name: 'mission',
       title: 'Mission Statement',
-      type: 'blockText'
+      type: 'text'
     },
     {
       name: 'contact',
       title: 'Contact',
       type: 'contactInfo'
+    },
+    {
+      name: 'faq',
+      title: 'Frequently Asked Questions',
+      type: 'array',
+      of: [{ type: 'faq' }]
     },
     {
       name: 'logo',

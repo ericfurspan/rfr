@@ -5,6 +5,8 @@ export default {
   name: 'blockText',
   title: 'Block Text',
   type: 'array',
+  description: 'Add your content in the rich text editor below',
+  liveEdit: true,
   of: [
     {
       title: 'Block',
@@ -16,14 +18,14 @@ export default {
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' }
+        { title: 'H5', value: 'h5' },
+        { title: 'Quote', value: 'blockquote' }
       ],
       lists: [],
       marks: {
         decorators: [
-          { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' },
-          { title: 'Code', value: 'code' }
+          { title: 'Bold', value: 'strong' },
+          { title: 'Italic', value: 'em' }
         ],
         annotations: [
           {

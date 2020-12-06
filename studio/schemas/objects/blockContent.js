@@ -1,10 +1,12 @@
-import { FaExternalLinkAlt, FaAlignJustify, FaLink, FaPalette } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaLink, FaPalette } from 'react-icons/fa';
 import { colorInputList } from '../../constants';
 
 export default {
   title: 'Block Content',
   name: 'blockContent',
   type: 'array',
+  description: 'Add your content in the rich text editor below',
+  liveEdit: true,
   of: [
     {
       title: 'Block',
@@ -21,28 +23,10 @@ export default {
       ],
       marks: {
         decorators: [
-          { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' }
+          { title: 'Bold', value: 'strong' },
+          { title: 'Italic', value: 'em' }
         ],
         annotations: [
-          {
-            name: 'layout',
-            type: 'object',
-            title: 'Layout',
-            blockEditor: {
-              icon: FaAlignJustify
-            },
-            fields: [
-              {
-                name: 'textAlign',
-                type: 'string',
-                title: 'Text align',
-                options: {
-                  list: [{ title: 'Left', value: 'left' }, { title: 'Center', value: 'center' }, { title: 'Right', value: 'right' }]
-                }
-              }
-            ]
-          },
           {
             name: 'color',
             type: 'object',
