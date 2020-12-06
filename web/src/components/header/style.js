@@ -4,6 +4,11 @@ import { MEDIA } from '../../lib/helpers';
 export const StyledHeader = styled.header`
   position: relative;
   z-index: 100;
+  padding-bottom: 2em;
+  
+  ${props => props.headerBgColor && css`
+    background-color: ${props.headerBgColor};
+  `}
 `;
 
 export const StyledAttentionBanner = styled.div`
@@ -45,6 +50,7 @@ export const StyledTitle = styled.h1`
   & a {
     display: inline-block;
     color: inherit;
+    color: ${props => props.headerTextColor || 'inherit'};
     text-decoration: none;
 
     &:hover {
@@ -63,6 +69,7 @@ export const StyledMenuBtn = styled.button`
   padding: 0;
   outline: none;
   z-index: 1;
+  color: ${props => props.headerTextColor || 'inherit'};
 
   ${MEDIA.MIN_TABLET`
     display: none;
@@ -79,9 +86,9 @@ export const StyledNav = styled.nav`
 
   & ul li a {
     display: block;
-    color: inherit;
+    color: ${props => props.headerTextColor || 'inherit'};
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   & ul li a:hover {
@@ -90,7 +97,7 @@ export const StyledNav = styled.nav`
 
   ${MEDIA.TABLET`
     position: absolute;
-    background: var(--color-white);
+    background: ${props => props.headerBgColor || 'var(--color-white)'};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     left: 0;
     right: 0;

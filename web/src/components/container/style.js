@@ -10,12 +10,10 @@ export const StyledRoot = styled.div`
   ${(props) =>
     props.centered &&
     css`
-      display: block;
       text-align: center;
-      max-width: 768px;
     `}
 
   ${MEDIA.MIN_PHONE`
-    padding: 2em;
+    // padding: 2em;
   `};
 `;

@@ -9,6 +9,7 @@ export const query = graphql`
   query ServicesPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)services/" }) {
       _rawBody(resolveReferences: { maxDepth: 4 })
+      isCentered
     }
     services: allSanityService(sort: { fields: [priority], order: ASC }) {
       edges {
@@ -37,9 +38,10 @@ const ServicesPage = ({ data }) => {
   return (
     <>
       <SEO title='Services' />
-      <Container>
+      <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
+
         <ServicesGrid nodes={servicesNodes} />
       </Container>
     </>

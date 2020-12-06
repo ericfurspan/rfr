@@ -29,7 +29,7 @@ const serializers = {
           return <span css={Typography.small}>{props.children}</span>;
 
         case 'normal':
-          return <span css={Typography.base}>{props.children}</span>;
+          return <div css={Typography.base}>{props.children}</div>;
 
         case 'blockquote':
           return <blockquote css={Typography.blockQuote}>{props.children}</blockquote>;
@@ -59,12 +59,6 @@ const serializers = {
     color: (props) => {
       if (props.mark.fontColor) {
         return <span style={{ color: props.mark.fontColor }}>{props.children}</span>;
-      }
-      return props.children;
-    },
-    layout: (props) => {
-      if (props.mark.textAlign) {
-        return <span style={{ display: 'block', textAlign: props.mark.textAlign }}>{props.children}</span>;
       }
       return props.children;
     },

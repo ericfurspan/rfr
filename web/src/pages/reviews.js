@@ -10,6 +10,7 @@ export const query = graphql`
   query ReviewsQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)reviews/" }) {
       _rawBody(resolveReferences: { maxDepth: 4 })
+      isCentered
     }
     reviews: allSanityReview {
       edges {
@@ -50,9 +51,10 @@ const ReviewsPage = ({ data }) => {
   return (
     <>
       <SEO title='Reviews' />
-      <Container>
+      <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
+
         <PreviewGrid nodes={reviewsNodes} nodeType='review' />
       </Container>
     </>

@@ -4,9 +4,8 @@ import { Link } from 'gatsby';
 import { MEDIA } from '../../lib/helpers';
 
 export const StyledJumbotron = styled.div`
-  min-height: 30em;
+  min-height: 28em;
   color: var(--color-black);
-  border-radius: 0.2em;
   position: relative;
 
   ${MEDIA.PHONE`
@@ -24,7 +23,7 @@ export const StyledJumbotron = styled.div`
     css`
       ${StyledContent} {
         border-radius: 0.2em;
-        background-color: var(--color-white);
+        background-color: var(--color-dark-white);
 
         ${props.backgroundColor &&
         `
@@ -35,8 +34,10 @@ export const StyledJumbotron = styled.div`
       & img {
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: 0;
+        /* left: 0; */
+        /* width: 100%; */
+        width: calc(100% - 41em); // todo: use gatsbt image for this
         height: 100%;
         vertical-align: top;
         object-fit: cover;
@@ -52,15 +53,17 @@ export const StyledJumbotron = styled.div`
 
 export const StyledContent = styled.div`
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  right: 2rem;
+  /* top: 2rem; */
+  top: 0;
+  bottom: 0;
+  left: 1em;
+  /* right: 2rem; */
   padding: 2em;
   max-width: 36rem;
 
   ${MEDIA.PHONE`
-    left: 1rem;
-    right: 1rem;
+    /* left: 1rem;
+    right: 1rem; */
     padding: 1em;
   `}
 `;
@@ -78,6 +81,7 @@ export const StyledCTAButton = styled.button`
   cursor: pointer;
   font-size: 1.125rem;
   font-weight: 700;
+  text-transform: uppercase;
   min-height: 42px;
   min-width: 126px;
   padding: 0 16px;

@@ -96,7 +96,7 @@ export const BoxMixin = css`
     `}
 
   /* Layout Props */
-    height: ${(props) => props.h || props.height};
+  height: ${(props) => props.h || props.height};
   min-height: ${(props) => props.minh || props.minHeight};
   max-height: ${(props) => props.maxh || props.maxHeight};
   width: ${(props) => props.w || props.width};
@@ -108,6 +108,7 @@ export const BoxMixin = css`
   left: ${(props) => props.l || props.left};
   right: ${(props) => props.r || props.right};
   z-index: ${(props) => props.zi || props.zIndex};
+  text-align: ${(props) => props.ta || props.textAlign};
 
   ${(props) =>
     props.scroll &&

@@ -10,7 +10,7 @@ const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, brows
   const titleText = withStyledTitle ? `${title} (${nodes.length})` : title;
 
   return (
-    <Box mb='2em' {...boxProps(rest)}>
+    <Box mb='2em' ta='initial' {...boxProps(rest)}>
       {title && <h2 css={titleStyles}>{titleText}</h2>}
       {nodes.length > 0 ? (
         <>

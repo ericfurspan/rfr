@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { Review } from '../components';
+import { Container, Review } from '../components';
 
 export const query = graphql`
   query ReviewTemplateQuery($id: String!) {
@@ -18,15 +18,14 @@ export const query = graphql`
   }
 `;
 
-const ReviewTemplate = (props) => {
-  const { data } = props;
-  const review = data && data.review;
+const ReviewTemplate = ({ data }) => {
+  const { review } = (data || {});
 
   return (
-    <>
+    <Container>
       {review && <SEO title={review.reviewer || 'Untitled'} />}
       {review && <Review {...review} />}
-    </>
+    </Container>
   );
 };
 

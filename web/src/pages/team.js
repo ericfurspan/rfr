@@ -9,6 +9,7 @@ export const query = graphql`
   query TeamPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)team/" }) {
       _rawBody(resolveReferences: { maxDepth: 4 })
+      isCentered
     }
     teamMembers: allSanityTeamMember(sort: { fields: [priority], order: ASC }) {
       edges {
@@ -75,9 +76,10 @@ const TeamPage = ({ data }) => {
   return (
     <>
       <SEO title='Team' />
-      <Container>
+      <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
+
         <PreviewGrid nodes={teamMemberNodes} nodeType='teamMember' />
       </Container>
     </>

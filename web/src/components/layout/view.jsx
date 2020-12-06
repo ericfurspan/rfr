@@ -3,7 +3,7 @@ import React from 'react';
 import { Header, Footer } from '..';
 import { StyledContent } from './style';
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, contactInfo, allPages }) => (
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, contactInfo, allPages, headerBgColor, headerTextColor }) => (
   <>
     <Header
       siteTitle={siteTitle}
@@ -13,6 +13,8 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, 
       onShowNav={onShowNav}
       showNav={showNav}
       allPages={allPages}
+      headerBgColor={headerBgColor}
+      headerTextColor={headerTextColor}
     />
     <StyledContent>{children}</StyledContent>
     <Footer

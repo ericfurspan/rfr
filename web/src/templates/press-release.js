@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { PressPost } from '../components';
+import { Container, PressPost } from '../components';
 
 export const query = graphql`
   query PressReleaseTemplateQuery($id: String!) {
@@ -20,15 +20,14 @@ export const query = graphql`
   }
 `;
 
-const PressReleaseTemplate = (props) => {
-  const { data } = props;
-  const pressRelease = data && data.pressRelease;
+const PressReleaseTemplate = ({ data }) => {
+  const { pressRelease } = (data || {});
 
   return (
-    <>
+    <Container>
       {pressRelease && <SEO title={pressRelease.title || 'Untitled'} />}
       {pressRelease && <PressPost {...pressRelease} />}
-    </>
+    </Container>
   );
 };
 

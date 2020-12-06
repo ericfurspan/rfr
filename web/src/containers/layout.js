@@ -20,6 +20,11 @@ const query = graphql`
         }
       }
     }
+    jumbotron: sanityJumbotron {
+      backgroundColor
+      isFullHeightBgColor
+      headerTextColor
+    }
     banner: sanityBanner {
       _rawBannerText
       backgroundColor
@@ -90,6 +95,8 @@ const LayoutContainer = (props) => {
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
             allPages={allPages}
+            headerBgColor={data.jumbotron.isFullHeightBgColor ? data.jumbotron.backgroundColor : null}
+            headerTextColor={data.jumbotron.isFullHeightBgColor ? data.jumbotron.headerTextColor : null}
           />
         );
       }}

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   max-width: 42rem;
-  padding: 2em;
 `;
 
 export const StyledFigure = styled.figure`
@@ -17,5 +16,10 @@ export const StyledBlockquote = styled.blockquote`
 export const StyledCitation = styled.figcaption`
   color: var(--color-dark-gray);
   font-style: italic;
-  margin: 0.5em 0.25em;
+  margin: 0.5em 0.25em 1.5em 0;
+
+  &:before {
+    content: '💬 ';
+    font-size: 1.5em;
+  }
 `;

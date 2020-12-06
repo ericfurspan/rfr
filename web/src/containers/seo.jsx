@@ -13,46 +13,46 @@ const SEO = ({ title, description, lang, meta, keywords }) => (
       return (
         <Helmet
           htmlAttributes={{ lang }}
-          title={`${data.site.companyName} | ${title}`}
+          title={`${title} - ${data.site.companyName}`}
           meta={[
             {
               name: 'description',
-              content: metaDescription
+              content: metaDescription,
             },
             {
               property: 'og:title',
-              content: title
+              content: title,
             },
             {
               property: 'og:description',
-              content: metaDescription
+              content: metaDescription,
             },
             {
               property: 'og:type',
-              content: 'website'
+              content: 'website',
             },
             {
               name: 'twitter:card',
-              content: 'summary'
+              content: 'summary',
             },
             {
               name: 'twitter:creator',
-              content: siteAuthor
+              content: siteAuthor,
             },
             {
               name: 'twitter:title',
-              content: title
+              content: title,
             },
             {
               name: 'twitter:description',
-              content: metaDescription
-            }
+              content: metaDescription,
+            },
           ]
             .concat(
               keywords && keywords.length > 0
                 ? {
                   name: 'keywords',
-                  content: keywords.join(', ')
+                  content: keywords.join(', '),
                 }
                 : []
             )
@@ -66,7 +66,7 @@ const SEO = ({ title, description, lang, meta, keywords }) => (
 SEO.defaultProps = {
   lang: 'en',
   meta: [],
-  keywords: []
+  keywords: [],
 };
 
 SEO.propTypes = {
@@ -74,7 +74,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default SEO;

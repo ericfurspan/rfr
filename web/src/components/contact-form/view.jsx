@@ -58,7 +58,7 @@ const ContactForm = () => {
   };
 
   return (
-    <Box flex col maxw='550px'>
+    <Box flex col maxw='550px' m='auto' ta='initial'>
       <h2 css={Typography.responsiveTitle2}>Send us a message</h2>
       <form
         name='contact'
@@ -131,7 +131,7 @@ const ContactForm = () => {
         </Box>
 
         {process.env.SITE_RECAPTCHA_KEY && (
-          <Box flex col ai='flex-end'>
+          <Box flex col>
             <ReCAPTCHA
               ref={recaptchaRef}
               size='normal'

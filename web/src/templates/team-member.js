@@ -53,8 +53,8 @@ export const query = graphql`
   }
 `;
 
-const TeamMemberTemplate = ({ data, errors }) => {
-  const teamMember = data && data.teamMember;
+const TeamMemberTemplate = ({ data }) => {
+  const { teamMember } = (data || {});
 
   return (
     <>

@@ -13,8 +13,8 @@ import {
   StyledNav,
 } from './style';
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPages = [] }) => (
-  <StyledHeader>
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPages = [], headerBgColor, headerTextColor }) => (
+  <StyledHeader headerBgColor={headerBgColor}>
     {siteBanner && siteBanner._rawBannerText && (
       <StyledAttentionBanner {...siteBanner}>
         <BlockContent blocks={siteBanner._rawBannerText} />
@@ -23,15 +23,15 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner
 
     <StyledContainer>
       {(siteLogo && siteLogo.asset) && <Logo image={siteLogo} />}
-      <StyledTitle>
+      <StyledTitle headerTextColor={headerTextColor}>
         <Link to='/'>{siteTitle}</Link>
       </StyledTitle>
 
-      <StyledMenuBtn onClick={showNav ? onHideNav : onShowNav} aria-label='Navigation menu'>
+      <StyledMenuBtn headerTextColor={headerTextColor} onClick={showNav ? onHideNav : onShowNav} aria-label='Navigation menu'>
         <FontAwesomeIcon icon={showNav ? 'times' : 'bars'} fixedWidth />
       </StyledMenuBtn>
 
-      <StyledNav showNav={showNav}>
+      <StyledNav showNav={showNav} headerTextColor={headerTextColor} headerBgColor={headerBgColor}>
         <ul>
           <li onClick={onHideNav}>
             <Link to='/'>Home</Link>

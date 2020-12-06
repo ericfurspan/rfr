@@ -17,6 +17,7 @@ export const query = graphql`
   query NewsQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)news/" }) {
       _rawBody(resolveReferences: { maxDepth: 4 })
+      isCentered
     }
     blogPosts: allSanityPost(sort: { fields: [publishedAt], order: DESC }) {
       edges {
@@ -125,10 +126,11 @@ const NewsPage = ({ data }) => {
   return (
     <>
       <SEO title='News' />
-      <Container>
+      <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
-        <Box flex col mb='3em'>
+
+        <Box flex col mb='3em' ta='initial'>
           <span css={Typography.large}>Subscribe to our newsletter</span>
           <NewsletterForm />
         </Box>

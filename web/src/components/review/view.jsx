@@ -19,22 +19,18 @@ const Review = ({ reviewer, reviewedAt, text, previewMode = false, slug }) => {
       <StyledFigure>
         <StyledBlockquote css={Typography.blockQuote}>
           <span>{'\u201C'}{quoteContent}{'\u201D'}</span>
+
+          <StyledCitation css={Typography.small}>
+            <cite>&nbsp;by {reviewer}</cite>
+            <div>on {format(reviewedAt, 'DD MMMM YYYY')}</div>
+          </StyledCitation>
+
           {previewMode && (
-            <>
-              <br /> <br />
-              <Link to={getReviewUrl(reviewedAt, slug)}>
-                Read full review
-              </Link>
-            </>
+            <Link to={getReviewUrl(reviewedAt, slug)}>
+              Read full review
+            </Link>
           )}
         </StyledBlockquote>
-
-        <StyledCitation css={Typography.small}>
-          <cite>by {reviewer}</cite>
-          <br />
-          {format(reviewedAt, 'DD MMMM YYYY')}
-        </StyledCitation>
-
       </StyledFigure>
     </StyledWrapper>
   );

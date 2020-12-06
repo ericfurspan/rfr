@@ -30,3 +30,9 @@ a {
     opacity: 0.85;
   }
 }
+
+summary {
+  outline: 0;
+  cursor: pointer;
+  user-select: none;
+}

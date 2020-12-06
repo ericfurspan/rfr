@@ -8,6 +8,7 @@ export const query = graphql`
   query AboutPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
       _rawBody(resolveReferences: { maxDepth: 4 })
+      isCentered
     }
   }
 `;
@@ -24,7 +25,7 @@ const AboutPage = ({ data }) => {
   return (
     <>
       <SEO title='About' />
-      <Container>
+      <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
       </Container>
     </>

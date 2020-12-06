@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { BlogPost } from '../components';
+import { BlogPost, Container } from '../components';
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -70,15 +70,14 @@ export const query = graphql`
   }
 `;
 
-const BlogPostTemplate = (props) => {
-  const { data } = props;
-  const post = data && data.post;
+const BlogPostTemplate = ({ data }) => {
+  const { post } = (data || {});
 
   return (
-    <>
+    <Container>
       {post && <SEO title={post.title || 'Untitled'} />}
       {post && <BlogPost {...post} />}
-    </>
+    </Container>
   );
 };
 

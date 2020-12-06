@@ -23,6 +23,7 @@ export const query = graphql`
     company: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
       companyName
       caption
+      mission
       contact {
         email
         socialMedia {
@@ -245,7 +246,7 @@ export const query = graphql`
 `;
 
 const IndexPage = ({ data }) => {
-  const company = (data || {}).company;
+  const { company } = (data || {});
 
   if (!company) {
     throw new Error(
