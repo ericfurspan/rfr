@@ -15,8 +15,8 @@ export const StyledAttentionBanner = styled.div`
   position: sticky;
   top: 0;
   z-index: 2;
-  font-size: 0.75em;
-  padding: 1rem;
+  font-size: 0.875em;
+  padding: 0.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -34,10 +34,12 @@ export const StyledAttentionBanner = styled.div`
 
 export const StyledContainer = styled.div`
   display: flex;
+  align-items: center;
+  position: relative;
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1400px;
-  padding: 2em 1em 0;
+  max-width: 1500px;
+  padding: 3em 1em 0;
 `;
 
 export const StyledTitle = styled.h1`
@@ -101,7 +103,7 @@ export const StyledNav = styled.nav`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     left: 0;
     right: 0;
-    top: 4rem;
+    top: 0;
 
     & ul {
       padding: 2rem 0 1rem;

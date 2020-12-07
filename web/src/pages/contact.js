@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import SEO from '../containers/seo';
 import { Container, BlockContent, ContactForm, Box, Typography } from '../components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { colorForFaPackage } from '../lib/helpers';
 
 export const query = graphql`
   query ContactPageQuery {
@@ -54,13 +55,13 @@ const ContactPage = ({ data }) => {
 
         {company.faq.length > 0 && (
           <Box mt='6em'>
-            <h2 css={Typography.responsiveTitle2}>Frequently Asked Questions</h2>
+            <h2 css={Typography.responsiveTitle2}>Frequently Asked Questions 🗣👀❓💭❓☑️</h2>
             <Box flex col ai='flex-start' maxw='500px' m='0 auto'>
               {company.faq.map((faqItem) => (
                 <Box m='0.5em 0' key={faqItem._key}>
                   <details>
                     <summary>{faqItem.question}</summary>
-                    <p css={Typography.base}>{faqItem.answer}</p>
+                    <em><p css={Typography.base}>{faqItem.answer}</p></em>
                   </details>
                 </Box>
               ))}
@@ -78,7 +79,12 @@ const ContactPage = ({ data }) => {
             {company.contact.socialMedia.map((platform) => (
               <Box d='inline' m='0 1.25em' key={platform.url}>
                 <a href={platform.url} target='_blank' rel='noreferrer noopener'>
-                  <FontAwesomeIcon icon={[platform.icon.faPackage, platform.icon.faIconName]} color='var(--color-dark-gray)' size='3x' fixedWidth />
+                  <FontAwesomeIcon
+                    icon={[platform.icon.faPackage, platform.icon.faIconName]}
+                    color={colorForFaPackage(platform.icon.faIconName)}
+                    size='3x'
+                    fixedWidth
+                  />
                 </a>
               </Box>
             ))}

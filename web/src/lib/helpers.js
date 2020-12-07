@@ -103,3 +103,22 @@ export const MEDIA = Object.keys(BREAKPOINTS).reduce((acc, label) => {
 
   return acc;
 }, {});
+
+export const colorForFaPackage = (faPackage) => {
+  switch (faPackage) {
+    case 'youtube':
+      return '#FF0100';
+
+    case 'twitter':
+      return '#51ABF1';
+
+    case 'instagram':
+      return '#923CB4';
+
+    case 'facebook':
+      return '#4967AA';
+
+    default:
+      break;
+  }
+};
