@@ -6,8 +6,8 @@ A repository containing both a Sanity content studio (CMS) as well as the consum
 
 ## Studio
 
-See `/studio`
+See [studio/](./studio/README.md)
 
 ## Frontend
 
-See `/web`
+See [web/](./web/README.md)
