@@ -12,7 +12,7 @@ export default {
       description: 'Use this field to display a banner atop the homepage'
     },
     {
-      name: 'backgroundColor',
+      name: 'bannerBackgroundColor',
       title: 'Background color',
       type: 'colors',
       options: {

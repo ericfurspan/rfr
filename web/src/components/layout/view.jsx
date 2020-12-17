@@ -3,25 +3,22 @@ import React from 'react';
 import { Header, Footer } from '..';
 import { StyledContent } from './style';
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, contactInfo, allPages, headerBgColor, headerTextColor }) => (
+const Layout = ({ children, onHideNav, onShowNav, showNav, allPages, companyProps, bannerProps, jumbotronProps, ...layoutProps }) => (
   <>
     <Header
-      siteTitle={siteTitle}
-      siteLogo={siteLogo}
-      siteBanner={siteBanner}
       onHideNav={onHideNav}
       onShowNav={onShowNav}
       showNav={showNav}
       allPages={allPages}
-      headerBgColor={headerBgColor}
-      headerTextColor={headerTextColor}
+      companyProps={companyProps}
+      bannerProps={bannerProps}
+      jumbotronProps={jumbotronProps}
+      {...layoutProps}
     />
     <StyledContent>{children}</StyledContent>
     <Footer
-      siteTitle={siteTitle}
-      contactInfo={contactInfo}
+      companyProps={companyProps}
       allPages={allPages}
-      siteLogo={siteLogo}
     />
   </>
 );

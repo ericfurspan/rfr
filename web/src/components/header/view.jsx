@@ -13,38 +13,42 @@ import {
   StyledNav,
 } from './style';
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, siteLogo, siteBanner, allPages = [], headerBgColor, headerTextColor }) => (
-  <StyledHeader headerBgColor={headerBgColor}>
-    {siteBanner && siteBanner._rawBannerText && (
-      <StyledAttentionBanner {...siteBanner}>
-        <BlockContent blocks={siteBanner._rawBannerText} />
-      </StyledAttentionBanner>
-    )}
+const Header = ({ onHideNav, onShowNav, showNav, allPages = [], companyProps, bannerProps, jumbotronProps, ...layoutProps }) => {
+  const { logo, companyName } = companyProps;
 
-    <StyledContainer>
-      {(siteLogo && siteLogo.asset) && <Logo image={siteLogo} />}
-      <StyledTitle headerTextColor={headerTextColor}>
-        <Link to='/'>{siteTitle}</Link>
-      </StyledTitle>
+  return (
+    <StyledHeader showNav={showNav} {...jumbotronProps} {...layoutProps}>
+      {bannerProps && bannerProps._rawBannerText && (
+        <StyledAttentionBanner {...bannerProps}>
+          <BlockContent blocks={bannerProps._rawBannerText} />
+        </StyledAttentionBanner>
+      )}
 
-      <StyledMenuBtn headerTextColor={headerTextColor} onClick={showNav ? onHideNav : onShowNav} aria-label='Navigation menu'>
-        <FontAwesomeIcon icon={showNav ? 'times' : 'bars'} fixedWidth />
-      </StyledMenuBtn>
+      <StyledContainer>
+        {(logo && logo.asset) && <Logo image={logo} />}
+        <StyledTitle>
+          <Link to='/'>{companyName}</Link>
+        </StyledTitle>
 
-      <StyledNav showNav={showNav} headerTextColor={headerTextColor} headerBgColor={headerBgColor}>
-        <ul>
-          <li onClick={onHideNav}>
-            <Link to='/'>Home</Link>
-          </li>
-          {allPages.map((page, index) => (
-            <li key={`${page}-${index}`} onClick={onHideNav}>
-              <Link to={`/${page}`}>{capitalize(page)}</Link>
+        <StyledMenuBtn onClick={showNav ? onHideNav : onShowNav} aria-label='Navigation menu'>
+          <FontAwesomeIcon icon={showNav ? 'times' : 'bars'} fixedWidth />
+        </StyledMenuBtn>
+
+        <StyledNav showNav={showNav} {...jumbotronProps} {...layoutProps}>
+          <ul>
+            <li onClick={onHideNav}>
+              <Link to='/'>Home</Link>
             </li>
-          ))}
-        </ul>
-      </StyledNav>
-    </StyledContainer>
-  </StyledHeader>
-);
+            {allPages.map((page, index) => (
+              <li key={`${page}-${index}`} onClick={onHideNav}>
+                <Link to={`/${page}`}>{capitalize(page)}</Link>
+              </li>
+            ))}
+          </ul>
+        </StyledNav>
+      </StyledContainer>
+    </StyledHeader>
+  );
+};
 
 export default Header;

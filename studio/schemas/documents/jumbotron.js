@@ -33,30 +33,28 @@ export default {
       name: 'backgroundColor',
       title: 'Background color',
       type: 'colors',
-      description: 'Note: This will NOT have an effect if you choose a background image.',
+      description: 'The background color of the jumbotron',
       options: {
         list: colorInputList
       }
     },
     {
-      name: 'isFullHeightBgColor',
+      name: 'isExtendedBgColor',
       title: 'Extended background color',
       description: 'Should the background color extend up into the header as well?',
       type: 'boolean'
     },
     {
-      name: 'headerTextColor',
-      title: 'Header text color',
-      type: 'colors',
-      description: 'You probably only want to set this if using an extended background color.',
-      options: {
-        list: colorInputList
-      }
-    },
-    {
       name: 'backgroundImage',
       title: 'Background image',
+      description: 'A background image (cover photo) for the jumbotron',
       type: 'figure'
+    },
+    {
+      name: 'isExtendedBgImage',
+      title: 'Extended background image',
+      description: 'Should the background image extend up into the header as well?',
+      type: 'boolean'
     },
     {
       name: 'backgroundOpacity',
@@ -66,6 +64,15 @@ export default {
       validation: Rule => Rule.min(0.1).max(1.0).required(),
       options: {
         list: [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
+      }
+    },
+    {
+      name: 'headerTextColor',
+      title: 'Header text color',
+      type: 'colors',
+      description: 'You probably only want to set this if using an extended background color or image.',
+      options: {
+        list: colorInputList
       }
     }
   ],

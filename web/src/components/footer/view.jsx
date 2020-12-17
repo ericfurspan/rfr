@@ -12,7 +12,9 @@ import {
   StyledCredits,
 } from './style';
 
-const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
+const Footer = ({ companyProps, allPages }) => {
+  const { logo, contact, companyName } = companyProps;
+
   return (
     <StyledFooter>
       <StyledGrid>
@@ -29,7 +31,7 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
         <StyledSection>
           <StyledSectionHeading>Follow Us</StyledSectionHeading>
           <ul>
-            {contactInfo.socialMedia.map((platform) => (
+            {contact.socialMedia.map((platform) => (
               <li key={platform.url}>
                 <a href={platform.url} target='_blank' rel='noreferrer noopener'>
                   <FontAwesomeIcon icon={[platform.icon.faPackage, platform.icon.faIconName]} fixedWidth />
@@ -48,7 +50,7 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
       <StyledCredits>
         <div>
           <span>
-            Copyright {new Date().getFullYear()} © {siteTitle}
+            Copyright {new Date().getFullYear()} © {companyName}
           </span>
           <span>
             Responsive Web Design by {' '}
@@ -57,7 +59,7 @@ const Footer = ({ siteTitle, siteLogo, contactInfo, allPages }) => {
             </a>
           </span>
         </div>
-        {(siteLogo && siteLogo.asset) && <Logo image={siteLogo} width={50} height={50} noMargin />}
+        {(logo && logo.asset) && <Logo image={logo} width={50} height={50} noMargin />}
       </StyledCredits>
     </StyledFooter>
   );

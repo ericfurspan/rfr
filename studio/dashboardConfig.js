@@ -19,7 +19,7 @@ export default {
                 },
                 {
                   buildHookId: '5f9c6d9b29cd8c3610139ff1',
-                  title: 'Frontend',
+                  title: 'Website',
                   name: 'sanity-rfr-frontend',
                   apiId: '92e566f7-4f64-42a9-83ec-0cfe5113b7f9'
                 }

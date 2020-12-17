@@ -1,14 +1,55 @@
 import styled, { css } from 'styled-components';
 import { MEDIA } from '../../lib/helpers';
 
+export const StyledMenuBtn = styled.button`
+  appearance: none;
+  font-size: 24px;
+  height: max-content;
+  border: none;
+  background: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  z-index: 1;
+
+  ${MEDIA.MIN_TABLET`
+    display: none;
+  `};
+`;
+
 export const StyledHeader = styled.header`
   position: relative;
   z-index: 100;
   padding-bottom: 2em;
   
-  ${props => props.headerBgColor && css`
-    background-color: ${props.headerBgColor};
+  ${props => (props.path === '/' && props.backgroundColor) && css`
+    background-color: ${props.backgroundColor};
   `}
+
+  ${(props) => (props.path === '/' && props.isExtendedBgImage) && css`
+    padding-bottom: 0;
+
+    ${StyledContainer} {
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+  `}
+
+  ${(props) => (props.path === '/' && props.headerTextColor) && css`
+    ${StyledTitle} {
+      color: ${props => props.headerTextColor};
+    }
+  `}
+  
+  ${StyledMenuBtn} {
+    ${(props) => props.path === '/' ? css`
+    color: ${props.headerTextColor || 'inherit'};
+  ` : css`
+    color: ${props => (props.showNav && props.headerTextColor) || 'inherit'};
+  `}
+  }
 `;
 
 export const StyledAttentionBanner = styled.div`
@@ -26,9 +67,9 @@ export const StyledAttentionBanner = styled.div`
   color: var(--color-black);
 
   ${(props) =>
-    props.backgroundColor &&
+    props.bannerBackgroundColor &&
     css`
-      background-color: ${props.backgroundColor};
+      background-color: ${props.bannerBackgroundColor};
     `};
 `;
 
@@ -52,30 +93,12 @@ export const StyledTitle = styled.h1`
   & a {
     display: inline-block;
     color: inherit;
-    color: ${props => props.headerTextColor || 'inherit'};
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
     }
   }
-`;
-
-export const StyledMenuBtn = styled.button`
-  appearance: none;
-  font-size: 24px;
-  height: max-content;
-  border: none;
-  background: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  z-index: 1;
-  color: ${props => props.headerTextColor || 'inherit'};
-
-  ${MEDIA.MIN_TABLET`
-    display: none;
-  `};
 `;
 
 export const StyledNav = styled.nav`
@@ -88,9 +111,15 @@ export const StyledNav = styled.nav`
 
   & ul li a {
     display: block;
-    color: ${props => props.headerTextColor || 'inherit'};
     text-decoration: none;
     font-size: 1rem;
+    color: inherit;
+
+    ${(props) => props.path === '/' ? css`
+      color: ${props => (props.headerTextColor) || 'inherit'};
+    ` : css`
+      color: ${props => (props.showNav && props.headerTextColor) || 'inherit'};
+    `}
   }
 
   & ul li a:hover {
@@ -99,7 +128,7 @@ export const StyledNav = styled.nav`
 
   ${MEDIA.TABLET`
     position: absolute;
-    background: ${props => props.headerBgColor || 'var(--color-white)'};
+    background: ${props => props.backgroundColor || 'var(--color-white)'};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     left: 0;
     right: 0;

@@ -22,12 +22,13 @@ const query = graphql`
     }
     jumbotron: sanityJumbotron {
       backgroundColor
-      isFullHeightBgColor
+      isExtendedBgColor
       headerTextColor
+      isExtendedBgImage
     }
     banner: sanityBanner {
       _rawBannerText
-      backgroundColor
+      bannerBackgroundColor
     }
     company: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
       companyName
@@ -69,7 +70,8 @@ const query = graphql`
   }
 `;
 
-const LayoutContainer = (props) => {
+const LayoutContainer = (layoutProps) => {
+  console.log('layoutProps', layoutProps);
   const [showNav, setShowNav] = useState(false);
   const handleShowNav = () => setShowNav(true);
   const handleHideNav = () => setShowNav(false);
@@ -78,6 +80,7 @@ const LayoutContainer = (props) => {
     <StaticQuery
       query={query}
       render={(data) => {
+        console.log('data', data);
         const allPages = (data || {}).allPages
           ? mapEdgesToNodes(data.allPages).map((page) => page._id)
           : [];
@@ -86,17 +89,14 @@ const LayoutContainer = (props) => {
         }
         return (
           <Layout
-            {...props}
-            siteTitle={data.company.companyName}
-            siteLogo={data.company.logo}
-            siteBanner={data.banner}
-            contactInfo={data.company.contact}
+            {...layoutProps}
             showNav={showNav}
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
             allPages={allPages}
-            headerBgColor={data.jumbotron.isFullHeightBgColor ? data.jumbotron.backgroundColor : null}
-            headerTextColor={data.jumbotron.isFullHeightBgColor ? data.jumbotron.headerTextColor : null}
+            companyProps={data.company}
+            bannerProps={data.banner}
+            jumbotronProps={data.jumbotron}
           />
         );
       }}

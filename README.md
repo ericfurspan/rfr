@@ -1,13 +1,13 @@
-# Sanity Company
+# Reps for Responders Website
 
-manage.sanity.io
+Administrator? Visit [manage.sanity.io](https://manage.sanity.io) to manage your app.
 
-A repository containing both a Sanity content studio (CMS) as well as the consuming frontend (Gatsby) website.
+This multi-project repository contains both a content management studio (Sanity) and a client-facing (Gatsby) website.
 
-## Studio
+## Sanity Studio
 
-See [studio/](./studio/README.md)
+See the [studio/](./studio/) directory
 
-## Frontend
+## Gatsby Frontend
 
-See [web/](./web/README.md)
+See the [web/](./web/) directory
