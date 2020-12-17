@@ -55,7 +55,7 @@ const ContactPage = ({ data }) => {
 
         {company.faq.length > 0 && (
           <Box mt='6em'>
-            <h2 css={Typography.responsiveTitle2}>Frequently Asked Questions 🗣👀❓💭❓☑️</h2>
+            <h2 css={Typography.responsiveTitle2}>Frequently Asked Questions</h2>
             <Box flex col ai='flex-start' maxw='500px' m='0 auto'>
               {company.faq.map((faqItem) => (
                 <Box m='0.5em 0' key={faqItem._key}>
