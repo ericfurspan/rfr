@@ -50,6 +50,12 @@ export default {
           { title: 'X-Large', value: 'xlarge' }
         ]
       }
+    },
+    {
+      name: 'isRounded',
+      title: 'Rounded',
+      description: 'Should the button be rounded?',
+      type: 'boolean'
     }
   ]
 };

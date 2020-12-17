@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+
+import { MEDIA } from '../../lib/helpers';
 import { BoxMixin } from '..';
 
 /**
@@ -126,7 +128,7 @@ export const StyledButton = styled.button`
   color: var(--color-white);
   cursor: pointer;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   min-height: 36px;
   padding: 0 16px;
   justify-content: center;
@@ -134,6 +136,11 @@ export const StyledButton = styled.button`
   border: 0;
   vertical-align: middle;
   white-space: nowrap;
+  transition: opacity 200ms linear, color 200ms linear;
+
+  &:hover:not(:disabled) {
+    opacity: 0.95;
+  }
 
   ${(props) =>
     props.design === 'primary' &&
@@ -141,10 +148,6 @@ export const StyledButton = styled.button`
       background-color: var(--color-link);
       color: var(--color-white);
       border: 1px solid var(--color-link);
-
-      &:hover {
-        opacity: 0.85;
-      }
     `}
 
   ${(props) =>
@@ -167,6 +170,12 @@ export const StyledButton = styled.button`
       min-height: 56px;
       min-width: 224px;
       font-size: 1.25rem;
+
+      ${MEDIA.PHONE`
+        min-height: 42px;
+        min-width: 126px;
+        font-size: initial;
+      `};      
     `};
 
   ${(props) =>
@@ -175,7 +184,13 @@ export const StyledButton = styled.button`
       min-height: 72px;
       min-width: 248px;
       font-size: 1.35rem;
-    `};
+
+      ${MEDIA.PHONE`
+        min-height: 56px;
+        min-width: 224px;
+        font-size: 1.25rem;
+      `};
+  `};
 
   & svg {
     margin: 0 0.75rem;
@@ -189,5 +204,11 @@ export const StyledButton = styled.button`
       color: var(--color-dark-gray);
       cursor: not-allowed !important;
       border: 0;
-    `};
+  `};
+
+  ${(props) =>
+    props.rounded &&
+    css`
+      border-radius: 300px;
+  `};
 `;

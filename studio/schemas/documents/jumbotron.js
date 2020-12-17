@@ -16,6 +16,12 @@ export default {
       type: 'blockText'
     },
     {
+      name: 'isCentered',
+      title: 'Centered',
+      description: 'Should the content be centered?',
+      type: 'boolean'
+    },
+    {
       name: 'backgroundColor',
       title: 'Background color',
       type: 'colors',

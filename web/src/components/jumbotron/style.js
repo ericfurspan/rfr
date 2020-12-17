@@ -1,16 +1,11 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
-
-import { MEDIA } from '../../lib/helpers';
+import { StyledButton } from '../field';
 
 export const StyledJumbotron = styled.div`
-  min-height: 28em;
+  min-height: 70vh;
   color: var(--color-black);
   position: relative;
-
-  ${MEDIA.PHONE`
-    min-height: 24em;
-  `}
 
   ${(props) =>
     props.backgroundColor &&
@@ -21,50 +16,43 @@ export const StyledJumbotron = styled.div`
   ${(props) =>
     props.hasImage &&
     css`
-      ${StyledContent} {
-        border-radius: 0.2em;
-        background-color: var(--color-dark-white);
-
-        ${props.backgroundColor &&
-        `
-        background-color: ${props.backgroundColor};
-      `}
-      }
-
       & img {
         position: absolute;
         top: 0;
         right: 0;
-        /* left: 0; */
-        /* width: 100%; */
-        width: calc(100% - 41em); // todo: use gatsbt image for this
+        left: 0;
+        width: 100%;
         height: 100%;
         vertical-align: top;
         object-fit: cover;
 
-        ${(props) =>
-    props.backgroundOpacity &&
-          css`
-            opacity: ${props.backgroundOpacity};
-          `}
+      ${(props) => props.backgroundOpacity &&
+        css`
+          opacity: ${props.backgroundOpacity};
+        `}
       }
     `}
 `;
 
-export const StyledContent = styled.div`
+export const StyledOverlay = styled.div`
   position: absolute;
-  /* top: 2rem; */
   top: 0;
   bottom: 0;
-  left: 1em;
-  /* right: 2rem; */
+  left: 0;
+  right: 0;
   padding: 2em;
+  background-color: rgba(0,0,0,0.4);
+`;
+
+export const StyledContent = styled.div`
   max-width: 36rem;
 
-  ${MEDIA.PHONE`
-    /* left: 1rem;
-    right: 1rem; */
-    padding: 1em;
+  ${(props) => props.isCentered && css`
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    max-width: unset;
   `}
 `;
 
@@ -75,49 +63,9 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const StyledCTAButton = styled.button`
-  background-color: var(--color-gray);
-  color: var(--color-white);
-  cursor: pointer;
-  font-size: 1.125rem;
-  font-weight: 700;
+export const StyledCTAButton = styled(StyledButton)`
   text-transform: uppercase;
-  min-height: 42px;
-  min-width: 126px;
-  padding: 0 16px;
-  justify-content: center;
-  border-radius: 4px;
-  border: 0;
-  margin-top: 1.5em;
-  white-space: nowrap;
-  transition: opacity 200ms linear, color 200ms linear;
-
-  &:hover {
-    opacity: 0.85;
-  }
-
-  ${(props) =>
-    props.buttonSize === 'small' &&
-    css`
-      min-height: 42px;
-      min-width: 126px;
-    `};
-
-  ${(props) =>
-    props.buttonSize === 'large' &&
-    css`
-      min-height: 56px;
-      min-width: 224px;
-      font-size: 1.25rem;
-    `};
-
-  ${(props) =>
-    props.buttonSize === 'xlarge' &&
-    css`
-      min-height: 72px;
-      min-width: 248px;
-      font-size: 1.35rem;
-    `};
+  margin-top: 2em;
 
   ${(props) =>
     props.buttonTextColor &&

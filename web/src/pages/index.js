@@ -40,12 +40,14 @@ export const query = graphql`
     jumbotron: sanityJumbotron {
       _rawTitle
       _rawSubtitle
+      isCentered
       ctaButton {
         buttonText
         buttonSize
         buttonTextColor
         buttonBgColor
         _rawButtonLinkTo(resolveReferences: { maxDepth: 5 })
+        isRounded
       }
       backgroundOpacity
       backgroundColor
@@ -304,11 +306,9 @@ const IndexPage = ({ data }) => {
     <>
       <SEO title={data.seo.title} description={data.seo.description} keywords={data.seo.keywords} />
 
-      {jumbotron._rawTitle && (
-        <Box gc='1 / -1'>
-          <Jumbotron {...jumbotron} />
-        </Box>
-      )}
+      <Box gc='1 / -1'>
+        <Jumbotron {...jumbotron} />
+      </Box>
 
       <Box d='grid' gridResponsive gtc='repeat(12, minmax(0, 1fr))' grg='4em' gcg='2em' p='2em'>
         <h1 hidden>{data.seo.title}</h1>
