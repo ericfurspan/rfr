@@ -317,7 +317,7 @@ const IndexPage = ({ data }) => {
           <ServicesGrid
             nodes={servicesNodes}
             browseMoreHref='/services'
-            browseMoreText='Learn more about what we do'
+            browseMoreText='Learn more about what we offer'
             previewMode
             gc='2 / -2'
           />
@@ -329,7 +329,7 @@ const IndexPage = ({ data }) => {
             nodes={teamMemberNodes}
             nodeType='teamMember'
             browseMoreHref='/team'
-            browseMoreText='See all team members'
+            browseMoreText='See the full team'
             gc='1 / -1'
           />
         )}
@@ -340,7 +340,7 @@ const IndexPage = ({ data }) => {
             nodes={allNewsNodes}
             nodeType='default'
             browseMoreHref='/news'
-            browseMoreText='See all news &amp; events'
+            browseMoreText='See all news &amp; updates'
             gc='1 / 7'
           />
         )}
@@ -355,11 +355,11 @@ const IndexPage = ({ data }) => {
 
         {reviewsNodes.length > 0 && (
           <PreviewGrid
-            title='Reviews'
+            title='Testimonials'
             nodes={reviewsNodes}
             nodeType='default'
             browseMoreHref='/reviews'
-            browseMoreText='See all reviews'
+            browseMoreText='See all testimonials'
             gc='1 / 7'
           />
         )}

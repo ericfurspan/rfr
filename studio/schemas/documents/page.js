@@ -10,9 +10,9 @@ export default {
     },
     {
       name: 'isCentered',
-      title: 'Centered?',
+      title: 'Centered',
       type: 'boolean',
-      description: 'Whether the contents of the page should be centered'
+      description: 'Should the contents of the page be centered?'
     },
     {
       name: 'order',

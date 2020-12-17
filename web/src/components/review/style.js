@@ -17,9 +17,4 @@ export const StyledCitation = styled.figcaption`
   color: var(--color-dark-gray);
   font-style: italic;
   margin: 0.5em 0.25em 1.5em 0;
-
-  &:before {
-    content: '💬 ';
-    font-size: 1.5em;
-  }
 `;

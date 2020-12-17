@@ -8,20 +8,20 @@ export default {
     {
       name: 'buttonText',
       type: 'string',
-      title: 'Button Text'
+      title: 'Text'
     },
     {
-      name: 'buttonTextColor',
+      name: 'buttonBgColor',
       type: 'colors',
-      title: 'Button Text Color',
+      title: 'Background Color',
       options: {
         list: colorInputList
       }
     },
     {
-      name: 'buttonBgColor',
+      name: 'buttonTextColor',
       type: 'colors',
-      title: 'Button Background Color',
+      title: 'Text Color',
       options: {
         list: colorInputList
       }
@@ -30,7 +30,7 @@ export default {
       name: 'buttonLinkTo',
       type: 'reference',
       title: 'Button Link',
-      description: 'Link to an internal page',
+      description: 'You may link to an internal page',
       to: [
         { type: 'post' },
         { type: 'event' },
@@ -45,7 +45,6 @@ export default {
       options: {
         list: [
           { title: 'Small', value: 'small' },
-          { title: 'Normal', value: 'normal' },
           { title: 'Large', value: 'large' },
           { title: 'X-Large', value: 'xlarge' }
         ]
@@ -53,8 +52,7 @@ export default {
     },
     {
       name: 'isRounded',
-      title: 'Rounded',
-      description: 'Should the button be rounded?',
+      title: 'Rounded button',
       type: 'boolean'
     }
   ]

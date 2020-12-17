@@ -29,6 +29,16 @@ export default () =>
         )
         .icon(FaObjectGroup),
       S.listItem()
+        .title('Banner')
+        .child(
+          S.editor()
+            .id('banner')
+            .schemaType('banner')
+            .documentId('banner')
+            .title('Banner')
+        )
+        .icon(FaBullhorn),
+      S.listItem()
         .title('Services')
         .schemaType('service')
         .child(S.documentTypeList('service').title('Services'))
@@ -58,16 +68,6 @@ export default () =>
             .title('Payments')
         )
         .icon(FaRegCreditCard),
-      S.listItem()
-        .title('Banner')
-        .child(
-          S.editor()
-            .id('banner')
-            .schemaType('banner')
-            .documentId('banner')
-            .title('Banner')
-        )
-        .icon(FaBullhorn),
       S.listItem()
         .title('News')
         .child(

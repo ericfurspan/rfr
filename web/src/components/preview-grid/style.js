@@ -12,7 +12,7 @@ export const StyledGrid = styled.ul`
 `;
 
 export const StyledBrowseMore = styled.div`
-  margin-top: 1rem;
+  margin-top: 2em;
   text-align: right;
 `;
 

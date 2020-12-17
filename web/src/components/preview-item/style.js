@@ -6,16 +6,6 @@ export const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
   position: relative;
-
-  &:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-very-light-gray);
-    content: '';
-  }
 `;
 
 export const StyledTitle = styled.h3`
