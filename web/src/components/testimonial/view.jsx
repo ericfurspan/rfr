@@ -2,11 +2,11 @@ import { format } from 'date-fns';
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { getReviewUrl } from '../../lib/helpers';
+import { getTestimonialUrl } from '../../lib/helpers';
 import { Typography } from '..';
 import { StyledWrapper, StyledBlockquote, StyledFigure, StyledCitation } from './style';
 
-const Review = ({ reviewer, reviewedAt, text, previewMode = false, slug }) => {
+const Testimonial = ({ reviewer, reviewedAt, text, previewMode = false, slug }) => {
   const quoteContent = previewMode ? `${text.slice(0, 250)}...` : text;
 
   return (
@@ -26,8 +26,8 @@ const Review = ({ reviewer, reviewedAt, text, previewMode = false, slug }) => {
           </StyledCitation>
 
           {previewMode && (
-            <Link to={getReviewUrl(reviewedAt, slug)}>
-              Read full review
+            <Link to={getTestimonialUrl(reviewedAt, slug)}>
+              Read full testimonial
             </Link>
           )}
         </StyledBlockquote>
@@ -36,4 +36,4 @@ const Review = ({ reviewer, reviewedAt, text, previewMode = false, slug }) => {
   );
 };
 
-export default Review;
+export default Testimonial;

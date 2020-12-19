@@ -13,7 +13,7 @@ export { PreviewGrid } from './preview-grid';
 export { PreviewItem } from './preview-item';
 export { ServicesGrid } from './services-grid';
 export { Service } from './service';
-export { Review } from './review';
+export { Testimonial } from './testimonial';
 export { TeamMemberPreview } from './team-member-preview';
 export { TeamMember } from './team-member';
 export { RoleList } from './role-list';

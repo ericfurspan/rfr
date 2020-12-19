@@ -1,6 +1,6 @@
 export default {
-  name: 'review',
-  title: 'Review',
+  name: 'testimonial',
+  title: 'Testimonial',
   type: 'document',
   fields: [
     {
@@ -33,12 +33,12 @@ export default {
   ],
   orderings: [
     {
-      title: 'Review date new–>old',
+      title: 'Testimonial date new–>old',
       name: 'reviewDateAsc',
       by: [{ field: 'reviewedAt', direction: 'asc' }, { field: 'text', direction: 'asc' }]
     },
     {
-      title: 'Review date old->new',
+      title: 'Testimonial date old->new',
       name: 'reviewDateDesc',
       by: [{ field: 'reviewedAt', direction: 'desc' }, { field: 'text', direction: 'asc' }]
     }
@@ -54,7 +54,7 @@ export default {
         title: `${reviewer} - ${title.slice(0, 24)}`,
         subtitle: reviewedAt
           ? new Date(reviewedAt).toLocaleDateString()
-          : 'Missing review date'
+          : 'Missing testimonial date'
       };
     }
   }

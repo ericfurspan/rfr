@@ -34,8 +34,8 @@ export function getEventUrl (eventAt, slug) {
   return `/events/${format(eventAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
-export function getReviewUrl (publishedAt, slug) {
-  return `/reviews/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
+export function getTestimonialUrl (publishedAt, slug) {
+  return `/testimonials/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
 export function getUrlFromReference (reference) {
@@ -46,8 +46,8 @@ export function getUrlFromReference (reference) {
     href = getPressReleaseUrl(reference.publishedAt, reference.slug.current);
   } else if (reference._type === 'event') {
     href = getEventUrl(reference.eventAt, reference.slug.current);
-  } else if (reference._type === 'review') {
-    href = getReviewUrl(reference.publishedAt, reference.slug.current);
+  } else if (reference._type === 'testimonial') {
+    href = getTestimonialUrl(reference.publishedAt, reference.slug.current);
   } else if (reference._type === 'page') {
     href = `/${reference._id}`;
   }

@@ -7,7 +7,7 @@ import {
   getBlogUrl,
   getEventUrl,
   getPressReleaseUrl,
-  getReviewUrl,
+  getTestimonialUrl,
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
@@ -101,7 +101,7 @@ export const query = graphql`
         }
       }
     }
-    reviews: allSanityReview(limit: 6, sort: { fields: [reviewedAt], order: DESC }) {
+    testimonials: allSanityTestimonial(limit: 6, sort: { fields: [reviewedAt], order: DESC }) {
       edges {
         node {
           id
@@ -259,12 +259,12 @@ const IndexPage = ({ data }) => {
   const { jumbotron } = data || {};
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
   const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
-  const reviewsNodes = (data || {}).reviews
-    ? mapEdgesToNodes(data.reviews)
+  const testimonialNodes = (data || {}).testimonials
+    ? mapEdgesToNodes(data.testimonials)
       .filter(filterOutDocsWithoutSlugs)
       .map((item) => ({
         ...item,
-        linkTo: getReviewUrl(item.reviewedAt, item.slug.current),
+        linkTo: getTestimonialUrl(item.reviewedAt, item.slug.current),
         title: `by ${item.reviewer}`,
         caption: format(item.reviewedAt, 'DD MMMM YYYY'),
         text: item.text.slice(0, 128) + '...(continued)',
@@ -353,12 +353,12 @@ const IndexPage = ({ data }) => {
           </Box>
         )}
 
-        {reviewsNodes.length > 0 && (
+        {testimonialNodes.length > 0 && (
           <PreviewGrid
             title='Testimonials'
-            nodes={reviewsNodes}
+            nodes={testimonialNodes}
             nodeType='default'
-            browseMoreHref='/reviews'
+            browseMoreHref='/testimonials'
             browseMoreText='See all testimonials'
             gc='1 / 7'
           />

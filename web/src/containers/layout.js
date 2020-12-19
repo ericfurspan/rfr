@@ -71,7 +71,6 @@ const query = graphql`
 `;
 
 const LayoutContainer = (layoutProps) => {
-  console.log('layoutProps', layoutProps);
   const [showNav, setShowNav] = useState(false);
   const handleShowNav = () => setShowNav(true);
   const handleHideNav = () => setShowNav(false);
@@ -80,7 +79,6 @@ const LayoutContainer = (layoutProps) => {
     <StaticQuery
       query={query}
       render={(data) => {
-        console.log('data', data);
         const allPages = (data || {}).allPages
           ? mapEdgesToNodes(data.allPages).map((page) => page._id)
           : [];

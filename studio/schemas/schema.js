@@ -7,7 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // Document types
 import seo from './documents/seo';
 import companyInfo from './documents/companyInfo';
-import review from './documents/review';
+import testimonial from './documents/testimonial';
 import pressRelease from './documents/pressRelease';
 import teamMember from './documents/teamMember';
 import icon from './documents/icon';
@@ -56,7 +56,7 @@ export default createSchema({
     companyInfo,
     teamMember,
     pressRelease,
-    review,
+    testimonial,
     service,
     page,
     post,

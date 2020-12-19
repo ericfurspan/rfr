@@ -2,7 +2,7 @@ import S from '@sanity/desk-tool/structure-builder';
 import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup } from 'react-icons/fa';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'review', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron']
     .includes(listItem.getId());
 
 export default () =>
@@ -49,9 +49,9 @@ export default () =>
         .child(S.documentTypeList('teamMember').title('Team Members'))
         .icon(FaUsers),
       S.listItem()
-        .title('Reviews')
-        .schemaType('review')
-        .child(S.documentTypeList('review').title('Reviews'))
+        .title('Testimonials')
+        .schemaType('testimonial')
+        .child(S.documentTypeList('testimonial').title('Testimonials'))
         .icon(FaRegThumbsUp),
       S.listItem()
         .title('Podcasts')
@@ -125,12 +125,12 @@ export default () =>
                 )
                 .icon(FaFileAlt),
               S.listItem()
-                .title('Reviews')
+                .title('Testimonials')
                 .child(
                   S.editor()
-                    .id('reviewsPage')
+                    .id('testimonialsPage')
                     .schemaType('page')
-                    .documentId('reviews')
+                    .documentId('testimonials')
                 )
                 .icon(FaFileAlt),
               S.listItem()

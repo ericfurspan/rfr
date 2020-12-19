@@ -60,7 +60,7 @@ export default {
       name: 'backgroundOpacity',
       title: 'Background image opacity',
       type: 'number',
-      description: 'The opacity of the background image (between 0-1). The default value of 1 gives 100% opacity (no transparency).',
+      description: 'The opacity of the background image (between 0-1). The default value of 1 produces no transparency.',
       validation: Rule => Rule.min(0.1).max(1.0).required(),
       options: {
         list: [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]

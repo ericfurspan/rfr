@@ -152,11 +152,11 @@ async function createPressReleasePages (graphql, actions, reporter) {
   });
 }
 
-async function createReviewPages (graphql, actions, reporter) {
+async function createTestimonialPages (graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allSanityReview(filter: { slug: { current: { ne: null } } }) {
+      allSanityTestimonial(filter: { slug: { current: { ne: null } } }) {
         edges {
           node {
             id
@@ -172,18 +172,18 @@ async function createReviewPages (graphql, actions, reporter) {
 
   if (result.errors) throw result.errors;
 
-  const reviewEdges = (result.data.allSanityReview || {}).edges || [];
+  const testimonialEdges = (result.data.allSanityTestimonial || {}).edges || [];
 
-  reviewEdges.forEach((edge, index) => {
+  testimonialEdges.forEach((edge, index) => {
     const { id, slug = {}, reviewedAt } = edge.node;
     const dateSegment = format(reviewedAt, 'YYYY/MM');
-    const path = `/reviews/${dateSegment}/${slug.current}`;
+    const path = `/testimonials/${dateSegment}/${slug.current}`;
 
-    reporter.info(`Creating review page: ${path}`);
+    reporter.info(`Creating testimonial page: ${path}`);
 
     createPage({
       path,
-      component: require.resolve('./src/templates/review.js'),
+      component: require.resolve('./src/templates/testimonial.js'),
       context: { id },
     });
   });
@@ -194,5 +194,5 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter);
   await createEventPages(graphql, actions, reporter);
   await createPressReleasePages(graphql, actions, reporter);
-  await createReviewPages(graphql, actions, reporter);
+  await createTestimonialPages(graphql, actions, reporter);
 };
