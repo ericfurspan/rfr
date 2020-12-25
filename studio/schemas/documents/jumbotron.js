@@ -1,4 +1,4 @@
-import { colorInputList } from '../../constants';
+import { colorPalette } from '../../../company.js';
 
 export default {
   name: 'jumbotron',
@@ -35,7 +35,7 @@ export default {
       type: 'colors',
       description: 'The background color of the jumbotron',
       options: {
-        list: colorInputList
+        list: colorPalette
       }
     },
     {
@@ -72,7 +72,7 @@ export default {
       type: 'colors',
       description: 'You probably only want to set this if using an extended background color or image.',
       options: {
-        list: colorInputList
+        list: colorPalette
       }
     }
   ],

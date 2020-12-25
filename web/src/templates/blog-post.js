@@ -74,7 +74,7 @@ const BlogPostTemplate = ({ data }) => {
   const { post } = (data || {});
 
   return (
-    <Container>
+    <Container noPadding>
       {post && <SEO title={post.title || 'Untitled'} />}
       {post && <BlogPost {...post} />}
     </Container>

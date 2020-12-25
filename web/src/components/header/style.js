@@ -80,7 +80,7 @@ export const StyledContainer = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1500px;
-  padding: 3em 1em 0;
+  padding: 2em 1em;
 `;
 
 export const StyledTitle = styled.h1`

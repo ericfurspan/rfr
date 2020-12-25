@@ -11,7 +11,7 @@ import {
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Jumbotron, PreviewGrid, ServicesGrid, Podcast, Box } from '../components';
+import { Jumbotron, PreviewNodes, Services, Podcast, Box, BlockContent, Affiliates, Typography } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -23,7 +23,7 @@ export const query = graphql`
     company: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
       companyName
       caption
-      mission
+      _rawMission
       contact {
         email
         socialMedia {
@@ -34,6 +34,15 @@ export const query = graphql`
             faPackage
             faIconName
           }
+        }
+      }
+    }
+    contentPreviews: allSanityContentPreview(filter: { shouldRender: { eq: true } }) {
+      edges {
+        node {
+          _id
+          headingText
+          browseMoreText
         }
       }
     }
@@ -83,21 +92,17 @@ export const query = graphql`
         }
       }
     }
-    podcasts: allSanityPodcast {
-      edges {
-        node {
-          id
-          title
-          _rawDescription
-          availablePlatforms {
-            linkText
-            url
-            icon {
-              name
-              faPackage
-              faIconName
-            }
-          }
+    podcast: sanityPodcast {
+      id
+      title
+      _rawDescription
+      availablePlatforms {
+        linkText
+        url
+        icon {
+          name
+          faPackage
+          faIconName
         }
       }
     }
@@ -110,6 +115,36 @@ export const query = graphql`
           reviewer
           slug {
             current
+          }
+        }
+      }
+    }
+    affiliates: allSanityAffiliate(limit: 6) {
+      edges {
+        node {
+          id
+          name
+          url
+          image {
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
           }
         }
       }
@@ -248,7 +283,7 @@ export const query = graphql`
 `;
 
 const IndexPage = ({ data }) => {
-  const { company } = (data || {});
+  const { company, jumbotron, seo, podcast } = (data || {});
 
   if (!company) {
     throw new Error(
@@ -256,9 +291,7 @@ const IndexPage = ({ data }) => {
     );
   }
 
-  const { jumbotron } = data || {};
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
-  const podcastNodes = (data || {}).podcasts ? mapEdgesToNodes(data.podcasts) : [];
   const testimonialNodes = (data || {}).testimonials
     ? mapEdgesToNodes(data.testimonials)
       .filter(filterOutDocsWithoutSlugs)
@@ -270,6 +303,7 @@ const IndexPage = ({ data }) => {
         text: item.text.slice(0, 128) + '...(continued)',
       }))
     : [];
+  const affiliateNodes = (data || {}).affiliates ? mapEdgesToNodes(data.affiliates) : [];
   const teamMemberNodes = (data || {}).teamMembers
     ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs)
     : [];
@@ -302,65 +336,88 @@ const IndexPage = ({ data }) => {
     : [];
   const allNewsNodes = [...blogPostNodes, ...pressReleaseNodes, ...eventNodes].slice(0, 6);
 
+  // A mapping of what content should be previewable on the page
+  const contentPreviewMap = (data || {}).contentPreviews
+    ? mapEdgesToNodes(data.contentPreviews)
+      .reduce((acc, curr) => {
+        const { _id, ...rest } = curr;
+        return { ...acc, [curr._id]: rest };
+      }, {})
+    : [];
+
   return (
     <>
-      <SEO title={data.seo.title} description={data.seo.description} keywords={data.seo.keywords} />
+      <SEO title={seo.title} description={seo.description} keywords={seo.keywords} />
 
-      <Box gc='1 / -1'>
-        <Jumbotron {...jumbotron} />
-      </Box>
+      <Jumbotron {...jumbotron} />
+
+      {company._rawMission && contentPreviewMap['missionPreview'] && (
+        <Box flex col ai='center' p='3em 6em'>
+          <h2 css={Typography.responsiveTitle2}>
+            {contentPreviewMap['missionPreview'].headingText}
+          </h2>
+          <Box ta='left'>
+            <BlockContent blocks={company._rawMission} />
+          </Box>
+        </Box>
+      )}
 
       <Box d='grid' gridResponsive gtc='repeat(12, minmax(0, 1fr))' grg='4em' gcg='2em' p='2em'>
-        <h1 hidden>{data.seo.title}</h1>
-
-        {servicesNodes.length > 0 && (
-          <ServicesGrid
+        {contentPreviewMap['servicesPreview'] && (
+          <Services
+            title={contentPreviewMap['servicesPreview'].headingText}
             nodes={servicesNodes}
+            browseMoreText={contentPreviewMap['servicesPreview'].browseMoreText}
             browseMoreHref='/services'
-            browseMoreText='Learn more about what we offer'
             previewMode
-            gc='2 / -2'
-          />
-        )}
-
-        {teamMemberNodes.length > 0 && (
-          <PreviewGrid
-            title='Our Team'
-            nodes={teamMemberNodes}
-            nodeType='teamMember'
-            browseMoreHref='/team'
-            browseMoreText='See the full team'
             gc='1 / -1'
           />
         )}
 
-        {allNewsNodes.length > 0 && (
-          <PreviewGrid
-            title='News'
-            nodes={allNewsNodes}
-            nodeType='default'
-            browseMoreHref='/news'
-            browseMoreText='See all news &amp; updates'
-            gc='1 / 7'
+        {contentPreviewMap['affiliatesPreview'] && (
+          <Affiliates
+            title={contentPreviewMap['affiliatesPreview'].headingText}
+            nodes={affiliateNodes}
+            gc='1 / -1'
           />
         )}
 
-        {podcastNodes.length > 0 && (
-          <Box gc='8 / -1'>
-            {podcastNodes.map((podcast) => (
-              <Podcast key={podcast.id} {...podcast} />
-            ))}
+        {contentPreviewMap['teamPreview'] && (
+          <PreviewNodes
+            title={contentPreviewMap['teamPreview'].headingText}
+            nodes={teamMemberNodes}
+            nodeType='teamMember'
+            browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
+            browseMoreHref='/team'
+            gc='1 / -1'
+          />
+        )}
+
+        {contentPreviewMap['newsPreview'] && (
+          <PreviewNodes
+            title={contentPreviewMap['newsPreview'].headingText}
+            nodes={allNewsNodes}
+            nodeType='generic'
+            browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
+            browseMoreHref='/news'
+            gc='1 / -1'
+          />
+        )}
+
+        {contentPreviewMap['podcastPreview'] && (
+          <Box gc='1 / -1' maxw='750px'>
+            <Podcast {...podcast} />
           </Box>
         )}
 
-        {testimonialNodes.length > 0 && (
-          <PreviewGrid
-            title='Testimonials'
+        {contentPreviewMap['testimonialsPreview'] && (
+          <PreviewNodes
+            title={contentPreviewMap['testimonialsPreview'].headingText}
             nodes={testimonialNodes}
-            nodeType='default'
+            nodeType='generic'
+            browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
             browseMoreHref='/testimonials'
-            browseMoreText='See all testimonials'
-            gc='1 / 7'
+            gc='1 / -1'
           />
         )}
       </Box>

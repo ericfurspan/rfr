@@ -4,7 +4,7 @@ import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
 import { Container, BlockContent, Typography } from '..';
 
-import { StyledLink, StyledImageContainer, StyledGrid, StyledMainContent, StyledListGroup, StyledListGroupHeadline, StyledList, StyledListItem } from './style';
+import { StyledImageContainer, StyledGrid, StyledMainContent, StyledListGroup, StyledListGroupHeadline, StyledList, StyledListItem } from './style';
 
 const TeamMember = ({ person, _rawPerson, certifications }) => {
   const { image, contact } = person;
@@ -24,11 +24,6 @@ const TeamMember = ({ person, _rawPerson, certifications }) => {
         </StyledImageContainer>
       )}
       <Container>
-        <StyledLink to='/'>
-          <FontAwesomeIcon icon='arrow-left' />
-          <span>Back</span>
-        </StyledLink>
-
         <StyledGrid>
           <StyledMainContent>
             <h1 css={Typography.responsiveTitle1}>{person.name}</h1>
@@ -64,6 +59,21 @@ const TeamMember = ({ person, _rawPerson, certifications }) => {
                       </a>
                     </StyledListItem>
                   ))}
+                </StyledList>
+              </StyledListGroup>
+            )}
+            {contact && contact.email && (
+              <StyledListGroup>
+                <StyledListGroupHeadline css={Typography.base}>
+                  Email
+                </StyledListGroupHeadline>
+                <StyledList>
+                  <StyledListItem>
+                    <FontAwesomeIcon icon={['fas', 'envelope']} />
+                    <a href={`mailto:${contact.email}`}>
+                      {contact.email}
+                    </a>
+                  </StyledListItem>
                 </StyledList>
               </StyledListGroup>
             )}

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import { mapEdgesToNodes } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, BlockContent, PreviewGrid } from '../components';
+import { Container, BlockContent, PreviewNodes } from '../components';
 
 export const query = graphql`
   query TeamPageQuery {
@@ -80,7 +80,7 @@ const TeamPage = ({ data }) => {
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
 
-        <PreviewGrid nodes={teamMemberNodes} nodeType='teamMember' />
+        <PreviewNodes nodes={teamMemberNodes} nodeType='teamMember' />
       </Container>
     </>
   );

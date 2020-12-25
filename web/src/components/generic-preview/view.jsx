@@ -3,7 +3,7 @@ import React from 'react';
 import { StyledLink, StyledTitle, StyledContent, StyledCaption } from './style';
 import { Typography } from '..';
 
-const PreviewItem = ({ title, text, caption, linkTo }) => (
+const GenericPreview = ({ title, text, caption, linkTo }) => (
   <>
     <StyledLink to={linkTo}>
       <StyledTitle css={Typography.responsiveTitle4}>
@@ -25,4 +25,4 @@ const PreviewItem = ({ title, text, caption, linkTo }) => (
   </>
 );
 
-export default PreviewItem;
+export default GenericPreview;

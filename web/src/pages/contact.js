@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import SEO from '../containers/seo';
 import { Container, BlockContent, ContactForm, Box, Typography } from '../components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { colorForFaPackage } from '../lib/helpers';
 
 export const query = graphql`
   query ContactPageQuery {
@@ -49,14 +48,41 @@ const ContactPage = ({ data }) => {
       <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
 
+        <Box mt='6em' d='grid' gridResponsive gtc='repeat(auto-fit, minmax(0, 1fr))' gcg='2em' grg='4em'>
+          <div>
+            <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-dark-gray)'>
+              <a href={`mailto:${company.contact.email}`}>
+                <FontAwesomeIcon
+                  icon={['fas', 'envelope']}
+                  color='var(--color-white)'
+                  size='lg'
+                  fixedWidth
+                />
+              </a>
+            </Box>
+            {company.contact.socialMedia.map((platform) => (
+              <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-dark-gray)' key={platform.url}>
+                <a href={platform.url} target='_blank' rel='noreferrer noopener'>
+                  <FontAwesomeIcon
+                    icon={[platform.icon.faPackage, platform.icon.faIconName]}
+                    color='var(--color-white)'
+                    size='lg'
+                    fixedWidth
+                  />
+                </a>
+              </Box>
+            ))}
+          </div>
+        </Box>
+
         <Box m='2em 0'>
           <ContactForm />
         </Box>
 
         {company.faq.length > 0 && (
-          <Box mt='6em'>
+          <Box maxw='550px' ta='initial' m='0 auto' mt='6em'>
             <h2 css={Typography.responsiveTitle2}>Frequently Asked Questions</h2>
-            <Box flex col ai='flex-start' maxw='500px' m='0 auto'>
+            <Box flex col ai='flex-start'>
               {company.faq.map((faqItem) => (
                 <Box m='0.5em 0' key={faqItem._key}>
                   <details>
@@ -68,28 +94,6 @@ const ContactPage = ({ data }) => {
             </Box>
           </Box>
         )}
-
-        <Box mt='6em' d='grid' gridResponsive gtc='repeat(auto-fit, minmax(0, 1fr))' gcg='2em' grg='4em'>
-          <div>
-            <h2 css={Typography.responsiveTitle2}>Email Us</h2>
-            <a href={`mailto:${company.contact.email}`}>{company.contact.email}</a>
-          </div>
-          <div>
-            <h2 css={Typography.responsiveTitle2}>Follow Us</h2>
-            {company.contact.socialMedia.map((platform) => (
-              <Box d='inline' m='0 1.25em' key={platform.url}>
-                <a href={platform.url} target='_blank' rel='noreferrer noopener'>
-                  <FontAwesomeIcon
-                    icon={[platform.icon.faPackage, platform.icon.faIconName]}
-                    color={colorForFaPackage(platform.icon.faIconName)}
-                    size='3x'
-                    fixedWidth
-                  />
-                </a>
-              </Box>
-            ))}
-          </div>
-        </Box>
       </Container>
     </>
   );

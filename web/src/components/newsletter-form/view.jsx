@@ -70,6 +70,7 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
           name='emailAddress'
           id='emailAddress'
           placeholder='Email address'
+          aria-label='Email Address'
           onChange={onFieldChange}
           value={formFields.emailAddress}
           minw='178px'

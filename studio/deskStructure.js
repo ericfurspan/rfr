@@ -1,8 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaRegCopy, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile } from 'react-icons/fa';
+
+import { customPages, availableLandingContent } from './constants';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'contentPreview']
     .includes(listItem.getId());
 
 export default () =>
@@ -19,26 +21,6 @@ export default () =>
         )
         .icon(FaLandmark),
       S.listItem()
-        .title('Jumbotron')
-        .child(
-          S.editor()
-            .id('jumbotron')
-            .schemaType('jumbotron')
-            .documentId('jumbotron')
-            .title('Jumbotron')
-        )
-        .icon(FaObjectGroup),
-      S.listItem()
-        .title('Banner')
-        .child(
-          S.editor()
-            .id('banner')
-            .schemaType('banner')
-            .documentId('banner')
-            .title('Banner')
-        )
-        .icon(FaBullhorn),
-      S.listItem()
         .title('Services')
         .schemaType('service')
         .child(S.documentTypeList('service').title('Services'))
@@ -54,9 +36,19 @@ export default () =>
         .child(S.documentTypeList('testimonial').title('Testimonials'))
         .icon(FaRegThumbsUp),
       S.listItem()
-        .title('Podcasts')
-        .schemaType('podcast')
-        .child(S.documentTypeList('podcast').title('Podcasts'))
+        .title('Affiliates')
+        .schemaType('affiliate')
+        .child(S.documentTypeList('affiliate').title('Affiliates'))
+        .icon(FaHandsHelping),
+      S.listItem()
+        .title('Podcast')
+        .child(
+          S.editor()
+            .id('podcast')
+            .schemaType('podcast')
+            .documentId('podcast')
+            .title('Podcast')
+        )
         .icon(FaPodcast),
       S.listItem()
         .title('Payments')
@@ -98,70 +90,59 @@ export default () =>
             .title('Pages')
             .items([
               S.listItem()
-                .title('About')
+                .title('Homepage')
                 .child(
-                  S.editor()
-                    .id('aboutPage')
-                    .schemaType('page')
-                    .documentId('about')
-                )
-                .icon(FaFileAlt),
+                  S.list()
+                    .title('Content')
+                    .items(availableLandingContent.map((_content) =>
+                      S.listItem()
+                        .title(_content.title)
+                        .child(
+                          S.editor()
+                            .id(_content.identifier)
+                            .schemaType('contentPreview')
+                        )
+                    ))
+                ).icon(FaRegFile),
               S.listItem()
-                .title('Services')
+                .title('Custom Pages')
                 .child(
-                  S.editor()
-                    .id('servicesPage')
-                    .schemaType('page')
-                    .documentId('services')
-                )
-                .icon(FaFileAlt),
-              S.listItem()
-                .title('Donate')
-                .child(
-                  S.editor()
-                    .id('donatePage')
-                    .schemaType('page')
-                    .documentId('donate')
-                )
-                .icon(FaFileAlt),
-              S.listItem()
-                .title('Testimonials')
-                .child(
-                  S.editor()
-                    .id('testimonialsPage')
-                    .schemaType('page')
-                    .documentId('testimonials')
-                )
-                .icon(FaFileAlt),
-              S.listItem()
-                .title('Contact')
-                .child(
-                  S.editor()
-                    .id('contactPage')
-                    .schemaType('page')
-                    .documentId('contact')
-                )
-                .icon(FaFileAlt),
-              S.listItem()
-                .title('News')
-                .child(
-                  S.editor()
-                    .id('newsPage')
-                    .schemaType('page')
-                    .documentId('news')
-                )
-                .icon(FaFileAlt),
-              S.listItem()
-                .title('Team')
-                .child(
-                  S.editor()
-                    .id('teamPage')
-                    .schemaType('page')
-                    .documentId('team')
-                )
-                .icon(FaFileAlt)
+                  S.list()
+                    .title('Custom Pages')
+                    .items(customPages.map((_page) =>
+                      S.listItem()
+                        .title(_page.title)
+                        .child(
+                          S.editor()
+                            .id(_page.id)
+                            .schemaType('page')
+                            .documentId(_page.docId)
+                        )
+                        .icon(FaFileAlt)
+                    ))
+                ).icon(FaRegCopy)
             ])
-        ).icon(FaRegCopy),
+        ).icon(FaSitemap),
+      S.listItem()
+        .title('Jumbotron')
+        .child(
+          S.editor()
+            .id('jumbotron')
+            .schemaType('jumbotron')
+            .documentId('jumbotron')
+            .title('Jumbotron')
+        )
+        .icon(FaObjectGroup),
+      S.listItem()
+        .title('Banner')
+        .child(
+          S.editor()
+            .id('banner')
+            .schemaType('banner')
+            .documentId('banner')
+            .title('Banner')
+        )
+        .icon(FaBullhorn),
       S.listItem()
         .title('SEO')
         .child(

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import { mapEdgesToNodes } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, ServicesGrid, BlockContent } from '../components';
+import { Container, Services, BlockContent } from '../components';
 
 export const query = graphql`
   query ServicesPageQuery {
@@ -42,7 +42,7 @@ const ServicesPage = ({ data }) => {
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
 
-        <ServicesGrid nodes={servicesNodes} />
+        <Services nodes={servicesNodes} />
       </Container>
     </>
   );

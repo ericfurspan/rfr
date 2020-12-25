@@ -1,6 +1,7 @@
 // Load variables from `.env` as soon as possible
 require('dotenv').config();
 
+const company = require('../company');
 const clientConfig = require('./client-config');
 const token = process.env.SANITY_READ_TOKEN;
 
@@ -32,8 +33,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Reps for Responders`,
-        short_name: `RFR`,
+        name: company.name,
+        short_name: company.shortName,
         start_url: `/`,
         background_color: `#fafafa`,
         theme_color: `#202123`,

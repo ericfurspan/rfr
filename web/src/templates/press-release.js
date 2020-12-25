@@ -24,7 +24,7 @@ const PressReleaseTemplate = ({ data }) => {
   const { pressRelease } = (data || {});
 
   return (
-    <Container>
+    <Container noPadding>
       {pressRelease && <SEO title={pressRelease.title || 'Untitled'} />}
       {pressRelease && <PressPost {...pressRelease} />}
     </Container>

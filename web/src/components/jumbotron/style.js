@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { StyledButton } from '../field';
 
 export const StyledJumbotron = styled.div`
-  min-height: 82vh;
+  min-height: 100vh;
   color: var(--color-black);
   position: relative;
 
@@ -41,7 +41,7 @@ export const StyledOverlay = styled.div`
   left: 0;
   right: 0;
   padding: 2em;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.45);
 `;
 
 export const StyledContent = styled.div`
@@ -49,8 +49,8 @@ export const StyledContent = styled.div`
 
   ${(props) => props.isCentered && css`
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 40%;
+    transform: translateY(-40%);
     text-align: center;
     max-width: unset;
   `}

@@ -1,15 +1,68 @@
-export const colorInputList = [
-  { title: 'Pink', value: '#EE0688' },
-  { title: 'Red', value: '#D22429' },
-  { title: 'Yellow', value: '#F2C335' },
-  { title: 'Gold', value: '#8d802aeb' },
-  { title: 'Link', value: '#04f' },
-  { title: 'Dark Blue', value: '#102040' },
-  { title: 'Light Blue', value: '#6380A6' },
-  { title: 'Black', value: '#202123' },
-  { title: 'Dark Gray', value: '#606060' },
-  { title: 'Gray', value: '#7f8c8d' },
-  { title: 'Light Gray', value: '#e7ebed' },
-  { title: 'Off-White', value: '#fafafa' },
-  { title: 'White', value: '#ffffff' }
+export const customPages = [
+  {
+    title: 'About',
+    id: 'aboutPage',
+    docId: 'aboutPage'
+  },
+  {
+    title: 'Services',
+    id: 'servicesPage',
+    docId: 'servicesPage'
+  },
+  {
+    title: 'Donate',
+    id: 'donatePage',
+    docId: 'donatePage'
+  },
+  {
+    title: 'Testimonials',
+    id: 'testimonialsPage',
+    docId: 'testimonialsPage'
+  },
+  {
+    title: 'Contact',
+    id: 'contactPage',
+    docId: 'contactPage'
+  },
+  {
+    title: 'News',
+    id: 'newsPage',
+    docId: 'newsPage'
+  },
+  {
+    title: 'Team',
+    id: 'teamPage',
+    docId: 'teamPage'
+  }
+];
+
+export const availableLandingContent = [
+  {
+    title: 'Mission',
+    identifier: 'missionPreview'
+  },
+  {
+    title: 'Services',
+    identifier: 'servicesPreview'
+  },
+  {
+    title: 'Affiliates',
+    identifier: 'affiliatesPreview'
+  },
+  {
+    title: 'Team',
+    identifier: 'teamPreview'
+  },
+  {
+    title: 'News',
+    identifier: 'newsPreview'
+  },
+  {
+    title: 'Podcast',
+    identifier: 'podcastPreview'
+  },
+  {
+    title: 'Testimonials',
+    identifier: 'testimonialsPreview'
+  }
 ];

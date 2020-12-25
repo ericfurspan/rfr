@@ -17,6 +17,12 @@ export const BoxMixin = css`
   padding-bottom: ${(props) => props.pb || props.paddingBottom};
   padding-left: ${(props) => props.pl || props.paddingLeft};
 
+  /* Border Props */
+  border-radius: ${(props) => props.bdr || props.borderRadius};
+
+  /* Background Props */
+  background: ${(props) => props.br || props.background};
+
   ${(props) =>
     props.flex &&
     css`

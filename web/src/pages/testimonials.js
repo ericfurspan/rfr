@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import { getTestimonialUrl, mapEdgesToNodes } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, PreviewGrid, BlockContent } from '../components';
+import { Container, PreviewNodes, BlockContent } from '../components';
 import { format } from 'date-fns';
 
 export const query = graphql`
@@ -55,7 +55,7 @@ const TestimonialsPage = ({ data }) => {
         <BlockContent blocks={page._rawBody || []} />
         <br /> <br />
 
-        <PreviewGrid nodes={testimonialNodes} nodeType='testimonial' />
+        <PreviewNodes nodes={testimonialNodes} nodeType='generic' />
       </Container>
     </>
   );

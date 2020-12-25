@@ -16,6 +16,10 @@ export const StyledFooter = styled.footer`
     height: 1px;
     border: 0;
   }
+
+  ${MEDIA.PHONE`
+    padding: 2em;
+  `};
 `;
 
 export const StyledGrid = styled.div`

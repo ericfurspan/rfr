@@ -1,25 +1,21 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { cn } from '../../lib/helpers';
-import { Box, TeamMemberPreview, PreviewItem, Typography, boxProps } from '..';
+import { Box, TeamMemberPreview, GenericPreview, Typography, boxProps } from '..';
 import { StyledGrid, StyledBrowseMore, StyledEmptyNodesText } from './style';
-import { Testimonial } from '../testimonial';
 
-const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, browseMoreText, withStyledTitle, ...rest }) => {
-  const titleStyles = withStyledTitle ? cn(Typography.small, Typography.subtitle) : Typography.responsiveTitle2;
-  const titleText = withStyledTitle ? `${title} (${nodes.length})` : title;
-
+const PreviewNodes = ({ title, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, ...rest }) => {
   return (
     <Box mb='2em' ta='initial' {...boxProps(rest)}>
-      {title && <h2 css={titleStyles}>{titleText}</h2>}
+      {title && <h2 css={Typography.responsiveTitle2}>
+        {title}
+      </h2>}
       {nodes.length > 0 ? (
         <>
           <StyledGrid>
             {nodes.map(node => (
               <li key={node.id}>
-                {nodeType === 'default' && <PreviewItem {...node} />}
-                {nodeType === 'testimonial' && <Testimonial {...node} previewMode />}
                 {nodeType === 'teamMember' && <TeamMemberPreview {...node} />}
+                {nodeType === 'generic' && <GenericPreview {...node} />}
               </li>
             ))}
           </StyledGrid>
@@ -39,11 +35,11 @@ const PreviewGrid = ({ title, nodes, nodeType = 'default', browseMoreHref, brows
   );
 };
 
-PreviewGrid.defaultProps = {
+PreviewNodes.defaultProps = {
   title: '',
   nodes: [],
   browseMoreHref: '',
   browseMoreText: '',
 };
 
-export default PreviewGrid;
+export default PreviewNodes;

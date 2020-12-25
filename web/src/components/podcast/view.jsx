@@ -7,7 +7,7 @@ const Podcast = ({ title, _rawDescription, availablePlatforms }) => (
   <StyledWrapper>
     {title && (
       <StyledTitle css={Typography.responsiveTitle2}>
-        <span>{title}</span>
+        {title}
       </StyledTitle>
     )}
 

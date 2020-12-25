@@ -45,7 +45,7 @@ export const paragraph = css`
   margin: 0.5rem 0 1rem 0;
 `;
 export const blockQuote = css`
-  background: var(--color-very-light-gray);
+  background: var(--color-dark-white);
   padding: 1rem;
 `;
 export const responsiveTitle1 = css`
@@ -62,7 +62,7 @@ export const responsiveTitle2 = css`
   font-weight: 700;
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  margin: 1.5rem 0 1rem;
+  margin: 1rem 0 1.5rem;
 
   ${MEDIA.PHONE`
     font-size: var(--font-title3-size);
@@ -80,6 +80,7 @@ export const responsiveTitle3 = css`
   `};
 `;
 export const responsiveTitle4 = css`
+  font-weight: 500;
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
 
@@ -99,22 +100,8 @@ export const responsiveTitle5 = css`
 `;
 
 /*
- * Alternate elements
+ * Additional styles
  */
-export const subtitle = css`
-  color: var(--color-black);
-  background-color: var(--color-very-light-gray);
-  font-weight: 300;
-  border-radius: 0.2em;
-  padding: 0.75em;
-`;
-export const headline = css`
-  font-size: var(--font-small-size);
-  line-height: var(--font-small-line-height);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 2rem 0;
-  width: max-content;
-  border-bottom: 1px solid var(--color-black);
+export const underline = css`
+  text-decoration: underline;
 `;

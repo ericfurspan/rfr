@@ -142,10 +142,7 @@ const ContactForm = () => {
         )}
 
         <Box mt='2em'>
-          <StyledButton design='secondary' type='reset' onClick={onReset}>
-            Reset
-          </StyledButton>
-          <StyledButton design='primary' type='submit' disabled={!recaptchaDone} ml='0.75em'>
+          <StyledButton design='primary' type='submit' disabled={!recaptchaDone}>
             Send Message
           </StyledButton>
         </Box>

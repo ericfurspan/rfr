@@ -19,6 +19,8 @@ import podcast from './documents/podcast';
 import payment from './documents/payment';
 import banner from './documents/banner';
 import jumbotron from './documents/jumbotron';
+import affiliate from './documents/affiliate';
+import contentPreview from './documents/contentPreview';
 
 // Object types
 import blockContent from './objects/blockContent';
@@ -64,6 +66,8 @@ export default createSchema({
     podcast,
     banner,
     jumbotron,
+    affiliate,
+    contentPreview,
     icon
   ])
 });

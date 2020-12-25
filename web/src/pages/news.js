@@ -6,7 +6,7 @@ import { getBlogUrl, getPressReleaseUrl, getEventUrl, mapEdgesToNodes } from '..
 import SEO from '../containers/seo';
 import {
   Container,
-  PreviewGrid,
+  PreviewNodes,
   BlockContent,
   NewsletterForm,
   Typography,
@@ -131,12 +131,12 @@ const NewsPage = ({ data }) => {
         <br /> <br />
 
         <Box flex col mb='3em' ta='initial'>
-          <span css={Typography.large}>Subscribe to our newsletter</span>
+          <h3 css={Typography.responsiveTitle3}>Subscribe to our newsletter</h3>
           <NewsletterForm />
         </Box>
-        <PreviewGrid title='Press Releases' nodes={pressReleaseNodes} withStyledTitle />
-        <PreviewGrid title='Blog Posts' nodes={blogPostNodes} withStyledTitle />
-        <PreviewGrid title='Events' nodes={eventNodes} withStyledTitle />
+        <PreviewNodes title={`Press (${pressReleaseNodes.length})`} nodes={pressReleaseNodes} />
+        <PreviewNodes title={`Blog (${blogPostNodes.length})`} nodes={blogPostNodes} />
+        <PreviewNodes title={`Events (${eventNodes.length})`} nodes={eventNodes} />
       </Container>
     </>
   );

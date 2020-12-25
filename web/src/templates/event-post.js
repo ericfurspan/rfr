@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { EventPost } from '../components';
+import { Container, EventPost } from '../components';
 
 export const query = graphql`
   query EventPostTemplateQuery($id: String!) {
@@ -74,10 +74,10 @@ const EventPostTemplate = ({ data }) => {
   const { event } = (data || {});
 
   return (
-    <>
+    <Container noPadding>
       {event && <SEO title={event.title || 'Untitled'} />}
       {event && <EventPost {...event} />}
-    </>
+    </Container>
   );
 };
 

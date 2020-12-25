@@ -73,8 +73,8 @@ export const encode = (data) => {
 };
 
 const BREAKPOINTS = {
-  DESKTOP: 992,
-  TABLET: 768,
+  DESKTOP: 1024,
+  TABLET: 876,
   PHONE: 499,
 };
 // This creates the media templates, which allows for simple

@@ -1,5 +1,5 @@
 import { FaExternalLinkAlt, FaLink, FaPalette } from 'react-icons/fa';
-import { colorInputList } from '../../constants';
+import { colorPalette } from '../../../company.js';
 
 export default {
   name: 'blockText',
@@ -41,7 +41,7 @@ export default {
                 type: 'colors',
                 title: 'Font Color',
                 options: {
-                  list: colorInputList
+                  list: colorPalette
                 }
               }
             ]

@@ -1,17 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { MEDIA } from '../../lib/helpers';
-
-export const StyledLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  font-size: 0.875em;
-  width: max-content;
-
-  & svg {
-    margin-right: 0.5em;
-  }
-`;
 
 export const StyledImageContainer = styled.div`
   position: relative;

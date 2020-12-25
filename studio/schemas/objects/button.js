@@ -1,4 +1,4 @@
-import { colorInputList } from '../../constants';
+import { colorPalette } from '../../../company.js';
 
 export default {
   name: 'button',
@@ -15,7 +15,7 @@ export default {
       type: 'colors',
       title: 'Background Color',
       options: {
-        list: colorInputList
+        list: colorPalette
       }
     },
     {
@@ -23,7 +23,7 @@ export default {
       type: 'colors',
       title: 'Text Color',
       options: {
-        list: colorInputList
+        list: colorPalette
       }
     },
     {
