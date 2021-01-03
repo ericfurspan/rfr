@@ -20,3 +20,13 @@ export const StyledEmptyNodesText = styled.span`
   font-weight: 400;
   margin-left: 0.5em;
 `;
+
+export const StyledImageContainer = styled.div`
+  text-align: center;
+  
+  & img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+`;

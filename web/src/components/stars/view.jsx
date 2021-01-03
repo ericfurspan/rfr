@@ -6,7 +6,7 @@ const Stars = ({ amount }) => (
   <Box flex row jc='center'>
     {Array.from(Array(amount), (_x, index) => (
       <Box m='0 0.5em' key={index}>
-        <FontAwesomeIcon icon={['fas', 'star']} color='gold' size='3x' />
+        <FontAwesomeIcon icon={['fas', 'star']} color='gold' size='2x' />
       </Box>
     ))}
   </Box>

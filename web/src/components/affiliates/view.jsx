@@ -1,12 +1,21 @@
 import React from 'react';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { StyledGrid } from './style';
+import { StyledGrid, StyledImageContainer } from './style';
 import { Box, boxProps, Typography } from '..';
 
-const Affiliates = ({ title, subtitle, nodes, ...rest }) => {
+const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
   return (
     <Box ta='center' {...boxProps(rest)}>
+      {image && image.asset && (
+        <StyledImageContainer>
+          <img
+            src={imageUrlFor(buildImageObj(image))
+              .url()}
+            alt={image.alt || `Affiliates preview image`}
+          />
+        </StyledImageContainer>
+      )}
       {title && (
         <Box mb='3em'>
           <h2 css={Typography.responsiveTitle2}>

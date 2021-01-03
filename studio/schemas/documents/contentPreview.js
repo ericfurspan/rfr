@@ -20,6 +20,12 @@ export default {
       type: 'string'
     },
     {
+      name: 'photo',
+      title: 'Heading Photo',
+      description: 'An optional image to display above the heading',
+      type: 'figure'
+    },
+    {
       name: 'browseMoreText',
       title: 'Browse more text',
       description: 'The text of the link to the content page, i.e "See all News & Updates"',

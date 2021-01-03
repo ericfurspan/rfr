@@ -1,11 +1,22 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { imageUrlFor } from '../../lib/image-url';
+import { buildImageObj } from '../../lib/helpers';
 import { Box, TeamMemberPreview, ContentPreview, Typography, boxProps } from '..';
-import { StyledGrid, StyledBrowseMore, StyledEmptyNodesText } from './style';
+import { StyledGrid, StyledImageContainer, StyledBrowseMore, StyledEmptyNodesText } from './style';
 
-const PreviewNodes = ({ title, subtitle, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, alignTitle = 'center', ...rest }) => {
+const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, alignTitle = 'center', ...rest }) => {
   return (
     <Box {...boxProps(rest)}>
+      {image && image.asset && (
+        <StyledImageContainer>
+          <img
+            src={imageUrlFor(buildImageObj(image))
+              .url()}
+            alt={image.alt || `Section preview image`}
+          />
+        </StyledImageContainer>
+      )}
       {title && (
         <Box mb='3em' ta={alignTitle}>
           <h2 css={Typography.responsiveTitle2}>

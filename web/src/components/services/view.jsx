@@ -1,13 +1,23 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { imageUrlFor } from '../../lib/image-url';
+import { buildImageObj } from '../../lib/helpers';
 import { Box, Typography, boxProps, BlockContent } from '..';
-import { StyledGrid, StyledIconContainer, StyledService, StyledServiceBody, StyledBrowseMore } from './style';
+import { StyledGrid, StyledIconContainer, StyledService, StyledServiceBody, StyledImageContainer, StyledBrowseMore } from './style';
 
-const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, previewMode, ...rest }) => {
+const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, image, previewMode, ...rest }) => {
   return (
     <Box ta='center' {...boxProps(rest)}>
+      {image && image.asset && (
+        <StyledImageContainer>
+          <img
+            src={imageUrlFor(buildImageObj(image))
+              .url()}
+            alt={image.alt || `Services image`}
+          />
+        </StyledImageContainer>
+      )}
       {title && (
         <Box mb='3em'>
           <h2 css={Typography.responsiveTitle2}>

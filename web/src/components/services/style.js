@@ -20,6 +20,14 @@ export const StyledGrid = styled.ul`
   }
 `;
 
+export const StyledImageContainer = styled.div`
+  & img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+`;
+
 export const StyledIconContainer = styled.div`
   display: flex;
   justify-content: center;

@@ -11,8 +11,7 @@ import {
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Jumbotron, Mission, PreviewNodes, Services, Podcast, Box, Affiliates } from '../components';
-import { Stars } from '../components/stars';
+import { Jumbotron, Mission, PreviewNodes, Services, Podcast, Box, Affiliates, Stars } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -44,6 +43,12 @@ export const query = graphql`
           _id
           headingText
           headingSubtitle
+          photo {
+            asset {
+              _id
+            }
+            alt
+          }
           browseMoreText
         }
       }
@@ -356,9 +361,7 @@ const IndexPage = ({ data }) => {
     <>
       <SEO title={seo.title} description={seo.description} keywords={seo.keywords} />
 
-      <Jumbotron
-        {...jumbotron}
-      />
+      <Jumbotron {...jumbotron} />
 
       <Box
         d='grid'
@@ -370,15 +373,17 @@ const IndexPage = ({ data }) => {
           <Mission
             title={contentPreviewMap['missionPreview'].headingText}
             subtitle={contentPreviewMap['missionPreview'].headingSubtitle}
+            image={contentPreviewMap['missionPreview'].photo}
             _rawMission={company._rawMission}
             gc='2 / -2'
-            p='2rem'
+            p='4rem 2rem'
           />
         )}
         {contentPreviewMap['servicesPreview'] && (
           <Services
             title={contentPreviewMap['servicesPreview'].headingText}
             subtitle={contentPreviewMap['servicesPreview'].headingSubtitle}
+            image={contentPreviewMap['servicesPreview'].photo}
             nodes={servicesNodes}
             browseMoreText={contentPreviewMap['servicesPreview'].browseMoreText}
             browseMoreHref='/services'
@@ -392,6 +397,7 @@ const IndexPage = ({ data }) => {
           <PreviewNodes
             title={contentPreviewMap['teamPreview'].headingText}
             subtitle={contentPreviewMap['teamPreview'].headingSubtitle}
+            image={contentPreviewMap['teamPreview'].photo}
             nodes={teamMemberNodes}
             nodeType='teamMember'
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
@@ -410,6 +416,7 @@ const IndexPage = ({ data }) => {
             <PreviewNodes
               title={contentPreviewMap['newsPreview'].headingText}
               subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
+              image={contentPreviewMap['newsPreview'].photo}
               nodes={allNewsNodes}
               nodeType='generic'
               browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
@@ -427,6 +434,7 @@ const IndexPage = ({ data }) => {
           <Affiliates
             title={contentPreviewMap['affiliatesPreview'].headingText}
             subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
+            image={contentPreviewMap['affiliatesPreview'].photo}
             nodes={affiliateNodes}
             gc='1 / -1'
             p='6rem 2rem'
@@ -445,6 +453,7 @@ const IndexPage = ({ data }) => {
             <PreviewNodes
               title={contentPreviewMap['testimonialsPreview'].headingText}
               subtitle={contentPreviewMap['testimonialsPreview'].headingSubtitle}
+              image={contentPreviewMap['testimonialsPreview'].photo}
               nodes={testimonialNodes}
               nodeType='generic'
               browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
