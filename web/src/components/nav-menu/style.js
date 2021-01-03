@@ -7,21 +7,21 @@ export const AnimatedStyledBackground = styled(AnimatedBackground)`
   top: 0;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 300px;
   background-color: var(--color-black);
 `;
 
 const AnimatedNav = motion.nav;
 export const AnimatedStyledNav = styled(AnimatedNav)`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
+  width: 300px;
   z-index: 1;
 
   ${(props) => props.isOpen && css`
     z-index: 2;
-    width: 300px;
   `}
 
   ${AnimatedStyledBackground} {
@@ -35,7 +35,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
     top: 22px;
     right: 16px;
     color: var(--color-white);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 600;
     font-family: var(--font-family-brand);
     display: none;
@@ -57,9 +57,9 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
     left: 15px;
     width: 50px;
     height: 50px;
-    background: var(--color-black);
+    background: transparent;
     border-radius: 50%;
-
+  
     & svg {
       vertical-align: middle;
     }

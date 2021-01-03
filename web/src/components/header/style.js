@@ -26,11 +26,9 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledTitle = styled.h1`
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 600;
   font-family: var(--font-family-brand);
-  padding: 0;
-  margin: 0;
   margin-left: 75px;
   user-select: none;
   z-index: 1;
