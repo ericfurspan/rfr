@@ -25,6 +25,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: clientConfig.analytics.trackingId,
+      },
+    },
+    {
       resolve: `gatsby-plugin-env-variables`,
       options: {
         allowList: ['SITE_RECAPTCHA_KEY'],
