@@ -47,7 +47,7 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
         </>
       ) : (
         <StyledEmptyNodesText css={Typography.small}>
-          No content
+          Missing content
         </StyledEmptyNodesText>
       )}
     </Box>

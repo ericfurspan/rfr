@@ -70,7 +70,7 @@ export const responsiveTitle2 = css`
   `};
 `;
 export const responsiveTitle3 = css`
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
 

@@ -132,26 +132,33 @@ const NewsPage = ({ data }) => {
           <NewsletterForm />
         </Box>
 
-        <Box mt='3em' ta='left'>
-          <h2 css={Typography.responsiveTitle2}>Press</h2>
-          {pressReleaseNodes.map((node) => (
-            <ContentPreview key={node.id} {...node} />
-          ))}
-        </Box>
+        {pressReleaseNodes.length > 0 && (
+          <Box mt='3em' ta='left'>
+            <h2 css={Typography.responsiveTitle2}>Press</h2>
+            {pressReleaseNodes.map((node) => (
+              <ContentPreview key={node.id} {...node} />
+            ))}
+          </Box>
+        )}
 
-        <Box mt='3em' ta='left'>
-          <h2 css={Typography.responsiveTitle2}>Blog</h2>
-          {blogPostNodes.map((node) => (
-            <ContentPreview key={node.id} {...node} />
-          ))}
-        </Box>
+        {blogPostNodes.length > 0 && (
+          <Box mt='3em' ta='left'>
+            <h2 css={Typography.responsiveTitle2}>Blog</h2>
+            {blogPostNodes.map((node) => (
+              <ContentPreview key={node.id} {...node} />
+            ))}
+          </Box>
+        )}
 
-        <Box mt='3em' ta='left'>
-          <h2 css={Typography.responsiveTitle2}>Events</h2>
-          {eventNodes.map((node) => (
-            <ContentPreview key={node.id} {...node} />
-          ))}
-        </Box>
+        {eventNodes.length > 0 && (
+          <Box mt='3em' ta='left'>
+            <h2 css={Typography.responsiveTitle2}>Events</h2>
+            {eventNodes.map((node) => (
+              <ContentPreview key={node.id} {...node} />
+            ))}
+          </Box>
+        )}
+
       </Container>
     </>
   );

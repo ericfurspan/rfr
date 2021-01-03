@@ -299,7 +299,7 @@ const IndexPage = ({ data }) => {
 
   if (!company) {
     throw new Error(
-      'Missing "Company Info". Open the studio and add some content to "Company Info" then restart the development server.'
+      'Missing "Company" data. Open the studio and add content to "Company", then restart the server.'
     );
   }
 
@@ -376,10 +376,11 @@ const IndexPage = ({ data }) => {
             image={contentPreviewMap['missionPreview'].photo}
             _rawMission={company._rawMission}
             gc='2 / -2'
-            p='4rem 2rem'
+            p='6rem 2rem'
           />
         )}
         {contentPreviewMap['servicesPreview'] && (
+          servicesNodes.length > 0 &&
           <Services
             title={contentPreviewMap['servicesPreview'].headingText}
             subtitle={contentPreviewMap['servicesPreview'].headingSubtitle}
@@ -394,6 +395,7 @@ const IndexPage = ({ data }) => {
         )}
 
         {contentPreviewMap['teamPreview'] && (
+          teamMemberNodes.length > 0 &&
           <PreviewNodes
             title={contentPreviewMap['teamPreview'].headingText}
             subtitle={contentPreviewMap['teamPreview'].headingSubtitle}
@@ -403,7 +405,7 @@ const IndexPage = ({ data }) => {
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
             gc='1 / -1'
-            p='4rem 2rem'
+            p='6rem 2rem'
             br='var(--color-dark-white)'
           />
         )}
@@ -411,17 +413,19 @@ const IndexPage = ({ data }) => {
         {(contentPreviewMap['newsPreview'] || contentPreviewMap['podcastPreview']) && (
           <Box
             gc='1 / -1'
-            p='4rem 2rem'
+            p='6rem 2rem'
           >
-            <PreviewNodes
-              title={contentPreviewMap['newsPreview'].headingText}
-              subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
-              image={contentPreviewMap['newsPreview'].photo}
-              nodes={allNewsNodes}
-              nodeType='generic'
-              browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
-              browseMoreHref='/news'
-            />
+            {allNewsNodes.length > 0 && (
+              <PreviewNodes
+                title={contentPreviewMap['newsPreview'].headingText}
+                subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
+                image={contentPreviewMap['newsPreview'].photo}
+                nodes={allNewsNodes}
+                nodeType='generic'
+                browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
+                browseMoreHref='/news'
+              />
+            )}
             {contentPreviewMap['podcastPreview'] && (
               <Box p='2rem 0' maxw='720px'>
                 <Podcast {...podcast} />
@@ -431,6 +435,7 @@ const IndexPage = ({ data }) => {
         )}
 
         {contentPreviewMap['affiliatesPreview'] && (
+          affiliateNodes.length > 0 &&
           <Affiliates
             title={contentPreviewMap['affiliatesPreview'].headingText}
             subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
@@ -442,10 +447,12 @@ const IndexPage = ({ data }) => {
           />
         )}
 
-        {contentPreviewMap['testimonialsPreview'] && (
+        {contentPreviewMap['testimonialsPreview'] &&
+          testimonialNodes.length > 0 &&
+        (
           <Box
             gc='1 / -1'
-            p='4rem 2rem'
+            p='6rem 2rem'
             br='var(--color-dark-white)'
           >
             <Stars amount={5} />

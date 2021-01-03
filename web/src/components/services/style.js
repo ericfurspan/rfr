@@ -46,7 +46,7 @@ export const StyledIconContainer = styled.div`
 `;
 
 export const StyledService = styled.div`
-  padding: 1em 2em;
+  padding: 3em 1.5em;
 
   & h3 {
     margin: 0 auto 1em;

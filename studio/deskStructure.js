@@ -1,10 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaFileAlt, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile, FaPalette } from 'react-icons/fa';
 
 import { customPages, availableLandingContent } from './constants';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'contentPreview']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'contentPreview', 'theme']
     .includes(listItem.getId());
 
 export default () =>
@@ -93,7 +93,7 @@ export default () =>
                 .title('Homepage')
                 .child(
                   S.list()
-                    .title('Content')
+                    .title('Homepage content')
                     .items(availableLandingContent.map((_content) =>
                       S.listItem()
                         .title(_content.title)
@@ -105,10 +105,10 @@ export default () =>
                     ))
                 ).icon(FaRegFile),
               S.listItem()
-                .title('Custom Pages')
+                .title('Custom pages')
                 .child(
                   S.list()
-                    .title('Custom Pages')
+                    .title('Custom pages')
                     .items(customPages.map((_page) =>
                       S.listItem()
                         .title(_page.title)
@@ -118,7 +118,7 @@ export default () =>
                             .schemaType('page')
                             .documentId(_page.docId)
                         )
-                        .icon(FaFileAlt)
+                        .icon(FaRegFile)
                     ))
                 ).icon(FaRegCopy)
             ])
@@ -153,6 +153,16 @@ export default () =>
             .title('Search Engine Optimization Metadata')
         )
         .icon(FaSearchengin),
+      S.listItem()
+        .title('Theme')
+        .child(
+          S.editor()
+            .id('theme')
+            .schemaType('theme')
+            .documentId('theme')
+            .title('theme')
+        )
+        .icon(FaPalette),
       S.listItem()
         .title('Web Icons')
         .schemaType('icon')

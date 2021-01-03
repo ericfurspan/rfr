@@ -8,7 +8,7 @@ export const AnimatedStyledBackground = styled(AnimatedBackground)`
   left: 0;
   bottom: 0;
   width: 300px;
-  background-color: var(--color-black);
+  background-color: ${(props) => props.navMenuBg || 'var(--color-black)'};
 `;
 
 const AnimatedNav = motion.nav;
@@ -25,17 +25,11 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
     position: fixed;
   `}
 
-  ${AnimatedStyledBackground} {
-    ${(props) => props.isOpen && css`
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
-    `}
-  }
-
   .nav-title {
     position: absolute;
     top: 22px;
     right: 16px;
-    color: var(--color-white);
+    color: ${(props) => props.navMenuFg || 'var(--color-white)'};
     font-size: 1.25rem;
     font-weight: 600;
     font-family: var(--font-family-brand);
@@ -101,7 +95,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
         span {
           border-radius: 6px;
           width: 100%;
-          color: var(--color-white);
+          color: ${(props) => props.navMenuFg || 'var(--color-white)'};
           text-transform: uppercase;
           font-weight: 600;
           font-size: 0.875rem;

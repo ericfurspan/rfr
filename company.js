@@ -9,11 +9,11 @@ module.exports = {
     { title: "Link", value: "#04f" },
     { title: "Dark Blue", value: "#102040" },
     { title: "Light Blue", value: "#6380A6" },
-    { title: "Black", value: "#202123" },
     { title: "Dark Gray", value: "#606060" },
     { title: "Gray", value: "#7f8c8d" },
-    { title: "Light Gray", value: "#e7ebed" },
+    { title: "Light Gray", value: "#b4bcc7" },
     { title: "Off-White", value: "#fafafa" },
-    { title: "White", value: "#ffffff" }
+    { title: "White", value: "#ffffff" },
+    { title: "Black", value: "#212121" },
   ]
 }

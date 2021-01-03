@@ -39,22 +39,10 @@ export default {
       }
     },
     {
-      name: 'isExtendedBgColor',
-      title: 'Extended background color',
-      description: 'Should the background color extend up into the header as well?',
-      type: 'boolean'
-    },
-    {
       name: 'backgroundImage',
       title: 'Background image',
       description: 'A background image (cover photo) for the jumbotron',
       type: 'figure'
-    },
-    {
-      name: 'isExtendedBgImage',
-      title: 'Extended background image',
-      description: 'Should the background image extend up into the header as well?',
-      type: 'boolean'
     },
     {
       name: 'backgroundOpacity',
@@ -70,7 +58,7 @@ export default {
       name: 'headerTextColor',
       title: 'Header text color',
       type: 'colors',
-      description: 'You probably only want to set this if using an extended background color or image.',
+      description: 'Text color of the website title in the header. If using a dark background color or a background image, you probably want to set this to a lighter color.',
       options: {
         list: colorPalette
       }

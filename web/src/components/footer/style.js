@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { MEDIA } from '../../lib/helpers';
 
 export const StyledFooter = styled.footer`
-  background: var(--color-black);
-  color: var(--color-light-gray);
+  background-color: ${(props) => props.footerBg || 'var(--color-black)'};
+  color: ${(props) => props.footerFg || 'var(--color-light-gray)'};
   padding: 1.5em 3em;
   font-size: var(--font-small-size);
 

@@ -21,6 +21,7 @@ import banner from './documents/banner';
 import jumbotron from './documents/jumbotron';
 import affiliate from './documents/affiliate';
 import contentPreview from './documents/contentPreview';
+import theme from './documents/theme';
 
 // Object types
 import blockContent from './objects/blockContent';
@@ -68,6 +69,7 @@ export default createSchema({
     jumbotron,
     affiliate,
     contentPreview,
-    icon
+    icon,
+    theme
   ])
 });

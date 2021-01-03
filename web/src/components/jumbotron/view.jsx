@@ -6,9 +6,11 @@ import { buildImageObj, getUrlFromReference } from '../../lib/helpers';
 import { StyledJumbotron, StyledOverlay, StyledContent, StyledLink, StyledCTAButton } from './style';
 
 const Jumbotron = ({ backgroundImage, _rawTitle, _rawSubtitle, ctaButton, isCentered, ...rest }) => {
+  const hasBgImage = Boolean(backgroundImage && backgroundImage.asset);
+
   return (
-    <StyledJumbotron {...rest} hasImage={Boolean(backgroundImage)}>
-      {backgroundImage && backgroundImage.asset && (
+    <StyledJumbotron {...rest} hasBgImage={hasBgImage}>
+      {hasBgImage && (
         <img
           src={imageUrlFor(buildImageObj(backgroundImage)).fit('fillmax').url()}
           alt={backgroundImage.alt || 'Jumbotron image'}

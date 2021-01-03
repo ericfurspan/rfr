@@ -1,38 +1,38 @@
 export const customPages = [
   {
     title: 'About',
-    id: 'aboutPage',
-    docId: 'aboutPage'
+    id: 'about_Page',
+    docId: 'about_Page'
   },
   {
     title: 'Services',
-    id: 'servicesPage',
-    docId: 'servicesPage'
+    id: 'services_Page',
+    docId: 'services_Page'
   },
   {
     title: 'Donate',
-    id: 'donatePage',
-    docId: 'donatePage'
+    id: 'donate_Page',
+    docId: 'donate_Page'
   },
   {
     title: 'Testimonials',
-    id: 'testimonialsPage',
-    docId: 'testimonialsPage'
+    id: 'testimonials_Page',
+    docId: 'testimonials_Page'
   },
   {
     title: 'Contact',
-    id: 'contactPage',
-    docId: 'contactPage'
+    id: 'contact_Page',
+    docId: 'contact_Page'
   },
   {
     title: 'News',
-    id: 'newsPage',
-    docId: 'newsPage'
+    id: 'news_Page',
+    docId: 'news_Page'
   },
   {
     title: 'Team',
-    id: 'teamPage',
-    docId: 'teamPage'
+    id: 'team_Page',
+    docId: 'team_Page'
   }
 ];
 

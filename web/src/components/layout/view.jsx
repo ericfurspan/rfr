@@ -4,9 +4,13 @@ import { Header, Footer } from '..';
 import { NavMenu } from '../nav-menu';
 import { StyledMainContent } from './style';
 
-const Layout = ({ children, allPages, companyProps, bannerProps, jumbotronProps, ...layoutProps }) => (
+const Layout = ({ children, allPages, companyProps, themeProps, bannerProps, jumbotronProps, ...layoutProps }) => (
   <>
-    <NavMenu pages={allPages} companyName={companyProps.companyName} />
+    <NavMenu
+      pages={allPages}
+      companyName={companyProps.companyName}
+      {...themeProps}
+    />
     <Header
       allPages={allPages}
       companyProps={companyProps}
@@ -20,6 +24,7 @@ const Layout = ({ children, allPages, companyProps, bannerProps, jumbotronProps,
     <Footer
       companyProps={companyProps}
       allPages={allPages}
+      {...themeProps}
     />
   </>
 );

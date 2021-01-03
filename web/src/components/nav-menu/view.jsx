@@ -25,7 +25,7 @@ const sidebar = {
   },
 };
 
-const NavMenu = ({ pages, companyName }) => {
+const NavMenu = ({ pages, companyName, ...themeProps }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -37,9 +37,11 @@ const NavMenu = ({ pages, companyName }) => {
       custom={height}
       ref={containerRef}
       isOpen={isOpen}
+      {...themeProps}
     >
       <AnimatedStyledBackground
         variants={sidebar}
+        {...themeProps}
       />
       <span className='nav-title'>{companyName}</span>
       <Navigation
@@ -48,6 +50,7 @@ const NavMenu = ({ pages, companyName }) => {
       />
       <MenuToggle
         toggle={() => toggleOpen()}
+        stroke={themeProps.navMenuFg}
       />
     </AnimatedStyledNav>
   );

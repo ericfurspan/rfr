@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Box } from '../box';
 
-export const StyledImageContainer = styled.div`
+export const StyledImageContainer = styled(Box)`
   & img {
-    width: 300px;
-    height: 300px;
+    max-width: 250px;
+    max-height: 250px;
     object-fit: cover;
   }
 `;

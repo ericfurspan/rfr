@@ -14,7 +14,7 @@ export const StyledJumbotron = styled.div`
     `};
 
   ${(props) =>
-    props.hasImage &&
+    props.hasBgImage &&
     css`
       & img {
         position: absolute;
@@ -29,7 +29,11 @@ export const StyledJumbotron = styled.div`
       ${(props) => props.backgroundOpacity &&
         css`
           opacity: ${props.backgroundOpacity};
-        `}
+      `}
+      }
+
+      ${StyledOverlay} {
+        background-color: rgba(0,0,0,0.45);
       }
     `}
 `;
@@ -41,15 +45,16 @@ export const StyledOverlay = styled.div`
   left: 0;
   right: 0;
   padding: 2em;
-  background-color: rgba(0,0,0,0.45);
 `;
 
 export const StyledContent = styled.div`
   max-width: 36rem;
+  position: relative;
+  top: 20%;
+  transform: translateY(-20%);
 
   ${(props) => props.isCentered && css`
-    position: relative;
-    top: 40%;
+    top: 40%; 
     transform: translateY(-40%);
     text-align: center;
     max-width: unset;

@@ -17,7 +17,7 @@ export default {
     {
       name: 'mission',
       title: 'Mission Statement',
-      type: 'blockText'
+      type: 'blockContent'
     },
     {
       name: 'contact',

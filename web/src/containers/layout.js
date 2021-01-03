@@ -10,21 +10,22 @@ const query = graphql`
       description
       keywords
     }
-    allPages: allSanityPage(
-      filter: { _id: { regex: "/^[A-Za-z]+$/" } }
-      sort: { fields: [order], order: ASC }
-    ) {
+    allPages: allSanityPage(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           _id
         }
       }
     }
+    theme: sanityTheme {
+      navMenuBg
+      navMenuFg
+      footerBg
+      footerFg
+    }
     jumbotron: sanityJumbotron {
       backgroundColor
-      isExtendedBgColor
       headerTextColor
-      isExtendedBgImage
     }
     banner: sanityBanner {
       isEnabled
@@ -77,11 +78,9 @@ const LayoutContainer = (layoutProps) => {
       query={query}
       render={(data) => {
         const allPages = (data || {}).allPages
-          ? mapEdgesToNodes(data.allPages).map((page) => page._id)
+          ? mapEdgesToNodes(data.allPages).map((page) => page._id.replace('_Page', ''))
           : [];
-        if (!data.company) {
-          throw new Error('Missing "Company info". Open the studio and add "Company info" data');
-        }
+
         return (
           <Layout
             {...layoutProps}
@@ -89,6 +88,7 @@ const LayoutContainer = (layoutProps) => {
             companyProps={data.company}
             bannerProps={data.banner}
             jumbotronProps={data.jumbotron}
+            themeProps={data.theme}
           />
         );
       }}

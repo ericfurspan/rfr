@@ -9,14 +9,6 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0.5em;
-  
-  ${props => (props.path === '/' && props.isExtendedBgColor && props.backgroundColor) && css`
-    background-color: ${props.backgroundColor};
-  `}
-
-  ${(props) => (props.path === '/' && props.isExtendedBgImage) && css`
-    padding-bottom: 0;
-  `}
 
   ${(props) => (props.path === '/' && props.headerTextColor) && css`
     ${StyledTitle} {
