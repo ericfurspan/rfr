@@ -18,6 +18,7 @@ body {
 a {
   color: var(--color-link);
   text-decoration: none;
+  z-index: 2;
 
   &:hover {
     text-decoration: underline;

@@ -22,6 +22,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
 
   ${(props) => props.isOpen && css`
     z-index: 2;
+    position: fixed;
   `}
 
   ${AnimatedStyledBackground} {
