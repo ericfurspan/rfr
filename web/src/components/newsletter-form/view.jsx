@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import React, { useState, useCallback } from 'react';
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Box, StyledInput, StyledButton } from '..';
 import { encode } from '../../lib/helpers';
 
@@ -9,9 +9,8 @@ const formDefaults = {
 };
 
 const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
-  const [recaptchaDone, setRecaptchaDone] = useState(false);
   const [formFields, setFormFields] = useState(formDefaults);
-  const recaptchaRef = useRef();
+  const [recaptchaToken, setRecaptchaToken] = useState('');
 
   const onFieldChange = ({ target }) => {
     setFormFields({ ...formFields, [target.name]: target.value });
@@ -19,23 +18,27 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
 
   const onReset = () => {
     setFormFields(formDefaults);
-    setRecaptchaDone(false);
-    recaptchaRef.current.reset();
   };
+
+  const handleReCaptchaVerify = useCallback(
+    (token) => {
+      setRecaptchaToken(token);
+    },
+    [setRecaptchaToken]
+  );
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
 
       const form = e.target;
-      const recaptchaValue = recaptchaRef.current.getValue();
 
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': form.getAttribute('name'),
-          'g-recaptcha-response': recaptchaValue,
+          'g-recaptcha-response': recaptchaToken,
           ...formFields,
         }),
       });
@@ -68,7 +71,6 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
         <StyledInput
           type='email'
           name='emailAddress'
-          id='emailAddress'
           placeholder='Email address'
           aria-label='Email Address'
           onChange={onFieldChange}
@@ -76,22 +78,17 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
           minw='178px'
           required
         />
-        <StyledButton type='submit' design='primary' m='0 0.5em' disabled={!recaptchaDone}>
+        <StyledButton
+          type='submit'
+          design='primary'
+          m='0 0.5em'
+          disabled={!recaptchaToken}
+        >
           Subscribe
         </StyledButton>
       </Box>
 
-      {process.env.SITE_RECAPTCHA_KEY && (
-        <Box mt='1em'>
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            size='normal'
-            theme={recaptchaTheme}
-            sitekey={process.env.SITE_RECAPTCHA_KEY}
-            onChange={() => setRecaptchaDone(true)}
-          />
-        </Box>
-      )}
+      <GoogleReCaptcha onVerify={handleReCaptchaVerify} />
     </form>
   );
 };

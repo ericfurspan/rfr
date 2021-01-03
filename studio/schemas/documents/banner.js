@@ -6,6 +6,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'isEnabled',
+      title: 'Enabled?',
+      type: 'boolean'
+    },
+    {
       name: 'bannerText',
       title: 'Banner text',
       type: 'blockText',

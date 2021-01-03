@@ -20,7 +20,8 @@
     "@sanity/color-input",
     "color-list",
     "dashboard-widget-gatsby",
-    "order-documents"
+    "order-documents",
+    "asset-source-unsplash"
   ],
   "parts": [
     {

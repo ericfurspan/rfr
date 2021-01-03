@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import { Layout } from '../components';
 import { mapEdgesToNodes } from '../lib/helpers';
@@ -27,6 +27,7 @@ const query = graphql`
       isExtendedBgImage
     }
     banner: sanityBanner {
+      isEnabled
       _rawBannerText
       bannerBackgroundColor
     }
@@ -71,10 +72,6 @@ const query = graphql`
 `;
 
 const LayoutContainer = (layoutProps) => {
-  const [showNav, setShowNav] = useState(false);
-  const handleShowNav = () => setShowNav(true);
-  const handleHideNav = () => setShowNav(false);
-
   return (
     <StaticQuery
       query={query}
@@ -88,9 +85,6 @@ const LayoutContainer = (layoutProps) => {
         return (
           <Layout
             {...layoutProps}
-            showNav={showNav}
-            onHideNav={handleHideNav}
-            onShowNav={handleShowNav}
             allPages={allPages}
             companyProps={data.company}
             bannerProps={data.banner}

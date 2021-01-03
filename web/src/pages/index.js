@@ -11,7 +11,8 @@ import {
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Jumbotron, PreviewNodes, Services, Podcast, Box, BlockContent, Affiliates, Typography } from '../components';
+import { Jumbotron, Mission, PreviewNodes, Services, Podcast, Box, Affiliates } from '../components';
+import { Stars } from '../components/stars';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -42,6 +43,7 @@ export const query = graphql`
         node {
           _id
           headingText
+          headingSubtitle
           browseMoreText
         }
       }
@@ -89,6 +91,11 @@ export const query = graphql`
           id
           title
           _rawSubtitle
+          icon {
+            name
+            faPackage
+            faIconName
+          }
         }
       }
     }
@@ -106,7 +113,7 @@ export const query = graphql`
         }
       }
     }
-    testimonials: allSanityTestimonial(limit: 6, sort: { fields: [reviewedAt], order: DESC }) {
+    testimonials: allSanityTestimonial(limit: 4, sort: { fields: [reviewedAt], order: DESC }) {
       edges {
         node {
           id
@@ -119,7 +126,7 @@ export const query = graphql`
         }
       }
     }
-    affiliates: allSanityAffiliate(limit: 6) {
+    affiliates: allSanityAffiliate {
       edges {
         node {
           id
@@ -149,7 +156,7 @@ export const query = graphql`
         }
       }
     }
-    teamMembers: allSanityTeamMember(limit: 3, sort: { fields: [order], order: ASC }) {
+    teamMembers: allSanityTeamMember(limit: 4, sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id
@@ -298,7 +305,7 @@ const IndexPage = ({ data }) => {
       .map((item) => ({
         ...item,
         linkTo: getTestimonialUrl(item.reviewedAt, item.slug.current),
-        title: `by ${item.reviewer}`,
+        title: `${item.reviewer}`,
         caption: format(item.reviewedAt, 'DD MMMM YYYY'),
         text: item.text.slice(0, 128) + '...(continued)',
       }))
@@ -349,76 +356,101 @@ const IndexPage = ({ data }) => {
     <>
       <SEO title={seo.title} description={seo.description} keywords={seo.keywords} />
 
-      <Jumbotron {...jumbotron} />
+      <Jumbotron
+        {...jumbotron}
+      />
 
-      {company._rawMission && contentPreviewMap['missionPreview'] && (
-        <Box flex col ai='center' p='3em 6em'>
-          <h2 css={Typography.responsiveTitle2}>
-            {contentPreviewMap['missionPreview'].headingText}
-          </h2>
-          <Box ta='left'>
-            <BlockContent blocks={company._rawMission} />
-          </Box>
-        </Box>
-      )}
-
-      <Box d='grid' gridResponsive gtc='repeat(12, minmax(0, 1fr))' grg='4em' gcg='2em' p='2em'>
+      <Box
+        d='grid'
+        gridResponsive
+        gtc='repeat(12, minmax(0, 1fr))'
+        gcg='2em'
+      >
+        {contentPreviewMap['missionPreview'] && (
+          <Mission
+            title={contentPreviewMap['missionPreview'].headingText}
+            subtitle={contentPreviewMap['missionPreview'].headingSubtitle}
+            _rawMission={company._rawMission}
+            gc='2 / -2'
+            p='4em'
+          />
+        )}
         {contentPreviewMap['servicesPreview'] && (
           <Services
             title={contentPreviewMap['servicesPreview'].headingText}
+            subtitle={contentPreviewMap['servicesPreview'].headingSubtitle}
             nodes={servicesNodes}
             browseMoreText={contentPreviewMap['servicesPreview'].browseMoreText}
             browseMoreHref='/services'
             previewMode
             gc='1 / -1'
-          />
-        )}
-
-        {contentPreviewMap['affiliatesPreview'] && (
-          <Affiliates
-            title={contentPreviewMap['affiliatesPreview'].headingText}
-            nodes={affiliateNodes}
-            gc='1 / -1'
+            p='4em 2em 8em 2em'
           />
         )}
 
         {contentPreviewMap['teamPreview'] && (
           <PreviewNodes
             title={contentPreviewMap['teamPreview'].headingText}
+            subtitle={contentPreviewMap['teamPreview'].headingSubtitle}
             nodes={teamMemberNodes}
             nodeType='teamMember'
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
             gc='1 / -1'
+            p='4em 2em'
+            br='var(--color-dark-white)'
           />
         )}
 
-        {contentPreviewMap['newsPreview'] && (
-          <PreviewNodes
-            title={contentPreviewMap['newsPreview'].headingText}
-            nodes={allNewsNodes}
-            nodeType='generic'
-            browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
-            browseMoreHref='/news'
+        {(contentPreviewMap['newsPreview'] || contentPreviewMap['podcastPreview']) && (
+          <Box
             gc='1 / -1'
-          />
-        )}
-
-        {contentPreviewMap['podcastPreview'] && (
-          <Box gc='1 / -1' maxw='750px'>
-            <Podcast {...podcast} />
+            p='4em 6em'
+          >
+            <PreviewNodes
+              title={contentPreviewMap['newsPreview'].headingText}
+              subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
+              nodes={allNewsNodes}
+              nodeType='generic'
+              browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
+              browseMoreHref='/news'
+            />
+            {contentPreviewMap['podcastPreview'] && (
+              <Box p='2em 0' maxw='720px'>
+                <Podcast {...podcast} />
+              </Box>
+            )}
           </Box>
         )}
 
-        {contentPreviewMap['testimonialsPreview'] && (
-          <PreviewNodes
-            title={contentPreviewMap['testimonialsPreview'].headingText}
-            nodes={testimonialNodes}
-            nodeType='generic'
-            browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
-            browseMoreHref='/testimonials'
+        {contentPreviewMap['affiliatesPreview'] && (
+          <Affiliates
+            title={contentPreviewMap['affiliatesPreview'].headingText}
+            subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
+            nodes={affiliateNodes}
             gc='1 / -1'
+            p='6em 2em'
+            br='var(--color-dark-white)'
           />
+        )}
+
+        {contentPreviewMap['testimonialsPreview'] && (
+          <Box
+            gc='1 / -1'
+            p='4em 6em'
+            br='var(--color-dark-white)'
+          >
+            <Stars amount={5} />
+
+            <PreviewNodes
+              title={contentPreviewMap['testimonialsPreview'].headingText}
+              subtitle={contentPreviewMap['testimonialsPreview'].headingSubtitle}
+              nodes={testimonialNodes}
+              nodeType='generic'
+              browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
+              browseMoreHref='/testimonials'
+            />
+          </Box>
         )}
       </Box>
     </>

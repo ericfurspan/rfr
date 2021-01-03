@@ -18,6 +18,11 @@ export const query = graphql`
           title
           _rawSubtitle
           _rawBody(resolveReferences: { maxDepth: 4 })
+          icon {
+            name
+            faPackage
+            faIconName
+          }
         }
       }
     }

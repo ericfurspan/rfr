@@ -46,11 +46,16 @@ const ContactPage = ({ data }) => {
     <>
       <SEO title='Contact' />
       <Container centered={page.isCentered}>
-        <BlockContent blocks={page._rawBody || []} />
 
-        <Box mt='6em' d='grid' gridResponsive gtc='repeat(auto-fit, minmax(0, 1fr))' gcg='2em' grg='4em'>
-          <div>
-            <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-dark-gray)'>
+        <Box mb='3em'>
+          <BlockContent blocks={page._rawBody || []} />
+        </Box>
+
+        <ContactForm />
+
+        <Box d='grid' gridResponsive gtc='repeat(auto-fit, minmax(0, 1fr))' m='4em 0' gcg='2em' grg='4em'>
+          <Box m='2em'>
+            <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-black)'>
               <a href={`mailto:${company.contact.email}`}>
                 <FontAwesomeIcon
                   icon={['fas', 'envelope']}
@@ -61,7 +66,7 @@ const ContactPage = ({ data }) => {
               </a>
             </Box>
             {company.contact.socialMedia.map((platform) => (
-              <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-dark-gray)' key={platform.url}>
+              <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-black)' key={platform.url}>
                 <a href={platform.url} target='_blank' rel='noreferrer noopener'>
                   <FontAwesomeIcon
                     icon={[platform.icon.faPackage, platform.icon.faIconName]}
@@ -72,15 +77,11 @@ const ContactPage = ({ data }) => {
                 </a>
               </Box>
             ))}
-          </div>
-        </Box>
-
-        <Box m='2em 0'>
-          <ContactForm />
+          </Box>
         </Box>
 
         {company.faq.length > 0 && (
-          <Box maxw='550px' ta='initial' m='0 auto' mt='6em'>
+          <Box maxw='550px' ta='initial' m='0 auto'>
             <h2 css={Typography.responsiveTitle2}>Frequently Asked Questions</h2>
             <Box flex col ai='flex-start'>
               {company.faq.map((faqItem) => (

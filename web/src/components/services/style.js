@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { MEDIA } from '../../lib/helpers';
 
 export const StyledGrid = styled.ul`
@@ -12,12 +13,27 @@ export const StyledGrid = styled.ul`
 
   & li {
     flex: 0 0 33.3333%;
-    text-align: center;
 
     ${MEDIA.TABLET`
       flex: auto;
-      text-align: left;
     `};
+  }
+`;
+
+export const StyledIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-accent);
+  border-radius: 100%;
+  width: 128px;
+  height: 128px;
+  margin: auto;
+  margin-bottom: 1.15em;
+
+  & svg {
+    color: var(--color-white);
+    font-size: 4em;
   }
 `;
 
@@ -32,7 +48,6 @@ export const StyledService = styled.div`
 
 export const StyledServiceBody = styled.div`
   margin-top: 1.5em;
-  text-align: left;
 
   & ul {
     list-style: none;

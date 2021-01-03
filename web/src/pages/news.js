@@ -6,11 +6,11 @@ import { getBlogUrl, getPressReleaseUrl, getEventUrl, mapEdgesToNodes } from '..
 import SEO from '../containers/seo';
 import {
   Container,
-  PreviewNodes,
   BlockContent,
   NewsletterForm,
   Typography,
   Box,
+  ContentPreview,
 } from '../components';
 
 export const query = graphql`
@@ -128,15 +128,32 @@ const NewsPage = ({ data }) => {
       <SEO title='News' />
       <Container centered={page.isCentered}>
         <BlockContent blocks={page._rawBody || []} />
-        <br /> <br />
 
-        <Box flex col mb='3em' ta='initial'>
+        <Box flex col ai='center' mb='3em' mt='3em'>
           <h3 css={Typography.responsiveTitle3}>Subscribe to our newsletter</h3>
           <NewsletterForm />
         </Box>
-        <PreviewNodes title={`Press (${pressReleaseNodes.length})`} nodes={pressReleaseNodes} />
-        <PreviewNodes title={`Blog (${blogPostNodes.length})`} nodes={blogPostNodes} />
-        <PreviewNodes title={`Events (${eventNodes.length})`} nodes={eventNodes} />
+
+        <Box mt='3em' ta='left'>
+          <h2 css={Typography.responsiveTitle2}>Press</h2>
+          {pressReleaseNodes.map((node) => (
+            <ContentPreview key={node.id} {...node} />
+          ))}
+        </Box>
+
+        <Box mt='3em' ta='left'>
+          <h2 css={Typography.responsiveTitle2}>Blog</h2>
+          {blogPostNodes.map((node) => (
+            <ContentPreview key={node.id} {...node} />
+          ))}
+        </Box>
+
+        <Box mt='3em' ta='left'>
+          <h2 css={Typography.responsiveTitle2}>Events</h2>
+          {eventNodes.map((node) => (
+            <ContentPreview key={node.id} {...node} />
+          ))}
+        </Box>
       </Container>
     </>
   );

@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const StyledWrapper = styled.div`
-  margin-bottom: 2rem;
-`;
-
-export const StyledTitle = styled.h2`
-  margin: 0;
-
+export const StyledTitle = styled.h3`
   & svg {
     margin-right: 0.5em;
   }

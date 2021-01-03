@@ -1,21 +1,29 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Box, TeamMemberPreview, GenericPreview, Typography, boxProps } from '..';
+import { Box, TeamMemberPreview, ContentPreview, Typography, boxProps } from '..';
 import { StyledGrid, StyledBrowseMore, StyledEmptyNodesText } from './style';
 
-const PreviewNodes = ({ title, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, ...rest }) => {
+const PreviewNodes = ({ title, subtitle, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, alignTitle = 'center', ...rest }) => {
   return (
-    <Box mb='2em' ta='initial' {...boxProps(rest)}>
-      {title && <h2 css={Typography.responsiveTitle2}>
-        {title}
-      </h2>}
+    <Box {...boxProps(rest)}>
+      {title && (
+        <Box mb='3em' ta={alignTitle}>
+          <h2 css={Typography.responsiveTitle2}>
+            {title}
+          </h2>
+          {subtitle && (
+            <span css={Typography.base}>{subtitle}</span>
+          )}
+        </Box>
+      )}
+
       {nodes.length > 0 ? (
         <>
           <StyledGrid>
             {nodes.map(node => (
               <li key={node.id}>
                 {nodeType === 'teamMember' && <TeamMemberPreview {...node} />}
-                {nodeType === 'generic' && <GenericPreview {...node} />}
+                {nodeType === 'generic' && <ContentPreview {...node} />}
               </li>
             ))}
           </StyledGrid>

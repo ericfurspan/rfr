@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import { getTestimonialUrl, mapEdgesToNodes } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, PreviewNodes, BlockContent } from '../components';
+import { Container, BlockContent, Box, Stars, ContentPreview } from '../components';
 import { format } from 'date-fns';
 
 export const query = graphql`
@@ -43,8 +43,8 @@ const TestimonialsPage = ({ data }) => {
     mapEdgesToNodes(data.testimonials).map((item) => ({
       ...item,
       linkTo: getTestimonialUrl(item.reviewedAt, item.slug.current),
-      title: `Testimonial by ${item.reviewer}`,
-      text: item.text,
+      title: `${item.reviewer}`,
+      text: item.text.slice(0, 128) + '...(continued)',
       caption: format(item.reviewedAt, 'DD MMMM YYYY'),
     }));
 
@@ -52,10 +52,17 @@ const TestimonialsPage = ({ data }) => {
     <>
       <SEO title='Testimonials' />
       <Container centered={page.isCentered}>
-        <BlockContent blocks={page._rawBody || []} />
-        <br /> <br />
+        <Stars amount={5} />
 
-        <PreviewNodes nodes={testimonialNodes} nodeType='generic' />
+        <BlockContent blocks={page._rawBody || []} />
+
+        <Box d='grid' gtc='repeat(auto-fit, minmax(300px, 1fr))' gg='4em' mt='4em'>
+          {testimonialNodes.map((node) => (
+            <Box ta='left' key={node.id}>
+              <ContentPreview {...node} />
+            </Box>
+          ))}
+        </Box>
       </Container>
     </>
   );

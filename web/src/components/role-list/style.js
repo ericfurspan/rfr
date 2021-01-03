@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   margin: 2rem 0 3rem;
-  border-top: 1px solid var(--color-black);
+  border-top: 1px solid var(--color-light-gray);
+  max-width: 300px;
 `;
 
 export const StyledTitle = styled.h2`

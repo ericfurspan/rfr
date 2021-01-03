@@ -13,7 +13,6 @@ export const StyledTitle = styled.h3`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  padding-top: 0.75em;
   margin: 0.25em 0;
 
   &:hover {

@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import React, { useState, useCallback } from 'react';
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Box, StyledLabel, StyledInput, StyledButton } from '..';
 import { Typography } from '../typography';
 import { encode } from '../../lib/helpers';
@@ -13,9 +13,8 @@ const formDefaults = {
 };
 
 const ContactForm = () => {
-  const [recaptchaDone, setRecaptchaDone] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState('');
   const [formFields, setFormFields] = useState(formDefaults);
-  const recaptchaRef = useRef();
 
   const onFieldChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -24,23 +23,27 @@ const ContactForm = () => {
 
   const onReset = () => {
     setFormFields(formDefaults);
-    setRecaptchaDone(false);
-    recaptchaRef.current.reset();
   };
+
+  const handleReCaptchaVerify = useCallback(
+    (token) => {
+      setRecaptchaToken(token);
+    },
+    [setRecaptchaToken]
+  );
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
 
       const form = e.target;
-      const recaptchaValue = recaptchaRef.current.getValue();
 
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': form.getAttribute('name'),
-          'g-recaptcha-response': recaptchaValue,
+          'g-recaptcha-response': recaptchaToken,
           ...formFields,
         }),
       });
@@ -130,19 +133,10 @@ const ContactForm = () => {
           </StyledLabel>
         </Box>
 
-        {process.env.SITE_RECAPTCHA_KEY && (
-          <Box flex col>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              size='normal'
-              sitekey={process.env.SITE_RECAPTCHA_KEY}
-              onChange={() => setRecaptchaDone(true)}
-            />
-          </Box>
-        )}
+        <GoogleReCaptcha onVerify={handleReCaptchaVerify} />
 
         <Box mt='2em'>
-          <StyledButton design='primary' type='submit' disabled={!recaptchaDone}>
+          <StyledButton design='primary' type='submit' disabled={!recaptchaToken}>
             Send Message
           </StyledButton>
         </Box>

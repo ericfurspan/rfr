@@ -15,6 +15,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'headingSubtitle',
+      title: 'Heading Subtitle',
+      type: 'string'
+    },
+    {
       name: 'browseMoreText',
       title: 'Browse more text',
       description: 'The text of the link to the content page, i.e "See all News & Updates"',

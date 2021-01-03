@@ -62,7 +62,7 @@ export const responsiveTitle2 = css`
   font-weight: 700;
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  margin: 1rem 0 1.5rem;
+  margin: 1rem 0;
 
   ${MEDIA.PHONE`
     font-size: var(--font-title3-size);

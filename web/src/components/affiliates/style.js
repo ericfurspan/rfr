@@ -4,24 +4,32 @@ import { MEDIA } from '../../lib/helpers';
 export const StyledGrid = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
   list-style: none;
   padding: 0;
-  margin: 2em 0 0 0;
+  margin: 0;
+
+  ${MEDIA.TABLET`
+    flex-direction: column;
+
+    & li {
+      &:not(:last-child) {
+        margin-bottom: 4em;
+      }
+    }
+  `};
 
   & li {
     flex: 0 0 33.3333%;
-    text-align: center;
-
-    ${MEDIA.TABLET`
-      flex: auto;
-      text-align: left;
-    `};
 
     & a {
       display: inline-block;
+      
+      img {
+        opacity: 0.85;
+      }
     }
   }
 `;

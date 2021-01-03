@@ -4,12 +4,19 @@ import { imageUrlFor } from '../../lib/image-url';
 import { StyledGrid } from './style';
 import { Box, boxProps, Typography } from '..';
 
-const Affiliates = ({ title, nodes, ...rest }) => {
+const Affiliates = ({ title, subtitle, nodes, ...rest }) => {
   return (
-    <Box mb='2em' mt='4em' ta='center' {...boxProps(rest)}>
-      {title && <h2 css={Typography.responsiveTitle2}>
-        {title}
-      </h2>}
+    <Box ta='center' {...boxProps(rest)}>
+      {title && (
+        <Box mb='3em'>
+          <h2 css={Typography.responsiveTitle2}>
+            {title}
+          </h2>
+          {subtitle && (
+            <span css={Typography.small}>{subtitle}</span>
+          )}
+        </Box>
+      )}
 
       <StyledGrid>
         {nodes && nodes.map((node) => (

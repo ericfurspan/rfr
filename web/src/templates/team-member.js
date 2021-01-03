@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { TeamMember } from '../components';
+import { Container, TeamMember } from '../components';
 
 export const query = graphql`
   query TeamMemberTemplateQuery($id: String!) {
@@ -57,10 +57,10 @@ const TeamMemberTemplate = ({ data }) => {
   const { teamMember } = (data || {});
 
   return (
-    <>
+    <Container noPadding>
       {teamMember && <SEO title={teamMember.person.name || 'Untitled'} />}
       {teamMember && <TeamMember {...teamMember} />}
-    </>
+    </Container>
   );
 };
 

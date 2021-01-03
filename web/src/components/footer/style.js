@@ -4,8 +4,7 @@ import { MEDIA } from '../../lib/helpers';
 export const StyledFooter = styled.footer`
   background: var(--color-black);
   color: var(--color-light-gray);
-  margin-top: 6em;
-  padding: 2em 4em;
+  padding: 1.5em 3em;
   font-size: var(--font-small-size);
 
   & hr {

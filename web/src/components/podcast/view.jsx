@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { BlockContent, Typography } from '..';
-import { StyledWrapper, StyledTitle, StyledContainer, StyledItem, StyledFaIcon } from './style';
+import { StyledTitle, StyledContainer, StyledItem, StyledFaIcon } from './style';
 
 const Podcast = ({ title, _rawDescription, availablePlatforms }) => (
-  <StyledWrapper>
+  <>
     {title && (
-      <StyledTitle css={Typography.responsiveTitle2}>
+      <StyledTitle css={Typography.responsiveTitle3}>
         {title}
       </StyledTitle>
     )}
@@ -25,7 +25,7 @@ const Podcast = ({ title, _rawDescription, availablePlatforms }) => (
         </StyledItem>
       ))}
     </StyledContainer>
-  </StyledWrapper>
+  </>
 );
 
 export default Podcast;

@@ -5,17 +5,19 @@ export const StyledArticle = styled.article``;
 
 export const StyledCoverPhoto = styled.div`
   position: relative;
-  background: var(--color-very-light-gray);
   padding-bottom: calc(9 / 16 * 100%);
 
   & img {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     height: 100%;
     vertical-align: top;
     object-fit: cover;
+    max-width: 1250px;
+    margin: auto;
   }
 `;
 
