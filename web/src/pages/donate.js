@@ -29,9 +29,7 @@ const DonatePage = ({ data }) => {
   const { page, payment } = data || {};
 
   if (!page) {
-    throw new Error(
-      'Missing "Donate" page data. Open the studio and add "Donate" page data then restart the development server.'
-    );
+    return null;
   }
 
   return (

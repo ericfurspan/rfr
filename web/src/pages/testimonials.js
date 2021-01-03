@@ -32,9 +32,7 @@ const TestimonialsPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
-    throw new Error(
-      'Missing "Testimonials" page data. Open the studio and add "Testimonials" page data then restart the development server.'
-    );
+    return null;
   }
 
   const testimonialNodes =

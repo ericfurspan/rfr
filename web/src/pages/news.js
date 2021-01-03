@@ -91,9 +91,7 @@ const NewsPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
-    throw new Error(
-      'Missing "News" page data. Open the studio and add "News" page data then restart the development server.'
-    );
+    return null;
   }
 
   const blogPostNodes =

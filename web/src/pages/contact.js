@@ -37,9 +37,7 @@ const ContactPage = ({ data }) => {
   const { page, company } = (data || {});
 
   if (!page) {
-    throw new Error(
-      'Missing "Contact" page data. Open the studio and add "Contact" page data then restart the development server.'
-    );
+    return null;
   }
 
   return (

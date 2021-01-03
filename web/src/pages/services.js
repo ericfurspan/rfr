@@ -33,9 +33,7 @@ const ServicesPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
-    throw new Error(
-      'Missing "Services" page data. Open the studio and add "Services" page data then restart the development server.'
-    );
+    return null;
   }
 
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];

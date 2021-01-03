@@ -66,9 +66,7 @@ const TeamPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
-    throw new Error(
-      'Missing "Team" page data. Open the studio and add "Team" page data then restart the development server.'
-    );
+    return null;
   }
 
   const teamMemberNodes = data && data.teamMembers && mapEdgesToNodes(data.teamMembers);

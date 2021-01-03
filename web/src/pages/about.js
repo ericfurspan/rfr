@@ -17,9 +17,7 @@ const AboutPage = ({ data }) => {
   const page = data && data.page;
 
   if (!page) {
-    throw new Error(
-      'Missing "About" page data. Open the studio and add "About" page data then restart the development server.'
-    );
+    return null;
   }
 
   return (

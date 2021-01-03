@@ -14,7 +14,7 @@ const SEO = ({ title, description, lang, meta, keywords }) => {
         return (
           <Helmet
             htmlAttributes={{ lang }}
-            title={`${title} - ${data.site.companyName}`}
+            title={`${title} - ${data.site && data.site.companyName}`}
             meta={[
               {
                 name: 'description',
