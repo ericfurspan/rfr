@@ -25,7 +25,7 @@ export default {
       required: true,
       description: 'The trailing part of the URL. For example, in www.google.com/links - \'links\' is the URL slug. In most cases you should use the Generate button to auto-fill this field.',
       options: {
-        source: 'name',
+        source: 'person.name',
         maxLength: 96
       }
     },

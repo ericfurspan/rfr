@@ -160,7 +160,7 @@ export default () =>
             .id('theme')
             .schemaType('theme')
             .documentId('theme')
-            .title('theme')
+            .title('Theme')
         )
         .icon(FaPalette),
       S.listItem()
