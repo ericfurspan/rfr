@@ -364,7 +364,7 @@ const IndexPage = ({ data }) => {
         d='grid'
         gridResponsive
         gtc='repeat(12, minmax(0, 1fr))'
-        gcg='2em'
+        gcg='2rem'
       >
         {contentPreviewMap['missionPreview'] && (
           <Mission
@@ -372,7 +372,7 @@ const IndexPage = ({ data }) => {
             subtitle={contentPreviewMap['missionPreview'].headingSubtitle}
             _rawMission={company._rawMission}
             gc='2 / -2'
-            p='4em'
+            p='2rem'
           />
         )}
         {contentPreviewMap['servicesPreview'] && (
@@ -384,7 +384,7 @@ const IndexPage = ({ data }) => {
             browseMoreHref='/services'
             previewMode
             gc='1 / -1'
-            p='4em 2em 8em 2em'
+            p='4rem 2rem 8rem 2rem'
           />
         )}
 
@@ -397,7 +397,7 @@ const IndexPage = ({ data }) => {
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
             gc='1 / -1'
-            p='4em 2em'
+            p='4rem 2rem'
             br='var(--color-dark-white)'
           />
         )}
@@ -405,7 +405,7 @@ const IndexPage = ({ data }) => {
         {(contentPreviewMap['newsPreview'] || contentPreviewMap['podcastPreview']) && (
           <Box
             gc='1 / -1'
-            p='4em 6em'
+            p='4rem 2rem'
           >
             <PreviewNodes
               title={contentPreviewMap['newsPreview'].headingText}
@@ -416,7 +416,7 @@ const IndexPage = ({ data }) => {
               browseMoreHref='/news'
             />
             {contentPreviewMap['podcastPreview'] && (
-              <Box p='2em 0' maxw='720px'>
+              <Box p='2rem 0' maxw='720px'>
                 <Podcast {...podcast} />
               </Box>
             )}
@@ -429,7 +429,7 @@ const IndexPage = ({ data }) => {
             subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
             nodes={affiliateNodes}
             gc='1 / -1'
-            p='6em 2em'
+            p='6rem 2rem'
             br='var(--color-dark-white)'
           />
         )}
@@ -437,7 +437,7 @@ const IndexPage = ({ data }) => {
         {contentPreviewMap['testimonialsPreview'] && (
           <Box
             gc='1 / -1'
-            p='4em 6em'
+            p='4rem 2rem'
             br='var(--color-dark-white)'
           >
             <Stars amount={5} />
