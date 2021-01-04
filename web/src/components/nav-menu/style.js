@@ -17,12 +17,13 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   top: 0;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 100px;
   z-index: 1;
 
   ${(props) => props.isOpen && css`
     z-index: 2;
     position: fixed;
+    width: 300px;
   `}
 
   .nav-title {

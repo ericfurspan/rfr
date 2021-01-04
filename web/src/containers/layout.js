@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import { Layout } from '../components';
-import { mapEdgesToNodes } from '../lib/helpers';
+import { cleanPageLink, mapEdgesToNodes } from '../lib/helpers';
 
 const query = graphql`
   query SiteLayoutQuery {
@@ -78,7 +78,7 @@ const LayoutContainer = (layoutProps) => {
       query={query}
       render={(data) => {
         const allPages = (data || {}).allPages
-          ? mapEdgesToNodes(data.allPages).map((page) => page._id.replace('_Page', ''))
+          ? mapEdgesToNodes(data.allPages).map((page) => cleanPageLink(page._id))
           : [];
 
         return (

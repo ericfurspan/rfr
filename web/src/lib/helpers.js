@@ -38,6 +38,10 @@ export function getTestimonialUrl (publishedAt, slug) {
   return `/testimonials/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
+export function cleanPageLink (link) {
+  return link.replace('_Page', '');
+}
+
 export function getUrlFromReference (reference) {
   let href;
   if (reference._type === 'post') {
@@ -52,7 +56,7 @@ export function getUrlFromReference (reference) {
     href = `/${reference._id}`;
   }
 
-  return href;
+  return cleanPageLink(href);
 }
 
 export function buildImageObj (source) {

@@ -62,6 +62,9 @@ export const StyledContent = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
+  display: inline-block;
+  margin-top: 2em;
+
   &:hover {
     text-decoration: none;
     color: inherit;
@@ -70,7 +73,6 @@ export const StyledLink = styled(Link)`
 
 export const StyledCTAButton = styled(StyledButton)`
   text-transform: uppercase;
-  margin-top: 2em;
 
   ${(props) =>
     props.buttonTextColor &&
