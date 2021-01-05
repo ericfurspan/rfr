@@ -20,7 +20,7 @@ export const StyledContent = styled.span`
 `;
 
 export const StyledCaption = styled.span`
-  color: var(--color-dark-gray);
   display: block;
+  font-weight: 400 !important;
   margin: 0.25em 0 0.75em;
 `;

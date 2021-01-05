@@ -50,10 +50,10 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
     -ms-user-select: none;
     cursor: pointer;
     position: absolute;
-    top: 22px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
     background: transparent;
     border-radius: 50%;
   

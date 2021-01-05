@@ -442,7 +442,7 @@ const IndexPage = ({ data }) => {
             image={contentPreviewMap['affiliatesPreview'].photo}
             nodes={affiliateNodes}
             gc='1 / -1'
-            p='4rem 2rem'
+            p='6rem 2rem'
             br='var(--color-dark-white)'
           />
         )}

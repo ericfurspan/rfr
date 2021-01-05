@@ -19,7 +19,7 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
       )}
 
       {title && (
-        <Box mb='2em' ta={alignTitle}>
+        <Box mb='3em' ta={alignTitle}>
           <h2 css={Typography.responsiveTitle2}>
             {title}
           </h2>
