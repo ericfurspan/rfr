@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { MEDIA } from '../../lib/helpers';
 
 export const StyledHeader = styled.header`
   position: absolute;
@@ -15,13 +16,19 @@ export const StyledHeader = styled.header`
       color: ${props => props.headerTextColor};
     }
   `}
+
+  ${MEDIA.PHONE`
+    img {
+      display: none;
+    }
+  `};
 `;
 
 export const StyledTitle = styled.h1`
   font-size: 1.25rem;
   font-weight: 600;
   font-family: var(--font-family-brand);
-  margin-left: 75px;
+  margin-left: 72px;
   user-select: none;
   z-index: 1;
 

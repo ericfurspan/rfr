@@ -67,7 +67,7 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
       <input type='hidden' name='form-name' value='newsletter' />
       <input type='hidden' name='botField' onChange={onFieldChange} />
 
-      <Box flex ai='center'>
+      <Box flex col maxw='250px'>
         <StyledInput
           type='email'
           name='emailAddress'
@@ -75,13 +75,13 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
           aria-label='Email Address'
           onChange={onFieldChange}
           value={formFields.emailAddress}
-          minw='178px'
+          minw='175px'
           required
+          mb='0.5em'
         />
         <StyledButton
           type='submit'
           design='primary'
-          m='0 0.5em'
           disabled={!recaptchaToken}
         >
           Subscribe

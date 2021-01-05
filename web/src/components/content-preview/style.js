@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 export const StyledLink = styled(Link)`
   display: block;
   color: inherit;
-  text-decoration: none;
   position: relative;
 `;
 
@@ -14,10 +13,6 @@ export const StyledTitle = styled.h3`
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0.25em 0;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 export const StyledContent = styled.span`

@@ -15,7 +15,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: 'circle(26px at 40px 40px)',
+    clipPath: 'circle(24px at 40px 40px)',
     transition: {
       delay: 0.5,
       type: 'spring',

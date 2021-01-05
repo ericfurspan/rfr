@@ -19,7 +19,7 @@ const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, imag
         </StyledImageContainer>
       )}
       {title && (
-        <Box mb='3em'>
+        <Box mb='2em'>
           <h2 css={Typography.responsiveTitle2}>
             {title}
           </h2>

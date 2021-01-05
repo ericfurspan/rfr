@@ -21,8 +21,8 @@ const Testimonial = ({ reviewer, reviewedAt, text, previewMode = false, slug }) 
           <span>{'\u201C'}{quoteContent}{'\u201D'}</span>
 
           <StyledCitation css={Typography.small}>
+            <div>{format(reviewedAt, 'DD MMMM YYYY')}</div>
             <cite>&nbsp;by {reviewer}</cite>
-            <div>on {format(reviewedAt, 'DD MMMM YYYY')}</div>
           </StyledCitation>
 
           {previewMode && (

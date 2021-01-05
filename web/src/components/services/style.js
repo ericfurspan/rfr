@@ -46,16 +46,18 @@ export const StyledIconContainer = styled.div`
 `;
 
 export const StyledService = styled.div`
-  padding: 3em 1.5em;
+  padding: 0 2em 2em;
+  max-width: 400px;
+  margin: auto;
 
   & h3 {
-    margin: 0 auto 1em;
+    margin: 0 auto 0.75em;
     white-space: nowrap;
   }
 `;
 
 export const StyledServiceBody = styled.div`
-  margin-top: 1.5em;
+  margin: 2em 0;
 
   & ul {
     list-style: none;
@@ -77,6 +79,6 @@ export const StyledServiceBody = styled.div`
 `;
 
 export const StyledBrowseMore = styled.div`
-  margin-top: 1rem;
+  margin-top: 2em;
   text-align: right;
 `;

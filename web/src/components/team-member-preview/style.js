@@ -5,8 +5,8 @@ export const StyledLink = styled(Link)`
   display: block;
   color: inherit;
   text-decoration: none;
-  width: 275px;
-  height: 275px;
+  width: 200px;
+  height: 200px;
   margin: auto;
 `;
 
@@ -19,11 +19,11 @@ export const StyledThumbnail = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    width: 275px;
-    height: 275px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    border: 6px solid var(--color-very-light-gray);
+    border: 4px solid var(--color-very-light-gray);
   }
 `;
 

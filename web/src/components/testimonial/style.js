@@ -16,5 +16,5 @@ export const StyledBlockquote = styled.blockquote`
 export const StyledCitation = styled.figcaption`
   color: var(--color-dark-gray);
   font-style: italic;
-  margin: 0.5em 0.25em 1.5em 0;
+  margin: 1em 0.25em 1.5em 0;
 `;

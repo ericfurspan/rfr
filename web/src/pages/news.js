@@ -134,7 +134,7 @@ const NewsPage = ({ data }) => {
 
         {pressReleaseNodes.length > 0 && (
           <Box mt='3em' ta='left'>
-            <h2 css={Typography.responsiveTitle2}>Press</h2>
+            <h2 css={Typography.responsiveTitle2}>Press Releases</h2>
             {pressReleaseNodes.map((node) => (
               <ContentPreview key={node.id} {...node} />
             ))}

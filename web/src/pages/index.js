@@ -376,7 +376,7 @@ const IndexPage = ({ data }) => {
             image={contentPreviewMap['missionPreview'].photo}
             _rawMission={company._rawMission}
             gc='2 / -2'
-            p='6rem 2rem'
+            p='4rem 2rem'
           />
         )}
         {contentPreviewMap['servicesPreview'] && (
@@ -405,7 +405,7 @@ const IndexPage = ({ data }) => {
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
             gc='1 / -1'
-            p='6rem 2rem'
+            p='4rem 2rem'
             br='var(--color-dark-white)'
           />
         )}
@@ -413,7 +413,7 @@ const IndexPage = ({ data }) => {
         {(contentPreviewMap['newsPreview'] || contentPreviewMap['podcastPreview']) && (
           <Box
             gc='1 / -1'
-            p='6rem 2rem'
+            p='4rem 2rem'
           >
             {allNewsNodes.length > 0 && (
               <PreviewNodes
@@ -442,7 +442,7 @@ const IndexPage = ({ data }) => {
             image={contentPreviewMap['affiliatesPreview'].photo}
             nodes={affiliateNodes}
             gc='1 / -1'
-            p='6rem 2rem'
+            p='4rem 2rem'
             br='var(--color-dark-white)'
           />
         )}
@@ -452,7 +452,7 @@ const IndexPage = ({ data }) => {
         (
           <Box
             gc='1 / -1'
-            p='6rem 2rem'
+            p='4rem 2rem'
             br='var(--color-dark-white)'
           >
             <Stars amount={5} />

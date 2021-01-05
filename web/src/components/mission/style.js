@@ -3,8 +3,8 @@ import { Box } from '../box';
 
 export const StyledImageContainer = styled(Box)`
   & img {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 200px;
+    max-height: 200px;
     object-fit: cover;
   }
 `;
