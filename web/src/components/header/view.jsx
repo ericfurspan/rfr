@@ -8,11 +8,11 @@ import {
   StyledTitle,
 } from './style';
 
-const Header = ({ allPages = [], companyProps, bannerProps, jumbotronProps, ...layoutProps }) => {
+const Header = ({ allPages = [], currentPath, companyProps, bannerProps, jumbotronProps }) => {
   const { logo, companyName } = companyProps;
 
   return (
-    <StyledHeader {...jumbotronProps} {...layoutProps}>
+    <StyledHeader {...jumbotronProps} currentPath={currentPath}>
       {bannerProps && bannerProps.isEnabled && (
         <StyledAttentionBanner {...bannerProps}>
           <BlockContent blocks={bannerProps._rawBannerText} />
@@ -20,12 +20,11 @@ const Header = ({ allPages = [], companyProps, bannerProps, jumbotronProps, ...l
       )}
 
       <StyledTitle>
+        {(logo && logo.asset) && (
+          <Logo image={logo} margin='0' />
+        )}
         <Link to='/'>{companyName}</Link>
       </StyledTitle>
-
-      {(logo && logo.asset) && (
-        <Logo image={logo} />
-      )}
     </StyledHeader>
   );
 };

@@ -19,19 +19,19 @@ export function filterOutDocsPublishedInTheFuture ({ publishedAt }) {
 }
 
 export function getTeamMemberUrl (slug) {
-  return `/team/${slug.current || slug}`;
+  return `/team/${slug.current || slug}/`;
 }
 
 export function getBlogUrl (publishedAt, slug) {
-  return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
+  return `/news/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
 export function getPressReleaseUrl (publishedAt, slug) {
-  return `/press/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
+  return `/news/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
 export function getEventUrl (eventAt, slug) {
-  return `/events/${format(eventAt, 'YYYY/MM')}/${slug.current || slug}/`;
+  return `/news/${format(eventAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
 export function getTestimonialUrl (publishedAt, slug) {

@@ -294,7 +294,7 @@ export const query = graphql`
   }
 `;
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const { company, jumbotron, seo, podcast } = (data || {});
 
   if (!company) {

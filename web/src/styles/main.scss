@@ -13,6 +13,7 @@ body {
   color: var(--color-black);
   margin: 0;
   height: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -29,11 +30,6 @@ summary {
   outline: 0;
   cursor: pointer;
   user-select: none;
-}
-
-a,
-button {
-  z-index: 2;
 }
 
 .grecaptcha-badge {

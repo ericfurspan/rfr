@@ -72,7 +72,7 @@ const query = graphql`
   }
 `;
 
-const LayoutContainer = (layoutProps) => {
+const LayoutContainer = ({ location, ...rest }) => {
   return (
     <StaticQuery
       query={query}
@@ -83,12 +83,13 @@ const LayoutContainer = (layoutProps) => {
 
         return (
           <Layout
-            {...layoutProps}
+            location={location}
             allPages={allPages}
             companyProps={data.company}
             bannerProps={data.banner}
             jumbotronProps={data.jumbotron}
             themeProps={data.theme}
+            {...rest}
           />
         );
       }}

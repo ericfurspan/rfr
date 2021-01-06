@@ -64,7 +64,7 @@ const ContactPage = ({ data }) => {
               </a>
             </Box>
             {company.contact.socialMedia.map((platform) => (
-              <Box d='inline-block' m='0 1em' p='0.65em' bdr='100%' br='var(--color-black)' key={platform.url}>
+              <Box d='inline-block' m='0 1em' p='0.5em' bdr='6px' br='var(--color-dark-gray)' key={platform.url}>
                 <a href={platform.url} target='_blank' rel='noreferrer noopener'>
                   <FontAwesomeIcon
                     icon={[platform.icon.faPackage, platform.icon.faIconName]}

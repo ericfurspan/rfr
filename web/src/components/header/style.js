@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { MEDIA } from '../../lib/helpers';
 
 export const StyledHeader = styled.header`
   position: absolute;
@@ -9,37 +8,32 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em;
+  padding: 0;
 
-  ${(props) => (props.path === '/' && props.headerTextColor) && css`
+  ${(props) => (props.currentPath === '/' && props.headerTextColor) && css`
     ${StyledTitle} {
       color: ${props => props.headerTextColor};
     }
   `}
-
-  ${MEDIA.PHONE`
-    img {
-      display: none;
-    }
-  `};
 `;
 
 export const StyledTitle = styled.h1`
+  display: flex;
+  align-items: center;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 500;
   font-family: var(--font-family-brand);
-  margin-left: 72px;
   user-select: none;
+  padding-left: 12px;
+  margin-top: 0.75em;
+  max-width: calc(100vw - 100px);
   z-index: 1;
 
   & a {
     display: inline-block;
     color: inherit;
     text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    margin-left: 0.75em;
   }
 `;
 

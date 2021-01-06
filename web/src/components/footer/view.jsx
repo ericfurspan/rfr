@@ -59,7 +59,7 @@ const Footer = ({ companyProps, allPages, ...themeProps }) => {
             </a>
           </span>
         </div>
-        {(logo && logo.asset) && <Logo image={logo} width={50} height={50} noMargin />}
+        {(logo && logo.asset) && <Logo image={logo} width={50} height={50} margin='0' />}
       </StyledCredits>
     </StyledFooter>
   );

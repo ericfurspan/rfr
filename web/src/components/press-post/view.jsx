@@ -21,7 +21,7 @@ const PressPost = ({ title, source, url, _rawExcerpt, publishedAt }) => (
         </StyledPublishDate>
       </StyledHeader>
       <StyledMainContent>
-        <BlockContent blocks={_rawExcerpt} />
+        {_rawExcerpt && <BlockContent blocks={_rawExcerpt} />}
         <div>
           <StyledStoryLink href={url} target='_blank' rel='noreferrer noopener'>
             <span>Click here for the full story</span>

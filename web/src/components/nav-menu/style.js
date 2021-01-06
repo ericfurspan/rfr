@@ -1,66 +1,58 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
+import { Logo } from '../logo';
 
-const AnimatedBackground = motion.div;
-export const AnimatedStyledBackground = styled(AnimatedBackground)`
+export const AnimatedLogo = motion.custom(Logo);
+
+export const StyledContainer = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
   bottom: 0;
-  width: 300px;
-  background-color: ${(props) => props.navMenuBg || 'var(--color-white)'};
+  right: 0;
+  z-index: 2;
+
+  button {
+    outline: none;
+    border: none;
+    padding: 0;
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: ${(props) => props.navMenuBg || 'transparent'};
+
+    ${(props) => props.currentPath === '/' && css`
+      background: transparent;
+    `}
+
+    & svg {
+      font-size: 2em;
+      color: ${(props) => props.navMenuFg || 'var(--color-black)'};
+
+      ${(props) => props.currentPath === '/' && css`
+        color: var(--color-white);
+
+        ${props.isOpen && css`
+          color: ${(props) => props.navMenuFg || 'var(--color-black)'};
+        `}
+      `}
+    }
+  }
 `;
 
 const AnimatedNav = motion.nav;
 export const AnimatedStyledNav = styled(AnimatedNav)`
   position: absolute;
   top: 0;
-  left: 0;
   bottom: 0;
-  width: 100px;
-  z-index: 1;
-
-  ${(props) => props.isOpen && css`
-    z-index: 3;
-    position: fixed;
-    width: 300px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-  `}
-
-  .nav-title {
-    position: absolute;
-    top: 22px;
-    right: 15px;
-    color: ${(props) => props.navMenuFg || 'var(--color-black)'};
-    font-size: 1.25rem;
-    font-weight: 600;
-    font-family: var(--font-family-brand);
-    display: none;
-
-    ${(props) => props.isOpen && css`
-      display: inline;
-    `}
-  }
-
-  button {
-    outline: none;
-    border: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 50px;
-    height: 50px;
-    background: transparent;
-    border-radius: 50%;
-  
-    & svg {
-      vertical-align: middle;
-    }
-  }
+  width: 280px;
+  background-color: ${(props) => props.navMenuBg || 'var(--color-white)'};
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
+  overflow-y: auto;
 
   ul,
   li {
@@ -69,20 +61,16 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   }
 
   ul {
-    padding: 25px;
+    padding: 24px;
     position: absolute;
-    top: 85px;
-    width: calc(100% - 50px);
-    user-select: none;
-    pointer-events: none;
-
-    ${(props) => props.isOpen && css`
-      user-select: initial;
-      pointer-events: initial;
-    `}
+    top: 70px;
+    width: calc(100% - 48px);
 
     a {
+      display: block;
+      position: relative;
       text-decoration: none !important;
+      margin-left: 0.5em;
 
       li {
         list-style: none;
@@ -92,15 +80,18 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
         align-items: center;
         cursor: pointer;
         user-select: none;
-        pointer-events: none;
+        border-radius: 6px;
+        width: 100%;
+        color: ${(props) => props.navMenuFg || 'var(--color-black)'};
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1rem;
 
-        span {
-          border-radius: 6px;
-          width: 100%;
-          color: ${(props) => props.navMenuFg || 'var(--color-black)'};
-          text-transform: uppercase;
-          font-weight: 600;
-          font-size: 0.875rem;
+        & svg {
+          position: absolute;
+          right: 0;
+          color: inherit;
+          font-size: 1em;
         }
       }
     }

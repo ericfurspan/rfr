@@ -1,58 +1,42 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useCycle } from 'framer-motion';
-import { useDimensions } from './components/use-dimensions';
-import { MenuToggle } from './components/menu-toggle';
+import { Toggle } from './components/toggle';
 import { Navigation } from './components/navigation';
-import { AnimatedStyledNav, AnimatedStyledBackground } from './style';
+import { AnimatedStyledNav, StyledContainer } from './style';
 
-const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-    transition: {
-      type: 'spring',
-      stiffness: 20,
-      restDelta: 2,
-    },
-  }),
-  closed: {
-    clipPath: 'circle(25px at 40px 40px)',
-    transition: {
-      delay: 0.5,
-      type: 'spring',
-      stiffness: 400,
-      damping: 40,
-    },
-  },
+const variants = {
+  open: { right: 0, width: 280 },
+  closed: { right: -280, width: 0 },
 };
 
-const NavMenu = ({ pages, companyName, ...themeProps }) => {
+const NavMenu = ({ pages, companyName, logo, currentPath, ...themeProps }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
-  const containerRef = useRef(null);
-  const { height } = useDimensions(containerRef);
 
   return (
-    <AnimatedStyledNav
-      initial={false}
-      animate={isOpen ? 'open' : 'closed'}
-      custom={height}
-      ref={containerRef}
+    <StyledContainer
       isOpen={isOpen}
+      currentPath={currentPath}
       {...themeProps}
     >
-      <AnimatedStyledBackground
-        variants={sidebar}
+      <AnimatedStyledNav
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        variants={variants}
+        transition={{ duration: 0.25 }}
+        isOpen={isOpen}
         {...themeProps}
-      />
-      <span className='nav-title'>{companyName}</span>
-      <Navigation
-        pages={pages}
+      >
+        <Navigation
+          pages={pages}
+          toggle={() => toggleOpen()}
+        />
+      </AnimatedStyledNav>
+
+      <Toggle
         toggle={() => toggleOpen()}
+        fasIcon={isOpen ? 'times' : 'bars'}
       />
-      <MenuToggle
-        toggle={() => toggleOpen()}
-        stroke={themeProps.navMenuFg}
-      />
-    </AnimatedStyledNav>
+    </StyledContainer>
   );
 };
 
