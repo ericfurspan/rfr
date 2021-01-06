@@ -46,7 +46,7 @@ export const StyledIconContainer = styled.div`
 `;
 
 export const StyledService = styled.div`
-  padding: 0 2em 2em;
+  padding: 0 2em 4em;
   max-width: 400px;
   margin: auto;
 

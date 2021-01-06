@@ -17,7 +17,7 @@ export const StyledContainer = styled.div`
     padding: 0;
     user-select: none;
     cursor: pointer;
-    position: absolute;
+    position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
     top: 15px;
     right: 16px;
     width: 50px;
@@ -46,7 +46,7 @@ export const StyledContainer = styled.div`
 
 const AnimatedNav = motion.nav;
 export const AnimatedStyledNav = styled(AnimatedNav)`
-  position: absolute;
+  position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
   top: 0;
   bottom: 0;
   width: 280px;

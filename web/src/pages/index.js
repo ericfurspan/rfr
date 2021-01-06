@@ -390,7 +390,7 @@ const IndexPage = ({ data, location }) => {
             browseMoreHref='/services'
             previewMode
             gc='1 / -1'
-            p='4rem 2rem 8rem 2rem'
+            p='4rem 2rem 6rem 2rem'
           />
         )}
 

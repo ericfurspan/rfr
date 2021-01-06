@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCycle } from 'framer-motion';
 import { Toggle } from './components/toggle';
-import { Navigation } from './components/navigation';
+import { NavList } from './components/nav-list';
 import { AnimatedStyledNav, StyledContainer } from './style';
 
 const variants = {
@@ -26,7 +26,7 @@ const NavMenu = ({ pages, companyName, logo, currentPath, ...themeProps }) => {
         isOpen={isOpen}
         {...themeProps}
       >
-        <Navigation
+        <NavList
           pages={pages}
           toggle={() => toggleOpen()}
         />

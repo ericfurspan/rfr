@@ -4,34 +4,25 @@ import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { capitalize } from '../../../lib/string-utils';
 
-const listVariants = {
-  open: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.2 },
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
-  },
-};
-
 const listItemVariants = {
   open: {
-    y: 0,
+    x: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
+      x: { stiffness: 1000, velocity: -100 },
     },
   },
   closed: {
-    y: 50,
+    x: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 },
+      x: { stiffness: 1000 },
     },
   },
 };
 
-export const Navigation = ({ pages, toggle }) => (
-  <motion.ul variants={listVariants}>
+export const NavList = ({ pages, toggle }) => (
+  <ul>
     {['home', ...pages].map((page, index) => (
       <Link
         to={page === 'home' ? '/' : `/${page}/`}
@@ -48,5 +39,5 @@ export const Navigation = ({ pages, toggle }) => (
         </motion.li>
       </Link>
     ))}
-  </motion.ul>
+  </ul>
 );
