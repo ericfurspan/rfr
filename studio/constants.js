@@ -1,8 +1,8 @@
 export const customPages = [
   {
-    title: 'About',
-    id: 'about_Page',
-    docId: 'about_Page'
+    title: 'Recovery Coaching',
+    id: 'recovery-coaching_Page',
+    docId: 'recovery-coaching_Page'
   },
   {
     title: 'Services',
