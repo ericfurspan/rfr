@@ -129,8 +129,8 @@ export const StyledButton = styled.button`
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  min-height: 36px;
-  padding: 0 16px;
+  min-height: 38px;
+  padding: 0 24px;
   justify-content: center;
   border-radius: 6px;
   border: 0;

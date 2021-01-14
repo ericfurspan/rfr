@@ -68,11 +68,11 @@ export const StyledServiceBody = styled.div`
       text-align: left;
 
       &:before {
-        content: '☑️';
+        content: '☑';
         color: limegreen;
         margin-right: 0.25em;
         font-size: 1.75rem;
-        vertical-align: middle;
+        vertical-align: sub;
       }
     }
   }

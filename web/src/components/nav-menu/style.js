@@ -19,7 +19,7 @@ export const StyledContainer = styled.div`
     cursor: pointer;
     position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
     top: 15px;
-    right: 16px;
+    right: 10px;
     width: 50px;
     height: 50px;
     border-radius: 50%;

@@ -19,6 +19,7 @@ export { RoleList } from './role-list';
 export { Podcast } from './podcast';
 export { ContactForm } from './contact-form';
 export { NewsletterForm } from './newsletter-form';
+export { CoachingForm } from './coaching-form';
 export { DonateLink } from './donate-link';
 export { Affiliates } from './affiliates';
 export { Mission } from './mission';

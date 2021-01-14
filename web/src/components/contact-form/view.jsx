@@ -96,7 +96,7 @@ const ContactForm = () => {
               type='email'
               name='emailAddress'
               id='emailAddress'
-              placeholder='Email address'
+              placeholder='Email Address'
               onChange={onFieldChange}
               value={formFields.emailAddress}
               required
