@@ -23,7 +23,7 @@ const Footer = ({ companyProps, allPages, ...themeProps }) => {
           <ul>
             {allPages.map((page, index) => (
               <li key={`${page}-${index}`}>
-                <Link to={`/${page}`}>{capitalize(page)}</Link>
+                <Link to={`/${page}`}>{capitalize(page.replace('-', ' '))}</Link>
               </li>
             ))}
           </ul>

@@ -8,7 +8,7 @@ import {
   StyledTitle,
 } from './style';
 
-const Header = ({ allPages = [], currentPath, companyProps, bannerProps, jumbotronProps }) => {
+const Header = ({ currentPath, companyProps, bannerProps, jumbotronProps }) => {
   const { logo, companyName } = companyProps;
 
   return (

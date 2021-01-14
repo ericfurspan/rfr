@@ -34,7 +34,7 @@ export const NavList = ({ pages, toggle }) => (
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          {capitalize(page)}
+          {capitalize(page.replace('-', ' '))}
           <FontAwesomeIcon icon={['fas', 'chevron-right']} />
         </motion.li>
       </Link>

@@ -14,7 +14,6 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
         {...themeProps}
       />
       <Header
-        allPages={allPages}
         companyProps={companyProps}
         bannerProps={bannerProps}
         jumbotronProps={jumbotronProps}
