@@ -35,6 +35,6 @@ export const StyledHeader = styled.h3`
   }
 `;
 
-export const StyledCertifications = styled.div`
+export const StyledCertifications = styled.span`
   color: var(--color-dark-gray);
 `;

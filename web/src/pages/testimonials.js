@@ -52,9 +52,11 @@ const TestimonialsPage = ({ data }) => {
       <Container centered={page.isCentered}>
         <Stars amount={5} />
 
-        <BlockContent blocks={page._rawBody || []} />
+        <Box mb='3rem'>
+          <BlockContent blocks={page._rawBody || []} />
+        </Box>
 
-        <Box d='grid' gtc='repeat(auto-fit, minmax(300px, 1fr))' gg='4em' mt='4em'>
+        <Box d='grid' gtc='repeat(auto-fit, minmax(300px, 1fr))' gg='4em'>
           {testimonialNodes.map((node) => (
             <Box ta='left' key={node.id}>
               <ContentPreview {...node} />

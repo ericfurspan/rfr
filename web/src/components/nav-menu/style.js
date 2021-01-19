@@ -33,12 +33,12 @@ export const StyledContainer = styled.div`
       font-size: 2em;
       color: ${(props) => props.navMenuFg || 'var(--color-black)'};
 
-      ${(props) => props.currentPath === '/' && css`
-        color: var(--color-white);
+      ${(props) => props.isOpen && css`
+        color: ${(props) => props.navMenuFg || 'var(--color-dark-gray)'};
+      `}
 
-        ${props.isOpen && css`
-          color: ${(props) => props.navMenuFg || 'var(--color-black)'};
-        `}
+      ${(props) => props.currentPath === '/' && !props.isOpen && css`
+        color: ${(props) => props.navMenuFg || 'var(--color-white)'};
       `}
     }
   }
@@ -49,7 +49,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
   top: 0;
   bottom: 0;
-  width: 280px;
+  width: 300px;
   background-color: ${(props) => props.navMenuBg || 'var(--color-white)'};
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
   overflow-y: auto;
@@ -63,35 +63,33 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   ul {
     padding: 24px;
     position: absolute;
-    top: 70px;
+    top: 80px;
     width: calc(100% - 48px);
 
-    a {
-      display: block;
-      position: relative;
-      text-decoration: none !important;
-      margin-left: 0.5em;
+    li {
+      list-style: none;
+      margin-left: 0.25em;
 
-      li {
-        list-style: none;
-        margin-bottom: 16px;
+      a {
         height: 40px;
         display: flex;
         align-items: center;
         cursor: pointer;
         user-select: none;
+        text-decoration: none !important;
         border-radius: 6px;
         width: 100%;
-        color: ${(props) => props.navMenuFg || 'var(--color-black)'};
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 1rem;
-
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: ${(props) => props.navMenuFg || 'var(--color-dark-gray)'};
+      
         & svg {
-          position: absolute;
-          right: 0;
-          color: inherit;
-          font-size: 1em;
+          margin-right: 1.25rem;
+        }
+
+        &[aria-current] {
+          color: ${(props) => props.navMenuFg || 'var(--color-black) !important'};
+          font-weight: 700;
         }
       }
     }

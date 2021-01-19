@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Product = ({ title, caption, description, image, link, linkText, price, slug, previewMode = false }) => {
   return (
     <>
-      {!previewMode && <BackBtn linkTo='/merchandise' linkText='All items' />}
+      {!previewMode && <BackBtn linkTo='/merchandise' linkText='All merchandise' />}
 
       <StyledProduct previewMode={previewMode}>
         <Link to={getProductUrl(slug)}>

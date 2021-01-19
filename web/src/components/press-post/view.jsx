@@ -1,14 +1,13 @@
 import React from 'react';
 import { format, distanceInWords, differenceInDays } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Container, BlockContent, Typography } from '..';
+import { Box, BlockContent, Typography } from '..';
 
 import { StyledHeader, StyledMainContent, StyledTitle, StyledPublishDate, StyledSourceName, StyledStoryLink } from './style';
-import { Box } from '../box';
 
 const PressPost = ({ title, source, url, _rawExcerpt, publishedAt }) => (
   <article>
-    <Container>
+    <Box maxw='1250px' p='2em'>
       <StyledHeader>
         <StyledTitle css={Typography.responsiveTitle1}>{title}</StyledTitle>
         <StyledPublishDate css={Typography.small}>
@@ -30,7 +29,7 @@ const PressPost = ({ title, source, url, _rawExcerpt, publishedAt }) => (
           {source && <StyledSourceName>{`From ${source}`}</StyledSourceName>}
         </div>
       </StyledMainContent>
-    </Container>
+    </Box>
   </article>
 );
 

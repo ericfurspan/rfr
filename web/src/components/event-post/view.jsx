@@ -2,7 +2,7 @@ import React from 'react';
 import { format, distanceInWords, differenceInDays } from 'date-fns';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { Container, BlockContent, RoleList, Typography } from '..';
+import { Box, BlockContent, RoleList, Typography } from '..';
 
 import { StyledCoverPhoto, StyledGrid, StyledMainContent, StyledEventDate } from './style';
 
@@ -20,7 +20,7 @@ const EventPost = ({ _rawBody, title, organizers, coverPhoto, eventAt }) => (
         />
       </StyledCoverPhoto>
     )}
-    <Container>
+    <Box maxw='1250px' p='2em'>
       <StyledGrid>
         <StyledMainContent>
           <h1 css={Typography.responsiveTitle1}>{title}</h1>
@@ -37,7 +37,7 @@ const EventPost = ({ _rawBody, title, organizers, coverPhoto, eventAt }) => (
           {organizers && <RoleList title='Organizers' items={organizers} listType='teamMember' />}
         </aside>
       </StyledGrid>
-    </Container>
+    </Box>
   </article>
 );
 

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, BlockContent, Products } from '../components';
+import { Box, Container, BlockContent, Products } from '../components';
 
 export const query = graphql`
   query ProductsQuery {
@@ -52,7 +52,9 @@ const ProductsPage = ({ data }) => {
       <SEO title='Merchandise' />
       <Container centered={page.isCentered}>
 
-        <BlockContent blocks={page._rawBody || []} />
+        <Box mb='3em'>
+          <BlockContent blocks={page._rawBody || []} />
+        </Box>
 
         <Products nodes={productNodes} />
       </Container>

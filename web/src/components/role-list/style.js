@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  margin: 2rem 0 3rem;
+  margin: 4rem 0 3rem;
   border-top: 1px solid var(--color-light-gray);
   max-width: 300px;
 `;

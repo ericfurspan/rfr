@@ -25,7 +25,7 @@ const TeamMemberPreview = ({ slug, person, certifications }) => (
     </StyledHeader>
 
     {certifications && (
-      <StyledCertifications css={Typography.small}>
+      <StyledCertifications>
         {certifications.join(', ')}
       </StyledCertifications>
     )}

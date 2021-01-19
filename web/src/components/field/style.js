@@ -169,7 +169,7 @@ export const StyledButton = styled.button`
     css`
       min-height: 56px;
       min-width: 224px;
-      font-size: 1.25rem;
+      font-size: 1.125rem;
 
       ${MEDIA.PHONE`
         min-height: 42px;
@@ -183,12 +183,12 @@ export const StyledButton = styled.button`
     css`
       min-height: 72px;
       min-width: 248px;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
 
       ${MEDIA.PHONE`
         min-height: 56px;
         min-width: 224px;
-        font-size: 1.25rem;
+        font-size: initial;
       `};
   `};
 

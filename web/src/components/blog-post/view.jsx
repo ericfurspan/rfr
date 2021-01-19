@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { Container, RoleList, BlockContent, Typography, Box } from '..';
+import { RoleList, BlockContent, Typography, Box } from '..';
 
 import { StyledArticle, StyledCoverPhoto, StyledGrid, StyledMainContent, StyledPublishDate } from './style';
 
@@ -22,7 +22,7 @@ const BlogPost = ({ _rawBody, authors, title, coverPhoto, publishedAt }) => (
         />
       </StyledCoverPhoto>
     )}
-    <Container>
+    <Box maxw='1250px' p='2em'>
       <StyledGrid>
         <StyledMainContent>
           <h1 css={Typography.responsiveTitle1}>{title}</h1>
@@ -42,7 +42,7 @@ const BlogPost = ({ _rawBody, authors, title, coverPhoto, publishedAt }) => (
           <RoleList title='Authors' items={authors} listType='teamMember' />
         </aside>}
       </StyledGrid>
-    </Container>
+    </Box>
   </StyledArticle>
 );
 

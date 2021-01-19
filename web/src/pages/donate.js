@@ -36,9 +36,12 @@ const DonatePage = ({ data }) => {
     <>
       <SEO title='Donate' />
       <Container centered={page.isCentered}>
-        <BlockContent blocks={page._rawBody || []} />
 
-        <Box d='grid' gridResponsive gtc='repeat(2, minmax(0, 1fr))' grg='4em' gcg='2em' mt='4em'>
+        <Box mb='3rem'>
+          <BlockContent blocks={page._rawBody || []} />
+        </Box>
+
+        <Box d='grid' gridResponsive gtc='repeat(2, minmax(0, 1fr))' grg='4em' gcg='2em'>
           {payment.payExternal.map((externalPayment) => (
             <DonateLink key={externalPayment._key} {...externalPayment} />
           ))}

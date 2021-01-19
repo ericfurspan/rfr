@@ -14,7 +14,7 @@ const Products = ({ nodes, title, subtitle, browseMoreHref, browseMoreText, ...r
         )}
       </Box>
     )}
-    <Box d='grid' gtc='repeat(auto-fill, minmax(325px, 1fr))' gg='2em' mt='4em'>
+    <Box d='grid' gtc='repeat(auto-fill, minmax(325px, 1fr))' gg='2em'>
       {nodes.map((node) => (
         <Box ta='left' m='auto' key={node.id}>
           <Product {...node} previewMode />

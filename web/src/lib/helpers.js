@@ -130,3 +130,37 @@ export const colorForFaPackage = (faPackage) => {
       break;
   }
 };
+
+export const faIconForPage = (page) => {
+  switch (page) {
+    case 'home':
+      return [ 'fas', 'home' ];
+
+    case 'services':
+      return [ 'fas', 'project-diagram' ];
+
+    case 'news':
+      return [ 'fas', 'rss' ];
+
+    case 'team':
+      return [ 'fas', 'users' ];
+
+    case 'donate':
+      return [ 'fas', 'donate' ];
+
+    case 'testimonials':
+      return [ 'fas', 'comments' ];
+
+    case 'contact':
+      return [ 'fas', 'question-circle' ];
+
+    case 'merchandise':
+      return [ 'fas', 'tags' ];
+
+    case 'recovery-coaching':
+      return [ 'fas', 'hands-helping' ];
+
+    default:
+      break;
+  }
+};
