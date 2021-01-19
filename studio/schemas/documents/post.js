@@ -18,7 +18,8 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'publishedAt',

@@ -49,7 +49,8 @@ export default {
       options: {
         source: 'title',
         maxLength: 48
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'order',

@@ -28,7 +28,8 @@ export default {
       options: {
         source: 'text',
         maxLength: 48
-      }
+      },
+      validation: Rule => Rule.required()
     }
   ],
   orderings: [

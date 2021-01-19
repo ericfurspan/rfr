@@ -27,7 +27,8 @@ export default {
       options: {
         source: 'person.name',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'order',
