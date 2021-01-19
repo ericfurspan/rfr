@@ -5,8 +5,8 @@ import { NavList } from './components/nav-list';
 import { AnimatedStyledNav, StyledContainer } from './style';
 
 const variants = {
-  open: { right: 0, width: 300 },
-  closed: { right: -300, width: 'auto' },
+  open: { right: 0 },
+  closed: { right: -300 },
 };
 
 const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...themeProps }) => {
@@ -27,7 +27,7 @@ const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...the
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         variants={variants}
-        transition={{ duration: 0.125 }}
+        transition={{ duration: 0.25 }}
         isOpen={isOpen}
         {...themeProps}
       >

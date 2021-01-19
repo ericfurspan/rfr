@@ -10,6 +10,8 @@ export const StyledProduct = styled(Box)`
   ${(props) => props.previewMode ? css`
     padding: 1rem;
     background: var(--color-dark-white);
+    border: 1px solid var(--color-very-light-gray);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     width: fit-content;
   
@@ -51,8 +53,8 @@ export const StyledImageContainer = styled.div`
   }
 
   & svg {
-    width: 100% !important;
-    height: 100% !important;
+    width: 275px !important;
+    height: 275px !important;
     color: var(--color-light-gray);
   }
 `;

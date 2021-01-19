@@ -34,13 +34,15 @@ const Product = ({ title, caption, description, image, link, linkText, price, sl
             <Link to={getProductUrl(slug)}>{title}</Link>
           </StyledTitle>
 
-          <StyledCaption>{caption}</StyledCaption>
+          {caption && <StyledCaption>{caption}</StyledCaption>}
 
-          <StyledPrice>{price.toFixed(2)}</StyledPrice>
+          {price && <StyledPrice>{price.toFixed(2)}</StyledPrice>}
 
-          <StyledProductLink href={link} target='_blank' rel='noreferrer noopener'>
-            {linkText}
-          </StyledProductLink>
+          {link && (
+            <StyledProductLink href={link} target='_blank' rel='noreferrer noopener'>
+              {linkText}
+            </StyledProductLink>
+          )}
 
           {description && <StyledDescription>{description}</StyledDescription>}
 

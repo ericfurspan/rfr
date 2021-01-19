@@ -14,6 +14,7 @@ export const StyledGrid = styled.ul`
 export const StyledBrowseMore = styled.div`
   margin-top: 2em;
   text-align: right;
+  width: 100%;
 `;
 
 export const StyledEmptyNodesText = styled.span`

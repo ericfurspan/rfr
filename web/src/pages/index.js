@@ -104,7 +104,7 @@ export const query = graphql`
         }
       }
     }
-    products: allSanityProduct(limit: 3) {
+    products: allSanityProduct(limit: 4) {
       edges {
         node {
           id
@@ -371,7 +371,7 @@ const IndexPage = ({ data, location }) => {
     : [];
   const allNewsNodes = [...blogPostNodes, ...pressReleaseNodes, ...eventNodes].slice(0, 6);
 
-  // A mapping of what content should be previewable on the page
+  // A mapping of what content to preview on the page
   const contentPreviewMap = (data || {}).contentPreviews
     ? mapEdgesToNodes(data.contentPreviews)
       .reduce((acc, curr) => {
@@ -399,7 +399,7 @@ const IndexPage = ({ data, location }) => {
             image={contentPreviewMap['missionPreview'].photo}
             _rawMission={company._rawMission}
             gc='2 / -2'
-            p='4rem 2rem'
+            p='6rem 2rem 8rem'
           />
         )}
         {contentPreviewMap['servicesPreview'] && (
@@ -413,8 +413,34 @@ const IndexPage = ({ data, location }) => {
             browseMoreHref='/services'
             previewMode
             gc='1 / -1'
-            p='4rem 2rem 6rem 2rem'
+            p='4rem 2rem'
+            br='var(--color-very-light-gray)'
           />
+        )}
+
+        {contentPreviewMap['newsPreview'] && (
+          <Box
+            gc='1 / 7'
+            p='4rem 2rem'
+          >
+            {allNewsNodes.length > 0 && (
+              <PreviewNodes
+                title={contentPreviewMap['newsPreview'].headingText}
+                subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
+                image={contentPreviewMap['newsPreview'].photo}
+                nodes={allNewsNodes}
+                nodeType='generic'
+                browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
+                browseMoreHref='/news'
+              />
+            )}
+          </Box>
+        )}
+
+        {contentPreviewMap['podcastPreview'] && (
+          <Box gc='7 / -1' p='4rem 2rem'>
+            <Podcast {...podcast} />
+          </Box>
         )}
 
         {contentPreviewMap['teamPreview'] && (
@@ -427,47 +453,8 @@ const IndexPage = ({ data, location }) => {
             nodeType='teamMember'
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
-            alignTitle='initial'
             gc='1 / -1'
             p='4rem 2rem'
-          />
-        )}
-
-        {(contentPreviewMap['newsPreview'] || contentPreviewMap['podcastPreview']) && (
-          <Box
-            gc='1 / 8'
-            p='4rem 2rem'
-          >
-            {allNewsNodes.length > 0 && (
-              <PreviewNodes
-                title={contentPreviewMap['newsPreview'].headingText}
-                subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
-                image={contentPreviewMap['newsPreview'].photo}
-                nodes={allNewsNodes}
-                nodeType='generic'
-                browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
-                browseMoreHref='/news'
-                alignTitle='initial'
-              />
-            )}
-          </Box>
-        )}
-
-        {contentPreviewMap['podcastPreview'] && (
-          <Box gc='8 / -1' p='4rem 2rem'>
-            <Podcast {...podcast} />
-          </Box>
-        )}
-
-        {contentPreviewMap['affiliatesPreview'] && (
-          affiliateNodes.length > 0 &&
-          <Affiliates
-            title={contentPreviewMap['affiliatesPreview'].headingText}
-            subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
-            image={contentPreviewMap['affiliatesPreview'].photo}
-            nodes={affiliateNodes}
-            gc='1 / -1'
-            p='6rem 2rem'
           />
         )}
 
@@ -482,8 +469,21 @@ const IndexPage = ({ data, location }) => {
             browseMoreHref='/merchandise'
             nodes={productNodes}
             gc='1 / -1'
-            p='6rem 2rem'
+            p='4rem 2rem'
             ta='center'
+            br='var(--color-very-light-gray)'
+          />
+        )}
+
+        {contentPreviewMap['affiliatesPreview'] && (
+          affiliateNodes.length > 0 &&
+          <Affiliates
+            title={contentPreviewMap['affiliatesPreview'].headingText}
+            subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
+            image={contentPreviewMap['affiliatesPreview'].photo}
+            nodes={affiliateNodes}
+            gc='1 / -1'
+            p='4rem 2rem'
           />
         )}
 
@@ -492,9 +492,9 @@ const IndexPage = ({ data, location }) => {
         (
           <Box
             gc='1 / -1'
-            p='4rem 2rem'
+            p='6rem 2rem'
           >
-            <Stars amount={5} />
+            <Stars amount={5} align='center' />
 
             <PreviewNodes
               title={contentPreviewMap['testimonialsPreview'].headingText}
@@ -504,7 +504,9 @@ const IndexPage = ({ data, location }) => {
               nodeType='generic'
               browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
               browseMoreHref='/testimonials'
-              alignTitle='initial'
+              flex
+              col
+              ai='center'
             />
           </Box>
         )}
