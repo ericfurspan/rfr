@@ -7,7 +7,7 @@ import { Container, BlockContent, Products } from '../components';
 
 export const query = graphql`
   query ProductsQuery {
-    page: sanityPage(_id: { regex: "/(drafts.|)products/" }) {
+    page: sanityPage(_id: { regex: "/(drafts.|)merchandise/" }) {
       _rawBody(resolveReferences: { maxDepth: 4 })
       isCentered
     }
