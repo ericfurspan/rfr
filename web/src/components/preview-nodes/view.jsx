@@ -5,7 +5,7 @@ import { buildImageObj } from '../../lib/helpers';
 import { Box, TeamMemberPreview, ContentPreview, Typography, boxProps } from '..';
 import { StyledGrid, StyledImageContainer, StyledBrowseMore, StyledEmptyNodesText } from './style';
 
-const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, alignTitle = 'center', ...rest }) => {
+const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, ...rest }) => {
   return (
     <Box {...boxProps(rest)}>
       {image && image.asset && (
@@ -19,7 +19,7 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
       )}
 
       {title && (
-        <Box mb='3em' ta={alignTitle}>
+        <Box mb='3em'>
           <h2 css={Typography.responsiveTitle2}>
             {title}
           </h2>

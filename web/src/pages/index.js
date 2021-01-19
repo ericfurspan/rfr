@@ -427,15 +427,15 @@ const IndexPage = ({ data, location }) => {
             nodeType='teamMember'
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
+            alignTitle='initial'
             gc='1 / -1'
             p='4rem 2rem'
-            // br='var(--color-dark-white)'
           />
         )}
 
         {(contentPreviewMap['newsPreview'] || contentPreviewMap['podcastPreview']) && (
           <Box
-            gc='1 / -1'
+            gc='1 / 8'
             p='4rem 2rem'
           >
             {allNewsNodes.length > 0 && (
@@ -447,13 +447,15 @@ const IndexPage = ({ data, location }) => {
                 nodeType='generic'
                 browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
                 browseMoreHref='/news'
+                alignTitle='initial'
               />
             )}
-            {contentPreviewMap['podcastPreview'] && (
-              <Box p='2rem 0' maxw='720px' m='auto'>
-                <Podcast {...podcast} />
-              </Box>
-            )}
+          </Box>
+        )}
+
+        {contentPreviewMap['podcastPreview'] && (
+          <Box gc='8 / -1' p='4rem 2rem'>
+            <Podcast {...podcast} />
           </Box>
         )}
 
@@ -466,7 +468,6 @@ const IndexPage = ({ data, location }) => {
             nodes={affiliateNodes}
             gc='1 / -1'
             p='6rem 2rem'
-            // br='var(--color-dark-white)'
           />
         )}
 
@@ -481,7 +482,7 @@ const IndexPage = ({ data, location }) => {
             browseMoreHref='/merchandise'
             nodes={productNodes}
             gc='1 / -1'
-            p='4rem 2rem'
+            p='6rem 2rem'
             ta='center'
           />
         )}
@@ -492,7 +493,6 @@ const IndexPage = ({ data, location }) => {
           <Box
             gc='1 / -1'
             p='4rem 2rem'
-            // br='var(--color-dark-white)'
           >
             <Stars amount={5} />
 
@@ -504,6 +504,7 @@ const IndexPage = ({ data, location }) => {
               nodeType='generic'
               browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
               browseMoreHref='/testimonials'
+              alignTitle='initial'
             />
           </Box>
         )}

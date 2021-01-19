@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { MEDIA } from '../../lib/helpers';
-
 export const StyledGrid = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -12,11 +10,7 @@ export const StyledGrid = styled.ul`
   margin: 0;
 
   & li {
-    flex: 0 0 33.3333%;
-
-    ${MEDIA.TABLET`
-      flex: auto;
-    `};
+    flex: auto;
   }
 `;
 

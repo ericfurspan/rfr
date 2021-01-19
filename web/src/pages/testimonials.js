@@ -50,7 +50,7 @@ const TestimonialsPage = ({ data }) => {
     <>
       <SEO title='Testimonials' />
       <Container centered={page.isCentered}>
-        <Stars amount={5} />
+        <Stars amount={5} align={page.isCentered ? 'center' : 'initial'} />
 
         <Box mb='3rem'>
           <BlockContent blocks={page._rawBody || []} />

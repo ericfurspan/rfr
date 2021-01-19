@@ -40,6 +40,8 @@ const ContactPage = ({ data }) => {
     return null;
   }
 
+  const numSocialLinks = company.contact.socialMedia.length + 1;
+
   return (
     <>
       <SEO title='Contact' />
@@ -51,31 +53,29 @@ const ContactPage = ({ data }) => {
 
         <ContactForm />
 
-        <Box d='grid' gridResponsive gtc='repeat(auto-fit, minmax(0, 1fr))' m='4em 0' gcg='2em' grg='4em'>
-          <Box>
-            <Box d='inline-block' m='0 0.5em' p='0.5em' bdr='100%' br='var(--color-black)'>
-              <a href={`mailto:${company.contact.email}`}>
+        <Box d='grid' gridResponsive gtc={`repeat(${numSocialLinks}, auto)`} maxw='550px' m='8em auto 0 auto' gg='2em'>
+          <Box p='0.5em' bdr='100%'>
+            <a href={`mailto:${company.contact.email}`}>
+              <FontAwesomeIcon
+                icon={['fas', 'envelope']}
+                color='var(--color-black)'
+                size='4x'
+                fixedWidth
+              />
+            </a>
+          </Box>
+          {company.contact.socialMedia.map((platform) => (
+            <Box p='0.5em' bdr='100%' key={platform.url}>
+              <a href={platform.url} target='_blank' rel='noreferrer noopener'>
                 <FontAwesomeIcon
-                  icon={['fas', 'envelope']}
-                  color='var(--color-white)'
-                  size='lg'
+                  icon={[platform.icon.faPackage, platform.icon.faIconName]}
+                  color='var(--color-black)'
+                  size='4x'
                   fixedWidth
                 />
               </a>
             </Box>
-            {company.contact.socialMedia.map((platform) => (
-              <Box d='inline-block' m='0 0.5em' p='0.5em' bdr='100%' br='var(--color-black)' key={platform.url}>
-                <a href={platform.url} target='_blank' rel='noreferrer noopener'>
-                  <FontAwesomeIcon
-                    icon={[platform.icon.faPackage, platform.icon.faIconName]}
-                    color='var(--color-white)'
-                    size='lg'
-                    fixedWidth
-                  />
-                </a>
-              </Box>
-            ))}
-          </Box>
+          ))}
         </Box>
 
         {company.faq.length > 0 && (

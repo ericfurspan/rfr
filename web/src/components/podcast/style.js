@@ -5,6 +5,11 @@ export const StyledTitle = styled.h3`
   & svg {
     margin-right: 0.5em;
   }
+
+  &::before {
+    content: '🎧';
+    margin-right: 0.5em;
+  }
 `;
 
 export const StyledContainer = styled.div`

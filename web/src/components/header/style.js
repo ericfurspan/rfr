@@ -24,8 +24,8 @@ export const StyledTitle = styled.h1`
   font-weight: 500;
   font-family: var(--font-family-brand);
   user-select: none;
-  padding-left: 12px;
-  margin-top: 0.75em;
+  padding-left: 18px;
+  margin-top: 16px;
   max-width: calc(100vw - 100px);
   z-index: 1;
 
