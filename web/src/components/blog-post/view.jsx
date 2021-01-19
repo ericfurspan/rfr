@@ -38,9 +38,9 @@ const BlogPost = ({ _rawBody, authors, title, coverPhoto, publishedAt }) => (
           </StyledPublishDate>
           {_rawBody && <BlockContent blocks={_rawBody} />}
         </StyledMainContent>
-        <aside>
-          {authors && <RoleList title='Authors' items={authors} listType='teamMember' />}
-        </aside>
+        {authors && <aside>
+          <RoleList title='Authors' items={authors} listType='teamMember' />
+        </aside>}
       </StyledGrid>
     </Container>
   </StyledArticle>

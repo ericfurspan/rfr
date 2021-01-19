@@ -38,6 +38,10 @@ export function getTestimonialUrl (publishedAt, slug) {
   return `/testimonials/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
+export function getProductUrl (slug) {
+  return `/merchandise/${slug.current || slug}/`;
+}
+
 export function cleanPageLink (link) {
   return link.replace('_Page', '');
 }

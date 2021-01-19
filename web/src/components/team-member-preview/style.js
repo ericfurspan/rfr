@@ -23,7 +23,6 @@ export const StyledThumbnail = styled.div`
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid var(--color-very-light-gray);
   }
 `;
 

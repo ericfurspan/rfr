@@ -11,7 +11,7 @@ import {
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Jumbotron, Mission, PreviewNodes, Services, Podcast, Box, Affiliates, Stars } from '../components';
+import { Jumbotron, Mission, PreviewNodes, Services, Products, Podcast, Box, Affiliates, Stars } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -100,6 +100,28 @@ export const query = graphql`
             name
             faPackage
             faIconName
+          }
+        }
+      }
+    }
+    products: allSanityProduct(limit: 3) {
+      edges {
+        node {
+          id
+          title
+          caption
+          description
+          price
+          link
+          linkText
+          image {
+            asset {
+              _id
+            }
+            alt
+          }
+          slug {
+            current
           }
         }
       }
@@ -209,7 +231,7 @@ export const query = graphql`
         }
       }
     }
-    posts: allSanityPost(sort: { fields: [publishedAt], order: DESC }) {
+    posts: allSanityPost(limit: 2, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
           id
@@ -243,7 +265,7 @@ export const query = graphql`
         }
       }
     }
-    pressReleases: allSanityPressRelease(sort: { fields: [publishedAt], order: DESC }) {
+    pressReleases: allSanityPressRelease(limit: 2, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
           id
@@ -257,7 +279,7 @@ export const query = graphql`
         }
       }
     }
-    events: allSanityEvent(sort: { fields: [eventAt], order: DESC }) {
+    events: allSanityEvent(limit: 2, sort: { fields: [eventAt], order: DESC }) {
       edges {
         node {
           id
@@ -304,6 +326,7 @@ const IndexPage = ({ data, location }) => {
   }
 
   const servicesNodes = (data || {}).services ? mapEdgesToNodes(data.services) : [];
+  const productNodes = (data || {}).products ? mapEdgesToNodes(data.products).filter(filterOutDocsWithoutSlugs) : [];
   const testimonialNodes = (data || {}).testimonials
     ? mapEdgesToNodes(data.testimonials)
       .filter(filterOutDocsWithoutSlugs)
@@ -406,7 +429,7 @@ const IndexPage = ({ data, location }) => {
             browseMoreHref='/team'
             gc='1 / -1'
             p='4rem 2rem'
-            br='var(--color-dark-white)'
+            // br='var(--color-dark-white)'
           />
         )}
 
@@ -427,7 +450,7 @@ const IndexPage = ({ data, location }) => {
               />
             )}
             {contentPreviewMap['podcastPreview'] && (
-              <Box p='2rem 0' maxw='720px'>
+              <Box p='2rem 0' maxw='720px' m='auto'>
                 <Podcast {...podcast} />
               </Box>
             )}
@@ -443,7 +466,23 @@ const IndexPage = ({ data, location }) => {
             nodes={affiliateNodes}
             gc='1 / -1'
             p='6rem 2rem'
-            br='var(--color-dark-white)'
+            // br='var(--color-dark-white)'
+          />
+        )}
+
+        {contentPreviewMap['merchandisePreview'] &&
+          productNodes.length > 0 &&
+        (
+          <Products
+            title={contentPreviewMap['merchandisePreview'].headingText}
+            subtitle={contentPreviewMap['merchandisePreview'].headingSubtitle}
+            image={contentPreviewMap['merchandisePreview'].photo}
+            browseMoreText={contentPreviewMap['merchandisePreview'].browseMoreText}
+            browseMoreHref='/merchandise'
+            nodes={productNodes}
+            gc='1 / -1'
+            p='4rem 2rem'
+            ta='center'
           />
         )}
 
@@ -453,7 +492,7 @@ const IndexPage = ({ data, location }) => {
           <Box
             gc='1 / -1'
             p='4rem 2rem'
-            br='var(--color-dark-white)'
+            // br='var(--color-dark-white)'
           >
             <Stars amount={5} />
 

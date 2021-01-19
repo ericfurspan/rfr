@@ -24,5 +24,8 @@ export { DonateLink } from './donate-link';
 export { Affiliates } from './affiliates';
 export { Mission } from './mission';
 export { Stars } from './stars';
+export { Product } from './product';
+export { Products } from './products';
+export { BackBtn } from './back-btn';
 export { Typography } from './typography';
 export * from './field';

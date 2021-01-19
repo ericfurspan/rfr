@@ -135,6 +135,8 @@ const boxPropsList = [
   'bottom',
   'l',
   'left',
+  'ta',
+  'textAlign',
   'zi',
   'zIndex',
   'scrollX',

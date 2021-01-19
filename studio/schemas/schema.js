@@ -20,6 +20,7 @@ import payment from './documents/payment';
 import banner from './documents/banner';
 import jumbotron from './documents/jumbotron';
 import affiliate from './documents/affiliate';
+import product from './documents/product';
 import contentPreview from './documents/contentPreview';
 import theme from './documents/theme';
 
@@ -68,6 +69,7 @@ export default createSchema({
     banner,
     jumbotron,
     affiliate,
+    product,
     contentPreview,
     icon,
     theme

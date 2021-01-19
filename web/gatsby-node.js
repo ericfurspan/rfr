@@ -189,10 +189,47 @@ async function createTestimonialPages (graphql, actions, reporter) {
   });
 }
 
+async function createProductPages (graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityProduct(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            title
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const productEdges = (result.data.allSanityProduct || {}).edges || [];
+
+  productEdges.forEach((edge, index) => {
+    const { id, slug = {} } = edge.node;
+    const path = `/merchandise/${slug.current}/`;
+
+    reporter.info(`Creating product page: ${path}`);
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/merchandise.js'),
+      context: { id },
+    });
+  });
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createTeamMemberPages(graphql, actions, reporter);
   await createBlogPostPages(graphql, actions, reporter);
   await createEventPages(graphql, actions, reporter);
   await createPressReleasePages(graphql, actions, reporter);
   await createTestimonialPages(graphql, actions, reporter);
+  await createProductPages(graphql, actions, reporter);
 };

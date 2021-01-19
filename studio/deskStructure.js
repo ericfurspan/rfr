@@ -1,10 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile, FaPalette } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile, FaPalette, FaTags } from 'react-icons/fa';
 
 import { customPages, availableLandingContent } from './constants';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'contentPreview', 'theme']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'product', 'contentPreview', 'theme']
     .includes(listItem.getId());
 
 export default () =>
@@ -25,6 +25,11 @@ export default () =>
         .schemaType('service')
         .child(S.documentTypeList('service').title('Services'))
         .icon(FaProjectDiagram),
+      S.listItem()
+        .title('Merchandise')
+        .schemaType('product')
+        .child(S.documentTypeList('product').title('Merchandise'))
+        .icon(FaTags),
       S.listItem()
         .title('Team')
         .schemaType('teamMember')

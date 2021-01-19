@@ -33,6 +33,11 @@ export const customPages = [
     title: 'Team',
     id: 'team_Page',
     docId: 'team_Page'
+  },
+  {
+    title: 'Merchandise',
+    id: 'merchandise_Page',
+    docId: 'merchandise_Page'
   }
 ];
 
@@ -64,5 +69,9 @@ export const availableLandingContent = [
   {
     title: 'Testimonials',
     identifier: 'testimonialsPreview'
+  },
+  {
+    title: 'Merchandise',
+    identifier: 'merchandisePreview'
   }
 ];

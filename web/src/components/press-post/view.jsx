@@ -27,7 +27,7 @@ const PressPost = ({ title, source, url, _rawExcerpt, publishedAt }) => (
             <span>Click here for the full story</span>
             <FontAwesomeIcon icon='arrow-alt-circle-right' />
           </StyledStoryLink>
-          <StyledSourceName>{`From ${source}`}</StyledSourceName>
+          {source && <StyledSourceName>{`From ${source}`}</StyledSourceName>}
         </div>
       </StyledMainContent>
     </Container>
