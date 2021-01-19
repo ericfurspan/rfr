@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { BlogPost, Container } from '../components';
+import { Box, BlogPost, Container } from '../components';
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -75,8 +75,12 @@ const BlogPostTemplate = ({ data }) => {
 
   return (
     <Container noPadding>
-      {post && <SEO title={post.title || 'Untitled'} />}
-      {post && <BlogPost {...post} />}
+      {post && <SEO title={post.title || 'Untitled Blog Post'} />}
+      {post && (
+        <Box mt='6em'>
+          <BlogPost {...post} />
+        </Box>
+      )}
     </Container>
   );
 };

@@ -54,7 +54,7 @@ const ContactPage = ({ data }) => {
         <ContactForm />
 
         <Box d='grid' gridResponsive gtc={`repeat(${numSocialLinks}, auto)`} maxw='550px' m='8em auto 0 auto' gg='2em'>
-          <Box p='0.5em' bdr='100%'>
+          <Box d='inline-grid' p='0.5em' bdr='100%'>
             <a href={`mailto:${company.contact.email}`}>
               <FontAwesomeIcon
                 icon={['fas', 'envelope']}
@@ -65,7 +65,7 @@ const ContactPage = ({ data }) => {
             </a>
           </Box>
           {company.contact.socialMedia.map((platform) => (
-            <Box p='0.5em' bdr='100%' key={platform.url}>
+            <Box d='inline-grid' p='0.5em' bdr='100%' key={platform.url}>
               <a href={platform.url} target='_blank' rel='noreferrer noopener'>
                 <FontAwesomeIcon
                   icon={[platform.icon.faPackage, platform.icon.faIconName]}

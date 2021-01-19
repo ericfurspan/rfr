@@ -32,7 +32,7 @@ const ProductTemplate = ({ data }) => {
 
   return (
     <Container>
-      {product && <SEO title={product.title || 'Untitled'} />}
+      {product && <SEO title={product.title || 'Untitled Product'} />}
       {product && <Product {...product} />}
     </Container>
   );

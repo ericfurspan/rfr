@@ -18,8 +18,8 @@ export const StyledContainer = styled.div`
     user-select: none;
     cursor: pointer;
     position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
-    top: 15px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -61,14 +61,15 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   }
 
   ul {
-    padding: 24px;
+    padding: 16px;
     position: absolute;
     top: 80px;
     width: calc(100% - 48px);
 
     li {
       list-style: none;
-      margin-left: 0.25em;
+      margin-left: 8px;
+      margin-bottom: 12px;
 
       a {
         height: 40px;
@@ -80,7 +81,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
         border-radius: 6px;
         width: 100%;
         font-weight: 600;
-        font-size: 0.875rem;
+        font-size: 1.125rem;
         color: ${(props) => props.navMenuFg || 'var(--color-dark-gray)'};
       
         & svg {

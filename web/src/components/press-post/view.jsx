@@ -1,13 +1,14 @@
 import React from 'react';
 import { format, distanceInWords, differenceInDays } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, BlockContent, Typography } from '..';
+import { Box, BlockContent, Typography, BackBtn } from '..';
 
 import { StyledHeader, StyledMainContent, StyledTitle, StyledPublishDate, StyledSourceName, StyledStoryLink } from './style';
 
 const PressPost = ({ title, source, url, _rawExcerpt, publishedAt }) => (
   <article>
     <Box maxw='1250px' p='2em'>
+      <BackBtn linkTo='/news' linkText='All news' />
       <StyledHeader>
         <StyledTitle css={Typography.responsiveTitle1}>{title}</StyledTitle>
         <StyledPublishDate css={Typography.small}>

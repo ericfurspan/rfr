@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { Box, BlockContent, Typography } from '..';
+import { Box, BlockContent, BackBtn, Typography } from '..';
 
 import { StyledImageContainer, StyledGrid, StyledMainContent, StyledListGroup, StyledListGroupHeadline, StyledList, StyledListItem } from './style';
 
@@ -24,6 +24,7 @@ const TeamMember = ({ person, _rawPerson, certifications }) => {
         </StyledImageContainer>
       )}
       <Box p='2em'>
+        <BackBtn linkTo='/team' linkText='All team members' />
         <StyledGrid>
           <StyledMainContent>
             <h1 css={Typography.responsiveTitle1}>{person.name}</h1>

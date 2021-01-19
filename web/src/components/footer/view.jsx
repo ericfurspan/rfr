@@ -53,7 +53,7 @@ const Footer = ({ companyProps, allPages, ...themeProps }) => {
             Copyright {new Date().getFullYear()} © {companyName}
           </span>
           <span>
-            Responsive Web Design by {' '}
+            Website developed by {' '}
             <a href='https://www.ericfurspan.com' target='_blank' rel='noreferrer noopener'>
               Eric Furspan
             </a>

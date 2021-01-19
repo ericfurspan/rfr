@@ -23,7 +23,7 @@ const TestimonialTemplate = ({ data }) => {
 
   return (
     <Container>
-      {testimonial && <SEO title={testimonial.reviewer || 'Untitled'} />}
+      {testimonial && <SEO title={testimonial.reviewer || 'Untitled Testimonial'} />}
       {testimonial && <Testimonial {...testimonial} />}
     </Container>
   );

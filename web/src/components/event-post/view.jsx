@@ -2,7 +2,7 @@ import React from 'react';
 import { format, distanceInWords, differenceInDays } from 'date-fns';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { Box, BlockContent, RoleList, Typography } from '..';
+import { Box, BlockContent, RoleList, BackBtn, Typography } from '..';
 
 import { StyledCoverPhoto, StyledGrid, StyledMainContent, StyledEventDate } from './style';
 
@@ -21,6 +21,7 @@ const EventPost = ({ _rawBody, title, organizers, coverPhoto, eventAt }) => (
       </StyledCoverPhoto>
     )}
     <Box maxw='1250px' p='2em'>
+      <BackBtn linkTo='/news' linkText='All news' />
       <StyledGrid>
         <StyledMainContent>
           <h1 css={Typography.responsiveTitle1}>{title}</h1>

@@ -44,8 +44,8 @@ export const StyledProduct = styled(Box)`
 
 export const StyledImageContainer = styled.div`
   & img {
-    width: 325px;
-    height: 325px;
+    width: 275px;
+    height: 275px;
     object-fit: cover;
     border-radius: 6px;
   }

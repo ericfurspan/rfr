@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { getTestimonialUrl } from '../../lib/helpers';
-import { Typography } from '..';
+import { Typography, Box, BackBtn } from '..';
 import { StyledWrapper, StyledBlockquote, StyledFigure, StyledCitation } from './style';
 
 const Testimonial = ({ reviewer, reviewedAt, text, previewMode = false, slug }) => {
@@ -11,18 +11,21 @@ const Testimonial = ({ reviewer, reviewedAt, text, previewMode = false, slug }) 
 
   return (
     <StyledWrapper>
+      <Box mb='4rem'>
+        <BackBtn linkTo='/testimonials' linkText='All testimonials' />
+      </Box>
+
       {!previewMode && (
         <h2 css={Typography.responsiveTitle2}>
           Testimonial
         </h2>
       )}
       <StyledFigure>
-        <StyledBlockquote css={Typography.blockQuote}>
+        <StyledBlockquote>
           <span>{'\u201C'}{quoteContent}{'\u201D'}</span>
 
           <StyledCitation css={Typography.small}>
-            <div>{format(reviewedAt, 'DD MMMM YYYY')}</div>
-            <cite>&nbsp;by {reviewer}</cite>
+            <cite>{`${reviewer} - ${format(reviewedAt, 'DD MMMM YYYY')}`}</cite>
           </StyledCitation>
 
           {previewMode && (

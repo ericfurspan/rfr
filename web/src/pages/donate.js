@@ -41,7 +41,7 @@ const DonatePage = ({ data }) => {
           <BlockContent blocks={page._rawBody || []} />
         </Box>
 
-        <Box d='grid' gridResponsive gtc='repeat(2, minmax(0, 1fr))' grg='4em' gcg='2em'>
+        <Box d='grid' gridResponsive gtc='repeat(2, minmax(0, 1fr))' gg='2em'>
           {payment.payExternal.map((externalPayment) => (
             <DonateLink key={externalPayment._key} {...externalPayment} />
           ))}

@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header, Footer } from '..';
 import { NavMenu } from '../nav-menu';
-import { StyledMainContent } from './style';
+import { StyledBackdrop, StyledMainContent } from './style';
 
 const Layout = ({ children, allPages, location, companyProps, themeProps, bannerProps, jumbotronProps }) => {
+  const [ hasBackdrop, toggleBackdrop ] = useState(false);
+
   return (
-    <>
+    <StyledBackdrop hasBackdrop={hasBackdrop}>
       <NavMenu
         pages={allPages}
         companyName={companyProps.companyName}
         logo={companyProps.logo}
         currentPath={location.pathname}
+        toggleBackdrop={() => toggleBackdrop(!hasBackdrop)}
         {...themeProps}
       />
       <Header
@@ -27,7 +30,7 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
         allPages={allPages}
         {...themeProps}
       />
-    </>
+    </StyledBackdrop>
   );
 };
 

@@ -9,8 +9,13 @@ const variants = {
   closed: { right: -300, width: 'auto' },
 };
 
-const NavMenu = ({ pages, companyName, logo, currentPath, ...themeProps }) => {
+const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...themeProps }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
+
+  const handleToggle = () => {
+    toggleOpen();
+    toggleBackdrop();
+  };
 
   return (
     <StyledContainer
@@ -22,18 +27,18 @@ const NavMenu = ({ pages, companyName, logo, currentPath, ...themeProps }) => {
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         variants={variants}
-        transition={{ duration: 0.25 }}
+        transition={{ duration: 0.125 }}
         isOpen={isOpen}
         {...themeProps}
       >
         <NavList
           pages={pages}
-          toggle={() => toggleOpen()}
+          toggle={handleToggle}
         />
       </AnimatedStyledNav>
 
       <Toggle
-        toggle={() => toggleOpen()}
+        toggle={handleToggle}
         fasIcon={isOpen ? 'times' : 'bars'}
       />
     </StyledContainer>
