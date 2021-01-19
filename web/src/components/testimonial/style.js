@@ -22,11 +22,7 @@ export const StyledBlockquote = styled.blockquote`
 `;
 
 export const StyledCitation = styled.figcaption`
-  background: var(--color-very-light-gray);
-  color: var(--color-black);
-  border: 1px solid var(--color-very-light-gray);
   padding: 0.5em;
-  border-radius: inherit;
   font-size: 1rem;
   margin-top: 2rem;
   font-weight: 400;
