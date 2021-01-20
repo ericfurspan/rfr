@@ -13,9 +13,9 @@ export const StyledBlockquote = styled.blockquote`
   margin: 0;
   width: fit-content;
   max-width: 550px;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  padding: 2rem;
+  padding: 1rem;
   background: var(--color-dark-white);
   border: 1px solid var(--color-very-light-gray);
   border-radius: 6px;
