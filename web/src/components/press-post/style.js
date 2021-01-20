@@ -1,16 +1,4 @@
 import styled from 'styled-components';
-import { MEDIA } from '../../lib/helpers';
-
-export const StyledMainContent = styled.div`
-  margin-top: 2em;
-
-  display: grid;
-  grid-template-columns: 1fr;
-
-  ${MEDIA.MIN_TABLET`
-    grid-template-columns: 2fr 1fr;
-  `};
-`;
 
 export const StyledHeader = styled.div``;
 

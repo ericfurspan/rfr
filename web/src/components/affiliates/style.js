@@ -28,6 +28,10 @@ export const StyledGrid = styled.ul`
       &:not(:last-child) {
         margin-bottom: 4em;
       }
+      
+      & a {
+        margin: 0;
+      }
     }
   `};
 
@@ -36,7 +40,8 @@ export const StyledGrid = styled.ul`
 
     & a {
       display: inline-block;
-      
+      margin: 2em;
+  
       img {
         opacity: 0.85;
       }
