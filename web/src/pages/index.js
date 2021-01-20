@@ -104,7 +104,7 @@ export const query = graphql`
         }
       }
     }
-    products: allSanityProduct(limit: 4) {
+    products: allSanityProduct(limit: 4, sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id
@@ -153,7 +153,7 @@ export const query = graphql`
         }
       }
     }
-    affiliates: allSanityAffiliate {
+    affiliates: allSanityAffiliate(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id

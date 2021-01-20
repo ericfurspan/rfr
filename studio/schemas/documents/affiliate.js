@@ -18,6 +18,12 @@ export default {
       title: 'Image',
       type: 'image',
       options: { hotspot: true }
+    },
+    {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      hidden: true
     }
   ],
   preview: {
