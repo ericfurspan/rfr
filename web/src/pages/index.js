@@ -438,7 +438,7 @@ const IndexPage = ({ data, location }) => {
         )}
 
         {contentPreviewMap['podcastPreview'] && (
-          <Box gc='7 / -1' p='4rem 2rem'>
+          <Box gc='7 / -1' p='6rem 2rem'>
             <Podcast {...podcast} />
           </Box>
         )}
