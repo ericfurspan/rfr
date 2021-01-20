@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  max-width: 42rem;
+  max-width: 550px;
   margin: auto;
 `;
 
@@ -12,7 +12,6 @@ export const StyledFigure = styled.figure`
 export const StyledBlockquote = styled.blockquote`
   margin: 0;
   width: fit-content;
-  max-width: 550px;
   font-size: 1.125rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   padding: 1rem;

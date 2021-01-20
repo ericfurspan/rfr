@@ -33,7 +33,7 @@ export const StyledJumbotron = styled.div`
       }
 
       ${StyledOverlay} {
-        background-color: rgba(0,0,0,0.45);
+        background-color: rgba(0,0,0,0.5);
       }
     `}
 `;

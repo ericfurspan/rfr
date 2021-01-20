@@ -11,6 +11,8 @@ const Mission = ({ _rawMission, title, subtitle, image, ...rest }) => {
         <StyledImageContainer>
           <img
             src={imageUrlFor(buildImageObj(image))
+              .width(200)
+              .height(200)
               .url()}
             alt={image.alt || `Mission statement image`}
           />
