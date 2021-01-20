@@ -10,12 +10,18 @@ export const StyledImageContainer = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: auto;
     height: 100%;
     vertical-align: top;
-    object-fit: cover;
     max-width: 1250px;
     margin: auto;
+    border-radius: 4px;
+
+    ${MEDIA.TABLET`
+        object-fit: cover;
+        width: 100%;
+        border-radius: 0;
+    `};
   }
 `;
 
