@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { capitalize } from '../../lib/string-utils';
 
-import { Logo, NewsletterForm } from '..';
+import { NewsletterForm } from '..';
 import {
   StyledFooter,
   StyledGrid,
@@ -13,7 +13,7 @@ import {
 } from './style';
 
 const Footer = ({ companyProps, allPages, ...themeProps }) => {
-  const { logo, contact, companyName } = companyProps;
+  const { contact, companyName } = companyProps;
 
   return (
     <StyledFooter {...themeProps}>
@@ -59,7 +59,6 @@ const Footer = ({ companyProps, allPages, ...themeProps }) => {
             </a>
           </span>
         </div>
-        {(logo && logo.asset) && <Logo image={logo} width={50} height={50} margin='0' />}
       </StyledCredits>
     </StyledFooter>
   );
