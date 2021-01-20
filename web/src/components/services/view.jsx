@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { imageUrlFor } from '../../lib/image-url';
 import { buildImageObj } from '../../lib/helpers';
 import { Box, Typography, boxProps, BlockContent } from '..';
-import { StyledGrid, StyledIconContainer, StyledService, StyledServiceBody, StyledImageContainer, StyledBrowseMore } from './style';
+import { StyledHeading, StyledGrid, StyledIconContainer, StyledService, StyledServiceBody, StyledImageContainer, StyledBrowseMore } from './style';
 
 const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, image, previewMode, ...rest }) => {
   return (
@@ -19,14 +19,14 @@ const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, imag
         </StyledImageContainer>
       )}
       {title && (
-        <Box>
+        <StyledHeading hasSubtitle={!!subtitle}>
           <h2 css={Typography.title2}>
             {title}
           </h2>
           {subtitle && (
             <span css={Typography.base}>{subtitle}</span>
           )}
-        </Box>
+        </StyledHeading>
       )}
 
       <StyledGrid>

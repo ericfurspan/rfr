@@ -1,18 +1,19 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { Product, Typography, Box, boxProps } from '..';
+import { StyledHeading } from './style';
 
 const Products = ({ nodes, title, subtitle, browseMoreHref, browseMoreText, ...rest }) => (
   <Box {...boxProps(rest)}>
     {title && (
-      <Box>
+      <StyledHeading hasSubtitle={!!subtitle}>
         <h2 css={Typography.title2}>
           {title}
         </h2>
         {subtitle && (
           <span css={Typography.base}>{subtitle}</span>
         )}
-      </Box>
+      </StyledHeading>
     )}
     <Box d='grid' gtc='repeat(auto-fit, minmax(300px, 1fr))' gg='2em'>
       {nodes.map((node) => (

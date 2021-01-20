@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { imageUrlFor } from '../../lib/image-url';
 import { buildImageObj } from '../../lib/helpers';
 import { Box, TeamMemberPreview, ContentPreview, Typography, boxProps } from '..';
-import { StyledGrid, StyledImageContainer, StyledBrowseMore, StyledEmptyNodesText } from './style';
+import { StyledGrid, StyledHeading, StyledImageContainer, StyledBrowseMore, StyledEmptyNodesText } from './style';
 
 const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, ...rest }) => {
   return (
@@ -19,14 +19,14 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
       )}
 
       {title && (
-        <Box>
+        <StyledHeading hasSubtitle={!!subtitle}>
           <h2 css={Typography.title2}>
             {title}
           </h2>
           {subtitle && (
             <span css={Typography.base}>{subtitle}</span>
           )}
-        </Box>
+        </StyledHeading>
       )}
 
       {nodes.length > 0 ? (

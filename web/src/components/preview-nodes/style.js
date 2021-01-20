@@ -1,11 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export const StyledHeading = styled.div`
+  ${(props) => props.hasSubtitle && css`
+    margin-bottom: 2rem;
+
+    h2 {
+      margin-bottom: 0.125em;
+    }
+  `}
+`;
 
 export const StyledGrid = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-column-gap: 4em;
   grid-row-gap: 2em;
-
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;

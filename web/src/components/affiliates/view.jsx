@@ -1,7 +1,7 @@
 import React from 'react';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { StyledGrid, StyledImageContainer } from './style';
+import { StyledHeading, StyledGrid, StyledImageContainer } from './style';
 import { Box, boxProps, Typography } from '..';
 
 const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
@@ -16,15 +16,16 @@ const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
           />
         </StyledImageContainer>
       )}
+
       {title && (
-        <Box>
+        <StyledHeading hasSubtitle={!!subtitle}>
           <h2 css={Typography.title2}>
             {title}
           </h2>
           {subtitle && (
             <span css={Typography.small}>{subtitle}</span>
           )}
-        </Box>
+        </StyledHeading>
       )}
 
       <StyledGrid>

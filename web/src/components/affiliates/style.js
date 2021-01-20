@@ -1,5 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MEDIA } from '../../lib/helpers';
+
+export const StyledHeading = styled.div`
+  ${(props) => props.hasSubtitle && css`
+    margin-bottom: 2rem;
+
+    h2 {
+      margin-bottom: 0.125em;
+    }
+  `}
+`;
 
 export const StyledGrid = styled.ul`
   display: flex;

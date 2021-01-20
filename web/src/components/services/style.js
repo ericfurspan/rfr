@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export const StyledHeading = styled.div`
+  ${(props) => props.hasSubtitle && css`
+    margin-bottom: 2rem;
+
+    h2 {
+      margin-bottom: 0.125em;
+    }
+  `}
+`;
 
 export const StyledGrid = styled.ul`
   display: flex;
@@ -40,7 +50,7 @@ export const StyledIconContainer = styled.div`
 `;
 
 export const StyledService = styled.div`
-  padding: 0 2em 4em;
+  padding: 2em 4em;
   max-width: 400px;
   margin: auto;
 
