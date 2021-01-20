@@ -414,7 +414,7 @@ const IndexPage = ({ data, location }) => {
             previewMode
             gc='1 / -1'
             p='4rem 2rem'
-            br='var(--color-very-light-gray)'
+            br='var(--color-dark-white)'
           />
         )}
 
@@ -454,7 +454,8 @@ const IndexPage = ({ data, location }) => {
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
             gc='1 / -1'
-            p='2rem'
+            p='4rem 2rem'
+            ta='center'
           />
         )}
 
@@ -471,7 +472,7 @@ const IndexPage = ({ data, location }) => {
             gc='1 / -1'
             p='2rem'
             ta='center'
-            br='var(--color-very-light-gray)'
+            br='var(--color-dark-white)'
           />
         )}
 
