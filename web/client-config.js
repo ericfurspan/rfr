@@ -5,5 +5,6 @@ module.exports = {
   },
   services: {
     gaTrackingId: process.env.GA_TRACKING_ID || 'UA-146550062-3',
+    recaptcha: process.env.SITE_RECAPTCHA_V3_KEY || '6LfZORsaAAAAAAfQe7LgAp4qIR3N1IPYjrP6DOH9',
   },
 };
