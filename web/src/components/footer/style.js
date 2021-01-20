@@ -4,8 +4,10 @@ import { MEDIA } from '../../lib/helpers';
 export const StyledFooter = styled.footer`
   background-color: ${(props) => props.footerBg || 'var(--color-black)'};
   color: ${(props) => props.footerFg || 'var(--color-light-gray)'};
-  padding: 1.5em 3em;
+  padding: 24px 36px;
   font-size: var(--font-small-size);
+  margin-top: 72px;
+  min-height: 450px;
 
   & hr {
     border-color: var(--color-dark-gray);
