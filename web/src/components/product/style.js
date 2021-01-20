@@ -5,16 +5,23 @@ import { MEDIA } from '../../lib/helpers';
 export const StyledProduct = styled(Box)`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 
   ${(props) => props.previewMode ? css`
     padding: 1rem;
-    background: var(--color-dark-white);
+    background: var(--color-white);
     border: 1px solid var(--color-very-light-gray);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     width: fit-content;
   
+    ${StyledImageContainer} {
+      & img, svg {
+        width: 275px !important;
+        height: 275px !important;
+      }
+    }
+
     ${StyledDescription}, ${StyledProductLink} {
       display: none;
     }
@@ -34,6 +41,13 @@ export const StyledProduct = styled(Box)`
       }
     }
 
+    ${StyledImageContainer} {
+      & img, svg {
+        max-width: 300px !important;
+        margin: 0 4rem;
+      }
+    }
+  
     ${StyledContent} {
       width: auto;
     }
@@ -46,21 +60,19 @@ export const StyledProduct = styled(Box)`
 
 export const StyledImageContainer = styled.div`
   & img {
-    width: 275px;
-    height: 275px;
     object-fit: cover;
     border-radius: 6px;
   }
 
   & svg {
-    width: 275px !important;
-    height: 275px !important;
     color: var(--color-light-gray);
   }
+
 `;
 
 export const StyledContent = styled.div`
-  width: 100%;
+  width: 275px;
+  min-height: 150px;
 `;
 
 export const StyledTitle = styled.p`
