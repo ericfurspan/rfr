@@ -73,7 +73,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledCTAButton = styled(StyledButton)`
   text-transform: uppercase;
-  font-family: "Play";
+  font-family: var(--font-family-brand);
   font-weight: 500;
 
   ${(props) =>
