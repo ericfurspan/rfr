@@ -135,7 +135,7 @@ const ContactForm = () => {
 
         <GoogleReCaptcha onVerify={handleReCaptchaVerify} />
 
-        <Box mt='2em'>
+        <Box mt='2em' ta='right'>
           <StyledButton design='primary' type='submit' disabled={!recaptchaToken}>
             Send Message
           </StyledButton>
