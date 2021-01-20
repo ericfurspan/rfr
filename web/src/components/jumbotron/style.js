@@ -16,7 +16,7 @@ export const StyledJumbotron = styled.div`
   ${(props) =>
     props.hasBgImage &&
     css`
-      & img {
+      & img.jumbo-bg {
         position: absolute;
         top: 0;
         right: 0;

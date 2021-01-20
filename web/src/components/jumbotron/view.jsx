@@ -14,6 +14,7 @@ const Jumbotron = ({ backgroundImage, _rawTitle, _rawSubtitle, ctaButton, isCent
         <img
           src={imageUrlFor(buildImageObj(backgroundImage)).fit('fillmax').url()}
           alt={backgroundImage.alt || 'Jumbotron image'}
+          className='jumbo-bg'
         />
       )}
       <StyledOverlay>
