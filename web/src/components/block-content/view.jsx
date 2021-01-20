@@ -31,6 +31,9 @@ const serializers = {
         case 'normal':
           return <div css={Typography.base}>{props.children}</div>;
 
+        case 'large':
+          return <div css={Typography.large}>{props.children}</div>;
+
         case 'blockquote':
           return <blockquote css={Typography.blockQuote}>{props.children}</blockquote>;
 
