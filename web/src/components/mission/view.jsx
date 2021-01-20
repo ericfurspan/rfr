@@ -18,8 +18,8 @@ const Mission = ({ _rawMission, title, subtitle, image, ...rest }) => {
           />
         </StyledImageContainer>
       )}
-      <Box mb='2em'>
-        <h2 css={Typography.responsiveTitle2}>
+      <Box>
+        <h2 css={Typography.title2}>
           {title}
         </h2>
         {subtitle && (

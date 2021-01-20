@@ -19,8 +19,8 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
       )}
 
       {title && (
-        <Box mb='3em'>
-          <h2 css={Typography.responsiveTitle2}>
+        <Box>
+          <h2 css={Typography.title2}>
             {title}
           </h2>
           {subtitle && (

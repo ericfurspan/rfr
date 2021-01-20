@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const StyledTitle = styled.h3`
+export const StyledTitle = styled.h2`
+
   & svg {
     margin-right: 0.5em;
   }
 
-  &::before {
+  &::after {
     content: '🎧';
-    margin-right: 0.5em;
+    margin-left: 0.5em;
   }
 `;
 

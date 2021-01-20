@@ -6,7 +6,7 @@ import { StyledTitle, StyledContainer, StyledItem, StyledFaIcon } from './style'
 const Podcast = ({ title, _rawDescription, availablePlatforms }) => (
   <>
     {title && (
-      <StyledTitle css={Typography.responsiveTitle3}>
+      <StyledTitle css={Typography.title3}>
         {title}
       </StyledTitle>
     )}

@@ -390,7 +390,7 @@ const IndexPage = ({ data, location }) => {
         d='grid'
         gridResponsive
         gtc='repeat(12, minmax(0, 1fr))'
-        gcg='2rem'
+        gg='2rem'
       >
         {contentPreviewMap['missionPreview'] && (
           <Mission
@@ -399,7 +399,7 @@ const IndexPage = ({ data, location }) => {
             image={contentPreviewMap['missionPreview'].photo}
             _rawMission={company._rawMission}
             gc='2 / -2'
-            p='6rem 2rem 8rem'
+            p='4rem 2rem'
           />
         )}
         {contentPreviewMap['servicesPreview'] && (
@@ -421,7 +421,7 @@ const IndexPage = ({ data, location }) => {
         {contentPreviewMap['newsPreview'] && (
           <Box
             gc='1 / 7'
-            p='4rem 2rem'
+            p='2rem'
           >
             {allNewsNodes.length > 0 && (
               <PreviewNodes
@@ -438,7 +438,7 @@ const IndexPage = ({ data, location }) => {
         )}
 
         {contentPreviewMap['podcastPreview'] && (
-          <Box gc='7 / -1' p='6rem 2rem'>
+          <Box gc='7 / -1' p='4rem 2rem 2rem'>
             <Podcast {...podcast} />
           </Box>
         )}
@@ -454,7 +454,7 @@ const IndexPage = ({ data, location }) => {
             browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
             browseMoreHref='/team'
             gc='1 / -1'
-            p='4rem 2rem'
+            p='2rem'
           />
         )}
 
@@ -469,7 +469,7 @@ const IndexPage = ({ data, location }) => {
             browseMoreHref='/merchandise'
             nodes={productNodes}
             gc='1 / -1'
-            p='4rem 2rem'
+            p='2rem'
             ta='center'
             br='var(--color-very-light-gray)'
           />
@@ -492,7 +492,7 @@ const IndexPage = ({ data, location }) => {
         (
           <Box
             gc='1 / -1'
-            p='6rem 2rem'
+            p='4rem 2rem'
           >
             <Stars amount={5} align='center' />
 
