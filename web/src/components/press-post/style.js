@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledHeader = styled.div``;
-
 export const StyledTitle = styled.h1`
   max-width: 40rem;
 `;
@@ -18,9 +16,6 @@ export const StyledStoryLink = styled.a`
 
   & svg {
     margin-left: 0.5rem;
+    vertical-align: middle;
   }
-`;
-
-export const StyledPublishDate = styled.div`
-  margin: 1.5rem 0 3rem;
 `;

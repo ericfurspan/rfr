@@ -10,7 +10,15 @@ export const query = graphql`
       id
       title
       source
-      url
+      storyLink {
+        linkText
+        url
+        icon {
+          name
+          faPackage
+          faIconName
+        }
+      }
       _rawExcerpt
       publishedAt
       slug {

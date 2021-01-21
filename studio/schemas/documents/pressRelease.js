@@ -28,9 +28,9 @@ export default {
       description: 'Who published this story?'
     },
     {
-      name: 'url',
+      name: 'storyLink',
       title: 'Link to story',
-      type: 'url',
+      type: 'weblink',
       validation: Rule => Rule.required()
     },
     {

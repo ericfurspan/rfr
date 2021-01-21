@@ -43,7 +43,15 @@ export const query = graphql`
           title
           publishedAt
           source
-          url
+          storyLink {
+            linkText
+            url
+            icon {
+              name
+              faPackage
+              faIconName
+            }
+          }
           slug {
             current
           }
