@@ -22,6 +22,7 @@ export const StyledContainer = styled.div`
     right: 12px;
     width: 50px;
     height: 50px;
+    z-index: 2;
     border-radius: 50%;
     background: ${(props) => props.navMenuBg || 'transparent'};
 
@@ -80,17 +81,17 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
         text-decoration: none !important;
         border-radius: 6px;
         width: 100%;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 1.125rem;
-        color: ${(props) => props.navMenuFg || 'var(--color-dark-gray)'};
+        color: ${(props) => props.navMenuFg || 'var(--color-black)'};
       
         & svg {
           margin-right: 1.25rem;
         }
 
         &[aria-current] {
-          color: ${(props) => props.navMenuFg || 'var(--color-black) !important'};
-          font-weight: 700;
+          color: ${(props) => props.navMenuFg || 'var(--color-accent) !important'};
+          font-weight: 600;
         }
       }
     }

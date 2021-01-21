@@ -11,12 +11,11 @@ export const StyledBackdrop = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.75);
     touch-action: none;
     user-select: none;
 
     header, main, footer {
-      opacity: 0.25;
+      opacity: 0.5;
 
       * > a, button, input, img {
         pointer-events: none;
