@@ -35,7 +35,7 @@ const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
               {node.image && node.image.asset ? (
                 <img
                   src={imageUrlFor(buildImageObj(node.image))
-                    .width(250)
+                    .width(200)
                     .fit('clip')
                     .url()}
                   alt={node.image.alt || `Affiliate image for ${node.name}`}

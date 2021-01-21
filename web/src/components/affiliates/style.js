@@ -51,10 +51,4 @@ export const StyledGrid = styled.ul`
 
 export const StyledImageContainer = styled.div`
   padding-bottom: 2em;
-
-  & img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-  }
 `;
