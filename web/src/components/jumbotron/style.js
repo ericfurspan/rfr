@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { StyledButton } from '../field';
 
 export const StyledJumbotron = styled.div`
-  min-height: 100vh;
+  height: 100vh;
   color: var(--color-black);
   position: relative;
 

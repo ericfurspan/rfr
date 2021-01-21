@@ -15,9 +15,8 @@ export const StyledContainer = styled.div`
     outline: none;
     border: none;
     padding: 0;
-    user-select: none;
     cursor: pointer;
-    position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
+    position: absolute;
     top: 21px;
     right: 12px;
     width: 50px;

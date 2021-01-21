@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Header, Footer } from '..';
 import { NavMenu } from '../nav-menu';
-import { StyledBackdrop, StyledMainContent } from './style';
+import { StyledMainContent } from './style';
 
 const Layout = ({ children, allPages, location, companyProps, themeProps, bannerProps, jumbotronProps }) => {
   const [ hasBackdrop, toggleBackdrop ] = useState(false);
 
   return (
-    <StyledBackdrop hasBackdrop={hasBackdrop}>
+    <>
       <NavMenu
         pages={allPages}
         companyName={companyProps.companyName}
@@ -22,7 +22,7 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
         jumbotronProps={jumbotronProps}
         currentPath={location.pathname}
       />
-      <StyledMainContent>
+      <StyledMainContent hasBackdrop={hasBackdrop}>
         {children}
       </StyledMainContent>
       <Footer
@@ -30,7 +30,7 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
         allPages={allPages}
         {...themeProps}
       />
-    </StyledBackdrop>
+    </>
   );
 };
 
