@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Header, Footer } from '..';
-import { NavMenu } from '../nav-menu';
 import { StyledMainContent } from './style';
 
 const Layout = ({ children, allPages, location, companyProps, themeProps, bannerProps, jumbotronProps }) => {
@@ -13,13 +12,10 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
         bannerProps={bannerProps}
         jumbotronProps={jumbotronProps}
         currentPath={location.pathname}
-      />
-      <NavMenu
-        pages={allPages}
-        currentPath={location.pathname}
-        toggleBackdrop={() => toggleBackdrop(!hasBackdrop)}
-        navMenuFg={themeProps.navMenuFg}
-        navMenuBg={themeProps.navMenuBg}
+        toggleBackdrop={toggleBackdrop}
+        hasBackdrop={hasBackdrop}
+        allPages={allPages}
+        themeProps={themeProps}
       />
       <StyledMainContent hasBackdrop={hasBackdrop}>
         {children}

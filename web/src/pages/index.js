@@ -11,7 +11,7 @@ import {
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Container, Jumbotron, Mission, PreviewNodes, Services, Products, Podcast, Box, Affiliates, Stars } from '../components';
+import { Jumbotron, Mission, PreviewNodes, Services, Products, Podcast, Box, Affiliates, Stars } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {

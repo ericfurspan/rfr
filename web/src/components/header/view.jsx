@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { BlockContent, Logo } from '..';
+import { BlockContent, Logo, NavMenu } from '..';
 
 import {
   StyledHeader,
@@ -8,7 +8,7 @@ import {
   StyledTitle,
 } from './style';
 
-const Header = ({ currentPath, companyProps, bannerProps, jumbotronProps }) => {
+const Header = ({ currentPath, companyProps, bannerProps, jumbotronProps, themeProps, allPages, hasBackdrop, toggleBackdrop }) => {
   const { logo, companyName } = companyProps;
 
   return (
@@ -25,6 +25,14 @@ const Header = ({ currentPath, companyProps, bannerProps, jumbotronProps }) => {
         )}
         <Link to='/'>{companyName}</Link>
       </StyledTitle>
+
+      <NavMenu
+        pages={allPages}
+        currentPath={location.pathname}
+        toggleBackdrop={() => toggleBackdrop(!hasBackdrop)}
+        navMenuFg={themeProps.navMenuFg}
+        navMenuBg={themeProps.navMenuBg}
+      />
     </StyledHeader>
   );
 };

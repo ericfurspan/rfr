@@ -28,4 +28,5 @@ export { Product } from './product';
 export { Products } from './products';
 export { BackBtn } from './back-btn';
 export { Typography } from './typography';
+export { NavMenu } from './nav-menu';
 export * from './field';
