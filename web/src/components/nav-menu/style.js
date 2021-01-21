@@ -24,7 +24,7 @@ export const StyledNavContainer = styled.div`
     border-radius: 50%;
     background: ${(props) => props.navMenuBg || 'transparent'};
 
-    ${(props) => props.currentPath === '/' && css`
+    ${(props) => props.currentPath === '/' && `
       background: transparent;
     `}
 

@@ -12,11 +12,11 @@ import {
   StyledCredits,
 } from './style';
 
-const Footer = ({ companyProps, allPages, ...themeProps }) => {
+const Footer = ({ companyProps, allPages, footerFg, footerBg }) => {
   const { contact, companyName } = companyProps;
 
   return (
-    <StyledFooter {...themeProps}>
+    <StyledFooter footerFg={footerFg} footerBg={footerBg}>
       <StyledGrid>
         <StyledSection>
           <StyledSectionHeading>Sitemap</StyledSectionHeading>

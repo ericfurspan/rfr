@@ -9,7 +9,7 @@ const variants = {
   closed: { right: -300, width: 0 },
 };
 
-const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...themeProps }) => {
+const NavMenu = ({ pages, currentPath, toggleBackdrop, navMenuFg, navMenuBg }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   const handleToggle = () => {
@@ -18,30 +18,34 @@ const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...the
   };
 
   return (
-    <StyledNavContainer
-      isOpen={isOpen}
-      currentPath={currentPath}
-      {...themeProps}
-    >
-      <AnimatedStyledNav
-        initial={false}
-        animate={isOpen ? 'open' : 'closed'}
-        variants={variants}
-        transition={{ duration: 0.25 }}
+    <>
+      <StyledNavContainer
         isOpen={isOpen}
-        {...themeProps}
+        currentPath={currentPath}
+        navMenuFg={navMenuFg}
+        navMenuBg={navMenuBg}
       >
-        <NavList
-          pages={pages}
-          toggle={handleToggle}
-        />
-      </AnimatedStyledNav>
+        <AnimatedStyledNav
+          initial={false}
+          animate={isOpen ? 'open' : 'closed'}
+          variants={variants}
+          transition={{ duration: 0.25 }}
+          isOpen={isOpen}
+          navMenuFg={navMenuFg}
+          navMenuBg={navMenuBg}
+        >
+          <NavList
+            pages={pages}
+            toggle={handleToggle}
+          />
+        </AnimatedStyledNav>
 
-      <Toggle
-        toggle={handleToggle}
-        fasIcon={isOpen ? 'times' : 'bars'}
-      />
-    </StyledNavContainer>
+        <Toggle
+          toggle={handleToggle}
+          fasIcon={isOpen ? 'times' : 'bars'}
+        />
+      </StyledNavContainer>
+    </>
   );
 };
 

@@ -16,11 +16,10 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
       />
       <NavMenu
         pages={allPages}
-        companyName={companyProps.companyName}
-        logo={companyProps.logo}
         currentPath={location.pathname}
         toggleBackdrop={() => toggleBackdrop(!hasBackdrop)}
-        {...themeProps}
+        navMenuFg={themeProps.navMenuFg}
+        navMenuBg={themeProps.navMenuBg}
       />
       <StyledMainContent hasBackdrop={hasBackdrop}>
         {children}
@@ -28,7 +27,8 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
       <Footer
         companyProps={companyProps}
         allPages={allPages}
-        {...themeProps}
+        footerFg={themeProps.footerFg}
+        footerBg={themeProps.footerBg}
       />
     </>
   );
