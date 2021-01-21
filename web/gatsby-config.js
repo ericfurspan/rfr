@@ -11,9 +11,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-sass`,
-      options: {
-        includePaths: ['./src/styles'],
-      },
     },
     {
       resolve: `gatsby-source-sanity`,
