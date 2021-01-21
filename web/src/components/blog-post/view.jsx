@@ -6,10 +6,10 @@ import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
 import { RoleList, BlockContent, BackBtn, Typography, Box } from '..';
 
-import { StyledArticle, StyledCoverPhoto, StyledGrid, StyledMainContent, StyledPublishDate } from './style';
+import { StyledCoverPhoto, StyledGrid } from './style';
 
 const BlogPost = ({ _rawBody, authors, title, coverPhoto, publishedAt }) => (
-  <StyledArticle>
+  <article>
     {coverPhoto && coverPhoto.asset && (
       <StyledCoverPhoto>
         <img
@@ -25,26 +25,29 @@ const BlogPost = ({ _rawBody, authors, title, coverPhoto, publishedAt }) => (
     <Box maxw='1250px' p='2em'>
       <BackBtn linkTo='/news' linkText='All news' />
       <StyledGrid>
-        <StyledMainContent>
-          <h1 css={Typography.responsiveTitle1}>{title}</h1>
-          <StyledPublishDate css={Typography.small}>
-            <Box d='inline' mr='0.5em'>
-              <FontAwesomeIcon icon='calendar-day' />
-            </Box>
-            {publishedAt && (
-              differenceInDays(new Date(publishedAt), new Date()) > 3
-                ? distanceInWords(new Date(publishedAt), new Date())
-                : format(new Date(publishedAt), 'MMMM Do YYYY')
-            )}
-          </StyledPublishDate>
+        <Box mb='2em'>
+          <Box m='1.5rem 0 3rem'>
+            <h1 css={Typography.responsiveTitle1}>{title}</h1>
+            <div css={Typography.small}>
+              <Box d='inline' mr='0.5em'>
+                <FontAwesomeIcon icon='calendar-day' />
+              </Box>
+              {publishedAt && (
+                differenceInDays(new Date(publishedAt), new Date()) > 3
+                  ? distanceInWords(new Date(publishedAt), new Date())
+                  : format(new Date(publishedAt), 'MMMM Do YYYY')
+              )}
+            </div>
+            <span css={Typography.micro}>Blog Post</span>
+          </Box>
           {_rawBody && <BlockContent blocks={_rawBody} />}
-        </StyledMainContent>
+        </Box>
         {authors && <aside>
           <RoleList title='Authors' items={authors} listType='teamMember' />
         </aside>}
       </StyledGrid>
     </Box>
-  </StyledArticle>
+  </article>
 );
 
 export default BlogPost;

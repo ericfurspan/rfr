@@ -27,8 +27,6 @@ export const StyledGrid = styled.div`
  `};
 `;
 
-export const StyledMainContent = styled.div``;
-
 export const StyledEventDate = styled.div`
   margin: 1.5rem 0 3rem;
 `;

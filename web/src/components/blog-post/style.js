@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { MEDIA } from '../../lib/helpers';
 
-export const StyledArticle = styled.article``;
-
 export const StyledCoverPhoto = styled.div`
   position: relative;
   padding-bottom: calc(9 / 16 * 100%);
@@ -29,12 +27,4 @@ export const StyledGrid = styled.div`
   ${MEDIA.MIN_TABLET`
     grid-template-columns: 3fr 1fr;
  `};
-`;
-
-export const StyledMainContent = styled.div`
-  margin-bottom: 2em;
-`;
-
-export const StyledPublishDate = styled.div`
-  margin: 1.5rem 0 3rem;
 `;

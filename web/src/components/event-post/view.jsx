@@ -4,7 +4,7 @@ import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
 import { Box, BlockContent, RoleList, BackBtn, Typography } from '..';
 
-import { StyledCoverPhoto, StyledGrid, StyledMainContent, StyledEventDate } from './style';
+import { StyledCoverPhoto, StyledGrid, StyledEventDate } from './style';
 
 const EventPost = ({ _rawBody, title, organizers, coverPhoto, eventAt }) => (
   <article>
@@ -23,10 +23,11 @@ const EventPost = ({ _rawBody, title, organizers, coverPhoto, eventAt }) => (
     <Box maxw='1250px' p='2em'>
       <BackBtn linkTo='/news' linkText='All news' />
       <StyledGrid>
-        <StyledMainContent>
+        <Box mb='2em'>
           <h1 css={Typography.responsiveTitle1}>{title}</h1>
           {_rawBody && <BlockContent blocks={_rawBody} />}
-        </StyledMainContent>
+        </Box>
+
         <aside>
           {eventAt && (
             <StyledEventDate css={Typography.small}>
