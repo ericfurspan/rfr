@@ -11,7 +11,7 @@ import {
   mapEdgesToNodes,
 } from '../lib/helpers';
 import SEO from '../containers/seo';
-import { Jumbotron, Mission, PreviewNodes, Services, Products, Podcast, Box, Affiliates, Stars } from '../components';
+import { Container, Jumbotron, Mission, PreviewNodes, Services, Products, Podcast, Box, Affiliates, Stars } from '../components';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -392,134 +392,137 @@ const IndexPage = ({ data, location }) => {
     <>
       <SEO title={seo.title} description={seo.description} keywords={seo.keywords} />
 
-      <Jumbotron {...jumbotron} />
+      <Container noPadding fullWidth>
 
-      <Box
-        d='grid'
-        gridResponsive
-        gtc='repeat(12, minmax(0, 1fr))'
-        gg='2rem'
-      >
-        {contentPreviewMap['missionPreview'] && (
-          <Mission
-            title={contentPreviewMap['missionPreview'].headingText}
-            subtitle={contentPreviewMap['missionPreview'].headingSubtitle}
-            image={contentPreviewMap['missionPreview'].photo}
-            _rawMission={company._rawMission}
-            gc='2 / -2'
-            p='4rem 2rem'
-          />
-        )}
-        {contentPreviewMap['servicesPreview'] && (
-          servicesNodes.length > 0 &&
-          <Services
-            title={contentPreviewMap['servicesPreview'].headingText}
-            subtitle={contentPreviewMap['servicesPreview'].headingSubtitle}
-            image={contentPreviewMap['servicesPreview'].photo}
-            nodes={servicesNodes}
-            browseMoreText={contentPreviewMap['servicesPreview'].browseMoreText}
-            browseMoreHref='/services'
-            previewMode
-            gc='1 / -1'
-            p='4rem 2rem'
-            br='var(--color-dark-white)'
-          />
-        )}
+        <Jumbotron {...jumbotron} />
 
-        {contentPreviewMap['newsPreview'] && (
-          <Box
-            gc='1 / 7'
-            p='2rem'
-          >
-            {allNewsNodes.length > 0 && (
-              <PreviewNodes
-                title={contentPreviewMap['newsPreview'].headingText}
-                subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
-                image={contentPreviewMap['newsPreview'].photo}
-                nodes={allNewsNodes}
-                nodeType='generic'
-                browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
-                browseMoreHref='/news'
-              />
-            )}
-          </Box>
-        )}
-
-        {contentPreviewMap['podcastPreview'] && (
-          <Box gc='7 / -1' p='4rem 2rem 2rem'>
-            <Podcast {...podcast} />
-          </Box>
-        )}
-
-        {contentPreviewMap['teamPreview'] && (
-          teamMemberNodes.length > 0 &&
-          <PreviewNodes
-            title={contentPreviewMap['teamPreview'].headingText}
-            subtitle={contentPreviewMap['teamPreview'].headingSubtitle}
-            image={contentPreviewMap['teamPreview'].photo}
-            nodes={teamMemberNodes}
-            nodeType='teamMember'
-            browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
-            browseMoreHref='/team'
-            gc='1 / -1'
-            p='4rem 2rem'
-            ta='center'
-          />
-        )}
-
-        {contentPreviewMap['merchandisePreview'] &&
-          productNodes.length > 0 &&
-        (
-          <Products
-            title={contentPreviewMap['merchandisePreview'].headingText}
-            subtitle={contentPreviewMap['merchandisePreview'].headingSubtitle}
-            image={contentPreviewMap['merchandisePreview'].photo}
-            browseMoreText={contentPreviewMap['merchandisePreview'].browseMoreText}
-            browseMoreHref='/merchandise'
-            nodes={productNodes}
-            gc='1 / -1'
-            p='2rem'
-            ta='center'
-            br='var(--color-dark-white)'
-          />
-        )}
-
-        {contentPreviewMap['affiliatesPreview'] && (
-          affiliateNodes.length > 0 &&
-          <Affiliates
-            title={contentPreviewMap['affiliatesPreview'].headingText}
-            subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
-            image={contentPreviewMap['affiliatesPreview'].photo}
-            nodes={affiliateNodes}
-            gc='1 / -1'
-            p='4rem 2rem'
-          />
-        )}
-
-        {contentPreviewMap['testimonialsPreview'] &&
-          testimonialNodes.length > 0 &&
-        (
-          <Box
-            gc='1 / -1'
-            p='4rem 2rem'
-          >
-            <Stars amount={5} align='center' />
-
-            <PreviewNodes
-              title={contentPreviewMap['testimonialsPreview'].headingText}
-              subtitle={contentPreviewMap['testimonialsPreview'].headingSubtitle}
-              image={contentPreviewMap['testimonialsPreview'].photo}
-              nodes={testimonialNodes}
-              nodeType='generic'
-              browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
-              browseMoreHref='/testimonials'
-              flex
-              col
-              ai='center'
+        <Box
+          d='grid'
+          gridResponsive
+          gtc='repeat(12, minmax(0, 1fr))'
+          gg='2rem'
+        >
+          {contentPreviewMap['missionPreview'] && (
+            <Mission
+              title={contentPreviewMap['missionPreview'].headingText}
+              subtitle={contentPreviewMap['missionPreview'].headingSubtitle}
+              image={contentPreviewMap['missionPreview'].photo}
+              _rawMission={company._rawMission}
+              gc='2 / -2'
+              p='4rem 2rem'
             />
-          </Box>
-        )}
-      </Box>
+          )}
+          {contentPreviewMap['servicesPreview'] && (
+            servicesNodes.length > 0 &&
+            <Services
+              title={contentPreviewMap['servicesPreview'].headingText}
+              subtitle={contentPreviewMap['servicesPreview'].headingSubtitle}
+              image={contentPreviewMap['servicesPreview'].photo}
+              nodes={servicesNodes}
+              browseMoreText={contentPreviewMap['servicesPreview'].browseMoreText}
+              browseMoreHref='/services'
+              previewMode
+              gc='1 / -1'
+              p='4rem 2rem'
+              br='var(--color-dark-white)'
+            />
+          )}
+
+          {contentPreviewMap['newsPreview'] && (
+            <Box
+              gc='1 / 7'
+              p='2rem'
+            >
+              {allNewsNodes.length > 0 && (
+                <PreviewNodes
+                  title={contentPreviewMap['newsPreview'].headingText}
+                  subtitle={contentPreviewMap['newsPreview'].headingSubtitle}
+                  image={contentPreviewMap['newsPreview'].photo}
+                  nodes={allNewsNodes}
+                  nodeType='generic'
+                  browseMoreText={contentPreviewMap['newsPreview'].browseMoreText}
+                  browseMoreHref='/news'
+                />
+              )}
+            </Box>
+          )}
+
+          {contentPreviewMap['podcastPreview'] && (
+            <Box gc='7 / -1' p='4rem 2rem 2rem'>
+              <Podcast {...podcast} />
+            </Box>
+          )}
+
+          {contentPreviewMap['teamPreview'] && (
+            teamMemberNodes.length > 0 &&
+            <PreviewNodes
+              title={contentPreviewMap['teamPreview'].headingText}
+              subtitle={contentPreviewMap['teamPreview'].headingSubtitle}
+              image={contentPreviewMap['teamPreview'].photo}
+              nodes={teamMemberNodes}
+              nodeType='teamMember'
+              browseMoreText={contentPreviewMap['teamPreview'].browseMoreText}
+              browseMoreHref='/team'
+              gc='1 / -1'
+              p='4rem 2rem'
+              ta='center'
+            />
+          )}
+
+          {contentPreviewMap['merchandisePreview'] &&
+            productNodes.length > 0 &&
+          (
+            <Products
+              title={contentPreviewMap['merchandisePreview'].headingText}
+              subtitle={contentPreviewMap['merchandisePreview'].headingSubtitle}
+              image={contentPreviewMap['merchandisePreview'].photo}
+              browseMoreText={contentPreviewMap['merchandisePreview'].browseMoreText}
+              browseMoreHref='/merchandise'
+              nodes={productNodes}
+              gc='1 / -1'
+              p='2rem'
+              ta='center'
+              br='var(--color-dark-white)'
+            />
+          )}
+
+          {contentPreviewMap['affiliatesPreview'] && (
+            affiliateNodes.length > 0 &&
+            <Affiliates
+              title={contentPreviewMap['affiliatesPreview'].headingText}
+              subtitle={contentPreviewMap['affiliatesPreview'].headingSubtitle}
+              image={contentPreviewMap['affiliatesPreview'].photo}
+              nodes={affiliateNodes}
+              gc='1 / -1'
+              p='4rem 2rem'
+            />
+          )}
+
+          {contentPreviewMap['testimonialsPreview'] &&
+            testimonialNodes.length > 0 &&
+          (
+            <Box
+              gc='1 / -1'
+              p='4rem 2rem'
+            >
+              <Stars amount={5} align='center' />
+
+              <PreviewNodes
+                title={contentPreviewMap['testimonialsPreview'].headingText}
+                subtitle={contentPreviewMap['testimonialsPreview'].headingSubtitle}
+                image={contentPreviewMap['testimonialsPreview'].photo}
+                nodes={testimonialNodes}
+                nodeType='generic'
+                browseMoreText={contentPreviewMap['testimonialsPreview'].browseMoreText}
+                browseMoreHref='/testimonials'
+                flex
+                col
+                ai='center'
+              />
+            </Box>
+          )}
+        </Box>
+      </Container>
     </>
   );
 };
