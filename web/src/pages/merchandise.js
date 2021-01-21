@@ -11,7 +11,7 @@ export const query = graphql`
       _rawBody(resolveReferences: { maxDepth: 4 })
       isCentered
     }
-    products: allSanityProduct {
+    products: allSanityProduct(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id

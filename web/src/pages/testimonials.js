@@ -12,7 +12,7 @@ export const query = graphql`
       _rawBody(resolveReferences: { maxDepth: 4 })
       isCentered
     }
-    testimonials: allSanityTestimonial {
+    testimonials: allSanityTestimonial(sort: { fields: [reviewedAt], order: DESC }) {
       edges {
         node {
           id
