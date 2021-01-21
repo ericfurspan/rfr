@@ -5,9 +5,11 @@ import { Typography } from '..';
 
 const ContentPreview = ({ title, text, caption, linkTo }) => (
   <>
-    <StyledTitle css={Typography.responsiveTitle3}>
-      {title}
-    </StyledTitle>
+    <StyledLink to={linkTo}>
+      <StyledTitle css={Typography.responsiveTitle3}>
+        {title}
+      </StyledTitle>
+    </StyledLink>
 
     {caption && (
       <StyledCaption css={Typography.small}>
