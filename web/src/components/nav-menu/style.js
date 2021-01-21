@@ -11,7 +11,7 @@ export const StyledContainer = styled.div`
   right: 0;
   z-index: 2;
 
-  button {
+  button.nav-toggle {
     outline: none;
     border: none;
     padding: 0;

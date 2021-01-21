@@ -8,6 +8,12 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
 
   return (
     <>
+      <Header
+        companyProps={companyProps}
+        bannerProps={bannerProps}
+        jumbotronProps={jumbotronProps}
+        currentPath={location.pathname}
+      />
       <NavMenu
         pages={allPages}
         companyName={companyProps.companyName}
@@ -15,12 +21,6 @@ const Layout = ({ children, allPages, location, companyProps, themeProps, banner
         currentPath={location.pathname}
         toggleBackdrop={() => toggleBackdrop(!hasBackdrop)}
         {...themeProps}
-      />
-      <Header
-        companyProps={companyProps}
-        bannerProps={bannerProps}
-        jumbotronProps={jumbotronProps}
-        currentPath={location.pathname}
       />
       <StyledMainContent hasBackdrop={hasBackdrop}>
         {children}

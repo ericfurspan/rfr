@@ -15,7 +15,7 @@ const variants = {
 };
 
 export const Toggle = ({ toggle, fasIcon }) => (
-  <motion.button onClick={toggle} variants={variants}>
+  <motion.button onClick={toggle} variants={variants} className='nav-toggle'>
     <FontAwesomeIcon icon={['fas', fasIcon]} fixedWidth />
   </motion.button>
 );
