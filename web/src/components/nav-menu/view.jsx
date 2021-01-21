@@ -2,7 +2,7 @@ import React from 'react';
 import { useCycle } from 'framer-motion';
 import { Toggle } from './components/toggle';
 import { NavList } from './components/nav-list';
-import { AnimatedStyledNav, StyledContainer } from './style';
+import { AnimatedStyledNav, StyledNavContainer } from './style';
 
 const variants = {
   open: { right: 0, width: 300 },
@@ -18,7 +18,7 @@ const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...the
   };
 
   return (
-    <StyledContainer
+    <StyledNavContainer
       isOpen={isOpen}
       currentPath={currentPath}
       {...themeProps}
@@ -41,7 +41,7 @@ const NavMenu = ({ pages, companyName, logo, currentPath, toggleBackdrop, ...the
         toggle={handleToggle}
         fasIcon={isOpen ? 'times' : 'bars'}
       />
-    </StyledContainer>
+    </StyledNavContainer>
   );
 };
 

@@ -389,10 +389,10 @@ const IndexPage = ({ data, location }) => {
     : [];
 
   return (
-    <>
+    <div>
       <SEO title={seo.title} description={seo.description} keywords={seo.keywords} />
 
-      <Container noPadding fullWidth>
+      <div>
 
         <Jumbotron {...jumbotron} />
 
@@ -522,8 +522,8 @@ const IndexPage = ({ data, location }) => {
             </Box>
           )}
         </Box>
-      </Container>
-    </>
+      </div>
+    </div>
   );
 };
 

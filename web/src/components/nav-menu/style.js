@@ -4,10 +4,9 @@ import { Logo } from '../logo';
 
 export const AnimatedLogo = motion.custom(Logo);
 
-export const StyledContainer = styled.div`
+export const StyledNavContainer = styled.div`
   position: absolute;
   top: 0;
-  bottom: 0;
   right: 0;
   z-index: 2;
 
