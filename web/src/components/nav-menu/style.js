@@ -28,6 +28,10 @@ export const StyledNavContainer = styled.div`
       background: transparent;
     `}
 
+    ${(props) => props.isOpen && css`
+      position: fixed;
+    `}
+
     & svg {
       font-size: 2em;
       color: ${(props) => props.navMenuFg || 'var(--color-black)'};
