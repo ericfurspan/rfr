@@ -10,7 +10,7 @@ const Mission = ({ _rawMission, title, subtitle, image, ...rest }) => {
     <Box flex col ai='center' ta='center' {...boxProps(rest)}>
       {image && image.asset && (
         <StyledImageContainer>
-          <LazyLoad height={200}>
+          <LazyLoad height={200} once>
             <img
               src={imageUrlFor(buildImageObj(image))
                 .width(200)

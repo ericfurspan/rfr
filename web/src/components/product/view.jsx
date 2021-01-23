@@ -20,7 +20,7 @@ const Product = ({ title, caption, description, image, link, linkText, price, sl
         <Link to={getProductUrl(slug)} aria-label={`Preview image for product: ${title}`}>
           <StyledImageContainer>
             {image && image.asset ? (
-              <LazyLoad height={300} style={{ display: 'flex' }}>
+              <LazyLoad height={300} style={{ display: 'flex' }} once>
                 <img
                   src={imageUrlFor(buildImageObj(image))
                     .format('webp')

@@ -5,7 +5,7 @@ import { buildImageObj } from '../../lib/helpers';
 import { StyledLogoImg } from './style';
 
 const Logo = ({ image, width = 60, height = 60, margin }) => (
-  <LazyLoad height={height} style={{ display: 'flex' }}>
+  <LazyLoad height={height} style={{ display: 'flex' }} once>
     <StyledLogoImg
       src={imageUrlFor(buildImageObj(image)).format('webp').url()}
       alt={image.alt || 'Brand logo'}

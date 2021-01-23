@@ -13,7 +13,7 @@ const TeamMemberPreview = ({ slug, person, certifications }) => (
     <StyledLink to={getTeamMemberUrl(slug.current)} aria-label={`Avatar for ${person.name}`}>
       <StyledThumbnail>
         {person.image && person.image.asset && (
-          <LazyLoad height={200}>
+          <LazyLoad height={200} once>
             <img
               src={imageUrlFor(buildImageObj(person.image))
                 .width(200)

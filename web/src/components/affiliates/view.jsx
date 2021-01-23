@@ -35,7 +35,7 @@ const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
           <li key={node.id}>
             <a href={node.url} target='_blank' rel='noreferrer noopener' aria-label={`Affiliate brand: ${node.name}`}>
               {node.image && node.image.asset ? (
-                <LazyLoad height={200}>
+                <LazyLoad height={200} once>
                   <img
                     src={imageUrlFor(buildImageObj(node.image))
                       .width(200)
