@@ -28,7 +28,6 @@ export const StyledThumbnail = styled.div`
 
 export const StyledHeader = styled.h3`
   margin-bottom: 0.25em;
-  margin-top: 1.5em;
 
   ${StyledLink}:hover & {
     text-decoration: underline;

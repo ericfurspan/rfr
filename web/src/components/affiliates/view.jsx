@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import { buildImageObj } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
 import { StyledHeading, StyledGrid, StyledImageContainer } from './style';
@@ -11,6 +12,7 @@ const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
         <StyledImageContainer>
           <img
             src={imageUrlFor(buildImageObj(image))
+              .format('webp')
               .url()}
             alt={image.alt || `Affiliates preview image`}
           />
@@ -31,15 +33,18 @@ const Affiliates = ({ title, subtitle, image, nodes, ...rest }) => {
       <StyledGrid>
         {nodes && nodes.map((node) => (
           <li key={node.id}>
-            <a href={node.url} target='_blank' rel='noreferrer noopener'>
+            <a href={node.url} target='_blank' rel='noreferrer noopener' aria-label={`Affiliate brand: ${node.name}`}>
               {node.image && node.image.asset ? (
-                <img
-                  src={imageUrlFor(buildImageObj(node.image))
-                    .width(200)
-                    .fit('clip')
-                    .url()}
-                  alt={node.image.alt || `Affiliate image for ${node.name}`}
-                />
+                <LazyLoad height={200}>
+                  <img
+                    src={imageUrlFor(buildImageObj(node.image))
+                      .width(200)
+                      .fit('clip')
+                      .format('webp')
+                      .url()}
+                    alt={node.image.alt || `Affiliate image for ${node.name}`}
+                  />
+                </LazyLoad>
               ) : (
                 <h3 css={Typography.responsiveTitle3}>
                   {node.name}

@@ -23,6 +23,7 @@ const ListItem = ({ item, type }) => {
                 .width(100)
                 .height(100)
                 .fit('crop')
+                .format('webp')
                 .url()}
               alt={`Avatar for ${item.person.name}`}
             />

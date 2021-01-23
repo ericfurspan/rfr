@@ -15,6 +15,8 @@ const TeamMember = ({ person, _rawPerson, certifications }) => {
         <StyledImageContainer>
           <img
             src={imageUrlFor(buildImageObj(image))
+              .format('webp')
+              .width(800)
               .url()}
             alt={image.alt || `Avatar for ${person.name}`}
           />

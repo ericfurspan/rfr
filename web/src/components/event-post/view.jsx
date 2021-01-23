@@ -15,6 +15,7 @@ const EventPost = ({ _rawBody, title, organizers, coverPhoto, eventAt }) => (
             .width(1200)
             .height(Math.floor((9 / 16) * 1200))
             .fit('crop')
+            .format('webp')
             .url()}
           alt={coverPhoto.alt || 'Cover photo'}
         />

@@ -92,6 +92,7 @@ const Slideshow = ({ slides }) => {
                   .width(1200)
                   .height(Math.floor((9 / 16) * 1200))
                   .fit('crop')
+                  .format('webp')
                   .url()}
               />
             )}

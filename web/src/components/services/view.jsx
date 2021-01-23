@@ -13,6 +13,7 @@ const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, imag
         <StyledImageContainer>
           <img
             src={imageUrlFor(buildImageObj(image))
+              .format('webp')
               .url()}
             alt={image.alt || `Services image`}
           />

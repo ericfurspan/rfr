@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LazyLoad from 'react-lazyload';
 import { buildImageObj, getTeamMemberUrl } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
 
@@ -8,21 +10,28 @@ import { StyledLink, StyledThumbnail, StyledHeader, StyledCertifications } from 
 
 const TeamMemberPreview = ({ slug, person, certifications }) => (
   <Box ta='center' mb='2em'>
-    <StyledLink to={getTeamMemberUrl(slug.current)}>
+    <StyledLink to={getTeamMemberUrl(slug.current)} aria-label={`Avatar for ${person.name}`}>
       <StyledThumbnail>
         {person.image && person.image.asset && (
-          <img
-            src={imageUrlFor(buildImageObj(person.image))
-              .url()}
-            alt={person.image.alt || `Avatar for ${person.name}`}
-          />
+          <LazyLoad height={200}>
+            <img
+              src={imageUrlFor(buildImageObj(person.image))
+                .width(200)
+                .dpr(3)
+                .format('webp')
+                .url()}
+              alt={person.image.alt || `Avatar for ${person.name}`}
+            />
+          </LazyLoad>
         )}
       </StyledThumbnail>
     </StyledLink>
 
-    <StyledHeader css={Typography.responsiveTitle3}>
-      {person.name}
-    </StyledHeader>
+    <Link to={getTeamMemberUrl(slug.current)}>
+      <StyledHeader css={Typography.responsiveTitle3}>
+        {person.name}
+      </StyledHeader>
+    </Link>
 
     {certifications && (
       <StyledCertifications>

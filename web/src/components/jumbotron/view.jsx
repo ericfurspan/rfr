@@ -1,5 +1,5 @@
 import React from 'react';
-
+import LazyLoad from 'react-lazyload';
 import { BlockContent } from '..';
 import { imageUrlFor } from '../../lib/image-url';
 import { buildImageObj, getUrlFromReference } from '../../lib/helpers';
@@ -15,11 +15,13 @@ const Jumbotron = ({ backgroundImage, _rawTitle, _rawSubtitle, ctaButton, isCent
       backgroundOpacity={backgroundOpacity}
     >
       {hasBgImage && (
-        <img
-          src={imageUrlFor(buildImageObj(backgroundImage)).fit('fillmax').url()}
-          alt={backgroundImage.alt || 'Jumbotron image'}
-          className='jumbo-bg'
-        />
+        <LazyLoad once>
+          <img
+            src={imageUrlFor(buildImageObj(backgroundImage)).fit('fillmax').format('webp').url()}
+            alt={backgroundImage.alt || 'Jumbotron image'}
+            className='jumbo-bg'
+          />
+        </LazyLoad>
       )}
       <StyledOverlay>
         <StyledContent isCentered={isCentered}>

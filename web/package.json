@@ -37,6 +37,7 @@
     "react-dom": "^17.0.1",
     "react-google-recaptcha-v3": "^1.7.1",
     "react-helmet": "^6.1.0",
+    "react-lazyload": "^3.1.0",
     "sass": "^1.32.5",
     "styled-components": "^5.2.1"
   },

@@ -12,6 +12,7 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
         <StyledImageContainer>
           <img
             src={imageUrlFor(buildImageObj(image))
+              .format('webp')
               .url()}
             alt={image.alt || `Section preview image`}
           />

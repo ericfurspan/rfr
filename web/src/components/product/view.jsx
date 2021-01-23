@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import LazyLoad from 'react-lazyload';
 import { buildImageObj, getProductUrl } from '../../lib/helpers';
 import { imageUrlFor } from '../../lib/image-url';
-import { BackBtn, Box } from '..';
+import { BackBtn, Box, Typography } from '..';
 import { StyledProduct, StyledImageContainer, StyledContent, StyledTitle, StyledCaption, StyledPrice, StyledProductLink, StyledDescription } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -16,13 +17,20 @@ const Product = ({ title, caption, description, image, link, linkText, price, sl
       )}
 
       <StyledProduct previewMode={previewMode}>
-        <Link to={getProductUrl(slug)}>
+        <Link to={getProductUrl(slug)} aria-label={`Preview image for product: ${title}`}>
           <StyledImageContainer>
             {image && image.asset ? (
-              <img
-                src={imageUrlFor(buildImageObj(image)).url()}
-                alt={image.alt || `Product preview image`}
-              />
+              <LazyLoad height={300} style={{ display: 'flex' }}>
+                <img
+                  src={imageUrlFor(buildImageObj(image))
+                    .format('webp')
+                    .width(300)
+                    .height(300)
+                    .url()
+                  }
+                  alt={image.alt || `Product preview image`}
+                />
+              </LazyLoad>
             ) : (
               <FontAwesomeIcon icon={['fas', 'image']} />
             )}
@@ -30,7 +38,7 @@ const Product = ({ title, caption, description, image, link, linkText, price, sl
         </Link>
 
         <StyledContent>
-          <StyledTitle>
+          <StyledTitle css={Typography.responsiveTitle3}>
             <Link to={getProductUrl(slug)}>{title}</Link>
           </StyledTitle>
 

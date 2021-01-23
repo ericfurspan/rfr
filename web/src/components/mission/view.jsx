@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import { Box, BlockContent, Typography, boxProps } from '..';
 import { imageUrlFor } from '../../lib/image-url';
 import { buildImageObj } from '../../lib/helpers';
@@ -9,13 +10,16 @@ const Mission = ({ _rawMission, title, subtitle, image, ...rest }) => {
     <Box flex col ai='center' ta='center' {...boxProps(rest)}>
       {image && image.asset && (
         <StyledImageContainer>
-          <img
-            src={imageUrlFor(buildImageObj(image))
-              .width(200)
-              .height(200)
-              .url()}
-            alt={image.alt || `Mission statement image`}
-          />
+          <LazyLoad height={200}>
+            <img
+              src={imageUrlFor(buildImageObj(image))
+                .width(200)
+                .height(200)
+                .format('webp')
+                .url()}
+              alt={image.alt || `Mission statement image`}
+            />
+          </LazyLoad>
         </StyledImageContainer>
       )}
 

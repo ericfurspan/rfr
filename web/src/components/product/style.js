@@ -75,10 +75,8 @@ export const StyledContent = styled.div`
   min-height: 150px;
 `;
 
-export const StyledTitle = styled.p`
+export const StyledTitle = styled.h3`
   margin: 0.5rem 0;
-  font-size: var(--font-title3-size);
-  font-weight: 700;
 `;
 
 export const StyledPrice = styled.p`
