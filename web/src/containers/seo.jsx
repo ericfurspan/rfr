@@ -15,16 +15,6 @@ const SEO = ({ title, description, lang, meta, keywords }) => {
           <Helmet
             htmlAttributes={{ lang }}
             title={`${title} - ${data.site && data.site.companyName}`}
-            link={[
-              {
-                rel: 'preconnect',
-                href: 'https://fonts.gstatic.com',
-              },
-              {
-                href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Play:wght@400;700&display=swap',
-                rel: 'stylesheet',
-              },
-            ]}
             meta={[
               {
                 name: 'description',
