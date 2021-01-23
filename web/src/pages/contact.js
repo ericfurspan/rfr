@@ -59,7 +59,7 @@ const ContactPage = ({ data }) => {
               <FontAwesomeIcon
                 icon={['fas', 'envelope']}
                 color='var(--color-black)'
-                size='4x'
+                size='3x'
                 fixedWidth
               />
             </a>
@@ -70,7 +70,7 @@ const ContactPage = ({ data }) => {
                 <FontAwesomeIcon
                   icon={[platform.icon.faPackage, platform.icon.faIconName]}
                   color='var(--color-black)'
-                  size='4x'
+                  size='3x'
                   fixedWidth
                 />
               </a>
