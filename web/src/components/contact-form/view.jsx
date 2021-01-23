@@ -62,7 +62,7 @@ const ContactForm = () => {
 
   return (
     <Box flex col maxw='550px' m='auto' ta='initial'>
-      <h2 css={Typography.responsiveTitle2}>Send us a message</h2>
+      <h2 css={Typography.responsiveTitle3}>Send us a message</h2>
       <form
         name='contact'
         method='POST'

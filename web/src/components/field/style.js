@@ -59,8 +59,8 @@ export const StyledInput = styled.input`
  */
 export const StyledLabel = styled.label`
   font-size: 0.75rem;
-  font-family: var(--font-family-helvetica);
-  font-weight: 600;
+  font-family: var(--font-family-sans);
+  font-weight: 500;
   white-space: pre;
   user-select: none;
   padding: 0 0.25rem;
