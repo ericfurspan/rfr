@@ -32,10 +32,6 @@ export const StyledNavContainer = styled.div`
       font-size: 2em;
       color: ${(props) => props.navMenuFg || 'var(--color-black)'};
 
-      ${(props) => props.isOpen && css`
-        color: ${(props) => props.navMenuFg || 'var(--color-dark-gray)'};
-      `}
-
       ${(props) => props.currentPath === '/' && !props.isOpen && css`
         color: ${(props) => props.navMenuFg || 'var(--color-white)'};
       `}
@@ -88,7 +84,6 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
         }
 
         &[aria-current] {
-          color: ${(props) => props.navMenuFg || 'var(--color-accent) !important'};
           font-weight: 600;
         }
       }
