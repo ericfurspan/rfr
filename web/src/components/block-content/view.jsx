@@ -65,6 +65,9 @@ const serializers = {
       }
       return props.children;
     },
+    spacer: (props) => {
+      return <div style={{ padding: `${props.mark.value}px 0` }}>{props.children}</div>;
+    },
   },
 };
 

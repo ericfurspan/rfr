@@ -1,4 +1,4 @@
-import { FaExternalLinkAlt, FaLink, FaPalette } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaLink, FaPalette, FaTextHeight } from 'react-icons/fa';
 import { colorPalette } from '../../../company.js';
 
 export default {
@@ -29,6 +29,24 @@ export default {
           { title: 'Italic', value: 'em' }
         ],
         annotations: [
+          {
+            name: 'spacer',
+            type: 'object',
+            title: 'Vertical spacing',
+            blockEditor: {
+              icon: FaTextHeight
+            },
+            fields: [
+              {
+                name: 'value',
+                type: 'number',
+                title: 'Number of pixels of vertical space',
+                options: {
+                  list: [ 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48 ]
+                }
+              }
+            ]
+          },
           {
             name: 'color',
             type: 'object',
