@@ -15,6 +15,12 @@ export const StyledHeader = styled.header`
       color: ${props => props.headerTextColor};
     }
   `}
+
+  ${(props) => props.hasBanner && css`
+    ${StyledTitle}, #navigation {
+      margin-top: 75px;
+    }
+  `}
 `;
 
 export const StyledTitle = styled.h1`
@@ -38,10 +44,12 @@ export const StyledTitle = styled.h1`
 `;
 
 export const StyledAttentionBanner = styled.div`
-  position: sticky;
+  width: 100%;
+  position: absolute;
   top: 0;
   z-index: 2;
   font-size: 0.875em;
+  max-height: 40px;
   padding: 1em;
   text-align: center;
   display: flex;

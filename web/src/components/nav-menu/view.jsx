@@ -24,6 +24,7 @@ const NavMenu = ({ pages, currentPath, toggleBackdrop, navMenuFg, navMenuBg }) =
         currentPath={currentPath}
         navMenuFg={navMenuFg}
         navMenuBg={navMenuBg}
+        id='navigation'
       >
         <AnimatedStyledNav
           initial={false}

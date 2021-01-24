@@ -12,7 +12,11 @@ const Header = ({ currentPath, companyProps, bannerProps, jumbotronProps, themeP
   const { logo, companyName } = companyProps;
 
   return (
-    <StyledHeader {...jumbotronProps} currentPath={currentPath}>
+    <StyledHeader
+      currentPath={currentPath}
+      hasBanner={bannerProps && bannerProps.isEnabled}
+      headerTextColor={jumbotronProps.headerTextColor}
+    >
       {bannerProps && bannerProps.isEnabled && (
         <StyledAttentionBanner {...bannerProps}>
           <BlockContent blocks={bannerProps._rawBannerText} />
