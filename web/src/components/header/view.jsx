@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BlockContent, Logo, NavMenu } from '..';
 
 import {
@@ -9,17 +10,24 @@ import {
 } from './style';
 
 const Header = ({ currentPath, companyProps, bannerProps, jumbotronProps, themeProps, allPages, hasBackdrop, toggleBackdrop }) => {
+  const [ bannerDismissed, setBannerDismissed ] = useState(false);
+
   const { logo, companyName } = companyProps;
 
   return (
     <StyledHeader
       currentPath={currentPath}
-      hasBanner={bannerProps && bannerProps.isEnabled}
+      hasBanner={bannerProps.isEnabled && !bannerDismissed}
       headerTextColor={jumbotronProps.headerTextColor}
     >
-      {bannerProps && bannerProps.isEnabled && (
+      {bannerProps.isEnabled && !bannerDismissed && (
         <StyledAttentionBanner {...bannerProps}>
           <BlockContent blocks={bannerProps._rawBannerText} />
+          <FontAwesomeIcon
+            icon={['fas', 'times']}
+            className='banner-dismiss'
+            onClick={() => setBannerDismissed(true)}
+          />
         </StyledAttentionBanner>
       )}
 

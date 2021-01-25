@@ -17,7 +17,10 @@ export const StyledHeader = styled.header`
   `}
 
   ${(props) => props.hasBanner && css`
-    ${StyledTitle}, #navigation {
+    ${StyledTitle} {
+      margin-top: 90px;
+    }
+    .nav-toggle {
       margin-top: 75px;
     }
   `}
@@ -44,13 +47,13 @@ export const StyledTitle = styled.h1`
 `;
 
 export const StyledAttentionBanner = styled.div`
-  width: 100%;
-  position: absolute;
+  width: calc(100% - 2em);
+  position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   font-size: 0.875em;
-  max-height: 40px;
-  padding: 1em;
+  /* max-height: 50px; */
+  padding: 1.25em 1em;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -64,4 +67,20 @@ export const StyledAttentionBanner = styled.div`
     css`
       background-color: ${props.bannerBackgroundColor};
     `};
+
+  div:first-child {
+    max-width: calc(100% - 4em);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: auto;
+  }
+
+  .banner-dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    font-size: 1.25em;
+    color: inherit;
+  }
 `;

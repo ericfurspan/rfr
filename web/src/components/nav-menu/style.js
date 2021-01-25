@@ -62,7 +62,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   ul {
     padding: 16px;
     position: absolute;
-    top: 80px;
+    top: 100px;
     width: calc(100% - 48px);
 
     li {
