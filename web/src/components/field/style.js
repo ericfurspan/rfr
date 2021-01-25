@@ -157,6 +157,14 @@ export const StyledButton = styled.button`
       color: var(--color-black);
     `}
 
+    ${(props) =>
+    props.design === 'text' &&
+    css`
+      background-color: transparent;
+      color: inherit;
+      outline: 0;
+    `}
+    
   ${(props) =>
     props.size === 'small' &&
     css`
@@ -193,8 +201,10 @@ export const StyledButton = styled.button`
   `};
 
   & svg {
-    margin: 0 0.75rem;
-    vertical-align: middle;
+    margin: 0 0.6rem;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    stroke: currentColor;
   }
 
   ${(props) =>

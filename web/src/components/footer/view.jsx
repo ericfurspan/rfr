@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { capitalize } from '../../lib/string-utils';
 
-import { NewsletterForm } from '..';
+import { NewsletterForm, Box, StyledButton } from '..';
 import {
   StyledFooter,
   StyledGrid,
@@ -15,8 +15,18 @@ import {
 const Footer = ({ companyProps, allPages, footerFg, footerBg }) => {
   const { contact, companyName } = companyProps;
 
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <StyledFooter footerFg={footerFg} footerBg={footerBg}>
+      <Box flex jc='center' w='100%' mb='0.5em'>
+        <StyledButton design='text' onClick={handleScrollTop}>
+          <FontAwesomeIcon icon={['fas', 'caret-up']} size='lg' />
+          Back to top
+        </StyledButton>
+      </Box>
       <StyledGrid>
         <StyledSection>
           <StyledSectionHeading>Sitemap</StyledSectionHeading>
