@@ -17,4 +17,4 @@ See the [web/](./web/) directory
 [![Netlify Status](https://api.netlify.com/api/v1/badges/92e566f7-4f64-42a9-83ec-0cfe5113b7f9/deploy-status)](https://app.netlify.com/sites/sanity-rfr-frontend/deploys)
 
 ## Documents
-See the [docs](./docs/index.md) homepage
+[View documents](https://quanda.github.io/rfr/)

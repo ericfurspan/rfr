@@ -1,4 +1,4 @@
-# RFR Docs
+# Documents
 
 ## Lighthouse Results
 ### Desktop
