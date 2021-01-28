@@ -30,7 +30,7 @@ const NavMenu = ({ pages, currentPath, toggleBackdrop, navMenuFg, navMenuBg }) =
           initial={false}
           animate={isOpen ? 'open' : 'closed'}
           variants={variants}
-          transition={{ duration: 0.125 }}
+          transition={{ duration: 0.25, type: 'tween' }}
           isOpen={isOpen}
           navMenuFg={navMenuFg}
           navMenuBg={navMenuBg}
