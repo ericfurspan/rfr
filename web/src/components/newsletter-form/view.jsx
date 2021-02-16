@@ -44,7 +44,7 @@ const NewsletterForm = ({ recaptchaTheme = 'light' }) => {
       });
 
       if (res.ok && res.status === 200) {
-        alert('Thanks! Stay tuned for Newsletter content in your inbox');
+        alert('Thanks! Stay tuned for Newsletter content in your inbox \n\n (you may need to check the spam folder)');
       } else {
         alert(`${res.status} - ${res.statusText}`);
       }
