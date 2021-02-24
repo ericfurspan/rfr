@@ -431,7 +431,7 @@ const IndexPage = ({ data, location }) => {
           {contentPreviewMap['newsPreview'] && (
             <Box
               gc='1 / 7'
-              p='2rem 4rem'
+              p='2rem'
             >
               {allNewsNodes.length > 0 && (
                 <PreviewNodes
@@ -448,7 +448,7 @@ const IndexPage = ({ data, location }) => {
           )}
 
           {contentPreviewMap['podcastPreview'] && (
-            <Box gc='7 / -1' p='4rem 4rem 2rem'>
+            <Box gc='7 / -1' p='4rem 2rem 2rem'>
               <Podcast {...podcast} />
             </Box>
           )}
