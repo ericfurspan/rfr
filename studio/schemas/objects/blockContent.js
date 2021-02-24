@@ -25,8 +25,7 @@ export default {
       marks: {
         decorators: [
           { title: 'Bold', value: 'strong' },
-          { title: 'Italic', value: 'em' },
-          { title: 'Vertical Spacer', value: 'verticalSpacer', icon: FaTextHeight }
+          { title: 'Italic', value: 'em' }
         ],
         annotations: [
           {
