@@ -21,6 +21,10 @@ export const StyledGrid = styled.ul`
 
   & li {
     flex: auto;
+
+    & a {
+      color: inherit;
+    }
   }
 `;
 

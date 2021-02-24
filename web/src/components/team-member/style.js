@@ -4,6 +4,7 @@ import { MEDIA } from '../../lib/helpers';
 export const StyledImageContainer = styled.div`
   position: relative;
   padding-bottom: calc(9 / 16 * 100%);
+  background-color: var(--color-very-light-gray);
 
   & img {
     position: absolute;
