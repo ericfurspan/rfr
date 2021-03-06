@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { imageUrlFor } from '../../lib/image-url';
 import { buildImageObj } from '../../lib/helpers';
-import { Box, Typography, boxProps, BlockContent } from '..';
+import { Box, Typography, boxProps, BlockContent, StyledButton } from '..';
 import { StyledHeading, StyledGrid, StyledIconContainer, StyledService, StyledServiceBody, StyledImageContainer, StyledBrowseMore } from './style';
 
 const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, image, previewMode, ...rest }) => {
@@ -62,6 +62,17 @@ const Services = ({ title, subtitle, nodes, browseMoreHref, browseMoreText, imag
         ))}
       </StyledGrid>
 
+      <Box mt='3rem'>
+        <span css={Typography.title3} style={{ fontWeight: '500' }}>
+          Interested in any of our Services?
+        </span>
+        <br />
+        <Link to='/contact'>
+          <StyledButton design='text' size='large'>
+            Email us to find out more!
+          </StyledButton>
+        </Link>
+      </Box>
       {browseMoreHref && (
         <StyledBrowseMore css={Typography.small}>
           <Link to={browseMoreHref}>{browseMoreText}</Link>

@@ -24,6 +24,7 @@ export const StyledGrid = styled.ul`
 
     & a {
       color: inherit;
+      display: inline-block;
     }
   }
 `;

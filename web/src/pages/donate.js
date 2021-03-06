@@ -1,8 +1,8 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import SEO from '../containers/seo';
-import { Container, BlockContent, DonateLink, Box } from '../components';
+import { Container, BlockContent, DonateLink, Box, StyledButton, Typography } from '../components';
 
 export const query = graphql`
   query DonatePageQuery {
@@ -45,6 +45,18 @@ const DonatePage = ({ data }) => {
           {payment.payExternal.map((externalPayment) => (
             <DonateLink key={externalPayment._key} {...externalPayment} />
           ))}
+        </Box>
+
+        <Box mt='4rem'>
+          <span css={Typography.title3} style={{ fontWeight: '500' }}>
+            Interested in making a tax-exempt donation?
+          </span>
+          <br />
+          <Link to='/contact'>
+            <StyledButton design='text' size='large'>
+              Please email us for more information
+            </StyledButton>
+          </Link>
         </Box>
       </Container>
     </>
