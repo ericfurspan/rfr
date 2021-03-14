@@ -80,7 +80,7 @@ export const availableLandingContent = [
     identifier: 'merchandisePreview'
   },
   {
-    title: 'RFR Sponsorship Success Stories',
+    title: 'Success Stories',
     identifier: 'successStoriesPreview'
   }
 ];
