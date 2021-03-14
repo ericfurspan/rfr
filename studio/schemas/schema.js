@@ -21,6 +21,7 @@ import banner from './documents/banner';
 import jumbotron from './documents/jumbotron';
 import affiliate from './documents/affiliate';
 import product from './documents/product';
+import successStory from './documents/successStory';
 import contentPreview from './documents/contentPreview';
 import theme from './documents/theme';
 
@@ -70,6 +71,7 @@ export default createSchema({
     jumbotron,
     affiliate,
     product,
+    successStory,
     contentPreview,
     icon,
     theme

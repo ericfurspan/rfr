@@ -35,6 +35,11 @@ export const customPages = [
     docId: 'team_Page'
   },
   {
+    title: 'Success Stories',
+    id: 'success-stories_Page',
+    docId: 'success-stories_Page'
+  },
+  {
     title: 'Merchandise',
     id: 'merchandise_Page',
     docId: 'merchandise_Page'
@@ -73,5 +78,9 @@ export const availableLandingContent = [
   {
     title: 'Merchandise',
     identifier: 'merchandisePreview'
+  },
+  {
+    title: 'RFR Sponsorship Success Stories',
+    identifier: 'successStoriesPreview'
   }
 ];

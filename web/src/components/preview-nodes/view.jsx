@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { imageUrlFor } from '../../lib/image-url';
 import { buildImageObj } from '../../lib/helpers';
-import { Box, TeamMemberPreview, ContentPreview, Typography, boxProps } from '..';
+import { Box, TeamMemberPreview, ContentPreview, SuccessStoryPreview, Typography, boxProps } from '..';
 import { StyledGrid, StyledHeading, StyledImageContainer, StyledBrowseMore, StyledEmptyNodesText } from './style';
 
 const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', browseMoreHref, browseMoreText, ...rest }) => {
@@ -36,6 +36,7 @@ const PreviewNodes = ({ title, subtitle, image, nodes, nodeType = 'generic', bro
             {nodes.map(node => (
               <li key={node.id}>
                 {nodeType === 'teamMember' && <TeamMemberPreview {...node} />}
+                {nodeType === 'successStory' && <SuccessStoryPreview {...node} />}
                 {nodeType === 'generic' && <ContentPreview {...node} />}
               </li>
             ))}

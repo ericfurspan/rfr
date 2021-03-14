@@ -26,6 +26,8 @@ export { Mission } from './mission';
 export { Stars } from './stars';
 export { Product } from './product';
 export { Products } from './products';
+export { SuccessStory } from './success-story';
+export { SuccessStoryPreview } from './success-story-preview';
 export { BackBtn } from './back-btn';
 export { Typography } from './typography';
 export { NavMenu } from './nav-menu';

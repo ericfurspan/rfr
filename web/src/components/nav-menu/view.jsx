@@ -5,8 +5,8 @@ import { NavList } from './components/nav-list';
 import { AnimatedStyledNav, StyledNavContainer } from './style';
 
 const variants = {
-  open: { right: 0, width: 280 },
-  closed: { right: -280, width: 0 },
+  open: { right: 0, width: 300 },
+  closed: { right: -300, width: 0 },
 };
 
 const NavMenu = ({ pages, currentPath, toggleBackdrop, navMenuFg, navMenuBg }) => {

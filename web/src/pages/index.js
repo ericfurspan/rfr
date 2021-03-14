@@ -104,7 +104,7 @@ export const query = graphql`
         }
       }
     }
-    products: allSanityProduct(limit: 4, sort: { fields: [order], order: ASC }) {
+    products: allSanityProduct(limit: 6, sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id
@@ -140,7 +140,7 @@ export const query = graphql`
         }
       }
     }
-    testimonials: allSanityTestimonial(limit: 4, sort: { fields: [reviewedAt], order: DESC }) {
+    testimonials: allSanityTestimonial(limit: 6, sort: { fields: [reviewedAt], order: DESC }) {
       edges {
         node {
           id
@@ -226,6 +226,38 @@ export const query = graphql`
               asset {
                 _id
               }
+            }
+          }
+        }
+      }
+    }
+    successStories: allSanitySuccessStory(limit: 6, sort: { fields: [order], order: ASC }) {
+      edges {
+        node {
+          id
+          title
+          slug {
+            current
+          }
+          image {
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
             }
           }
         }
@@ -350,6 +382,9 @@ const IndexPage = ({ data, location }) => {
   const teamMemberNodes = (data || {}).teamMembers
     ? mapEdgesToNodes(data.teamMembers).filter(filterOutDocsWithoutSlugs)
     : [];
+  const successStoryNodes = (data || {}).successStories
+    ? mapEdgesToNodes(data.successStories).filter(filterOutDocsWithoutSlugs)
+    : [];
   const blogPostNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
       .filter(filterOutDocsWithoutSlugs)
@@ -425,6 +460,22 @@ const IndexPage = ({ data, location }) => {
               gc='1 / -1'
               p='4rem 2rem'
               br='var(--color-dark-white)'
+            />
+          )}
+
+          {contentPreviewMap['successStoriesPreview'] && (
+            successStoryNodes.length > 0 &&
+            <PreviewNodes
+              title={contentPreviewMap['successStoriesPreview'].headingText}
+              subtitle={contentPreviewMap['successStoriesPreview'].headingSubtitle}
+              image={contentPreviewMap['successStoriesPreview'].photo}
+              nodes={successStoryNodes}
+              nodeType='successStory'
+              browseMoreText={contentPreviewMap['successStoriesPreview'].browseMoreText}
+              browseMoreHref='/success-stories'
+              gc='1 / -1'
+              p='4rem 2rem'
+              ta='center'
             />
           )}
 

@@ -48,7 +48,7 @@ export const AnimatedStyledNav = styled(AnimatedNav)`
   position: ${(props) => props.isOpen ? 'fixed' : 'absolute'};
   top: 0;
   bottom: 0;
-  width: 280px;
+  width: 300px;
   background-color: ${(props) => props.navMenuBg || 'var(--color-dark-white)'};
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
   overflow-y: auto;

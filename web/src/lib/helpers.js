@@ -38,6 +38,10 @@ export function getTestimonialUrl (publishedAt, slug) {
   return `/testimonials/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`;
 }
 
+export function getSuccessStoryUrl (slug) {
+  return `/success-stories/${slug.current || slug}/`;
+}
+
 export function getProductUrl (slug) {
   return `/merchandise/${slug.current || slug}/`;
 }
@@ -159,6 +163,9 @@ export const faIconForPage = (page) => {
 
     case 'recovery-coaching':
       return [ 'fas', 'hands-helping' ];
+
+    case 'success-stories':
+      return [ 'far', 'smile-beam' ];
 
     default:
       break;

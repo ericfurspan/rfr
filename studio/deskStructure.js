@@ -1,10 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile, FaPalette, FaTags } from 'react-icons/fa';
+import { FaIcons, FaSearchengin, FaLandmark, FaRegThumbsUp, FaUsers, FaBlog, FaNewspaper, FaCalendarDay, FaPodcast, FaRegCreditCard, FaRegNewspaper, FaProjectDiagram, FaBullhorn, FaObjectGroup, FaHandsHelping, FaSitemap, FaRegCopy, FaRegFile, FaPalette, FaTags, FaRegSmileBeam } from 'react-icons/fa';
 
 import { customPages, availableLandingContent } from './constants';
 
 const hiddenDocTypes = listItem =>
-  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'product', 'contentPreview', 'theme']
+  !['seo', 'companyInfo', 'teamMember', 'page', 'icon', 'post', 'event', 'pressRelease', 'testimonial', 'service', 'podcast', 'payment', 'gallery', 'banner', 'jumbotron', 'affiliate', 'product', 'successStory', 'contentPreview', 'theme']
     .includes(listItem.getId());
 
 export default () =>
@@ -40,6 +40,11 @@ export default () =>
         .schemaType('testimonial')
         .child(S.documentTypeList('testimonial').title('Testimonials'))
         .icon(FaRegThumbsUp),
+      S.listItem()
+        .title('Success Stories')
+        .schemaType('successStory')
+        .child(S.documentTypeList('successStory').title('Success Stories'))
+        .icon(FaRegSmileBeam),
       S.listItem()
         .title('Affiliates')
         .schemaType('affiliate')

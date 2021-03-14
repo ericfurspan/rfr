@@ -225,6 +225,42 @@ async function createProductPages (graphql, actions, reporter) {
   });
 }
 
+async function createSuccessStoryPages (graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanitySuccessStory(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            title
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const successStoryEdges = (result.data.allSanitySuccessStory || {}).edges || [];
+
+  successStoryEdges.forEach((edge, index) => {
+    const { id, slug = {} } = edge.node;
+    const path = `/success-stories/${slug.current}/`;
+
+    reporter.info(`Creating success story page: ${path}`);
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/success-story.js'),
+      context: { id },
+    });
+  });
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createTeamMemberPages(graphql, actions, reporter);
   await createBlogPostPages(graphql, actions, reporter);
@@ -232,4 +268,5 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await createPressReleasePages(graphql, actions, reporter);
   await createTestimonialPages(graphql, actions, reporter);
   await createProductPages(graphql, actions, reporter);
+  await createSuccessStoryPages(graphql, actions, reporter);
 };
