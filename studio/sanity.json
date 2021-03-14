@@ -26,7 +26,6 @@
     "dashboard-widget-netlify",
     "@sanity/color-input",
     "color-list",
-    "dashboard-widget-gatsby",
     "order-documents",
     "asset-source-unsplash"
   ],
