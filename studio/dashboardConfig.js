@@ -30,27 +30,27 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'https://github.com/Quanda/rfr',
+            value: 'https://github.com/Quanda/rfr/',
             category: 'Code'
           },
           {
             title: 'Frontend',
-            value: 'https://sanity-rfr-frontend.netlify.app',
+            value: 'https://repsforresponders.org/',
             category: 'apps'
           }
         ]
       }
     },
-    {
-      name: 'gatsby',
-      options: {
-        sites: [
-          {
-            siteUrl: 'https://preview-rfrfrontend.gtsb.io'
-          }
-        ]
-      }
-    },
+    // {
+    //   name: 'gatsby',
+    //   options: {
+    //     sites: [
+    //       {
+    //         siteUrl: 'https://preview-rfrfrontend.gtsb.io'
+    //       }
+    //     ]
+    //   }
+    // },
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
