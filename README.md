@@ -2,7 +2,7 @@
 
 Site Administrator? Visit [manage.sanity.io](https://manage.sanity.io) to manage your app.
 
-This multi-project repository contains both a content management studio (Sanity.io) and a client-facing (Gatsby) website.
+This multi-project repository contains both a content management studio (Sanity.io) and a public-facing (Gatsby) website.
 
 ## Sanity Studio
 
